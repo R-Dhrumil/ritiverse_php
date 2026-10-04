@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initFullscreenNav();
+  initFloatingNavScroll();
   initNumberCounter();
   initChartInteractions();
   initCurrencyToggle();
@@ -689,4 +690,50 @@ function initFullscreenNav() {
       }
     });
   });
+}
+
+/* ==========================================================================
+   9. Floating Navbar Smart Auto-Hide & Return on Scroll
+   ========================================================================== */
+function initFloatingNavScroll() {
+  const nav = document.getElementById('synex-nav');
+  const fsMenu = document.getElementById('synex-fs-menu');
+  if (!nav) return;
+
+  let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+  let ticking = false;
+  const threshold = 18; // Substantial scroll delta to prevent twitchy triggers
+
+  function onScroll() {
+    const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Do not hide when fullscreen menu overlay is open
+    if (fsMenu && fsMenu.classList.contains('is-open')) {
+      nav.classList.remove('nav-hidden');
+      lastScrollY = currentScrollY;
+      ticking = false;
+      return;
+    }
+
+    // Always keep visible within the upper hero zone
+    if (currentScrollY <= 80) {
+      nav.classList.remove('nav-hidden');
+    } else if (currentScrollY > lastScrollY + threshold) {
+      // Intentional scroll DOWN -> smoothly glide capsules up
+      nav.classList.add('nav-hidden');
+    } else if (currentScrollY < lastScrollY - threshold) {
+      // Intentional scroll UP (or pull down) -> smoothly return capsules
+      nav.classList.remove('nav-hidden');
+    }
+
+    lastScrollY = Math.max(0, currentScrollY);
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
 }

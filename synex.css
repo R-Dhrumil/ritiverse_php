@@ -98,6 +98,15 @@ body {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   pointer-events: none;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.35, 1), opacity 0.65s cubic-bezier(0.25, 1, 0.35, 1);
+  will-change: transform, opacity;
+}
+
+.synex-nav.nav-hidden {
+  transform: translateY(-135%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .synex-nav-left,
