@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMouseParallax();
   initEmailCapture();
   initSidebarNav();
+  initMotionWave();
 });
 
 /* ==========================================================================
@@ -168,9 +169,42 @@ function initMouseParallax() {
     targetY = y;
   });
 
-  function renderParallax() {
+  let scrollProgress = 0;
+  let targetScrollProgress = 0;
+  const entranceStartTime = performance.now() + 150;
+  const entranceDuration = 1200; // ms
+
+  function updateScrollProgress() {
+    const stageRect = stage.getBoundingClientRect();
+    const windowH = window.innerHeight;
+    const currentScrollY = window.scrollY || window.pageYOffset || 0;
+
+    // Progress based on viewport visibility and scroll distance
+    // 0 = top of page (smaller scale, lower), 1 = scrolled in view (full size)
+    const scrollTravel = Math.min(1, currentScrollY / 280);
+    const viewportFactor = Math.max(0, Math.min(1, (windowH - stageRect.top) / (windowH * 0.8)));
+    targetScrollProgress = Math.max(scrollTravel, viewportFactor);
+  }
+
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+  window.addEventListener('resize', updateScrollProgress, { passive: true });
+  updateScrollProgress();
+
+  function renderParallax(currentTime) {
     mouseX += (targetX - mouseX) * 0.05;
     mouseY += (targetY - mouseY) * 0.05;
+
+    // Smooth lerp on scroll progress
+    scrollProgress += (targetScrollProgress - scrollProgress) * 0.08;
+
+    // Initial load ease-in curve
+    const now = currentTime || performance.now();
+    const elapsed = Math.max(0, now - entranceStartTime);
+    const entranceFactor = Math.min(1, elapsed / entranceDuration);
+    const entranceEase = 1 - Math.pow(1 - entranceFactor, 3);
+
+    // Combined progress: takes both initial load and live user scroll
+    const activeProgress = Math.max(scrollProgress, entranceEase * 0.35);
 
     if (leftRock) {
       leftRock.style.transform = `translate3d(${mouseX * -16}px, ${mouseY * -8}px, 0)`;
@@ -182,9 +216,21 @@ function initMouseParallax() {
       pebbles.style.transform = `translateX(-50%) translate3d(${mouseX * 10}px, ${mouseY * 4}px, 0)`;
     }
     if (dashboard) {
-      const tiltX = mouseY * -3;
-      const tiltY = mouseX * 4;
-      dashboard.style.transform = `perspective(1200px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translate3d(${mouseX * 5}px, ${mouseY * 5}px, 0)`;
+      // Scale from 0.78 up to 1.0 (or 1.01) as user scrolls
+      const currentScale = 0.78 + activeProgress * 0.23;
+      // Move from 110px up to 0px
+      const currentY = (1 - activeProgress) * 110;
+      // Tilt from 12deg back down to 0deg
+      const currentRotateX = (1 - activeProgress) * 12;
+      const opacity = 0.65 + activeProgress * 0.35;
+
+      const tiltX = (mouseY * -3) * activeProgress + currentRotateX;
+      const tiltY = (mouseX * 4) * activeProgress;
+      const moveX = (mouseX * 5) * activeProgress;
+      const moveY = (mouseY * 5) * activeProgress + currentY;
+
+      dashboard.style.opacity = opacity;
+      dashboard.style.transform = `perspective(1200px) translate3d(${moveX}px, ${moveY}px, 0) scale(${currentScale.toFixed(4)}) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
     }
 
     requestAnimationFrame(renderParallax);
@@ -268,4 +314,170 @@ function initSidebarNav() {
       item.classList.add('active');
     });
   });
+}
+
+/* ==========================================================================
+   7. 3D Particle Silk-Dust Motion Wave (Hero Background)
+   ========================================================================== */
+function initMotionWave() {
+  const canvas = document.getElementById('synex-motion-canvas');
+  if (!canvas) return;
+
+  const heroSection = document.getElementById('synex-hero') || canvas.parentElement;
+  const ctx = canvas.getContext('2d');
+  let width = 0, height = 0, dpr = 1;
+  const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+  let time = 0;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = heroSection.clientWidth || window.innerWidth;
+    height = heroSection.clientHeight || window.innerHeight;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  window.addEventListener('mousemove', (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
+      mouse.targetX = ((e.clientX - rect.left) / width - 0.5) * 45;
+      mouse.targetY = ((e.clientY - rect.top) / height - 0.5) * 35;
+    }
+  });
+
+  // Generate Ribbon Particle Dust
+  const PARTICLE_COUNT = 9000;
+  const particles = new Float32Array(PARTICLE_COUNT * 6); // [u, v, jitterX, jitterY, jitterZ, size]
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    const idx = i * 6;
+    const u = Math.random(); // position along curve
+    const r1 = Math.random();
+    const sign = Math.random() > 0.5 ? 1 : -1;
+    const v = sign * Math.pow(r1, 1.35); // denser along central spine
+    const jx = (Math.random() - 0.5) * 24;
+    const jy = (Math.random() - 0.5) * 24;
+    const jz = (Math.random() - 0.5) * 40;
+    const size = 0.6 + Math.random() * 1.5;
+
+    particles[idx] = u;
+    particles[idx + 1] = v;
+    particles[idx + 2] = jx;
+    particles[idx + 3] = jy;
+    particles[idx + 4] = jz;
+    particles[idx + 5] = size;
+  }
+
+  // Ambient Floating Dust Particles
+  const STAR_COUNT = 220;
+  const stars = [];
+  for (let s = 0; s < STAR_COUNT; s++) {
+    stars.push({
+      x: Math.random(),
+      y: Math.random(),
+      baseAlpha: 0.15 + Math.random() * 0.55,
+      twinkleSpeed: 0.4 + Math.random() * 1.6,
+      twinkleOffset: Math.random() * Math.PI * 2,
+      radius: 0.6 + Math.random() * 1.2
+    });
+  }
+
+  function render() {
+    time += 0.0085;
+    mouse.x += (mouse.targetX - mouse.x) * 0.05;
+    mouse.y += (mouse.targetY - mouse.y) * 0.05;
+
+    ctx.save();
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, width, height);
+
+    // 1. Ambient Floating Stars
+    for (let s = 0; s < STAR_COUNT; s++) {
+      const st = stars[s];
+      const sx = st.x * width + mouse.x * 0.2;
+      const sy = st.y * height + mouse.y * 0.2;
+      const alpha = st.baseAlpha * (0.6 + 0.4 * Math.sin(time * st.twinkleSpeed + st.twinkleOffset));
+      ctx.fillStyle = `rgba(100, 116, 139, ${alpha.toFixed(3)})`;
+      ctx.beginPath();
+      ctx.arc(sx, sy, st.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // 2. Volumetric Core Radial Glow
+    const glowGrad = ctx.createRadialGradient(
+      width * 0.5 + mouse.x * 0.6, height * 0.42 + mouse.y * 0.6, width * 0.05,
+      width * 0.5 + mouse.x * 0.6, height * 0.45 + mouse.y * 0.6, width * 0.45
+    );
+    glowGrad.addColorStop(0, 'rgba(217, 93, 57, 0.05)');
+    glowGrad.addColorStop(0.4, 'rgba(15, 23, 42, 0.025)');
+    glowGrad.addColorStop(1, 'rgba(248, 249, 250, 0)');
+    ctx.fillStyle = glowGrad;
+    ctx.fillRect(0, 0, width, height);
+
+    // 3. Render 3D Silk-Dust Ribbon Particles
+    const fov = 750;
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      const idx = i * 6;
+      const u = particles[idx];
+      const v = particles[idx + 1];
+      const jx = particles[idx + 2];
+      const jy = particles[idx + 3];
+      const jz = particles[idx + 4];
+      const size = particles[idx + 5];
+
+      // Parametric 3D Infinity Wave Spine
+      const sx0 = (u - 0.5) * (width * 1.35) + width * 0.5;
+      const waveA = Math.sin(u * Math.PI * 1.75 - time * 0.55) * (height * 0.26);
+      const waveB = Math.cos(u * Math.PI * 0.9 + time * 0.35) * (height * 0.13);
+      const sy0 = height * (0.35 + 0.22 * Math.sin(u * Math.PI * 0.95)) + waveA + waveB;
+      const sz0 = Math.cos(u * Math.PI * 1.5 - time * 0.45) * 220;
+
+      // Ribbon Width & Dynamic 3D Twist
+      const ribbonWidth = (Math.sin(u * Math.PI) * 0.72 + 0.28) * (height * 0.56);
+      const twist = u * Math.PI * 1.85 + Math.sin(u * 2.8 + time * 0.5) * 0.75 - 0.3;
+      const nx = Math.cos(twist);
+      const ny = Math.sin(twist);
+      const nz = Math.sin(twist + 1.57);
+
+      // 3D Point along Ribbon
+      const px = sx0 + nx * (v * ribbonWidth) + jx;
+      const py = sy0 + ny * (v * ribbonWidth) + jy;
+      const pz = sz0 + nz * (v * ribbonWidth * 0.6) + jz;
+
+      // Perspective Projection
+      const scale = fov / (fov + pz);
+      const screenX = (px - width * 0.5) * scale + width * 0.5 + mouse.x * (scale * 0.9);
+      const screenY = (py - height * 0.5) * scale + height * 0.5 + mouse.y * (scale * 0.9);
+
+      // Alpha & Lighting
+      const absV = Math.abs(v);
+      const edgeFalloff = Math.max(0, 1 - Math.pow(absV, 1.8));
+      const crestLuminance = Math.exp(-Math.pow((v - 0.08) / 0.22, 2)) * 0.7;
+      const depthAlpha = Math.max(0.15, Math.min(1.0, (scale - 0.55) * 1.5));
+      const alpha = (edgeFalloff * 0.42 + crestLuminance) * depthAlpha;
+
+      if (alpha > 0.015) {
+        const r = Math.max(0.4, size * scale);
+        // Subtle dual-tone particles: silver with terracotta warmth on the crest
+        if (Math.abs(v - 0.08) < 0.12 && i % 4 === 0) {
+          ctx.fillStyle = `rgba(217, 93, 57, ${(alpha * 0.85).toFixed(3)})`;
+        } else {
+          ctx.fillStyle = `rgba(30, 41, 59, ${(alpha * 0.55).toFixed(3)})`;
+        }
+        ctx.beginPath();
+        ctx.arc(screenX, screenY, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    ctx.restore();
+    requestAnimationFrame(render);
+  }
+
+  requestAnimationFrame(render);
 }
