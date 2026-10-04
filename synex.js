@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNumberCounter();
   initChartInteractions();
   initCurrencyToggle();
+  initHeroScrollReveal();
   initMouseParallax();
   initEmailCapture();
   initSidebarNav();
@@ -144,99 +145,157 @@ function initCurrencyToggle() {
 }
 
 /* ==========================================================================
-   4. Smooth Mouse Parallax on Rocks & Dashboard
+   4. GSAP Scroll-Linked Scale Animation (Boom Reveal: Small to Full Screen)
    ========================================================================== */
-function initMouseParallax() {
-  const leftRock = document.getElementById('rock-left');
-  const rightRock = document.getElementById('rock-right');
-  const pebbles = document.getElementById('rock-pebbles');
-  const dashboard = document.getElementById('synex-dashboard');
-  const stage = document.getElementById('hero-stage');
+function initHeroScrollReveal() {
+  const heroSection = document.getElementById('synex-hero');
+  const scrollTarget = document.getElementById('dashboard-scroll-target');
+  const heroHeader = document.querySelector('.hero-header');
+  const scrollPrompt = document.getElementById('hero-scroll-prompt');
 
-  if (!stage) return;
+  if (!heroSection || !scrollTarget) return;
 
-  let mouseX = 0;
-  let mouseY = 0;
-  let targetX = 0;
-  let targetY = 0;
+  // Graceful fallback if GSAP or ScrollTrigger are not yet loaded (e.g. offline)
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    initFallbackScrollScale();
+    return;
+  }
 
-  window.addEventListener('mousemove', (e) => {
-    const { innerWidth, innerHeight } = window;
-    const x = (e.clientX / innerWidth - 0.5) * 2; // -1 to 1
-    const y = (e.clientY / innerHeight - 0.5) * 2; // -1 to 1
+  // Register GSAP ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
 
-    targetX = x;
-    targetY = y;
+  // Initial State: Card is positioned down at bottom (y: 350), scaled small (0.35), 0 opacity
+  gsap.set(scrollTarget, {
+    scale: 0.35,
+    y: 350,
+    autoAlpha: 0,
+    transformOrigin: "center bottom",
+    pointerEvents: "none"
   });
 
-  let scrollProgress = 0;
-  let targetScrollProgress = 0;
-  const entranceStartTime = performance.now() + 150;
-  const entranceDuration = 1200; // ms
-
-  function updateScrollProgress() {
-    const stageRect = stage.getBoundingClientRect();
-    const windowH = window.innerHeight;
-    const currentScrollY = window.scrollY || window.pageYOffset || 0;
-
-    // Progress based on viewport visibility and scroll distance
-    // 0 = top of page (smaller scale, lower), 1 = scrolled in view (full size)
-    const scrollTravel = Math.min(1, currentScrollY / 280);
-    const viewportFactor = Math.max(0, Math.min(1, (windowH - stageRect.top) / (windowH * 0.8)));
-    targetScrollProgress = Math.max(scrollTravel, viewportFactor);
+  if (heroHeader) {
+    gsap.set(heroHeader, {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      pointerEvents: "auto"
+    });
   }
 
-  window.addEventListener('scroll', updateScrollProgress, { passive: true });
-  window.addEventListener('resize', updateScrollProgress, { passive: true });
-  updateScrollProgress();
+  // Master Apple-Style Scroll-Linked Scale Timeline (Card ascends from bottom to full screen)
+  const heroTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: heroSection,
+      start: "top 68px",
+      end: "+=1300", // Pinned scroll track distance for dramatic reveal
+      pin: true,
+      scrub: 1.15, // Weighted physics scrub lag for buttery smooth motion
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        const prog = self.progress;
 
-  function renderParallax(currentTime) {
-    mouseX += (targetX - mouseX) * 0.05;
-    mouseY += (targetY - mouseY) * 0.05;
+        // Enable card interactivity once revealed into view
+        if (prog > 0.55) {
+          scrollTarget.style.pointerEvents = 'auto';
+        } else {
+          scrollTarget.style.pointerEvents = 'none';
+        }
 
-    // Smooth lerp on scroll progress
-    scrollProgress += (targetScrollProgress - scrollProgress) * 0.08;
-
-    // Initial load ease-in curve
-    const now = currentTime || performance.now();
-    const elapsed = Math.max(0, now - entranceStartTime);
-    const entranceFactor = Math.min(1, elapsed / entranceDuration);
-    const entranceEase = 1 - Math.pow(1 - entranceFactor, 3);
-
-    // Combined progress: takes both initial load and live user scroll
-    const activeProgress = Math.max(scrollProgress, entranceEase * 0.35);
-
-    if (leftRock) {
-      leftRock.style.transform = `translate3d(${mouseX * -16}px, ${mouseY * -8}px, 0)`;
+        // Radiant studio drop shadow expansion as card blooms to full screen
+        const blur = Math.round(25 + prog * 65);
+        const yOffset = Math.round(10 + prog * 35);
+        const glowOpacity = (prog * 0.24).toFixed(3);
+        scrollTarget.style.filter = `drop-shadow(0 ${yOffset}px ${blur}px rgba(0, 0, 0, 0.72)) drop-shadow(0 0 55px rgba(217, 93, 57, ${glowOpacity}))`;
+      }
     }
-    if (rightRock) {
-      rightRock.style.transform = `translate3d(${mouseX * 20}px, ${mouseY * -10}px, 0)`;
-    }
-    if (pebbles) {
-      pebbles.style.transform = `translateX(-50%) translate3d(${mouseX * 10}px, ${mouseY * 4}px, 0)`;
-    }
-    if (dashboard) {
-      // Scale from 0.78 up to 1.0 (or 1.01) as user scrolls
-      const currentScale = 0.78 + activeProgress * 0.23;
-      // Move from 110px up to 0px
-      const currentY = (1 - activeProgress) * 110;
-      // Tilt from 12deg back down to 0deg
-      const currentRotateX = (1 - activeProgress) * 12;
-      const opacity = 0.65 + activeProgress * 0.35;
+  });
 
-      const tiltX = (mouseY * -3) * activeProgress + currentRotateX;
-      const tiltY = (mouseX * 4) * activeProgress;
-      const moveX = (mouseX * 5) * activeProgress;
-      const moveY = (mouseY * 5) * activeProgress + currentY;
-
-      dashboard.style.opacity = opacity;
-      dashboard.style.transform = `perspective(1200px) translate3d(${moveX}px, ${moveY}px, 0) scale(${currentScale.toFixed(4)}) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
-    }
-
-    requestAnimationFrame(renderParallax);
+  // Step 1 (0 -> 0.35): Hero text dissolves & gently ascends out of view
+  if (heroHeader) {
+    heroTimeline.to(heroHeader, {
+      opacity: 0,
+      y: -60,
+      scale: 0.9,
+      pointerEvents: "none",
+      ease: "power2.inOut",
+      duration: 0.35
+    }, 0);
   }
 
-  requestAnimationFrame(renderParallax);
+  // Floating scroll prompt disappears early on scroll
+  if (scrollPrompt) {
+    heroTimeline.to(scrollPrompt, {
+      opacity: 0,
+      y: 12,
+      ease: "power1.out",
+      duration: 0.18
+    }, 0);
+  }
+
+  // Step 2 (0.12 -> 1.0): Card rises up from the bottom & scales to Full Screen (1.04)
+  heroTimeline.to(scrollTarget, {
+    autoAlpha: 1,
+    scale: 1.04,
+    y: 0, // Ascends from bottom (y: 350 -> 0) into optical center
+    ease: "power2.out",
+    duration: 0.88
+  }, 0.12);
+
+  window.addEventListener('load', () => {
+    ScrollTrigger.refresh();
+  });
+}
+
+/**
+ * Fallback scroll scaler if GSAP CDN is blocked or unavailable
+ */
+function initFallbackScrollScale() {
+  const scrollTarget = document.getElementById('dashboard-scroll-target');
+  const heroHeader = document.querySelector('.hero-header');
+  const scrollPrompt = document.getElementById('hero-scroll-prompt');
+  if (!scrollTarget) return;
+
+  function onScroll() {
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const progress = Math.min(1, Math.max(0, scrollY / 650));
+
+    if (progress < 0.08) {
+      // Completely hidden down at bottom at resting top of page
+      scrollTarget.style.opacity = '0';
+      scrollTarget.style.visibility = 'hidden';
+      scrollTarget.style.transform = 'translateY(350px) scale(0.35)';
+      scrollTarget.style.pointerEvents = 'none';
+    } else {
+      // Ascends up from bottom and scales from small to full size
+      const boom = (progress - 0.08) / 0.92;
+      const scale = 0.35 + boom * 0.69; // up to 1.04
+      const y = (1 - boom) * 350; // rises from 350 to 0
+      scrollTarget.style.opacity = Math.min(1, boom * 2.8).toFixed(3);
+      scrollTarget.style.visibility = 'visible';
+      scrollTarget.style.transform = `translateY(${y.toFixed(2)}px) scale(${scale.toFixed(4)})`;
+      scrollTarget.style.pointerEvents = boom > 0.6 ? 'auto' : 'none';
+    }
+
+    if (heroHeader) {
+      heroHeader.style.opacity = Math.max(0, 1 - progress * 2.5).toFixed(3);
+      heroHeader.style.transform = `translateY(${-progress * 50}px) scale(${(1 - progress * 0.1).toFixed(3)})`;
+      heroHeader.style.pointerEvents = progress > 0.3 ? 'none' : 'auto';
+    }
+    if (scrollPrompt) {
+      scrollPrompt.style.opacity = Math.max(0, 1 - progress * 4).toFixed(3);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+/* ==========================================================================
+   5. Clean Apple Hero Stage Alignment (No 3D Cursor Tilt)
+   ========================================================================== */
+function initMouseParallax() {
+  // 3D tilt removed per user request for clean, flat Apple-style aesthetic.
+  // Dynamic motion continues seamlessly in the 3D particle silk-dust background canvas.
 }
 
 /* ==========================================================================
