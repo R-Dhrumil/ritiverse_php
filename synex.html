@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RItiverse — Elite Website & Software Development</title>
+  <meta name="description" content="RItiverse designs, engineers, and scales high-performance web applications, bespoke enterprise software, and world-class digital platforms.">
+
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- RItiverse Design System Stylesheet -->
+  <link rel="stylesheet" href="synex.css">
+</head>
+<body>
+
+  <!-- Top Minimalist Off-Black Navigation Bar -->
+  <header class="synex-nav" id="synex-nav">
+    <div class="synex-nav-left">
+      <!-- RItiverse Brand Wordmark -->
+      <a href="#" class="synex-logo" aria-label="RItiverse Home">
+        RItiverse<span class="logo-accent-dot"></span>
+      </a>
+
+      <!-- Main Navigation Menu (Website & Software Company) -->
+      <nav aria-label="Main Navigation">
+        <ul class="synex-nav-links">
+          <li><a href="#services" class="synex-nav-link active">Services</a></li>
+          <li><a href="#work" class="synex-nav-link">Work</a></li>
+          <li><a href="#solutions" class="synex-nav-link">Solutions</a></li>
+          <li><a href="#stack" class="synex-nav-link">Tech Stack</a></li>
+          <li><a href="#process" class="synex-nav-link">Process</a></li>
+          <li><a href="#about" class="synex-nav-link">About</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Navigation Right Controls -->
+    <div class="synex-nav-right">
+      <!-- Client Portal Link -->
+      <a href="#client-portal" class="synex-nav-request">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:14px; height:14px;">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        Client Portal
+      </a>
+
+      <!-- Start A Project Calibrated Terracotta CTA Button -->
+      <a href="#contact" class="synex-launch-btn">
+        <span class="synex-launch-dot"></span>
+        Start a Project
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Hero Section -->
+  <main class="synex-hero" id="synex-hero">
+
+    <!-- Hero Header & Typography -->
+    <div class="hero-header">
+      <span class="hero-eyebrow">
+        <svg class="eyebrow-spark" viewBox="0 0 24 24">
+          <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+        </svg>
+        Bespoke Web & Software Engineering
+      </span>
+      <h1 class="hero-title">
+        <span>Engineering High-Impact</span>
+        <span class="title-accent">Websites & Bespoke Software</span>
+      </h1>
+      <p class="hero-description">
+        We design, build, and deploy high-performance web applications, bespoke enterprise systems, and digital flagships for ambitious companies worldwide.
+      </p>
+
+      <!-- Interactive Email Capture Capsule -->
+      <form class="hero-cta-form" id="hero-cta-form">
+        <input 
+          type="email" 
+          class="hero-cta-input" 
+          id="hero-email-input" 
+          placeholder="Enter work email for consultation..." 
+          required 
+          autocomplete="email"
+          aria-label="Work email"
+        >
+        <button type="submit" class="hero-cta-btn" id="hero-submit-btn">
+          Start a project
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <div class="cta-status-message" id="cta-status-message"></div>
+      </form>
+
+      <!-- Capabilities Micro Tags -->
+      <div class="hero-tech-tags">
+        <span class="tech-tag-item"><span class="tech-tag-dot"></span>Next.js & React 19</span>
+        <span class="tech-tag-item"><span class="tech-tag-dot"></span>Custom Cloud Systems</span>
+        <span class="tech-tag-item"><span class="tech-tag-dot"></span>AI Agent Integrations</span>
+        <span class="tech-tag-item"><span class="tech-tag-dot"></span>Interactive WebGL</span>
+        <span class="tech-tag-item"><span class="tech-tag-dot"></span>Sub-200ms Global TTFB</span>
+      </div>
+    </div>
+
+    <!-- Hero Stage Container (Console Anchor, No Rocks) -->
+    <div class="hero-stage-container" id="hero-stage">
+      
+      <!-- Centerpiece: RItiverse Production & Velocity Console -->
+      <div class="synex-dashboard-window" id="synex-dashboard">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="dash-sidebar">
+          <div>
+            <!-- Workspace Profile -->
+            <div class="sidebar-profile">
+              <div class="profile-avatar">R</div>
+              <div class="profile-info">
+                <span class="profile-name">RItiverse Studio</span>
+                <span class="profile-plan">
+                  <span class="profile-plan-dot"></span>
+                  Verified Partner
+                </span>
+              </div>
+            </div>
+
+            <!-- Engineering OS Navigation -->
+            <div class="sidebar-section">
+              <div class="sidebar-section-title">Engineering OS</div>
+              <ul class="sidebar-nav-list">
+                <li class="sidebar-nav-item active">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                    Deployment Pipeline
+                  </div>
+                </li>
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                      <line x1="8" y1="21" x2="16" y2="21"></line>
+                      <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                    Web Applications
+                  </div>
+                </li>
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    Custom Software & APIs
+                  </div>
+                </li>
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                    </svg>
+                    Cloud & Microservices
+                  </div>
+                </li>
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    Lighthouse Speed (100)
+                  </div>
+                </li>
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    Security & Audits
+                  </div>
+                  <span class="sidebar-badge">0 ISSUES</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Client Deliverables -->
+            <div class="sidebar-section">
+              <div class="sidebar-section-title">Client Deliverables</div>
+              <ul class="sidebar-nav-list">
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                    </svg>
+                    Client Staging Envs
+                  </div>
+                </li>
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    Live CI/CD Feeds
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sidebar Footer -->
+          <div class="sidebar-footer">
+            <a href="#docs" class="sidebar-footer-link">
+              <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+              Engineering Docs (v4.2)
+            </a>
+          </div>
+        </aside>
+
+        <!-- Main Dashboard View Area -->
+        <div class="dash-content">
+          
+          <!-- Top Bar with User & Range Filters -->
+          <div class="dash-top-bar">
+            <div class="dash-user-welcome">
+              <div class="dash-avatar-mini">RI</div>
+              <div class="dash-user-meta">
+                <h3>Production Engine</h3>
+                <p>Sprint 48 Track • Q4 Release Cycle</p>
+              </div>
+            </div>
+
+            <div class="dash-top-actions">
+              <!-- Sprint Status Pill -->
+              <button class="dash-pill-btn" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                100% On-Time Delivery
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:10px; height:10px;">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <!-- Currency Switcher -->
+              <div class="dash-currency-toggle">
+                <button class="currency-option active" data-curr="USD">USD ($)</button>
+                <button class="currency-option" data-curr="EUR">EUR (€)</button>
+                <button class="currency-option" data-curr="GBP">GBP (£)</button>
+              </div>
+
+              <!-- Quick Search Button -->
+              <button class="dash-pill-btn" type="button" title="Quick Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                ⌘K
+              </button>
+            </div>
+          </div>
+
+          <!-- Production Value Hero Metric -->
+          <div class="dash-metric-hero">
+            <div class="metric-hero-left">
+              <span class="metric-eyebrow">Client Platform Value Delivered</span>
+              <div class="metric-large-value">
+                <span class="currency-symbol" id="currency-symbol">$ </span>
+                <span class="amount-value" id="hero-amount-val">348,720.00</span>
+                <span class="metric-growth-badge" id="hero-growth-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                  </svg>
+                  +28.4% Ship Rate
+                </span>
+              </div>
+            </div>
+
+            <div class="metric-hero-right">
+              <div class="metric-ath-label">System Uptime (30d SLA)</div>
+              <div class="metric-ath-value">99.94% • Zero Drift</div>
+            </div>
+          </div>
+
+          <!-- 3 Submetrics Cards Row -->
+          <div class="dash-submetrics-row">
+            <div class="submetric-card">
+              <div class="submetric-header">
+                <span class="submetric-title">Automated Builds</span>
+                <span class="submetric-tag">100% Pass</span>
+              </div>
+              <div class="submetric-amount">1,248 Builds</div>
+            </div>
+
+            <div class="submetric-card">
+              <div class="submetric-header">
+                <span class="submetric-title">Global TTFB Speed</span>
+                <span class="submetric-tag">-64% Latency</span>
+              </div>
+              <div class="submetric-amount">0.19s Sub-second</div>
+            </div>
+
+            <div class="submetric-card">
+              <div class="submetric-header">
+                <span class="submetric-title">Client ROI Multiple</span>
+                <span class="submetric-tag">Audited</span>
+              </div>
+              <div class="submetric-amount">+3.2x Uplift</div>
+            </div>
+          </div>
+
+          <!-- Interactive Chart Area -->
+          <div class="dash-chart-section">
+            <div class="chart-header">
+              <div class="chart-title-group">
+                <span class="chart-title">Ship Velocity & Deployment Volume</span>
+                <span class="chart-benchmark">
+                  <span class="benchmark-line-sample"></span>
+                  High SLA Target
+                </span>
+              </div>
+              <span class="chart-benchmark">Live Cluster Feed</span>
+            </div>
+
+            <div class="chart-body-wrapper">
+              <!-- Background Horizontal Gridlines -->
+              <div class="chart-guidelines">
+                <div class="guideline"></div>
+                <div class="guideline"></div>
+                <div class="guideline"></div>
+              </div>
+
+              <!-- Interactive Bars for 12 Months -->
+              <div class="chart-bars-container">
+                <div class="chart-bar-col" data-month="jan">
+                  <div class="chart-tooltip">$182,400</div>
+                  <div class="bar-fill" style="height: 48%;"></div>
+                  <span class="bar-month-label">Jan</span>
+                </div>
+                <div class="chart-bar-col" data-month="feb">
+                  <div class="chart-tooltip">$204,120</div>
+                  <div class="bar-fill" style="height: 54%;"></div>
+                  <span class="bar-month-label">Feb</span>
+                </div>
+                <div class="chart-bar-col" data-month="mar">
+                  <div class="chart-tooltip">$219,800</div>
+                  <div class="bar-fill" style="height: 58%;"></div>
+                  <span class="bar-month-label">Mar</span>
+                </div>
+                <div class="chart-bar-col" data-month="apr">
+                  <div class="chart-tooltip">$235,100</div>
+                  <div class="bar-fill" style="height: 62%;"></div>
+                  <span class="bar-month-label">Apr</span>
+                </div>
+                <div class="chart-bar-col" data-month="may">
+                  <div class="chart-tooltip">$248,900</div>
+                  <div class="bar-fill" style="height: 66%;"></div>
+                  <span class="bar-month-label">May</span>
+                </div>
+                <div class="chart-bar-col" data-month="jun">
+                  <div class="chart-tooltip">$271,400</div>
+                  <div class="bar-fill" style="height: 72%;"></div>
+                  <span class="bar-month-label">Jun</span>
+                </div>
+                <div class="chart-bar-col" data-month="jul">
+                  <div class="chart-tooltip">$289,650</div>
+                  <div class="bar-fill" style="height: 76%;"></div>
+                  <span class="bar-month-label">Jul</span>
+                </div>
+                <div class="chart-bar-col" data-month="aug">
+                  <div class="chart-tooltip">$301,200</div>
+                  <div class="bar-fill" style="height: 80%;"></div>
+                  <span class="bar-month-label">Aug</span>
+                </div>
+                <div class="chart-bar-col" data-month="sep">
+                  <div class="chart-tooltip">$318,450</div>
+                  <div class="bar-fill" style="height: 84%;"></div>
+                  <span class="bar-month-label">Sep</span>
+                </div>
+                <div class="chart-bar-col" data-month="oct">
+                  <div class="chart-tooltip">$332,100</div>
+                  <div class="bar-fill" style="height: 88%;"></div>
+                  <span class="bar-month-label">Oct</span>
+                </div>
+                <div class="chart-bar-col highlighted" data-month="nov">
+                  <div class="chart-tooltip">$348,720</div>
+                  <div class="bar-fill" style="height: 94%;"></div>
+                  <span class="bar-month-label">Nov</span>
+                </div>
+                <div class="chart-bar-col" data-month="dec">
+                  <div class="chart-tooltip">$365,400</div>
+                  <div class="bar-fill" style="height: 98%;"></div>
+                  <span class="bar-month-label">Dec</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stack Breakdown Bottom Row -->
+            <div class="dash-allocations-row">
+              <div class="allocation-item">
+                <span class="alloc-dot" style="background-color: var(--accent-terracotta);"></span>
+                <span class="alloc-label">Web Applications:</span>
+                <span class="alloc-pct">42%</span>
+              </div>
+              <div class="allocation-item">
+                <span class="alloc-dot" style="background-color: #38BDF8;"></span>
+                <span class="alloc-label">Custom Software:</span>
+                <span class="alloc-pct">31%</span>
+              </div>
+              <div class="allocation-item">
+                <span class="alloc-dot" style="background-color: #818CF8;"></span>
+                <span class="alloc-label">Cloud Systems:</span>
+                <span class="alloc-pct">18%</span>
+              </div>
+              <div class="allocation-item">
+                <span class="alloc-dot" style="background-color: #34D399;"></span>
+                <span class="alloc-label">AI Automation:</span>
+                <span class="alloc-pct">9%</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Interactive JavaScript Logic -->
+  <script src="synex.js"></script>
+</body>
+</html>
