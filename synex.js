@@ -4,6 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initFullscreenNav();
   initNumberCounter();
   initChartInteractions();
   initCurrencyToggle();
@@ -186,7 +187,7 @@ function initHeroScrollReveal() {
   const heroTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: heroSection,
-      start: "top 68px",
+      start: "top top",
       end: "+=1300", // Pinned scroll track distance for dramatic reveal
       pin: true,
       scrub: 1.15, // Weighted physics scrub lag for buttery smooth motion
@@ -539,4 +540,153 @@ function initMotionWave() {
   }
 
   requestAnimationFrame(render);
+}
+
+/* ==========================================================================
+   8. Fullscreen Architectural Navigation Overlay (GSAP Animations)
+   ========================================================================== */
+function initFullscreenNav() {
+  const trigger = document.getElementById('synex-menu-trigger');
+  const closeBtn = document.getElementById('fs-close-btn');
+  const fsMenu = document.getElementById('synex-fs-menu');
+
+  if (!trigger || !fsMenu) return;
+
+  const navItems = fsMenu.querySelectorAll('.fs-nav-item');
+  const featuredCol = fsMenu.querySelector('.fs-featured-col');
+  const menuFooter = fsMenu.querySelector('.fs-menu-footer');
+  const gridCrosses = fsMenu.querySelectorAll('.fs-grid-cross');
+  const navLinks = fsMenu.querySelectorAll('.fs-nav-link');
+
+  let isOpen = false;
+
+  function openMenu() {
+    if (isOpen) return;
+    isOpen = true;
+
+    trigger.setAttribute('aria-expanded', 'true');
+    fsMenu.setAttribute('aria-hidden', 'false');
+    fsMenu.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+
+    // GSAP Staggered Reveal Animation
+    if (typeof gsap !== 'undefined') {
+      gsap.killTweensOf([fsMenu, navItems, featuredCol, menuFooter, gridCrosses]);
+
+      // Set initial states
+      gsap.set(fsMenu, { opacity: 0 });
+      gsap.set(navItems, { opacity: 0, y: 35 });
+      if (featuredCol) gsap.set(featuredCol, { opacity: 0, y: 30, scale: 0.96 });
+      if (menuFooter) gsap.set(menuFooter, { opacity: 0, y: 20 });
+      if (gridCrosses.length) gsap.set(gridCrosses, { opacity: 0, scale: 0.6 });
+
+      const tl = gsap.timeline();
+
+      tl.to(fsMenu, {
+        opacity: 1,
+        duration: 0.35,
+        ease: 'power2.out'
+      })
+      .to(gridCrosses, {
+        opacity: 1,
+        scale: 1,
+        stagger: 0.05,
+        duration: 0.4,
+        ease: 'back.out(1.5)'
+      }, '-=0.2')
+      .to(navItems, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.06,
+        duration: 0.5,
+        ease: 'power3.out'
+      }, '-=0.3')
+      .to(featuredCol, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.55,
+        ease: 'power3.out'
+      }, '-=0.45')
+      .to(menuFooter, {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+        ease: 'power2.out'
+      }, '-=0.35');
+    }
+  }
+
+  function closeMenu() {
+    if (!isOpen) return;
+    isOpen = false;
+
+    trigger.setAttribute('aria-expanded', 'false');
+    fsMenu.setAttribute('aria-hidden', 'true');
+
+    if (typeof gsap !== 'undefined') {
+      gsap.killTweensOf([fsMenu, navItems, featuredCol, menuFooter]);
+
+      const tl = gsap.timeline({
+        onComplete: () => {
+          fsMenu.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+      });
+
+      tl.to([navItems, featuredCol, menuFooter], {
+        opacity: 0,
+        y: -15,
+        stagger: 0.02,
+        duration: 0.2,
+        ease: 'power2.in'
+      })
+      .to(fsMenu, {
+        opacity: 0,
+        duration: 0.25,
+        ease: 'power2.in'
+      }, '-=0.1');
+    } else {
+      fsMenu.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Event Listeners
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openMenu();
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMenu();
+    });
+  }
+
+  // Keyboard accessibility: Escape key closes menu
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) {
+      closeMenu();
+    }
+  });
+
+  // Smooth scroll and close menu on clicking any navigation anchor
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        closeMenu();
+
+        const targetEl = document.querySelector(href);
+        if (targetEl) {
+          setTimeout(() => {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 250);
+        }
+      }
+    });
+  });
 }

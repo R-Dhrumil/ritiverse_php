@@ -16,45 +16,165 @@
 </head>
 <body>
 
-  <!-- Top Minimalist Off-Black Navigation Bar -->
+  <!-- Top Floating Minimalist Navigation (Closed State) -->
   <header class="synex-nav" id="synex-nav">
     <div class="synex-nav-left">
-      <!-- RItiverse Brand Wordmark -->
-      <a href="#" class="synex-logo" aria-label="RItiverse Home">
-        RItiverse<span class="logo-accent-dot"></span>
+      <!-- Modern & Minimal Floating Brand Wordmark with Logo -->
+      <a href="#" class="synex-brand" aria-label="RItiverse Home">
+        <img src="assets/logo.png" alt="RItiverse Logo" class="synex-brand-logo" />
+        <span class="synex-brand-name">RItiverse<span class="logo-accent-dot"></span></span>
       </a>
-
-      <!-- Main Navigation Menu (Website & Software Company) -->
-      <nav aria-label="Main Navigation">
-        <ul class="synex-nav-links">
-          <li><a href="#services" class="synex-nav-link active">Services</a></li>
-          <li><a href="#work" class="synex-nav-link">Work</a></li>
-          <li><a href="#solutions" class="synex-nav-link">Solutions</a></li>
-          <li><a href="#stack" class="synex-nav-link">Tech Stack</a></li>
-          <li><a href="#process" class="synex-nav-link">Process</a></li>
-          <li><a href="#about" class="synex-nav-link">About</a></li>
-        </ul>
-      </nav>
     </div>
 
-    <!-- Navigation Right Controls -->
+    <!-- Navigation Right Controls: 3-Line Animated Hamburger Trigger -->
     <div class="synex-nav-right">
-      <!-- Client Portal Link -->
-      <a href="#client-portal" class="synex-nav-request">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:14px; height:14px;">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-        </svg>
-        Client Portal
-      </a>
-
-      <!-- Start A Project Calibrated Terracotta CTA Button -->
-      <a href="#contact" class="synex-launch-btn">
-        <span class="synex-launch-dot"></span>
-        Start a Project
-      </a>
+      <button class="synex-menu-trigger" id="synex-menu-trigger" aria-label="Open Fullscreen Navigation" aria-expanded="false" aria-controls="synex-fs-menu">
+        <div class="hamburger-box">
+          <span class="hamburger-line line-1"></span>
+          <span class="hamburger-line line-2"><span class="hamburger-dot"></span></span>
+          <span class="hamburger-line line-3"></span>
+        </div>
+      </button>
     </div>
   </header>
+
+  <!-- Fullscreen Architectural Navigation Overlay (Open State) -->
+  <div class="synex-fs-menu" id="synex-fs-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+    <!-- Architectural Framer-Style Grid Background -->
+    <div class="fs-grid-overlay" aria-hidden="true">
+      <div class="fs-grid-col"></div>
+      <div class="fs-grid-col"></div>
+      <div class="fs-grid-col"></div>
+      <div class="fs-grid-col"></div>
+      <div class="fs-grid-cross cross-1">+</div>
+      <div class="fs-grid-cross cross-2">+</div>
+      <div class="fs-grid-cross cross-3">+</div>
+      <div class="fs-grid-cross cross-4">+</div>
+      <div class="fs-ambient-glow" aria-hidden="true"></div>
+    </div>
+
+    <!-- Fullscreen Menu Top Navigation Bar -->
+    <div class="fs-menu-header">
+      <a href="#" class="synex-brand fs-brand" aria-label="RItiverse Home">
+        <img src="assets/logo.png" alt="RItiverse Logo" class="synex-brand-logo" />
+        <span class="synex-brand-name">RItiverse<span class="logo-accent-dot"></span></span>
+      </a>
+      <button class="fs-close-btn" id="fs-close-btn" aria-label="Close Navigation Menu">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Fullscreen Menu Content Grid -->
+    <div class="fs-menu-container">
+      <div class="fs-menu-columns">
+
+        <!-- Column 1: Featured Work Card (Left Side) -->
+        <div class="fs-featured-col">
+          <div class="fs-featured-eyebrow">
+            <svg class="fs-spark" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+            </svg>
+            Featured Work
+          </div>
+
+          <a href="#services" class="fs-featured-card">
+            <div class="fs-featured-img-wrap">
+              <img src="assets/featured-work.jpg" alt="Featured Platform Launch - Nexus AI" class="fs-featured-img" />
+              <span class="fs-featured-tag">Flagship 2026</span>
+            </div>
+            <div class="fs-featured-details">
+              <h3 class="fs-featured-title">Nexus AI — Enterprise Platform Launch</h3>
+              <p class="fs-featured-desc">Autonomous enterprise intelligence, sub-200ms latency, and high-velocity workflows.</p>
+              <div class="fs-featured-clients">
+                <span class="fs-client-pill">NEXT.JS 15</span>
+                <span class="fs-client-pill">THREE.JS</span>
+                <span class="fs-client-pill">ENTERPRISE CLOUD</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Columns 2 & 3: Main Navigation Links + Meta Footer (Right Side) -->
+        <div class="fs-nav-main-col">
+          <div class="fs-nav-links-grid">
+            <!-- Navigation Column 1 -->
+            <div class="fs-links-group">
+              <ul class="fs-nav-list">
+                <li class="fs-nav-item">
+                  <a href="#synex-hero" class="fs-nav-link">
+                    <span class="nav-text">Home</span>
+                    <span class="nav-arrow">↗</span>
+                  </a>
+                </li>
+                <li class="fs-nav-item">
+                  <a href="#services" class="fs-nav-link">
+                    <span class="nav-text">Services</span>
+                    <span class="nav-arrow">↗</span>
+                  </a>
+                </li>
+                <li class="fs-nav-item">
+                  <a href="#contact" class="fs-nav-link">
+                    <span class="nav-text">Contact</span>
+                    <span class="nav-arrow">↗</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Navigation Column 2 -->
+            <div class="fs-links-group">
+              <ul class="fs-nav-list">
+                <li class="fs-nav-item">
+                  <a href="#services" class="fs-nav-link">
+                    <span class="nav-text">About</span>
+                    <span class="nav-arrow">↗</span>
+                  </a>
+                </li>
+                <li class="fs-nav-item">
+                  <a href="#dashboard-scroll-target" class="fs-nav-link">
+                    <span class="nav-text">Projects</span>
+                    <span class="nav-arrow">↗</span>
+                  </a>
+                </li>
+                <li class="fs-nav-item">
+                  <a href="#contact" class="fs-nav-link">
+                    <span class="nav-text">Pricing</span>
+                    <span class="nav-arrow">↗</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Menu Footer: Social Follow & Direct Contact Info -->
+          <div class="fs-menu-footer">
+            <div class="fs-meta-block">
+              <span class="fs-meta-label">FOLLOW</span>
+              <div class="fs-social-links">
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="fs-social-link">LinkedIn</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener" class="fs-social-link">X (Twitter)</a>
+                <a href="https://github.com" target="_blank" rel="noopener" class="fs-social-link">GitHub</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="fs-social-link">Instagram</a>
+              </div>
+            </div>
+
+            <div class="fs-meta-block">
+              <span class="fs-meta-label">CONTACT</span>
+              <div class="fs-contact-info">
+                <a href="mailto:contact@ritiverse.com" class="fs-contact-email">contact@ritiverse.com</a>
+                <span class="fs-contact-address">17 Kingsway Avenue, London, UK</span>
+                <span class="fs-contact-phone">+44 20 8654 3927</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- Main Hero Section -->
   <main class="synex-hero" id="synex-hero">
