@@ -163,11 +163,11 @@
     <div class="hero-header">
       <h1 class="hero-title">
         <span class="hero-title-main">You Own It.</span>
-        <span class="hero-rotator-wrapper" aria-label="You Control It.">
+        <span class="hero-rotator-wrapper" aria-label="Zero Lock-In.">
           <span class="hero-rotator" id="hero-rotator">
-            <span class="rotator-item is-active">You Control It.</span>
+            <span class="rotator-item is-active">Zero Lock-In.</span>
+            <span class="rotator-item">You Control It.</span>
             <span class="rotator-item">You Scale It.</span>
-            <span class="rotator-item">Zero Lock-In.</span>
             <span class="rotator-item">100% Freedom.</span>
           </span>
         </span>
@@ -536,102 +536,201 @@
   </main>
 
   <!-- ==========================================================================
-       SECTION 2: CORE ENGINEERING SERVICES (Next-Gen Agency Flagship)
+       SECTION 2: CAPABILITIES SHOWCASE (Interactive Expanding Accordion)
        ========================================================================== -->
-  <section class="synex-services-section" id="services">
-    <div class="services-container">
+  <section class="synex-showcase-section" id="services">
+    <div class="showcase-container">
 
-      <div class="section-badge-header">
-        <span class="section-eyebrow">
-          <span class="section-eyebrow-dot"></span>
-          Engineering Capabilities
-        </span>
-        <h2 class="section-title">Architecting Next-Generation Digital Flagships</h2>
-        <p class="section-subtitle">
-          We combine cutting-edge front-end aesthetics with battle-tested cloud architectures to build software that
-          scales effortlessly.
-        </p>
+      <div class="showcase-main-grid">
+
+        <!-- Left Column: Bold Typography & Action Box (Matching Image 1) -->
+        <div class="showcase-left-col">
+          <div class="showcase-badge">
+            <span class="showcase-badge-dot"></span>
+            ENGINEERING CAPABILITIES
+          </div>
+
+          <h2 class="showcase-title">
+            <span class="title-word">Architecting</span>
+            <span class="title-word">Next-Generation</span>
+            <span class="title-word">Digital Flagships</span>
+          </h2>
+
+          <p class="showcase-subtitle">
+            We combine cutting-edge frontend aesthetics with fault-tolerant backend and cloud infrastructure, building software that scales engineering.
+          </p>
+
+          <!-- Interactive Search / Vision Input Capsule (Matching Image 1) -->
+          <form class="showcase-search-box" id="showcase-search-form">
+            <input type="text" class="showcase-search-input" id="showcase-query-input"
+              placeholder="Architect your product..." required aria-label="Project requirement">
+            <button type="submit" class="showcase-search-btn" aria-label="Start consultation">
+              <span>Start</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </button>
+          </form>
+          <div class="showcase-search-feedback" id="showcase-feedback"></div>
+        </div>
+
+        <!-- Right Column: Interactive Expanding Accordion Card Deck (Matching Image 1) -->
+        <!-- Right Column: Interactive Expanding Accordion Card Deck (All 4 Capabilities from Image 2) -->
+        <div class="showcase-right-col">
+          <div class="showcase-accordion-deck" id="capabilities-accordion">
+
+            <!-- Card 1: Bespoke Web Applications (Default Active) -->
+            <div class="accordion-card is-active" data-index="0" tabindex="0" role="button" aria-expanded="true" aria-label="Bespoke Web Applications">
+              <div class="card-media-wrap">
+                <img src="assets/card_web_apps.jpg" alt="Bespoke Web Applications" class="card-media-img" />
+                <div class="card-gradient-overlay"></div>
+              </div>
+
+              <!-- Collapsed Vertical Title Strip -->
+              <div class="card-collapsed-strip" aria-hidden="true">
+                <span class="strip-text">Bespoke Web Apps</span>
+              </div>
+
+              <!-- Expanded Card Bottom Overlay Content -->
+              <div class="card-expanded-footer">
+                <div class="footer-meta-top">
+                  <div class="footer-title-wrap">
+                    <span class="footer-chip">FRONTEND &amp; UI</span>
+                    <h3 class="footer-heading">Bespoke Web Applications</h3>
+                  </div>
+                  <div class="footer-stat-pill">
+                    <span class="stat-big">100/100</span>
+                    <span class="stat-unit">LIGHTHOUSE</span>
+                  </div>
+                </div>
+                <p class="footer-summary">
+                  Ultra-responsive, accessible, and cinematic web experiences built with React 19, Next.js, and bespoke design systems.
+                </p>
+                <ul class="footer-points-list">
+                  <li><span class="point-bullet"></span>Sub-200ms TTFB worldwide</li>
+                  <li><span class="point-bullet"></span>Lighthouse 100/100 performance score</li>
+                  <li><span class="point-bullet"></span>Rich WebGL &amp; GSAP micro-interactions</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 2: Custom Software & APIs -->
+            <div class="accordion-card" data-index="1" tabindex="0" role="button" aria-expanded="false" aria-label="Custom Software and APIs">
+              <div class="card-media-wrap">
+                <img src="assets/card_software_apis.jpg" alt="Custom Software & APIs" class="card-media-img" />
+                <div class="card-gradient-overlay"></div>
+              </div>
+
+              <!-- Collapsed Vertical Title Strip -->
+              <div class="card-collapsed-strip" aria-hidden="true">
+                <span class="strip-text">Software &amp; APIs</span>
+              </div>
+
+              <!-- Expanded Card Bottom Overlay Content -->
+              <div class="card-expanded-footer">
+                <div class="footer-meta-top">
+                  <div class="footer-title-wrap">
+                    <span class="footer-chip">DISTRIBUTED SYSTEMS</span>
+                    <h3 class="footer-heading">Custom Software &amp; APIs</h3>
+                  </div>
+                  <div class="footer-stat-pill">
+                    <span class="stat-big">&lt;200ms</span>
+                    <span class="stat-unit">GLOBAL TTFB</span>
+                  </div>
+                </div>
+                <p class="footer-summary">
+                  Tailored enterprise software, mission-critical SaaS platforms, and distributed APIs designed for high throughput and uptime.
+                </p>
+                <ul class="footer-points-list">
+                  <li><span class="point-bullet"></span>Event-driven microservices architecture</li>
+                  <li><span class="point-bullet"></span>Resilient GraphQL &amp; REST gateways</li>
+                  <li><span class="point-bullet"></span>Real-time WebSockets &amp; telemetry</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 3: Cloud Systems & DevOps -->
+            <div class="accordion-card" data-index="2" tabindex="0" role="button" aria-expanded="false" aria-label="Cloud Systems and DevOps">
+              <div class="card-media-wrap">
+                <img src="assets/card_cloud_devops.jpg" alt="Cloud Systems & DevOps" class="card-media-img" />
+                <div class="card-gradient-overlay"></div>
+              </div>
+
+              <!-- Collapsed Vertical Title Strip -->
+              <div class="card-collapsed-strip" aria-hidden="true">
+                <span class="strip-text">Cloud &amp; DevOps</span>
+              </div>
+
+              <!-- Expanded Card Bottom Overlay Content -->
+              <div class="card-expanded-footer">
+                <div class="footer-meta-top">
+                  <div class="footer-title-wrap">
+                    <span class="footer-chip">INFRASTRUCTURE</span>
+                    <h3 class="footer-heading">Cloud Systems &amp; DevOps</h3>
+                  </div>
+                  <div class="footer-stat-pill">
+                    <span class="stat-big">99.99%</span>
+                    <span class="stat-unit">UPTIME SLA</span>
+                  </div>
+                </div>
+                <p class="footer-summary">
+                  Autonomous multi-cloud deployments, automated testing suites, and container orchestration with zero-downtime rollouts.
+                </p>
+                <ul class="footer-points-list">
+                  <li><span class="point-bullet"></span>Kubernetes &amp; Terraform automation</li>
+                  <li><span class="point-bullet"></span>Multi-region AWS &amp; GCP clusters</li>
+                  <li><span class="point-bullet"></span>99.99% infrastructure uptime SLA</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 4: AI Agent Integration -->
+            <div class="accordion-card" data-index="3" tabindex="0" role="button" aria-expanded="false" aria-label="AI Agent Integration">
+              <div class="card-media-wrap">
+                <img src="assets/card_ai_agents.jpg" alt="AI Agent Integration" class="card-media-img" />
+                <div class="card-gradient-overlay"></div>
+              </div>
+
+              <!-- Collapsed Vertical Title Strip -->
+              <div class="card-collapsed-strip" aria-hidden="true">
+                <span class="strip-text">AI Agent Integration</span>
+              </div>
+
+              <!-- Expanded Card Bottom Overlay Content -->
+              <div class="card-expanded-footer">
+                <div class="footer-meta-top">
+                  <div class="footer-title-wrap">
+                    <span class="footer-chip">INTELLIGENCE</span>
+                    <h3 class="footer-heading">AI Agent Integration</h3>
+                  </div>
+                  <div class="footer-stat-pill">
+                    <span class="stat-big">10x ROI</span>
+                    <span class="stat-unit">REASONING</span>
+                  </div>
+                </div>
+                <p class="footer-summary">
+                  Intelligent workflow automation, fine-tuned domain LLM agents, and semantic search integration engineered for real business ROI.
+                </p>
+                <ul class="footer-points-list">
+                  <li><span class="point-bullet"></span>Retrieval-Augmented Generation (RAG)</li>
+                  <li><span class="point-bullet"></span>Autonomous task reasoning agents</li>
+                  <li><span class="point-bullet"></span>Private LLM fine-tuning &amp; embeddings</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
-      <div class="services-grid">
-        <!-- Service Card 1 -->
-        <div class="service-card">
-          <div class="service-icon-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-              <polyline points="2 17 12 22 22 17"></polyline>
-              <polyline points="2 12 12 17 22 12"></polyline>
-            </svg>
-          </div>
-          <h3 class="service-name">Bespoke Web Applications</h3>
-          <p class="service-desc">
-            Ultra-responsive, accessible, and cinematic web experiences built with React 19, Next.js, and bespoke design
-            systems.
-          </p>
-          <ul class="service-highlights">
-            <li>Sub-200ms TTFB worldwide</li>
-            <li>Lighthouse 100/100 performance score</li>
-            <li>Rich WebGL & GSAP micro-interactions</li>
-          </ul>
-        </div>
-
-        <!-- Service Card 2 -->
-        <div class="service-card">
-          <div class="service-icon-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
-          </div>
-          <h3 class="service-name">Custom Software & APIs</h3>
-          <p class="service-desc">
-            Tailored enterprise software, mission-critical SaaS platforms, and distributed APIs designed for high
-            throughput and uptime.
-          </p>
-          <ul class="service-highlights">
-            <li>Event-driven microservices architecture</li>
-            <li>Resilient GraphQL & REST gateways</li>
-            <li>Real-time WebSockets & telemetry</li>
-          </ul>
-        </div>
-
-        <!-- Service Card 3 -->
-        <div class="service-card">
-          <div class="service-icon-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-            </svg>
-          </div>
-          <h3 class="service-name">Cloud Systems & DevOps</h3>
-          <p class="service-desc">
-            Autonomous multi-cloud deployments, automated testing suites, and container orchestration with zero-downtime
-            rollouts.
-          </p>
-          <ul class="service-highlights">
-            <li>Kubernetes & Terraform orchestration</li>
-            <li>Automated CI/CD pipelines with GitHub Actions</li>
-            <li>Enterprise-grade SOC2 security compliance</li>
-          </ul>
-        </div>
-
-        <!-- Service Card 4 -->
-        <div class="service-card">
-          <div class="service-icon-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-            </svg>
-          </div>
-          <h3 class="service-name">AI Agent Integration</h3>
-          <p class="service-desc">
-            Intelligent workflow automation, fine-tuned domain LLM agents, and semantic search integration engineered
-            for real business ROI.
-          </p>
-          <ul class="service-highlights">
-            <li>Retrieval-Augmented Generation (RAG)</li>
-            <li>Autonomous background reasoning pipelines</li>
-            <li>Human-in-the-loop audit dashboards</li>
-          </ul>
-        </div>
+      <!-- Bottom Headline Ticker (Matching Image 1) -->
+      <div class="showcase-bottom-banner">
+        <p class="bottom-banner-text">
+          Boundless engineering capabilities. <span>100% client source code ownership</span> delivered on Day 1.
+        </p>
       </div>
 
     </div>

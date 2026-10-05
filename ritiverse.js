@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initSidebarNav();
   initHeroRotator();
   initMotionWave();
+  initCapabilitiesAccordion();
+  initShowcaseSearch();
+  initHeadingTypewriter();
 });
 
 /* ==========================================================================
@@ -181,6 +184,7 @@ function initHeroScrollReveal() {
       opacity: 1,
       scale: 1,
       y: 0,
+      visibility: "visible",
       pointerEvents: "auto"
     });
   }
@@ -208,14 +212,20 @@ function initHeroScrollReveal() {
         // Studio drop shadow expansion as card blooms to full screen (clean natural shadow, no neon glow)
         const blur = Math.round(20 + prog * 45);
         const yOffset = Math.round(8 + prog * 24);
-        scrollTarget.style.filter = `drop-shadow(0 ${yOffset}px ${blur}px rgba(0, 0, 0, 0.32))`;
+        scrollTarget.style.filter = `drop-shadow(0 ${yOffset}px ${blur}px rgba(0, 140, 216, 0.18))`;
       }
     }
   });
 
   // Step 1 (0 -> 0.35): Hero text dissolves & gently ascends out of view
   if (heroHeader) {
-    heroTimeline.to(heroHeader, {
+    heroTimeline.fromTo(heroHeader, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      visibility: "visible",
+      pointerEvents: "auto"
+    }, {
       opacity: 0,
       y: -60,
       scale: 0.9,
@@ -767,4 +777,255 @@ function initHeroRotator() {
     currentIndex = nextIndex;
   }, intervalTime);
 }
+
+/* ==========================================================================
+   11. Interactive Capabilities Expanding Accordion Card Deck (Framer-Motion Style)
+   ========================================================================== */
+function initCapabilitiesAccordion() {
+  const container = document.getElementById('capabilities-accordion');
+  if (!container) return;
+
+  const cards = Array.from(container.querySelectorAll('.accordion-card'));
+  if (!cards.length) return;
+
+  function setActiveCard(targetCard) {
+    cards.forEach(card => {
+      const isActive = card === targetCard;
+      card.classList.toggle('is-active', isActive);
+      card.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+    });
+  }
+
+  cards.forEach((card, index) => {
+    // Hover interaction (smooth desktop spring expansion)
+    card.addEventListener('mouseenter', () => {
+      setActiveCard(card);
+    });
+
+    // Click / Touch interaction
+    card.addEventListener('click', () => {
+      setActiveCard(card);
+    });
+
+    // Keyboard navigation
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setActiveCard(card);
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        const nextIndex = (index + 1) % cards.length;
+        cards[nextIndex].focus();
+        setActiveCard(cards[nextIndex]);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prevIndex = (index - 1 + cards.length) % cards.length;
+        cards[prevIndex].focus();
+        setActiveCard(cards[prevIndex]);
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   12. Showcase Vision / Requirement Search Form Interaction
+   ========================================================================== */
+function initShowcaseSearch() {
+  const form = document.getElementById('showcase-search-form');
+  const input = document.getElementById('showcase-query-input');
+  const feedback = document.getElementById('showcase-feedback');
+  if (!form || !input) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = input.value.trim();
+    if (!query) return;
+
+    if (feedback) {
+      feedback.textContent = `Analyzing requirements for "${query}"... Redirecting to team consultation.`;
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 600);
+    }
+  });
+}
+
+/* ==========================================================================
+   13. Scroll-Triggered Dynamic Typewriter Effect for All Website Headings
+   ========================================================================== */
+function initHeadingTypewriter() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  // Select all prominent headings across the website (excluding hero section)
+  const headingSelectors = [
+    '.subpage-title',
+    '.showcase-title',
+    '.section-title',
+    '.footer-headline',
+    '.service-block-header h3',
+    '.process-step-title',
+    '.case-card-title',
+    'h2.section-heading',
+    '[data-typewriter]'
+  ];
+
+  const candidateElements = document.querySelectorAll(headingSelectors.join(', '));
+  if (!candidateElements.length) return;
+
+  // Filter out any elements inside hero section, hidden overlays, menus, or dashboard windows
+  const headings = Array.from(candidateElements).filter(el => {
+    return !el.closest('.synex-hero') &&
+           !el.closest('.hero-header') &&
+           !el.closest('.fs-menu-overlay') &&
+           !el.closest('.dash-sidebar') &&
+           !el.closest('.synex-dashboard-window');
+  });
+
+  // Helper to extract text nodes that have meaningful content
+  function getMeaningfulTextNodes(element) {
+    const nodes = [];
+    const walker = document.createTreeWalker(
+      element,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode: function(node) {
+          if (!node.nodeValue || node.nodeValue.trim() === '') {
+            return NodeFilter.FILTER_REJECT;
+          }
+          if (node.parentElement && (
+            node.parentElement.classList.contains('typewriter-cursor') ||
+            node.parentElement.closest('.hero-rotator-wrapper') ||
+            node.parentElement.closest('.fs-menu-overlay')
+          )) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      },
+      false
+    );
+
+    let n;
+    while ((n = walker.nextNode())) {
+      nodes.push(n);
+    }
+    return nodes;
+  }
+
+  // Prepare each heading: record original texts and clear them
+  const preparedList = [];
+  headings.forEach(heading => {
+    const textNodes = getMeaningfulTextNodes(heading);
+    if (!textNodes.length) return;
+
+    const entries = textNodes.map(node => ({
+      node: node,
+      fullText: node.nodeValue
+    }));
+
+    heading._typewriterEntries = entries;
+    heading._typewriterStarted = false;
+
+    // Clear content of text nodes so they start blank before scrolling in
+    entries.forEach(item => {
+      item.node.nodeValue = '';
+    });
+
+    preparedList.push(heading);
+  });
+
+  function startTyping(heading) {
+    if (heading._typewriterStarted) return;
+    heading._typewriterStarted = true;
+
+    const entries = heading._typewriterEntries;
+    if (!entries || !entries.length) return;
+
+    // Create the glowing brand-orange cursor
+    const cursor = document.createElement('span');
+    cursor.className = 'typewriter-cursor';
+    cursor.setAttribute('aria-hidden', 'true');
+    cursor.textContent = '|';
+
+    let entryIndex = 0;
+    let charIndex = 0;
+
+    function typeStep() {
+      if (entryIndex >= entries.length) {
+        // Finished typing all nodes in this heading
+        setTimeout(() => {
+          cursor.classList.add('fade-out');
+          setTimeout(() => {
+            if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+          }, 400);
+        }, 1800);
+        return;
+      }
+
+      const currentItem = entries[entryIndex];
+      const targetStr = currentItem.fullText;
+
+      // Position cursor right after current text node
+      if (currentItem.node.parentNode) {
+        if (currentItem.node.nextSibling !== cursor) {
+          currentItem.node.parentNode.insertBefore(cursor, currentItem.node.nextSibling);
+        }
+      }
+
+      if (charIndex < targetStr.length) {
+        const char = targetStr.charAt(charIndex);
+        charIndex++;
+        currentItem.node.nodeValue = targetStr.substring(0, charIndex);
+
+        // Natural typing timing calculation
+        let delay = Math.floor(Math.random() * 10) + 20; // 20ms - 30ms
+        if (['.', '!', '?', ':', ';'].includes(char)) {
+          delay += 100;
+        } else if ([',', '-'].includes(char)) {
+          delay += 45;
+        }
+
+        setTimeout(typeStep, delay);
+      } else {
+        // Move to next line or span
+        entryIndex++;
+        charIndex = 0;
+        setTimeout(typeStep, 70);
+      }
+    }
+
+    // Initial slight delay before typing starts
+    setTimeout(typeStep, 70);
+  }
+
+  // Set up IntersectionObserver with scroll trigger
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+          obs.unobserve(target);
+          startTyping(target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px 0px -6% 0px',
+      threshold: 0.1
+    });
+
+    preparedList.forEach(heading => {
+      observer.observe(heading);
+    });
+  } else {
+    // Fallback if IntersectionObserver is not supported
+    preparedList.forEach(h => startTyping(h));
+  }
+}
+
 
