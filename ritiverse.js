@@ -205,11 +205,10 @@ function initHeroScrollReveal() {
           scrollTarget.style.pointerEvents = 'none';
         }
 
-        // Radiant studio drop shadow expansion as card blooms to full screen
-        const blur = Math.round(25 + prog * 65);
-        const yOffset = Math.round(10 + prog * 35);
-        const glowOpacity = (prog * 0.24).toFixed(3);
-        scrollTarget.style.filter = `drop-shadow(0 ${yOffset}px ${blur}px rgba(0, 0, 0, 0.72)) drop-shadow(0 0 55px rgba(217, 93, 57, ${glowOpacity}))`;
+        // Studio drop shadow expansion as card blooms to full screen (clean natural shadow, no neon glow)
+        const blur = Math.round(20 + prog * 45);
+        const yOffset = Math.round(8 + prog * 24);
+        scrollTarget.style.filter = `drop-shadow(0 ${yOffset}px ${blur}px rgba(0, 0, 0, 0.32))`;
       }
     }
   });
@@ -341,7 +340,7 @@ function initEmailCapture() {
         </svg>
         Consultation Booked
       `;
-      btn.style.backgroundColor = '#D95D39';
+      btn.style.backgroundColor = '#2563EB';
 
       if (msg) {
         msg.textContent = 'Engineering team notified. We will reply within 24 hours.';
@@ -470,15 +469,15 @@ function initMotionWave() {
       ctx.fill();
     }
 
-    // 2. Volumetric Core Radial Glow
-    const glowGrad = ctx.createRadialGradient(
-      width * 0.5 + mouse.x * 0.6, height * 0.42 + mouse.y * 0.6, width * 0.05,
-      width * 0.5 + mouse.x * 0.6, height * 0.45 + mouse.y * 0.6, width * 0.45
+    // 2. Subtle Soft Ambient Neutral Tone (Zero Neon Glow)
+    const neutralGrad = ctx.createRadialGradient(
+      width * 0.5 + mouse.x * 0.4, height * 0.42 + mouse.y * 0.4, width * 0.05,
+      width * 0.5 + mouse.x * 0.4, height * 0.45 + mouse.y * 0.4, width * 0.45
     );
-    glowGrad.addColorStop(0, 'rgba(217, 93, 57, 0.05)');
-    glowGrad.addColorStop(0.4, 'rgba(15, 23, 42, 0.025)');
-    glowGrad.addColorStop(1, 'rgba(248, 249, 250, 0)');
-    ctx.fillStyle = glowGrad;
+    neutralGrad.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
+    neutralGrad.addColorStop(0.5, 'rgba(241, 245, 249, 0.2)');
+    neutralGrad.addColorStop(1, 'rgba(248, 249, 250, 0)');
+    ctx.fillStyle = neutralGrad;
     ctx.fillRect(0, 0, width, height);
 
     // 3. Render 3D Silk-Dust Ribbon Particles
@@ -525,9 +524,9 @@ function initMotionWave() {
 
       if (alpha > 0.015) {
         const r = Math.max(0.4, size * scale);
-        // Subtle dual-tone particles: silver with terracotta warmth on the crest
+        // Subtle dual-tone particles: deep slate with cobalt accent on the crest
         if (Math.abs(v - 0.08) < 0.12 && i % 4 === 0) {
-          ctx.fillStyle = `rgba(217, 93, 57, ${(alpha * 0.85).toFixed(3)})`;
+          ctx.fillStyle = `rgba(37, 99, 235, ${(alpha * 0.65).toFixed(3)})`;
         } else {
           ctx.fillStyle = `rgba(30, 41, 59, ${(alpha * 0.55).toFixed(3)})`;
         }
