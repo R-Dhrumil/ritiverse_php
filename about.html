@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us & Engineering Philosophy — RiTiVerse</title>
+  <meta name="description"
+    content="Discover the RiTiVerse engineering philosophy: ending agency lock-in, delivering 100% client source ownership, and building digital flagships with extreme technical rigor.">
+  <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- RiTiVerse Design System Stylesheet -->
+  <link rel="stylesheet" href="ritiverse.css">
+</head>
+
+<body>
+
+  <!-- Top Floating Minimalist Navigation -->
+  <header class="synex-nav" id="synex-nav">
+    <div class="synex-nav-left">
+      <a href="ritiverse.html" class="synex-brand" aria-label="RiTiVerse Home">
+        <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
+        <span class="synex-brand-name">RiTiVerse</span>
+      </a>
+    </div>
+
+    <div class="synex-nav-right">
+      <button class="synex-menu-trigger" id="synex-menu-trigger" aria-label="Open Fullscreen Navigation"
+        aria-expanded="false" aria-controls="synex-fs-menu">
+        <div class="hamburger-box">
+          <span class="hamburger-line line-1"></span>
+          <span class="hamburger-line line-2"></span>
+          <span class="hamburger-line line-3"></span>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Fullscreen Architectural Navigation Overlay -->
+  <div class="synex-fs-menu" id="synex-fs-menu" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-label="Navigation Menu">
+    <div class="fs-grid-overlay" aria-hidden="true">
+      <div class="fs-grid-col"></div>
+      <div class="fs-grid-col"></div>
+      <div class="fs-grid-col"></div>
+      <div class="fs-grid-col"></div>
+      <div class="fs-grid-cross cross-1">+</div>
+      <div class="fs-grid-cross cross-2">+</div>
+      <div class="fs-grid-cross cross-3">+</div>
+      <div class="fs-grid-cross cross-4">+</div>
+      <div class="fs-ambient-glow" aria-hidden="true"></div>
+    </div>
+
+    <div class="fs-menu-header">
+      <div class="synex-nav-left">
+        <a href="ritiverse.html" class="synex-brand" aria-label="RiTiVerse Home">
+          <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
+          <span class="synex-brand-name">RiTiVerse</span>
+        </a>
+      </div>
+      <div class="synex-nav-right">
+        <button class="fs-close-btn" id="fs-close-btn" aria-label="Close Navigation Menu">
+          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="fs-menu-container">
+      <div class="fs-nav-main-col">
+        <div class="fs-nav-links-grid">
+          <div class="fs-links-group">
+            <ul class="fs-nav-list">
+              <li class="fs-nav-item">
+                <a href="ritiverse.html" class="fs-nav-link">
+                  <span class="nav-text">Home</span>
+                  <span class="nav-arrow">↗</span>
+                </a>
+              </li>
+              <li class="fs-nav-item">
+                <a href="services.html" class="fs-nav-link">
+                  <span class="nav-text">Services</span>
+                  <span class="nav-arrow">↗</span>
+                </a>
+              </li>
+              <li class="fs-nav-item">
+                <a href="contact.html" class="fs-nav-link">
+                  <span class="nav-text">Contact</span>
+                  <span class="nav-arrow">↗</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="fs-links-group">
+            <ul class="fs-nav-list">
+              <li class="fs-nav-item">
+                <a href="about.html" class="fs-nav-link active">
+                  <span class="nav-text">About</span>
+                  <span class="nav-arrow">↗</span>
+                </a>
+              </li>
+              <li class="fs-nav-item">
+                <a href="projects.html" class="fs-nav-link">
+                  <span class="nav-text">Projects</span>
+                  <span class="nav-arrow">↗</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fs-menu-footer">
+          <div class="fs-meta-block">
+            <span class="fs-meta-label">FOLLOW</span>
+            <div class="fs-social-links">
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="fs-social-link">LinkedIn</a>
+              <a href="https://twitter.com" target="_blank" rel="noopener" class="fs-social-link">X (Twitter)</a>
+              <a href="https://github.com" target="_blank" rel="noopener" class="fs-social-link">GitHub</a>
+              <a href="https://instagram.com" target="_blank" rel="noopener" class="fs-social-link">Instagram</a>
+            </div>
+          </div>
+
+          <div class="fs-meta-block">
+            <span class="fs-meta-label">CONTACT</span>
+            <div class="fs-contact-info">
+              <a href="mailto:contact@ritiverse.com" class="fs-contact-email">contact@ritiverse.com</a>
+              <span class="fs-contact-address">17 Kingsway Avenue, London, UK</span>
+              <span class="fs-contact-phone">+44 20 8654 3927</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <main class="subpage-hero">
+    <div class="subpage-hero-container">
+      <div class="subpage-badge">
+        <span class="subpage-badge-dot"></span>
+        The RiTiVerse Philosophy & Studio Standards
+      </div>
+      <h1 class="subpage-title">
+        Software Without Compromise.<br>
+        Technology <span class="accent-text">Without Vendor Lock-In.</span>
+      </h1>
+      <p class="subpage-subtitle">
+        We founded RiTiVerse to end the toxic status quo of legacy agencies. We believe that when an enterprise pays for custom software, every line of code, every container, and every cloud blueprint should belong 100% to them.
+      </p>
+      <div class="subpage-cta-group">
+        <a href="contact.html" class="btn-primary">
+          Meet the Engineering Team
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="projects.html" class="btn-secondary">Explore Our Work</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Telemetry Banner -->
+  <section class="subpage-section" style="padding-top: 0; padding-bottom: 0;">
+    <div class="subpage-container">
+      <div class="stats-banner">
+        <div class="stat-item">
+          <div class="stat-item-num">100%</div>
+          <div class="stat-item-label">Source Repos Transferred</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-num">0</div>
+          <div class="stat-item-label">Vendor Dependencies</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-num">99.98%</div>
+          <div class="stat-item-label">Average Production Uptime</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item-num">+3.2x</div>
+          <div class="stat-item-label">Average Client ROI Uplift</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Pillars Section -->
+  <section class="subpage-section">
+    <div class="subpage-container">
+      <div class="section-badge-header">
+        <span class="section-eyebrow">
+          <span class="section-eyebrow-dot"></span>
+          Guiding Principles
+        </span>
+        <h2 class="section-title">Why RiTiVerse Operates Differently</h2>
+        <p class="section-subtitle">
+          Our business model is engineered around your technical independence, not our billable lock-in.
+        </p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step-card">
+          <span class="process-step-num">PILLAR 01</span>
+          <h3 class="process-step-title">Day-One IP Handover</h3>
+          <p class="process-step-desc">
+            We work directly inside your GitHub or GitLab organization from day one. You have perpetual, unrestricted rights to all software, assets, and documentation.
+          </p>
+        </div>
+
+        <div class="process-step-card">
+          <span class="process-step-num">PILLAR 02</span>
+          <h3 class="process-step-title">Zero Proprietary Traps</h3>
+          <p class="process-step-desc">
+            No closed CMS engines. No encrypted modules. Everything is built on battle-tested open standards like React, Next.js, Go, Python, and PostgreSQL that any senior engineer can maintain.
+          </p>
+        </div>
+
+        <div class="process-step-card">
+          <span class="process-step-num">PILLAR 03</span>
+          <h3 class="process-step-title">Engineers, Not Middlemen</h3>
+          <p class="process-step-desc">
+            You collaborate directly with principal architects and staff engineers. No account managers playing telephone—just direct, transparent technical execution.
+          </p>
+        </div>
+
+        <div class="process-step-card">
+          <span class="process-step-num">PILLAR 04</span>
+          <h3 class="process-step-title">Self-Hosted Infrastructure</h3>
+          <p class="process-step-desc">
+            We provision Terraform clusters directly inside your AWS, GCP, or Azure accounts. You pay cloud providers at cost with zero reseller markup.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rigorous Engineering Standards -->
+  <section class="subpage-section" style="background: #08090C;">
+    <div class="subpage-container">
+      <div class="capability-row">
+        <div class="capability-content">
+          <span class="subpage-badge">Technical Rigor</span>
+          <h3>The RiTiVerse Quality Manifesto</h3>
+          <p>
+            Every software system engineered by RiTiVerse undergoes automated continuous integration pipelines that enforce strict architectural boundaries before any pull request is merged.
+          </p>
+          <ul class="capability-feature-list">
+            <li>
+              <span class="check-icon-circle">✓</span>
+              <span><strong>TypeScript Strict Mode:</strong> Zero unchecked <code>any</code> types, ensuring compile-time safety across all client applications.</span>
+            </li>
+            <li>
+              <span class="check-icon-circle">✓</span>
+              <span><strong>Automated Vulnerability Checks:</strong> Daily SAST, DAST, and dependency scanning with automated alerts for CVE patches.</span>
+            </li>
+            <li>
+              <span class="check-icon-circle">✓</span>
+              <span><strong>Deterministic CI/CD:</strong> Reproducible Docker container images built with multi-stage caching and zero bloat.</span>
+            </li>
+            <li>
+              <span class="check-icon-circle">✓</span>
+              <span><strong>Sub-second Edge Telemetry:</strong> Real-time latency tracking across 300+ edge locations worldwide.</span>
+            </li>
+          </ul>
+          <a href="contact.html" class="btn-primary">Inquire About Our Process →</a>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-card-header">
+            <div class="terminal-dots">
+              <span class="term-dot term-red"></span>
+              <span class="term-dot term-yellow"></span>
+              <span class="term-dot term-green"></span>
+            </div>
+            <span class="arch-card-title">quality-gate.yml</span>
+          </div>
+          <div class="arch-card-body">
+            <pre class="arch-code-block"><code><span class="code-comment"># Automated Production Gate Pipeline</span>
+<span class="code-keyword">name</span>: RiTiVerse Production Gate
+<span class="code-keyword">on</span>: [push, pull_request]
+
+<span class="code-keyword">jobs</span>:
+  <span class="code-prop">verify_standards</span>:
+    <span class="code-prop">runs-on</span>: ubuntu-latest
+    <span class="code-prop">steps</span>:
+      - <span class="code-prop">name</span>: Typecheck & Lint
+        <span class="code-prop">run</span>: <span class="code-str">pnpm typecheck &amp;&amp; pnpm lint</span>
+      - <span class="code-prop">name</span>: Automated Unit & E2E Tests
+        <span class="code-prop">run</span>: <span class="code-str">pnpm test:coverage --threshold=95</span>
+      - <span class="code-prop">name</span>: Lighthouse Core Web Vitals
+        <span class="code-prop">run</span>: <span class="code-str">lhci autorun --assert.performance=1.0</span>
+      - <span class="code-prop">name</span>: OWASP Dependency Vulnerability Scan
+        <span class="code-prop">run</span>: <span class="code-str">trivy fs --severity HIGH,CRITICAL .</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner & Footer -->
+  <footer class="synex-footer" id="contact">
+    <div class="footer-container">
+      <div class="footer-cta-card">
+        <div class="footer-cta-glow" aria-hidden="true"></div>
+        <span class="footer-eyebrow">Ready for Real Tech Ownership?</span>
+        <h2 class="footer-headline">Build software that belongs completely to you.</h2>
+        <p class="footer-subtext">Book a consultation with our principal architects and experience the RiTiVerse standard.</p>
+        <a href="contact.html" class="footer-cta-btn">
+          Schedule Engineering Consultation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div class="footer-brand">
+          <span class="footer-logo">RiTiVerse<span class="logo-accent-dot"></span></span>
+          <span class="footer-copy">© 2026 RiTiVerse Studio. All rights reserved.</span>
+        </div>
+        <div class="footer-status-pill">
+          <span class="footer-status-dot"></span>
+          All Systems Operational • 99.99% Uptime
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP & JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="ritiverse.js"></script>
+</body>
+
+</html>
