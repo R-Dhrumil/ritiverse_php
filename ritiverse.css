@@ -194,9 +194,11 @@ body {
 
 .synex-brand:hover {
   background: rgba(18, 19, 24, 0.94);
-  border-color: rgba(255, 255, 255, 0.22);
+  border-color: rgba(217, 93, 57, 0.45);
   transform: translateY(-2px);
-  box-shadow: 0 14px 34px -4px rgba(0, 0, 0, 0.38);
+  box-shadow:
+    0 14px 34px -4px rgba(0, 0, 0, 0.38),
+    0 0 20px rgba(217, 93, 57, 0.22);
 }
 
 .synex-brand:active {
@@ -208,13 +210,13 @@ body {
   width: auto;
   max-width: 44px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0 2px 6px rgba(217, 93, 57, 0.35));
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s;
 }
 
 .synex-brand:hover .synex-brand-logo {
   transform: scale(1.08) rotate(-3deg);
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 3px 10px rgba(217, 93, 57, 0.6));
 }
 
 .synex-brand-name {
@@ -265,9 +267,11 @@ body {
 
 .synex-menu-trigger:hover {
   background: rgba(18, 19, 24, 0.94);
-  border-color: rgba(255, 255, 255, 0.22);
+  border-color: rgba(217, 93, 57, 0.45);
   transform: translateY(-2px);
-  box-shadow: 0 14px 34px -4px rgba(0, 0, 0, 0.38);
+  box-shadow:
+    0 14px 34px -4px rgba(0, 0, 0, 0.38),
+    0 0 20px rgba(217, 93, 57, 0.22);
 }
 
 .synex-menu-trigger:active {
@@ -620,8 +624,6 @@ body {
     radial-gradient(ellipse 90% 50% at 50% 25%, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0) 75%),
     linear-gradient(180deg, #F8F9FA 0%, #EFF1F5 100%);
   overflow: hidden;
-  border-bottom-left-radius: 50px 100px;
-  border-bottom-right-radius: 50px 100px;
 }
 
 /* 3D Particle Silk-Dust Motion Canvas Background */
@@ -1727,9 +1729,8 @@ body {
 }
 
 /* ==========================================================================
-   WHY CHOOSE US SECTION (Light Hero Canvas Palette)
+   SERVICES & CAPABILITIES SECTION (RItiverse Studio Showcase)
    ========================================================================== */
-.why-choose-us-section,
 .synex-services-section {
   position: relative;
   background:
@@ -1738,7 +1739,7 @@ body {
     linear-gradient(180deg, #F8F9FA 0%, #EFF1F5 100%);
   color: #0F172A;
   padding: 120px 24px 100px 24px;
-  border-top: 1px solid rgba(15, 23, 42, 0.07);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
   z-index: 20;
 }
 
@@ -1759,7 +1760,7 @@ body {
   gap: 7px;
   font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--brand-orange);
@@ -1771,8 +1772,8 @@ body {
 }
 
 .section-eyebrow-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background-color: var(--brand-orange);
   box-shadow: 0 0 6px rgba(248, 104, 0, 0.6);
@@ -1783,15 +1784,15 @@ body {
   font-size: clamp(28px, 4vw, 44px);
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.18;
-  color: #0F172A;
+  line-height: 1.15;
+  color: #FFFFFF;
   margin-bottom: 18px;
 }
 
 .section-subtitle {
   font-size: 16px;
-  line-height: 1.65;
-  color: #475569;
+  line-height: 1.6;
+  color: var(--text-secondary-light);
 }
 
 .services-grid {
@@ -1800,15 +1801,14 @@ body {
   gap: 24px;
 }
 
-.why-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(15, 23, 42, 0.08);
+.service-card {
+  background: #111319;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   padding: 36px 32px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
 }
 
 .why-card:hover {
@@ -1817,7 +1817,7 @@ body {
   box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.12), 0 0 25px -5px rgba(248, 104, 0, 0.15);
 }
 
-.why-card::before {
+.service-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1829,7 +1829,7 @@ body {
   transition: opacity 0.3s ease;
 }
 
-.why-card:hover::before {
+.service-card:hover::before {
   opacity: 1;
 }
 
@@ -1857,102 +1857,64 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
-}
-
-.why-card .service-icon-box svg {
-  width: 22px;
-  height: 22px;
-  stroke: var(--accent-terracotta);
-}
-
-.why-name {
-  font-family: var(--font-display);
-  font-size: 21px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #0F172A;
-  margin-bottom: 12px;
-}
-
-.why-desc {
-  font-size: 14px;
-  line-height: 1.65;
-  color: #475569;
   margin-bottom: 22px;
 }
 
-.why-highlights {
+.service-icon-box svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--accent-terracotta);
+}
+
+.service-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+.service-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #94A3B8;
+  margin-bottom: 20px;
+}
+
+.service-highlights {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  gap: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding-top: 18px;
 }
 
-.why-highlights li {
-  font-size: 13px;
-  color: #334155;
+.service-highlights li {
+  font-size: 12px;
+  color: #CBD5E1;
   display: flex;
   align-items: center;
-  gap: 10px;
-  line-height: 1.5;
+  gap: 8px;
 }
 
-.why-highlights li .check-icon-circle {
-  width: 18px;
-  height: 18px;
+.service-highlights li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(52, 211, 153, 0.35);
-  color: #10B981;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
+  background: var(--accent-terracotta);
   flex-shrink: 0;
 }
 
-/* Telemetry Stats Strip within Why Choose Us */
-.why-stats-strip {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  background: #FFFFFF;
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 16px;
-  padding: 32px 24px;
-  margin-top: 50px;
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
-  text-align: center;
-}
-
-.why-stat-num {
-  font-family: var(--font-mono);
-  font-size: clamp(26px, 3vw, 36px);
-  font-weight: 700;
-  color: #0F172A;
-  margin-bottom: 6px;
-  display: block;
-}
-
-.why-stat-lbl {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #64748B;
-}
-
 /* ==========================================================================
-   TECH STACK SECTION (Light Hero Canvas Palette)
+   TECH STACK SECTION
    ========================================================================== */
 .synex-stack-section {
-  background: linear-gradient(180deg, #EFF1F5 0%, #F8F9FA 100%);
+  background: #0B0D12;
   padding: 80px 24px;
-  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .stack-container {
@@ -1963,10 +1925,6 @@ body {
 
 .stack-header {
   margin-bottom: 40px;
-}
-
-.synex-stack-section .section-title {
-  color: #0F172A;
 }
 
 .stack-pills-wrap {
@@ -1982,15 +1940,14 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 20px;
-  background: #FFFFFF;
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 8px 18px;
+  background: #141721;
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 9999px;
   font-family: var(--font-mono);
   font-size: 12px;
-  font-weight: 600;
-  color: #334155;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  font-weight: 500;
+  color: #E2E8F0;
   transition: all 0.2s ease;
 }
 
@@ -2003,8 +1960,8 @@ body {
 }
 
 .stack-pill-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--brand-orange);
 }
