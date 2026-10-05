@@ -554,7 +554,6 @@ function initFullscreenNav() {
   if (!trigger || !fsMenu) return;
 
   const navItems = fsMenu.querySelectorAll('.fs-nav-item');
-  const featuredCol = fsMenu.querySelector('.fs-featured-col');
   const menuFooter = fsMenu.querySelector('.fs-menu-footer');
   const gridCrosses = fsMenu.querySelectorAll('.fs-grid-cross');
   const navLinks = fsMenu.querySelectorAll('.fs-nav-link');
@@ -572,12 +571,12 @@ function initFullscreenNav() {
 
     // GSAP Staggered Reveal Animation
     if (typeof gsap !== 'undefined') {
-      gsap.killTweensOf([fsMenu, navItems, featuredCol, menuFooter, gridCrosses]);
+      const activeTargets = [fsMenu, navItems, menuFooter, gridCrosses].filter(Boolean);
+      gsap.killTweensOf(activeTargets);
 
       // Set initial states
       gsap.set(fsMenu, { opacity: 0 });
       gsap.set(navItems, { opacity: 0, y: 35 });
-      if (featuredCol) gsap.set(featuredCol, { opacity: 0, y: 30, scale: 0.96 });
       if (menuFooter) gsap.set(menuFooter, { opacity: 0, y: 20 });
       if (gridCrosses.length) gsap.set(gridCrosses, { opacity: 0, scale: 0.6 });
 
@@ -602,13 +601,6 @@ function initFullscreenNav() {
         duration: 0.5,
         ease: 'power3.out'
       }, '-=0.3')
-      .to(featuredCol, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.55,
-        ease: 'power3.out'
-      }, '-=0.45')
       .to(menuFooter, {
         opacity: 1,
         y: 0,
@@ -626,7 +618,8 @@ function initFullscreenNav() {
     fsMenu.setAttribute('aria-hidden', 'true');
 
     if (typeof gsap !== 'undefined') {
-      gsap.killTweensOf([fsMenu, navItems, featuredCol, menuFooter]);
+      const closeTargets = [navItems, menuFooter].filter(Boolean);
+      gsap.killTweensOf([fsMenu, ...closeTargets]);
 
       const tl = gsap.timeline({
         onComplete: () => {
@@ -635,7 +628,7 @@ function initFullscreenNav() {
         }
       });
 
-      tl.to([navItems, featuredCol, menuFooter], {
+      tl.to(closeTargets, {
         opacity: 0,
         y: -15,
         stagger: 0.02,

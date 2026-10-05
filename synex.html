@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RItiverse — Elite Website & Software Development</title>
+  <meta name="description" content="RItiverse designs, engineers, and scales high-performance web applications, bespoke enterprise software, and world-class digital platforms.">
+
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- RItiverse Design System Stylesheet -->
+  <link rel="stylesheet" href="synex.css">
+</head>
+<body>
+
+  <!-- Top Floating Minimalist Navigation (Closed State) -->
+  <header class="synex-nav" id="synex-nav">
+    <div class="synex-nav-left">
+      <!-- Modern & Minimal Floating Brand Wordmark with Logo -->
+      <a href="#" class="synex-brand" aria-label="RItiverse Home">
+        <img src="assets/logo.png" alt="RItiverse Logo" class="synex-brand-logo" />
+        <span class="synex-brand-name">RiTiVerse</span>
+      </a>
+    </div>
+
+    <!-- Navigation Right Controls: 3-Line Animated Hamburger Trigger -->
+    <div class="synex-nav-right">
+      <button class="synex-menu-trigger" id="synex-menu-trigger" aria-label="Open Fullscreen Navigation" aria-expanded="false" aria-controls="synex-fs-menu">
+        <div class="hamburger-box">
+          <span class="hamburger-line line-1"></span>
+          <span class="hamburger-line line-2"></span>
+          <span class="hamburger-line line-3"></span>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Fullscreen Architectural Navigation Overlay (Open State) -->
+  <div class="synex-fs-menu" id="synex-fs-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+    <!-- Architectural Framer-Style Grid Background -->
+    <div class="fs-grid-overlay" aria-hidden="true">
+      <div class="fs-grid-col"></div>
+      <div class="fs-grid-col"></div>
+      <div class="fs-grid-col"></div>
+      <div class="fs-grid-col"></div>
+      <div class="fs-grid-cross cross-1">+</div>
+      <div class="fs-grid-cross cross-2">+</div>
+      <div class="fs-grid-cross cross-3">+</div>
+      <div class="fs-grid-cross cross-4">+</div>
+      <div class="fs-ambient-glow" aria-hidden="true"></div>
+    </div>
+
+    <!-- Fullscreen Menu Top Navigation Bar -->
+    <div class="fs-menu-header">
+      <a href="#" class="synex-brand fs-brand" aria-label="RItiverse Home">
+        <img src="assets/logo.png" alt="RItiverse Logo" class="synex-brand-logo" />
+        <span class="synex-brand-name">RItiverse<span class="logo-accent-dot"></span></span>
+      </a>
+      <button class="fs-close-btn" id="fs-close-btn" aria-label="Close Navigation Menu">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Fullscreen Menu Content Grid -->
+    <div class="fs-menu-container">
+      <div class="fs-menu-columns">
+
+        <!-- Column 1: Featured Work Card (Left Side) -->
+        <div class="fs-featured-col">
+          <div class="fs-featured-eyebrow">
+            <svg class="fs-spark" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+            </svg>
+            Featured Work
+          </div>
+
+          <a href="#services" class="fs-featured-card">
+            <div class="fs-featured-img-wrap">
+              <img src="assets/featured-work.jpg" alt="Featured Platform Launch - Nexus AI" class="fs-featured-img" />
+              <span class="fs-featured-tag">Flagship 2026</span>
+            </div>
+            <div class="fs-featured-details">
+              <h3 class="fs-featured-title">Nexus AI — Enterprise Platform Launch</h3>
+              <p class="fs-featured-desc">Autonomous enterprise intelligence, sub-200ms latency, and high-velocity workflows.</p>
+              <div class="fs-featured-clients">
+                <span class="fs-client-pill">NEXT.JS 15</span>
+                <span class="fs-client-pill">THREE.JS</span>
+                <span class="fs-client-pill">ENTERPRISE CLOUD</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Columns 2 & 3: Main Navigation Links + Meta Footer (Right Side) -->
+        <div class="fs-nav-main-col">
+          <div class="fs-nav-links-grid">
+            <!-- Navigation Column 1 -->
+            <div class="fs-links-group">
+              <ul class="fs-nav-list">
+                <li class="fs-nav-item">
+                  <a href="#synex-hero" class="fs-nav-link">
+                    <span class="nav-text">Home</span>
+                    <span class="nav-arrow">↗</span>
+                  </a>
+                </li>
+                <li class="fs-nav-item">
+                  <a href="#services" class="fs-nav-link">
+                    <span class="nav-text">Services</span>
+                    <span class="nav-arrow">↗</span>
+                  </a>
+                </li>
+                <li class="fs-nav-item">
+                  <a href="#contact" class="fs-nav-link">
+                    <span class="nav-text">Contact</span>
+                    <span class="nav-arrow">↗</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Navigation Column 2 -->
+            <div class="fs-links-group">
+              <ul class="fs-nav-list">
+                <li class="fs-nav-item">
+                  <a href="#services" class="fs-nav-link">
+                    <span class="nav-text">About</span>
+                    <span class="nav-arrow">↗</span>
+                  </a>
+                </li>
+                <li class="fs-nav-item">
+                  <a href="#dashboard-scroll-target" class="fs-nav-link">
+                    <span class="nav-text">Projects</span>
+                    <span class="nav-arrow">↗</span>
+                  </a>
+                </li>
+                <li class="fs-nav-item">
+                  <a href="#contact" class="fs-nav-link">
+                    <span class="nav-text">Pricing</span>
+                    <span class="nav-arrow">↗</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Menu Footer: Social Follow & Direct Contact Info -->
+          <div class="fs-menu-footer">
+            <div class="fs-meta-block">
+              <span class="fs-meta-label">FOLLOW</span>
+              <div class="fs-social-links">
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="fs-social-link">LinkedIn</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener" class="fs-social-link">X (Twitter)</a>
+                <a href="https://github.com" target="_blank" rel="noopener" class="fs-social-link">GitHub</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="fs-social-link">Instagram</a>
+              </div>
+            </div>
+
+            <div class="fs-meta-block">
+              <span class="fs-meta-label">CONTACT</span>
+              <div class="fs-contact-info">
+                <a href="mailto:contact@ritiverse.com" class="fs-contact-email">contact@ritiverse.com</a>
+                <span class="fs-contact-address">17 Kingsway Avenue, London, UK</span>
+                <span class="fs-contact-phone">+44 20 8654 3927</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Hero Section -->
+  <main class="synex-hero" id="synex-hero">
+
+    <!-- 3D Particle Silk-Dust Motion Canvas -->
+    <div class="hero-motion-bg" aria-hidden="true">
+      <canvas id="synex-motion-canvas"></canvas>
+    </div>
+
+    <!-- Hero Header & Typography -->
+    <div class="hero-header">
+      <h1 class="hero-title">
+        <span>You Own It.</span>
+        <span class="title-accent">You Control It.</span>
+      </h1>
+      <p class="hero-description">
+        Bespoke websites and custom software engineered with zero vendor lock-in, 100% source ownership, and total architectural freedom.
+      </p>
+
+      <!-- Interactive Email Capture Capsule -->
+      <form class="hero-cta-form" id="hero-cta-form">
+        <input 
+          type="email" 
+          class="hero-cta-input" 
+          id="hero-email-input" 
+          placeholder="Enter work email for consultation..." 
+          required 
+          autocomplete="email"
+          aria-label="Work email"
+        >
+        <button type="submit" class="hero-cta-btn" id="hero-submit-btn">
+          Start a project
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <div class="cta-status-message" id="cta-status-message"></div>
+      </form>
+    </div>
+
+    <!-- Hero Stage Container (Apple-Style Clean Scale Anchor) -->
+    <div class="hero-stage-container" id="hero-stage">
+      
+      <!-- GSAP Scroll-Linked Scale Target (Apple-Style Clean Reveal) -->
+      <div class="dashboard-scroll-target" id="dashboard-scroll-target">
+
+        <!-- Centerpiece: RItiverse Production & Velocity Console -->
+        <div class="synex-dashboard-window" id="synex-dashboard">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="dash-sidebar">
+          <div>
+            <!-- Workspace Profile -->
+            <div class="sidebar-profile">
+              <div class="profile-avatar">R</div>
+              <div class="profile-info">
+                <span class="profile-name">RItiverse Studio</span>
+                <span class="profile-plan">
+                  <span class="profile-plan-dot"></span>
+                  Verified Partner
+                </span>
+              </div>
+            </div>
+
+            <!-- Engineering OS Navigation -->
+            <div class="sidebar-section">
+              <div class="sidebar-section-title">Engineering OS</div>
+              <ul class="sidebar-nav-list">
+                <li class="sidebar-nav-item active">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                    Deployment Pipeline
+                  </div>
+                </li>
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                      <line x1="8" y1="21" x2="16" y2="21"></line>
+                      <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                    Web Applications
+                  </div>
+                </li>
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    Custom Software & APIs
+                  </div>
+                </li>
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                    </svg>
+                    Cloud & Microservices
+                  </div>
+                </li>
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    Lighthouse Speed (100)
+                  </div>
+                </li>
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    Security & Audits
+                  </div>
+                  <span class="sidebar-badge">0 ISSUES</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Client Deliverables -->
+            <div class="sidebar-section">
+              <div class="sidebar-section-title">Client Deliverables</div>
+              <ul class="sidebar-nav-list">
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                    </svg>
+                    Client Staging Envs
+                  </div>
+                </li>
+                <li class="sidebar-nav-item">
+                  <div class="nav-item-left">
+                    <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    Live CI/CD Feeds
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sidebar Footer -->
+          <div class="sidebar-footer">
+            <a href="#docs" class="sidebar-footer-link">
+              <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+              Engineering Docs (v4.2)
+            </a>
+          </div>
+        </aside>
+
+        <!-- Main Dashboard View Area -->
+        <div class="dash-content">
+          
+          <!-- Top Bar with User & Range Filters -->
+          <div class="dash-top-bar">
+            <div class="dash-user-welcome">
+              <div class="dash-avatar-mini">RI</div>
+              <div class="dash-user-meta">
+                <h3>Production Engine</h3>
+                <p>Sprint 48 Track • Q4 Release Cycle</p>
+              </div>
+            </div>
+
+            <div class="dash-top-actions">
+              <!-- Sprint Status Pill -->
+              <button class="dash-pill-btn" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                100% On-Time Delivery
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:10px; height:10px;">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <!-- Currency Switcher -->
+              <div class="dash-currency-toggle">
+                <button class="currency-option active" data-curr="USD">USD ($)</button>
+                <button class="currency-option" data-curr="EUR">EUR (€)</button>
+                <button class="currency-option" data-curr="GBP">GBP (£)</button>
+              </div>
+
+              <!-- Quick Search Button -->
+              <button class="dash-pill-btn" type="button" title="Quick Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                ⌘K
+              </button>
+            </div>
+          </div>
+
+          <!-- Production Value Hero Metric -->
+          <div class="dash-metric-hero">
+            <div class="metric-hero-left">
+              <span class="metric-eyebrow">Client Platform Value Delivered</span>
+              <div class="metric-large-value">
+                <span class="currency-symbol" id="currency-symbol">$ </span>
+                <span class="amount-value" id="hero-amount-val">348,720.00</span>
+                <span class="metric-growth-badge" id="hero-growth-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                  </svg>
+                  +28.4% Ship Rate
+                </span>
+              </div>
+            </div>
+
+            <div class="metric-hero-right">
+              <div class="metric-ath-label">System Uptime (30d SLA)</div>
+              <div class="metric-ath-value">99.94% • Zero Drift</div>
+            </div>
+          </div>
+
+          <!-- 3 Submetrics Cards Row -->
+          <div class="dash-submetrics-row">
+            <div class="submetric-card">
+              <div class="submetric-header">
+                <span class="submetric-title">Automated Builds</span>
+                <span class="submetric-tag">100% Pass</span>
+              </div>
+              <div class="submetric-amount">1,248 Builds</div>
+            </div>
+
+            <div class="submetric-card">
+              <div class="submetric-header">
+                <span class="submetric-title">Global TTFB Speed</span>
+                <span class="submetric-tag">-64% Latency</span>
+              </div>
+              <div class="submetric-amount">0.19s Sub-second</div>
+            </div>
+
+            <div class="submetric-card">
+              <div class="submetric-header">
+                <span class="submetric-title">Client ROI Multiple</span>
+                <span class="submetric-tag">Audited</span>
+              </div>
+              <div class="submetric-amount">+3.2x Uplift</div>
+            </div>
+          </div>
+
+          <!-- Interactive Chart Area -->
+          <div class="dash-chart-section">
+            <div class="chart-header">
+              <div class="chart-title-group">
+                <span class="chart-title">Ship Velocity & Deployment Volume</span>
+                <span class="chart-benchmark">
+                  <span class="benchmark-line-sample"></span>
+                  High SLA Target
+                </span>
+              </div>
+              <span class="chart-benchmark">Live Cluster Feed</span>
+            </div>
+
+            <div class="chart-body-wrapper">
+              <!-- Background Horizontal Gridlines -->
+              <div class="chart-guidelines">
+                <div class="guideline"></div>
+                <div class="guideline"></div>
+                <div class="guideline"></div>
+              </div>
+
+              <!-- Interactive Bars for 12 Months -->
+              <div class="chart-bars-container">
+                <div class="chart-bar-col" data-month="jan">
+                  <div class="chart-tooltip">$182,400</div>
+                  <div class="bar-fill" style="height: 48%;"></div>
+                  <span class="bar-month-label">Jan</span>
+                </div>
+                <div class="chart-bar-col" data-month="feb">
+                  <div class="chart-tooltip">$204,120</div>
+                  <div class="bar-fill" style="height: 54%;"></div>
+                  <span class="bar-month-label">Feb</span>
+                </div>
+                <div class="chart-bar-col" data-month="mar">
+                  <div class="chart-tooltip">$219,800</div>
+                  <div class="bar-fill" style="height: 58%;"></div>
+                  <span class="bar-month-label">Mar</span>
+                </div>
+                <div class="chart-bar-col" data-month="apr">
+                  <div class="chart-tooltip">$235,100</div>
+                  <div class="bar-fill" style="height: 62%;"></div>
+                  <span class="bar-month-label">Apr</span>
+                </div>
+                <div class="chart-bar-col" data-month="may">
+                  <div class="chart-tooltip">$248,900</div>
+                  <div class="bar-fill" style="height: 66%;"></div>
+                  <span class="bar-month-label">May</span>
+                </div>
+                <div class="chart-bar-col" data-month="jun">
+                  <div class="chart-tooltip">$271,400</div>
+                  <div class="bar-fill" style="height: 72%;"></div>
+                  <span class="bar-month-label">Jun</span>
+                </div>
+                <div class="chart-bar-col" data-month="jul">
+                  <div class="chart-tooltip">$289,650</div>
+                  <div class="bar-fill" style="height: 76%;"></div>
+                  <span class="bar-month-label">Jul</span>
+                </div>
+                <div class="chart-bar-col" data-month="aug">
+                  <div class="chart-tooltip">$301,200</div>
+                  <div class="bar-fill" style="height: 80%;"></div>
+                  <span class="bar-month-label">Aug</span>
+                </div>
+                <div class="chart-bar-col" data-month="sep">
+                  <div class="chart-tooltip">$318,450</div>
+                  <div class="bar-fill" style="height: 84%;"></div>
+                  <span class="bar-month-label">Sep</span>
+                </div>
+                <div class="chart-bar-col" data-month="oct">
+                  <div class="chart-tooltip">$332,100</div>
+                  <div class="bar-fill" style="height: 88%;"></div>
+                  <span class="bar-month-label">Oct</span>
+                </div>
+                <div class="chart-bar-col highlighted" data-month="nov">
+                  <div class="chart-tooltip">$348,720</div>
+                  <div class="bar-fill" style="height: 94%;"></div>
+                  <span class="bar-month-label">Nov</span>
+                </div>
+                <div class="chart-bar-col" data-month="dec">
+                  <div class="chart-tooltip">$365,400</div>
+                  <div class="bar-fill" style="height: 98%;"></div>
+                  <span class="bar-month-label">Dec</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stack Breakdown Bottom Row -->
+            <div class="dash-allocations-row">
+              <div class="allocation-item">
+                <span class="alloc-dot" style="background-color: var(--accent-terracotta);"></span>
+                <span class="alloc-label">Web Applications:</span>
+                <span class="alloc-pct">42%</span>
+              </div>
+              <div class="allocation-item">
+                <span class="alloc-dot" style="background-color: #38BDF8;"></span>
+                <span class="alloc-label">Custom Software:</span>
+                <span class="alloc-pct">31%</span>
+              </div>
+              <div class="allocation-item">
+                <span class="alloc-dot" style="background-color: #818CF8;"></span>
+                <span class="alloc-label">Cloud Systems:</span>
+                <span class="alloc-pct">18%</span>
+              </div>
+              <div class="allocation-item">
+                <span class="alloc-dot" style="background-color: #34D399;"></span>
+                <span class="alloc-label">AI Automation:</span>
+                <span class="alloc-pct">9%</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      </div><!-- /.dashboard-scroll-target -->
+
+    </div><!-- /#hero-stage -->
+
+    <!-- Apple-Style Floating Scroll Prompt -->
+    <div class="hero-scroll-prompt" id="hero-scroll-prompt" aria-hidden="true">
+      <div class="scroll-mouse-pill">
+        <span class="scroll-wheel-dot"></span>
+      </div>
+      <span class="scroll-prompt-label">Scroll to reveal</span>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+       SECTION 2: CORE ENGINEERING SERVICES (Next-Gen Agency Flagship)
+       ========================================================================== -->
+  <section class="synex-services-section" id="services">
+    <div class="services-container">
+      
+      <div class="section-badge-header">
+        <span class="section-eyebrow">
+          <span class="section-eyebrow-dot"></span>
+          Engineering Capabilities
+        </span>
+        <h2 class="section-title">Architecting Next-Generation Digital Flagships</h2>
+        <p class="section-subtitle">
+          We combine cutting-edge front-end aesthetics with battle-tested cloud architectures to build software that scales effortlessly.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service Card 1 -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="service-name">Bespoke Web Applications</h3>
+          <p class="service-desc">
+            Ultra-responsive, accessible, and cinematic web experiences built with React 19, Next.js, and bespoke design systems.
+          </p>
+          <ul class="service-highlights">
+            <li>Sub-200ms TTFB worldwide</li>
+            <li>Lighthouse 100/100 performance score</li>
+            <li>Rich WebGL & GSAP micro-interactions</li>
+          </ul>
+        </div>
+
+        <!-- Service Card 2 -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h3 class="service-name">Custom Software & APIs</h3>
+          <p class="service-desc">
+            Tailored enterprise software, mission-critical SaaS platforms, and distributed APIs designed for high throughput and uptime.
+          </p>
+          <ul class="service-highlights">
+            <li>Event-driven microservices architecture</li>
+            <li>Resilient GraphQL & REST gateways</li>
+            <li>Real-time WebSockets & telemetry</li>
+          </ul>
+        </div>
+
+        <!-- Service Card 3 -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+            </svg>
+          </div>
+          <h3 class="service-name">Cloud Systems & DevOps</h3>
+          <p class="service-desc">
+            Autonomous multi-cloud deployments, automated testing suites, and container orchestration with zero-downtime rollouts.
+          </p>
+          <ul class="service-highlights">
+            <li>Kubernetes & Terraform orchestration</li>
+            <li>Automated CI/CD pipelines with GitHub Actions</li>
+            <li>Enterprise-grade SOC2 security compliance</li>
+          </ul>
+        </div>
+
+        <!-- Service Card 4 -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="service-name">AI Agent Integration</h3>
+          <p class="service-desc">
+            Intelligent workflow automation, fine-tuned domain LLM agents, and semantic search integration engineered for real business ROI.
+          </p>
+          <ul class="service-highlights">
+            <li>Retrieval-Augmented Generation (RAG)</li>
+            <li>Autonomous background reasoning pipelines</li>
+            <li>Human-in-the-loop audit dashboards</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: TECH STACK SHOWCASE
+       ========================================================================== -->
+  <section class="synex-stack-section" id="stack">
+    <div class="stack-container">
+      <div class="stack-header">
+        <span class="section-eyebrow">
+          <span class="section-eyebrow-dot"></span>
+          Modern Tech Stack
+        </span>
+        <h2 class="section-title">Built with the World's Best Engineering Standards</h2>
+      </div>
+
+      <div class="stack-pills-wrap">
+        <div class="stack-pill"><span class="stack-pill-dot"></span>Next.js 15</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>React 19</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>TypeScript</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>Node.js</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>Python</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>Go</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>PostgreSQL</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>Redis</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>Docker</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>Kubernetes</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>GSAP & Three.js</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>AWS & Cloudflare</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4: CALL TO ACTION FOOTER BANNER
+       ========================================================================== -->
+  <footer class="synex-footer" id="contact">
+    <div class="footer-container">
+      <div class="footer-cta-card">
+        <div class="footer-cta-glow" aria-hidden="true"></div>
+        <span class="footer-eyebrow">Initiate Consultation</span>
+        <h2 class="footer-headline">Have a project in mind?<br>Let's build something remarkable.</h2>
+        <p class="footer-subtext">Partner with an elite engineering studio dedicated to quality, speed, and design precision.</p>
+        <a href="#hero-cta-form" class="footer-cta-btn">
+          Start a Conversation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div class="footer-brand">
+          <span class="footer-logo">RItiverse<span class="logo-accent-dot"></span></span>
+          <span class="footer-copy">© 2026 RItiverse Studio. All rights reserved.</span>
+        </div>
+        <div class="footer-status-pill">
+          <span class="footer-status-dot"></span>
+          All Systems Operational • 99.99% Uptime
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP & ScrollTrigger Libraries for Apple/Antigravity Style Reveal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Interactive JavaScript Logic -->
+  <script src="synex.js"></script>
+</body>
+</html>

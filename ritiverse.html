@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- RItiverse Design System Stylesheet -->
-  <link rel="stylesheet" href="synex.css">
+  <link rel="stylesheet" href="ritiverse.css">
 </head>
 <body>
 
@@ -55,123 +55,96 @@
 
     <!-- Fullscreen Menu Top Navigation Bar -->
     <div class="fs-menu-header">
-      <a href="#" class="synex-brand fs-brand" aria-label="RItiverse Home">
-        <img src="assets/logo.png" alt="RItiverse Logo" class="synex-brand-logo" />
-        <span class="synex-brand-name">RItiverse<span class="logo-accent-dot"></span></span>
-      </a>
-      <button class="fs-close-btn" id="fs-close-btn" aria-label="Close Navigation Menu">
-        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
+      <div class="synex-nav-left">
+        <a href="#" class="synex-brand" aria-label="RiTiVerse Home">
+          <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
+          <span class="synex-brand-name">RiTiVerse</span>
+        </a>
+      </div>
+      <div class="synex-nav-right">
+        <button class="fs-close-btn" id="fs-close-btn" aria-label="Close Navigation Menu">
+          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <!-- Fullscreen Menu Content Grid -->
+    <!-- Fullscreen Menu Content -->
     <div class="fs-menu-container">
-      <div class="fs-menu-columns">
-
-        <!-- Column 1: Featured Work Card (Left Side) -->
-        <div class="fs-featured-col">
-          <div class="fs-featured-eyebrow">
-            <svg class="fs-spark" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
-            </svg>
-            Featured Work
+      <div class="fs-nav-main-col">
+        <div class="fs-nav-links-grid">
+          <!-- Navigation Column 1 -->
+          <div class="fs-links-group">
+            <ul class="fs-nav-list">
+              <li class="fs-nav-item">
+                <a href="#synex-hero" class="fs-nav-link">
+                  <span class="nav-text">Home</span>
+                  <span class="nav-arrow">↗</span>
+                </a>
+              </li>
+              <li class="fs-nav-item">
+                <a href="#services" class="fs-nav-link">
+                  <span class="nav-text">Services</span>
+                  <span class="nav-arrow">↗</span>
+                </a>
+              </li>
+              <li class="fs-nav-item">
+                <a href="#contact" class="fs-nav-link">
+                  <span class="nav-text">Contact</span>
+                  <span class="nav-arrow">↗</span>
+                </a>
+              </li>
+            </ul>
           </div>
 
-          <a href="#services" class="fs-featured-card">
-            <div class="fs-featured-img-wrap">
-              <img src="assets/featured-work.jpg" alt="Featured Platform Launch - Nexus AI" class="fs-featured-img" />
-              <span class="fs-featured-tag">Flagship 2026</span>
-            </div>
-            <div class="fs-featured-details">
-              <h3 class="fs-featured-title">Nexus AI — Enterprise Platform Launch</h3>
-              <p class="fs-featured-desc">Autonomous enterprise intelligence, sub-200ms latency, and high-velocity workflows.</p>
-              <div class="fs-featured-clients">
-                <span class="fs-client-pill">NEXT.JS 15</span>
-                <span class="fs-client-pill">THREE.JS</span>
-                <span class="fs-client-pill">ENTERPRISE CLOUD</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Columns 2 & 3: Main Navigation Links + Meta Footer (Right Side) -->
-        <div class="fs-nav-main-col">
-          <div class="fs-nav-links-grid">
-            <!-- Navigation Column 1 -->
-            <div class="fs-links-group">
-              <ul class="fs-nav-list">
-                <li class="fs-nav-item">
-                  <a href="#synex-hero" class="fs-nav-link">
-                    <span class="nav-text">Home</span>
-                    <span class="nav-arrow">↗</span>
-                  </a>
-                </li>
-                <li class="fs-nav-item">
-                  <a href="#services" class="fs-nav-link">
-                    <span class="nav-text">Services</span>
-                    <span class="nav-arrow">↗</span>
-                  </a>
-                </li>
-                <li class="fs-nav-item">
-                  <a href="#contact" class="fs-nav-link">
-                    <span class="nav-text">Contact</span>
-                    <span class="nav-arrow">↗</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Navigation Column 2 -->
-            <div class="fs-links-group">
-              <ul class="fs-nav-list">
-                <li class="fs-nav-item">
-                  <a href="#services" class="fs-nav-link">
-                    <span class="nav-text">About</span>
-                    <span class="nav-arrow">↗</span>
-                  </a>
-                </li>
-                <li class="fs-nav-item">
-                  <a href="#dashboard-scroll-target" class="fs-nav-link">
-                    <span class="nav-text">Projects</span>
-                    <span class="nav-arrow">↗</span>
-                  </a>
-                </li>
-                <li class="fs-nav-item">
-                  <a href="#contact" class="fs-nav-link">
-                    <span class="nav-text">Pricing</span>
-                    <span class="nav-arrow">↗</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Menu Footer: Social Follow & Direct Contact Info -->
-          <div class="fs-menu-footer">
-            <div class="fs-meta-block">
-              <span class="fs-meta-label">FOLLOW</span>
-              <div class="fs-social-links">
-                <a href="https://linkedin.com" target="_blank" rel="noopener" class="fs-social-link">LinkedIn</a>
-                <a href="https://twitter.com" target="_blank" rel="noopener" class="fs-social-link">X (Twitter)</a>
-                <a href="https://github.com" target="_blank" rel="noopener" class="fs-social-link">GitHub</a>
-                <a href="https://instagram.com" target="_blank" rel="noopener" class="fs-social-link">Instagram</a>
-              </div>
-            </div>
-
-            <div class="fs-meta-block">
-              <span class="fs-meta-label">CONTACT</span>
-              <div class="fs-contact-info">
-                <a href="mailto:contact@ritiverse.com" class="fs-contact-email">contact@ritiverse.com</a>
-                <span class="fs-contact-address">17 Kingsway Avenue, London, UK</span>
-                <span class="fs-contact-phone">+44 20 8654 3927</span>
-              </div>
-            </div>
+          <!-- Navigation Column 2 -->
+          <div class="fs-links-group">
+            <ul class="fs-nav-list">
+              <li class="fs-nav-item">
+                <a href="#services" class="fs-nav-link">
+                  <span class="nav-text">About</span>
+                  <span class="nav-arrow">↗</span>
+                </a>
+              </li>
+              <li class="fs-nav-item">
+                <a href="#dashboard-scroll-target" class="fs-nav-link">
+                  <span class="nav-text">Projects</span>
+                  <span class="nav-arrow">↗</span>
+                </a>
+              </li>
+              <li class="fs-nav-item">
+                <a href="#contact" class="fs-nav-link">
+                  <span class="nav-text">Pricing</span>
+                  <span class="nav-arrow">↗</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
+        <!-- Menu Footer: Social Follow & Direct Contact Info -->
+        <div class="fs-menu-footer">
+          <div class="fs-meta-block">
+            <span class="fs-meta-label">FOLLOW</span>
+            <div class="fs-social-links">
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="fs-social-link">LinkedIn</a>
+              <a href="https://twitter.com" target="_blank" rel="noopener" class="fs-social-link">X (Twitter)</a>
+              <a href="https://github.com" target="_blank" rel="noopener" class="fs-social-link">GitHub</a>
+              <a href="https://instagram.com" target="_blank" rel="noopener" class="fs-social-link">Instagram</a>
+            </div>
+          </div>
+
+          <div class="fs-meta-block">
+            <span class="fs-meta-label">CONTACT</span>
+            <div class="fs-contact-info">
+              <a href="mailto:contact@ritiverse.com" class="fs-contact-email">contact@ritiverse.com</a>
+              <span class="fs-contact-address">17 Kingsway Avenue, London, UK</span>
+              <span class="fs-contact-phone">+44 20 8654 3927</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -191,7 +164,7 @@
         <span class="title-accent">You Control It.</span>
       </h1>
       <p class="hero-description">
-        Bespoke websites and custom software engineered with zero vendor lock-in, 100% source ownership, and total architectural freedom.
+        Custom-built websites and software with full source ownership, so your technology never depends on us
       </p>
 
       <!-- Interactive Email Capture Capsule -->
@@ -721,6 +694,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- Interactive JavaScript Logic -->
-  <script src="synex.js"></script>
+  <script src="ritiverse.js"></script>
 </body>
 </html>
