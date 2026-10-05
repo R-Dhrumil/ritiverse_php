@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMouseParallax();
   initEmailCapture();
   initSidebarNav();
+  initHeroRotator();
   initMotionWave();
 });
 
@@ -730,3 +731,39 @@ function initFloatingNavScroll() {
     }
   }, { passive: true });
 }
+
+/* ==========================================================================
+   10. Kinetic 3D Hero Tagline Rotator
+   ========================================================================== */
+function initHeroRotator() {
+  const rotator = document.getElementById('hero-rotator');
+  if (!rotator) return;
+
+  const items = Array.from(rotator.querySelectorAll('.rotator-item'));
+  if (items.length <= 1) return;
+
+  let currentIndex = 0;
+  const intervalTime = 2800; // Switch dynamic phrase every 2.8 seconds
+
+  setInterval(() => {
+    const currentItem = items[currentIndex];
+    const nextIndex = (currentIndex + 1) % items.length;
+    const nextItem = items[nextIndex];
+
+    // Smooth 3D exit of current word
+    currentItem.classList.remove('is-active');
+    currentItem.classList.add('is-exiting');
+
+    // Smooth 3D entrance of next word
+    nextItem.classList.remove('is-exiting');
+    nextItem.classList.add('is-active');
+
+    // Clean up exiting class after transition completes
+    setTimeout(() => {
+      currentItem.classList.remove('is-exiting');
+    }, 700);
+
+    currentIndex = nextIndex;
+  }, intervalTime);
+}
+
