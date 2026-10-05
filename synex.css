@@ -768,8 +768,10 @@ body {
 }
 
 .hero-title .title-accent {
-  color: #1E293B;
-  font-weight: 500;
+  background: linear-gradient(135deg, var(--accent-terracotta) 0%, #B84724 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
 }
 
 .hero-description {
