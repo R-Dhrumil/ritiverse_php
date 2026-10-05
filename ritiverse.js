@@ -38,7 +38,7 @@ function initNumberCounter() {
   function updateCount(currentTime) {
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
-    
+
     // Ease Out Quart for ultra-smooth deceleration
     const easeOut = 1 - Math.pow(1 - progress, 4);
     const currentVal = targetAmount * easeOut;
@@ -588,26 +588,26 @@ function initFullscreenNav() {
         duration: 0.35,
         ease: 'power2.out'
       })
-      .to(gridCrosses, {
-        opacity: 1,
-        scale: 1,
-        stagger: 0.05,
-        duration: 0.4,
-        ease: 'back.out(1.5)'
-      }, '-=0.2')
-      .to(navItems, {
-        opacity: 1,
-        y: 0,
-        stagger: 0.06,
-        duration: 0.5,
-        ease: 'power3.out'
-      }, '-=0.3')
-      .to(menuFooter, {
-        opacity: 1,
-        y: 0,
-        duration: 0.4,
-        ease: 'power2.out'
-      }, '-=0.35');
+        .to(gridCrosses, {
+          opacity: 1,
+          scale: 1,
+          stagger: 0.05,
+          duration: 0.4,
+          ease: 'back.out(1.5)'
+        }, '-=0.2')
+        .to(navItems, {
+          opacity: 1,
+          y: 0,
+          stagger: 0.06,
+          duration: 0.5,
+          ease: 'power3.out'
+        }, '-=0.3')
+        .to(menuFooter, {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          ease: 'power2.out'
+        }, '-=0.35');
     }
   }
 
@@ -636,11 +636,11 @@ function initFullscreenNav() {
         duration: 0.2,
         ease: 'power2.in'
       })
-      .to(fsMenu, {
-        opacity: 0,
-        duration: 0.25,
-        ease: 'power2.in'
-      }, '-=0.1');
+        .to(fsMenu, {
+          opacity: 0,
+          duration: 0.25,
+          ease: 'power2.in'
+        }, '-=0.1');
     } else {
       fsMenu.classList.remove('is-open');
       document.body.style.overflow = '';

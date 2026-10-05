@@ -7,8 +7,9 @@
   /* Surface & Canvas System */
   --bg-page: #F8F9FA;
   --bg-surface: #FFFFFF;
-  --bg-dark-nav: #0D0E12; /* Zinc-950 Off-Black (No pure #000000) */
-  
+  --bg-dark-nav: #0D0E12;
+  /* Zinc-950 Off-Black (No pure #000000) */
+
   /* Calibrated Terracotta Accent (Desaturated Luxury Tone, Saturation ~68%) */
   --accent-terracotta: #D95D39;
   --accent-terracotta-hover: #C34F2C;
@@ -39,7 +40,7 @@
   --text-muted-light: #64748B;
 
   /* Shadows (Refined Diffused Softness, No Neon Glows) */
-  --shadow-console: 
+  --shadow-console:
     0 35px 80px -25px rgba(15, 23, 42, 0.28),
     0 15px 35px -10px rgba(0, 0, 0, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -55,7 +56,9 @@
 /* ==========================================================================
    CSS RESET & BASE
    ========================================================================== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -128,7 +131,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 8px 20px 8px 14px;
   border-radius: 9999px;
-  box-shadow: 
+  box-shadow:
     0 10px 30px -5px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -138,7 +141,7 @@ body {
   background: rgba(18, 19, 24, 0.94);
   border-color: rgba(217, 93, 57, 0.45);
   transform: translateY(-2px);
-  box-shadow: 
+  box-shadow:
     0 14px 34px -4px rgba(0, 0, 0, 0.38),
     0 0 20px rgba(217, 93, 57, 0.22);
 }
@@ -200,7 +203,7 @@ body {
   align-items: center;
   justify-content: center;
   outline: none;
-  box-shadow: 
+  box-shadow:
     0 10px 30px -5px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -210,7 +213,7 @@ body {
   background: rgba(18, 19, 24, 0.94);
   border-color: rgba(217, 93, 57, 0.45);
   transform: translateY(-2px);
-  box-shadow: 
+  box-shadow:
     0 14px 34px -4px rgba(0, 0, 0, 0.38),
     0 0 20px rgba(217, 93, 57, 0.22);
 }
@@ -331,10 +334,25 @@ body {
   user-select: none;
 }
 
-.fs-grid-cross.cross-1 { top: 90px; left: 25%; }
-.fs-grid-cross.cross-2 { top: 90px; right: 25%; }
-.fs-grid-cross.cross-3 { bottom: 120px; left: 25%; }
-.fs-grid-cross.cross-4 { bottom: 120px; right: 25%; }
+.fs-grid-cross.cross-1 {
+  top: 90px;
+  left: 25%;
+}
+
+.fs-grid-cross.cross-2 {
+  top: 90px;
+  right: 25%;
+}
+
+.fs-grid-cross.cross-3 {
+  bottom: 120px;
+  left: 25%;
+}
+
+.fs-grid-cross.cross-4 {
+  bottom: 120px;
+  right: 25%;
+}
 
 .fs-ambient-glow {
   position: absolute;
@@ -381,7 +399,7 @@ body {
   justify-content: center;
   cursor: pointer;
   outline: none;
-  box-shadow: 
+  box-shadow:
     0 10px 30px -5px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -392,7 +410,7 @@ body {
   border-color: rgba(217, 93, 57, 0.45);
   color: var(--accent-terracotta);
   transform: rotate(90deg) scale(1.04);
-  box-shadow: 
+  box-shadow:
     0 14px 34px -4px rgba(0, 0, 0, 0.38),
     0 0 20px rgba(217, 93, 57, 0.22);
 }
@@ -545,7 +563,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: 
+  background:
     radial-gradient(ellipse 70% 40% at 50% -5%, rgba(217, 93, 57, 0.05), rgba(248, 249, 250, 0) 70%),
     radial-gradient(ellipse 90% 50% at 50% 25%, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0) 75%),
     linear-gradient(180deg, #F8F9FA 0%, #EFF1F5 100%);
@@ -897,9 +915,20 @@ body {
 }
 
 @keyframes scrollWheelBounce {
-  0% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(6px); opacity: 0.2; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(6px);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* 1px Refraction Border on Top */
@@ -1516,6 +1545,7 @@ body {
     opacity: 0;
     transform: translateY(14px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -1528,10 +1558,12 @@ body {
     transform: translateY(60px) scale(0.88);
     filter: blur(6px);
   }
+
   50% {
     opacity: 0.95;
     filter: blur(0px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -1543,16 +1575,20 @@ body {
    RESPONSIVE ADAPTATIONS
    ========================================================================== */
 @media (max-width: 1080px) {
+
   .synex-nav,
   .fs-menu-header {
     padding: 20px 28px;
   }
+
   .fs-menu-container {
     padding: 40px 28px 60px;
   }
+
   .fs-grid-overlay {
     grid-template-columns: 1fr 1fr;
   }
+
   .synex-dashboard-window {
     height: auto;
     min-height: 520px;
@@ -1560,52 +1596,66 @@ body {
 }
 
 @media (max-width: 768px) {
+
   .synex-nav,
   .fs-menu-header {
     padding: 16px 20px;
     height: auto;
   }
+
   .synex-brand {
     padding: 9px 16px;
   }
+
   .synex-brand-name {
     font-size: 17px;
   }
+
   .synex-menu-trigger {
     padding: 10px 14px;
   }
+
   .fs-close-btn {
     width: 40px;
     height: 40px;
   }
+
   .fs-menu-container {
     padding: 24px 20px 48px;
   }
+
   .fs-nav-links-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
   .fs-nav-link {
     font-size: clamp(2.2rem, 8.5vw, 3rem);
   }
+
   .fs-menu-footer {
     grid-template-columns: 1fr;
     gap: 28px;
     margin-top: 36px;
     padding-top: 24px;
   }
+
   .dash-sidebar {
     display: none;
   }
+
   .synex-dashboard-window {
     border-radius: 14px;
   }
+
   .dash-submetrics-row {
     grid-template-columns: 1fr;
   }
+
   .hero-tech-tags {
     flex-wrap: wrap;
   }
+
   .hero-rotator-wrapper {
     height: 1.3em;
   }
@@ -1615,6 +1665,7 @@ body {
   .hero-title {
     font-size: clamp(28px, 8.5vw, 36px);
   }
+
   .hero-rotator-wrapper {
     height: 1.35em;
   }
@@ -1969,11 +2020,13 @@ body {
   .services-grid {
     grid-template-columns: 1fr;
   }
+
   .footer-bottom-row {
     flex-direction: column;
     gap: 16px;
     text-align: center;
   }
+
   .footer-brand {
     flex-direction: column;
     gap: 8px;
