@@ -340,7 +340,7 @@ function initEmailCapture() {
         </svg>
         Consultation Booked
       `;
-      btn.style.backgroundColor = '#2563EB';
+      btn.style.background = 'linear-gradient(135deg, #10B981 0%, #059669 100%)';
 
       if (msg) {
         msg.textContent = 'Engineering team notified. We will reply within 24 hours.';
@@ -524,9 +524,11 @@ function initMotionWave() {
 
       if (alpha > 0.015) {
         const r = Math.max(0.4, size * scale);
-        // Subtle dual-tone particles: deep slate with cobalt accent on the crest
-        if (Math.abs(v - 0.08) < 0.12 && i % 4 === 0) {
-          ctx.fillStyle = `rgba(37, 99, 235, ${(alpha * 0.65).toFixed(3)})`;
+        // Tri-tone brand particles matching the owl logo: Azure Blue on the crest, Flame Orange highlights, and deep slate base
+        if (Math.abs(v - 0.08) < 0.12 && i % 6 === 0) {
+          ctx.fillStyle = `rgba(0, 140, 216, ${(alpha * 0.75).toFixed(3)})`;
+        } else if (Math.abs(v - 0.18) < 0.14 && i % 7 === 0) {
+          ctx.fillStyle = `rgba(248, 104, 0, ${(alpha * 0.75).toFixed(3)})`;
         } else {
           ctx.fillStyle = `rgba(30, 41, 59, ${(alpha * 0.55).toFixed(3)})`;
         }

@@ -1,6 +1,6 @@
 /* ==========================================================================
    RITIVERSE — BESPOKE WEBSITE & SOFTWARE DEVELOPMENT
-   Refined Architectural Design System (Calibrated Terracotta Palette)
+   Architectural Design System (Calibrated to assets/logo.png Brand Palette)
    ========================================================================== */
 
 :root {
@@ -8,25 +8,71 @@
   --bg-page: #F8F9FA;
   --bg-surface: #FFFFFF;
   --bg-dark-nav: #0D0E12;
-  /* Zinc-950 Off-Black (No pure #000000) */
+  /* Zinc-950 Off-Black */
 
-  /* Refined Modern Studio Palette (Zero Vibrant Orange, Zero Neon Glows) */
-  --accent-primary: #2563EB;
-  --accent-primary-hover: #1D4ED8;
-  --accent-primary-muted: #3B82F6;
-  --accent-primary-subtle: rgba(37, 99, 235, 0.08);
-  --accent-primary-border: rgba(37, 99, 235, 0.20);
-  --accent-primary-shadow: rgba(15, 23, 42, 0.08);
+  /* ========================================================================
+     RiTiVerse Owl Brand Color Palette (Extracted directly from assets/logo.png)
+     ======================================================================== */
+  /* 1. Flame Orange (Primary Dynamic Accent - Owl Chest & Feather Crest) */
+  --brand-orange: #F86800;
+  --brand-orange-hover: #E05A00;
+  --brand-orange-muted: #FB923C;
+  --brand-orange-subtle: rgba(248, 104, 0, 0.08);
+  --brand-orange-border: rgba(248, 104, 0, 0.24);
+  --brand-orange-shadow: rgba(248, 104, 0, 0.32);
+  --brand-orange-glow: rgba(248, 104, 0, 0.45);
 
-  /* Legacy Aliases (Eliminates orange completely across all components) */
-  --accent-terracotta: var(--accent-primary);
-  --accent-terracotta-hover: var(--accent-primary-hover);
-  --accent-terracotta-muted: var(--accent-primary-muted);
-  --accent-terracotta-subtle: var(--accent-primary-subtle);
-  --accent-terracotta-border: var(--accent-primary-border);
-  --accent-terracotta-shadow: var(--accent-primary-shadow);
+  /* 2. Azure / Electric Sky Blue (Secondary Tech Accent - Owl Wings & Flight) */
+  --brand-blue: #008CD8;
+  --brand-blue-hover: #0077BC;
+  --brand-blue-muted: #38BDF8;
+  --brand-blue-subtle: rgba(0, 140, 216, 0.08);
+  --brand-blue-border: rgba(0, 140, 216, 0.24);
+  --brand-blue-shadow: rgba(0, 140, 216, 0.32);
+  --brand-blue-glow: rgba(0, 140, 216, 0.45);
 
-  /* Secondary Functional Neutrals */
+  /* 3. Crimson / Ruby Fire Red (Tertiary Accent - Owl Tail & Claws) */
+  --brand-red: #C80000;
+  --brand-red-hover: #A50000;
+  --brand-red-muted: #F87171;
+  --brand-red-subtle: rgba(200, 0, 0, 0.08);
+  --brand-red-border: rgba(200, 0, 0, 0.24);
+  --brand-red-shadow: rgba(200, 0, 0, 0.30);
+
+  /* Primary Accent Token */
+  --accent-primary: var(--brand-orange);
+  --accent-primary-hover: var(--brand-orange-hover);
+  --accent-primary-muted: var(--brand-orange-muted);
+  --accent-primary-subtle: var(--brand-orange-subtle);
+  --accent-primary-border: var(--brand-orange-border);
+  --accent-primary-shadow: var(--brand-orange-shadow);
+
+  /* Secondary & Tertiary Tokens */
+  --accent-secondary: var(--brand-blue);
+  --accent-secondary-hover: var(--brand-blue-hover);
+  --accent-secondary-muted: var(--brand-blue-muted);
+  --accent-secondary-subtle: var(--brand-blue-subtle);
+  --accent-secondary-border: var(--brand-blue-border);
+
+  --accent-tertiary: var(--brand-red);
+  --accent-tertiary-hover: var(--brand-red-hover);
+
+  /* Full Compatibility & Semantic Aliases */
+  --accent-terracotta: var(--brand-orange);
+  --accent-terracotta-hover: var(--brand-orange-hover);
+  --accent-terracotta-muted: var(--brand-orange-muted);
+  --accent-terracotta-subtle: var(--brand-orange-subtle);
+  --accent-terracotta-border: var(--brand-orange-border);
+  --accent-terracotta-shadow: var(--brand-orange-shadow);
+
+  /* Brand Signature Gradients (Direct 1:1 match with logo.png) */
+  --gradient-logo: linear-gradient(135deg, #008CD8 0%, #F86800 50%, #C80000 100%);
+  --gradient-flame: linear-gradient(135deg, #F86800 0%, #C80000 100%);
+  --gradient-flame-hover: linear-gradient(135deg, #FF7814 0%, #D80404 100%);
+  --gradient-blue: linear-gradient(135deg, #00A6FB 0%, #008CD8 60%, #006AB5 100%);
+  --gradient-hero-text: linear-gradient(135deg, #008CD8 0%, #F86800 52%, #C80000 100%);
+
+  /* Functional Neutrals */
   --accent-slate: #64748B;
   --accent-emerald: #10B981;
   --accent-indigo: #6366F1;
@@ -47,12 +93,13 @@
   --text-secondary-light: #94A3B8;
   --text-muted-light: #64748B;
 
-  /* Shadows (Refined Diffused Softness, No Neon Glows) */
+  /* Shadows (Calibrated Softness & Flame Glows) */
   --shadow-console:
     0 35px 80px -25px rgba(15, 23, 42, 0.28),
     0 15px 35px -10px rgba(0, 0, 0, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  --shadow-btn: 0 2px 10px var(--accent-terracotta-shadow);
+  --shadow-btn: 0 4px 18px var(--brand-orange-shadow);
+  --shadow-btn-hover: 0 8px 26px var(--brand-orange-shadow);
   --shadow-input: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
 
   /* Typography Stacks */
@@ -185,15 +232,16 @@ body {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--accent-primary);
+  background: var(--gradient-flame);
   display: inline-block;
   margin-left: 3px;
-  box-shadow: none;
-  transition: transform 0.3s ease;
+  box-shadow: 0 0 8px rgba(248, 104, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .synex-brand:hover .logo-accent-dot {
-  transform: scale(1.2);
+  transform: scale(1.3);
+  box-shadow: 0 0 12px rgba(248, 104, 0, 0.9);
 }
 
 /* 3-Line Animated Floating Hamburger Trigger Button */
@@ -260,9 +308,9 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--accent-terracotta);
+  background-color: var(--brand-orange);
   margin-left: 5px;
-  box-shadow: 0 0 8px rgba(217, 93, 57, 0.85);
+  box-shadow: 0 0 8px rgba(248, 104, 0, 0.85);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
 }
 
@@ -282,7 +330,7 @@ body {
 
 .synex-menu-trigger:hover .hamburger-dot {
   transform: scale(1.3);
-  box-shadow: 0 0 14px rgba(217, 93, 57, 1);
+  box-shadow: 0 0 14px rgba(248, 104, 0, 1);
 }
 
 .synex-menu-trigger:hover .hamburger-line.line-3 {
@@ -364,7 +412,7 @@ body {
   right: -100px;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(217, 93, 57, 0.08) 0%, rgba(13, 14, 18, 0) 70%);
+  background: radial-gradient(circle, rgba(248, 104, 0, 0.12) 0%, rgba(0, 140, 216, 0.08) 45%, rgba(13, 14, 18, 0) 70%);
   pointer-events: none;
 }
 
@@ -411,12 +459,12 @@ body {
 
 .fs-close-btn:hover {
   background: rgba(18, 19, 24, 0.94);
-  border-color: rgba(217, 93, 57, 0.45);
-  color: var(--accent-terracotta);
+  border-color: rgba(248, 104, 0, 0.45);
+  color: var(--brand-orange);
   transform: rotate(90deg) scale(1.04);
   box-shadow:
     0 14px 34px -4px rgba(0, 0, 0, 0.38),
-    0 0 20px rgba(217, 93, 57, 0.22);
+    0 0 20px rgba(248, 104, 0, 0.25);
 }
 
 .fs-close-btn:active {
@@ -568,7 +616,7 @@ body {
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(ellipse 70% 40% at 50% -5%, rgba(217, 93, 57, 0.05), rgba(248, 249, 250, 0) 70%),
+    radial-gradient(ellipse 70% 40% at 50% -5%, rgba(248, 104, 0, 0.05), rgba(0, 140, 216, 0.03) 40%, rgba(248, 249, 250, 0) 70%),
     radial-gradient(ellipse 90% 50% at 50% 25%, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0) 75%),
     linear-gradient(180deg, #F8F9FA 0%, #EFF1F5 100%);
   overflow: hidden;
@@ -621,9 +669,9 @@ body {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent-terracotta);
-  background: var(--accent-terracotta-subtle);
-  border: 1px solid var(--accent-terracotta-border);
+  color: var(--brand-orange);
+  background: var(--brand-orange-subtle);
+  border: 1px solid var(--brand-orange-border);
   padding: 5px 13px;
   border-radius: 999px;
   margin-bottom: 22px;
@@ -635,7 +683,7 @@ body {
 .eyebrow-spark {
   width: 11px;
   height: 11px;
-  fill: var(--accent-terracotta);
+  fill: var(--brand-orange);
 }
 
 .hero-title {
@@ -681,7 +729,7 @@ body {
   width: 100%;
   text-align: center;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--accent-terracotta) 0%, #B84724 100%);
+  background: var(--gradient-hero-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   opacity: 0;
@@ -735,8 +783,8 @@ body {
 }
 
 .hero-cta-form:focus-within {
-  border-color: var(--accent-terracotta);
-  box-shadow: 0 8px 24px -4px var(--accent-terracotta-shadow), 0 0 0 3px var(--accent-terracotta-subtle);
+  border-color: var(--brand-orange);
+  box-shadow: 0 8px 24px -4px var(--brand-orange-shadow), 0 0 0 3px var(--brand-orange-subtle);
 }
 
 .hero-cta-input {
@@ -755,26 +803,27 @@ body {
 }
 
 .hero-cta-btn {
-  background-color: var(--accent-terracotta);
+  background: var(--gradient-flame);
   color: #FFFFFF;
   border: none;
   border-radius: 9999px;
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
-  padding: 10px 20px;
+  padding: 10px 22px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 7px;
   box-shadow: var(--shadow-btn);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
 }
 
 .hero-cta-btn:hover {
-  background-color: var(--accent-terracotta-hover);
-  transform: translateY(-1px);
+  background: var(--gradient-flame-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-btn-hover);
 }
 
 .hero-cta-btn:active {
@@ -798,7 +847,7 @@ body {
   transform: translateX(-50%);
   font-size: 12px;
   font-weight: 600;
-  color: var(--accent-terracotta);
+  color: var(--brand-orange);
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -832,7 +881,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--accent-terracotta);
+  background: var(--brand-orange);
 }
 
 /* ==========================================================================
@@ -913,7 +962,7 @@ body {
 .scroll-wheel-dot {
   width: 3px;
   height: 4px;
-  background: var(--accent-terracotta);
+  background: var(--brand-orange);
   border-radius: 2px;
   position: absolute;
   top: 3px;
@@ -937,16 +986,16 @@ body {
   }
 }
 
-/* 1px Refraction Border on Top */
+/* 1.5px Laser Refraction Border on Top (Azure Blue -> Flame Orange -> Crimson Red) */
 .synex-dashboard-window::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--accent-terracotta) 50%, transparent 100%);
-  opacity: 0.7;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, var(--brand-blue) 25%, var(--brand-orange) 50%, var(--brand-red) 75%, transparent 100%);
+  opacity: 0.85;
   z-index: 20;
 }
 
@@ -1684,7 +1733,7 @@ body {
 .synex-services-section {
   position: relative;
   background:
-    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(217, 93, 57, 0.05), rgba(248, 249, 250, 0) 70%),
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(248, 104, 0, 0.04), rgba(0, 140, 216, 0.02) 40%, rgba(248, 249, 250, 0) 70%),
     radial-gradient(ellipse 90% 50% at 50% 30%, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0) 75%),
     linear-gradient(180deg, #F8F9FA 0%, #EFF1F5 100%);
   color: #0F172A;
@@ -1713,9 +1762,9 @@ body {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent-terracotta);
-  background: rgba(217, 93, 57, 0.08);
-  border: 1px solid var(--accent-terracotta-border);
+  color: var(--brand-orange);
+  background: var(--brand-orange-subtle);
+  border: 1px solid var(--brand-orange-border);
   padding: 5px 14px;
   border-radius: 9999px;
   margin-bottom: 20px;
@@ -1725,8 +1774,8 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--accent-terracotta);
-  box-shadow: 0 0 6px rgba(217, 93, 57, 0.6);
+  background-color: var(--brand-orange);
+  box-shadow: 0 0 6px rgba(248, 104, 0, 0.6);
 }
 
 .section-title {
@@ -1763,9 +1812,9 @@ body {
 }
 
 .why-card:hover {
-  border-color: var(--accent-terracotta-border);
+  border-color: var(--brand-orange-border);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.12), 0 0 25px -5px rgba(217, 93, 57, 0.12);
+  box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.12), 0 0 25px -5px rgba(248, 104, 0, 0.15);
 }
 
 .why-card::before {
@@ -1774,8 +1823,8 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent-terracotta), transparent);
+  height: 2.5px;
+  background: linear-gradient(90deg, #008CD8 0%, #F86800 50%, #C80000 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -1791,8 +1840,9 @@ body {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent-terracotta);
-  background: rgba(217, 93, 57, 0.08);
+  color: var(--brand-orange);
+  background: var(--brand-orange-subtle);
+  border: 1px solid var(--brand-orange-border);
   padding: 3px 9px;
   border-radius: 4px;
   margin-bottom: 12px;
@@ -1802,8 +1852,8 @@ body {
   width: 46px;
   height: 46px;
   border-radius: 12px;
-  background: rgba(217, 93, 57, 0.08);
-  border: 1px solid rgba(217, 93, 57, 0.2);
+  background: var(--brand-orange-subtle);
+  border: 1px solid var(--brand-orange-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1945,18 +1995,18 @@ body {
 }
 
 .stack-pill:hover {
-  border-color: var(--accent-terracotta);
+  border-color: var(--brand-orange);
   background: #FFFFFF;
   transform: translateY(-2px);
-  color: var(--accent-terracotta);
-  box-shadow: 0 6px 16px rgba(217, 93, 57, 0.15);
+  color: var(--brand-orange);
+  box-shadow: 0 6px 16px rgba(248, 104, 0, 0.15);
 }
 
 .stack-pill-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent-terracotta);
+  background: var(--brand-orange);
 }
 
 /* ==========================================================================
@@ -1976,14 +2026,15 @@ body {
 
 .footer-cta-card {
   position: relative;
-  background: radial-gradient(circle at 50% 0%, rgba(217, 93, 57, 0.15) 0%, rgba(18, 19, 24, 0.95) 75%);
-  border: 1px solid rgba(217, 93, 57, 0.25);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(248, 104, 0, 0.16) 0%, rgba(0, 140, 216, 0.06) 40%, rgba(18, 19, 24, 0.95) 75%);
+  border: 1px solid rgba(248, 104, 0, 0.25);
   border-radius: 24px;
   padding: 72px 36px;
   text-align: center;
   overflow: hidden;
   margin-bottom: 72px;
-  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), 0 0 40px -10px rgba(248, 104, 0, 0.15);
 }
 
 .footer-eyebrow {
@@ -1993,7 +2044,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent-terracotta);
+  color: var(--brand-orange);
   margin-bottom: 16px;
 }
 
@@ -2018,7 +2069,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: var(--accent-terracotta);
+  background: var(--gradient-flame);
   color: #FFFFFF;
   text-decoration: none;
   font-size: 13px;
@@ -2027,12 +2078,13 @@ body {
   padding: 12px 28px;
   border-radius: 9999px;
   box-shadow: var(--shadow-btn);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .footer-cta-btn:hover {
-  background-color: var(--accent-terracotta-hover);
+  background: var(--gradient-flame-hover);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-btn-hover);
 }
 
 .footer-cta-btn svg {
@@ -2111,7 +2163,7 @@ body {
 .subpage-hero {
   position: relative;
   padding: 150px 24px 80px;
-  background: radial-gradient(circle at 50% 0%, rgba(217, 93, 57, 0.08) 0%, transparent 60%), #0A0B0E;
+  background: radial-gradient(circle at 50% 0%, rgba(248, 104, 0, 0.09) 0%, rgba(0, 140, 216, 0.04) 40%, transparent 65%), #0A0B0E;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   text-align: center;
   overflow: hidden;
@@ -2128,15 +2180,15 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(217, 93, 57, 0.1);
-  border: 1px solid var(--accent-terracotta-border);
+  background: var(--brand-orange-subtle);
+  border: 1px solid var(--brand-orange-border);
   padding: 6px 14px;
   border-radius: 999px;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent-terracotta-muted);
+  color: var(--brand-orange-muted);
   margin-bottom: 24px;
 }
 
@@ -2144,8 +2196,8 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent-terracotta);
-  box-shadow: 0 0 8px var(--accent-terracotta);
+  background: var(--brand-orange);
+  box-shadow: 0 0 8px var(--brand-orange);
 }
 
 .subpage-title {
@@ -2159,7 +2211,7 @@ body {
 }
 
 .subpage-title .accent-text {
-  color: var(--accent-terracotta);
+  color: var(--brand-orange);
 }
 
 .subpage-subtitle {
@@ -2182,7 +2234,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--accent-terracotta);
+  background: var(--gradient-flame);
   color: #FFFFFF;
   padding: 13px 26px;
   border-radius: 999px;
@@ -2190,15 +2242,15 @@ body {
   font-weight: 600;
   text-decoration: none;
   transition: all 0.22s ease;
-  box-shadow: 0 2px 14px var(--accent-terracotta-shadow);
+  box-shadow: var(--shadow-btn);
   border: none;
   cursor: pointer;
 }
 
 .btn-primary:hover {
-  background: var(--accent-terracotta-hover);
+  background: var(--gradient-flame-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--accent-terracotta-shadow);
+  box-shadow: var(--shadow-btn-hover);
 }
 
 .btn-secondary {
@@ -2409,8 +2461,8 @@ body {
 }
 
 .matrix-table th.col-ritiverse {
-  color: var(--accent-terracotta);
-  background: rgba(217, 93, 57, 0.04);
+  color: var(--brand-orange);
+  background: var(--brand-orange-subtle);
 }
 
 .matrix-table th.col-trad {
@@ -2425,7 +2477,7 @@ body {
 }
 
 .matrix-table td.col-ritiverse {
-  background: rgba(217, 93, 57, 0.04);
+  background: var(--brand-orange-subtle);
   color: #FFFFFF;
   font-weight: 600;
 }
@@ -2708,8 +2760,8 @@ body {
 }
 
 .form-input-control:focus {
-  border-color: var(--accent-terracotta);
-  box-shadow: 0 0 0 3px rgba(217, 93, 57, 0.15);
+  border-color: var(--brand-orange);
+  box-shadow: 0 0 0 3px var(--brand-orange-border);
 }
 
 .form-input-control::placeholder {
@@ -2736,9 +2788,9 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(217, 93, 57, 0.1);
-  border: 1px solid var(--accent-terracotta-border);
-  color: var(--accent-terracotta-muted);
+  background: var(--brand-orange-subtle);
+  border: 1px solid var(--brand-orange-border);
+  color: var(--brand-orange-muted);
   display: flex;
   align-items: center;
   justify-content: center;
