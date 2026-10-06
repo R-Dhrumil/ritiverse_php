@@ -4798,20 +4798,20 @@ body {
 }
 
 /* ==========================================================================
-   DRIBBLLE-INSPIRED SPECIALIZED SERVICES SECTION
+   DRIBBLLE-INSPIRED SPECIALIZED SERVICES SECTION (LIGHT THEME)
    (RiTiVerse Architectural Design System — Azure Blue & Flame Orange Palette)
    ========================================================================== */
 .dribbble-services-section {
   position: relative;
-  background: #0B131E;
+  background: #F8FAFC;
   background-image: 
-    radial-gradient(circle at 18% 18%, rgba(0, 140, 216, 0.22) 0%, transparent 48%),
-    radial-gradient(circle at 82% 65%, rgba(248, 104, 0, 0.14) 0%, transparent 48%),
-    radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, #070C12 100%);
+    radial-gradient(circle at 18% 18%, rgba(0, 140, 216, 0.08) 0%, transparent 48%),
+    radial-gradient(circle at 82% 65%, rgba(248, 104, 0, 0.05) 0%, transparent 48%),
+    radial-gradient(circle at 50% 50%, #FFFFFF 0%, #F8FAFC 100%);
   padding: 120px 24px 140px;
-  color: #FFFFFF;
+  color: #0F172A;
   overflow: hidden;
-  border-bottom: 1px solid rgba(0, 140, 216, 0.16);
+  border-bottom: 1px solid rgba(0, 140, 216, 0.12);
 }
 
 .dribbble-services-container {
@@ -4848,7 +4848,7 @@ body {
   height: 7px;
   border-radius: 50%;
   background: var(--brand-blue);
-  box-shadow: 0 0 10px var(--brand-blue);
+  box-shadow: 0 0 10px rgba(0, 140, 216, 0.45);
   animation: pulseDot 2s infinite;
 }
 
@@ -4856,14 +4856,14 @@ body {
   font-family: var(--font-display);
   font-size: clamp(38px, 5vw, 56px);
   font-weight: 800;
-  color: #FFFFFF;
+  color: #0F172A;
   line-height: 1.12;
   letter-spacing: -0.025em;
   margin: 0;
 }
 
 .dribbble-accent-text {
-  background: linear-gradient(135deg, #008CD8 0%, #38BDF8 50%, #F86800 100%);
+  background: linear-gradient(135deg, #008CD8 0%, #0284C7 50%, #F86800 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -4871,7 +4871,7 @@ body {
 .dribbble-header-desc {
   font-size: 16px;
   line-height: 1.7;
-  color: #94A3B8;
+  color: #475569;
   margin: 0;
   max-width: 480px;
 }
@@ -4891,7 +4891,7 @@ body {
 }
 
 .dribbble-service-item {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid #E2E8F0;
   padding: 34px 0;
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -4899,7 +4899,7 @@ body {
 }
 
 .dribbble-service-item:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .dribbble-item-row {
@@ -4922,7 +4922,7 @@ body {
   font-family: var(--font-display);
   font-size: clamp(26px, 3.2vw, 40px);
   font-weight: 600;
-  color: #475569;
+  color: #64748B;
   line-height: 1.2;
   margin: 0;
   transition: color 0.35s ease, transform 0.35s ease;
@@ -4941,7 +4941,7 @@ body {
 .dribbble-item-desc {
   font-size: 14.5px;
   line-height: 1.65;
-  color: #94A3B8;
+  color: #475569;
   max-width: 520px;
   margin: 0;
   max-height: 0;
@@ -4959,24 +4959,27 @@ body {
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.18);
-  color: rgba(255, 255, 255, 0.45);
+  border: 1.5px solid #CBD5E1;
+  background: #FFFFFF;
+  color: #64748B;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 /* Hover state on inactive item */
 .dribbble-service-item:hover .dribbble-item-title {
-  color: rgba(255, 255, 255, 0.85);
+  color: #0F172A;
 }
 
 .dribbble-service-item:hover .dribbble-item-arrow {
   border-color: var(--brand-blue);
   color: var(--brand-blue);
   transform: translateX(4px);
+  box-shadow: 0 4px 14px rgba(0, 140, 216, 0.18);
 }
 
 /* ACTIVE ITEM: Like 'UI/UX Design .' in screenshot */
@@ -4985,13 +4988,13 @@ body {
 }
 
 .dribbble-service-item.is-active .dribbble-item-title {
-  color: #FFFFFF;
+  color: #0F172A;
   font-weight: 700;
 }
 
 .dribbble-service-item.is-active .dribbble-title-dot {
   opacity: 1;
-  text-shadow: 0 0 10px rgba(248, 104, 0, 0.8);
+  text-shadow: 0 0 10px rgba(248, 104, 0, 0.5);
 }
 
 .dribbble-service-item.is-active .dribbble-item-desc {
@@ -4999,13 +5002,14 @@ body {
   opacity: 1;
   transform: translateY(0);
   margin-top: 10px;
+  color: #334155;
 }
 
 .dribbble-service-item.is-active .dribbble-item-arrow {
   background: var(--brand-blue);
   border-color: var(--brand-blue);
   color: #FFFFFF;
-  box-shadow: 0 0 20px rgba(0, 140, 216, 0.45);
+  box-shadow: 0 6px 20px rgba(0, 140, 216, 0.35);
   transform: rotate(-45deg);
 }
 
@@ -5041,10 +5045,11 @@ body {
 .dribbble-mockup-window {
   background: #FFFFFF;
   border-radius: 22px;
+  border: 1px solid rgba(0, 140, 216, 0.16);
   box-shadow: 
-    0 30px 70px -15px rgba(0, 0, 0, 0.65),
-    0 0 0 1px rgba(255, 255, 255, 0.15),
-    0 0 40px -10px rgba(0, 140, 216, 0.25);
+    0 25px 60px -15px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.04),
+    0 10px 30px -10px rgba(0, 140, 216, 0.18);
   overflow: visible;
   position: relative;
 }
