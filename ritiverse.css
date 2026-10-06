@@ -2013,15 +2013,18 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 28px 24px 24px;
+  padding: 36px 26px 26px;
   z-index: 5;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none;
   transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  background: linear-gradient(180deg, transparent 0%, rgba(2, 6, 23, 0.35) 20%, rgba(2, 6, 23, 0.86) 55%, rgba(2, 6, 23, 0.98) 100%);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .accordion-card.is-active .card-expanded-footer {
@@ -2033,99 +2036,108 @@ body {
 
 .footer-meta-top {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  gap: 14px;
-}
-
-.footer-title-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  gap: 12px;
+  margin-bottom: 2px;
 }
 
 .footer-chip {
   font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--brand-orange-muted);
-}
-
-.footer-heading {
-  font-family: var(--font-display);
-  font-size: clamp(19px, 2vw, 24px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: #FFFFFF;
-  line-height: 1.15;
+  color: var(--brand-orange);
+  background: rgba(248, 104, 0, 0.14);
+  border: 1px solid rgba(248, 104, 0, 0.3);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  display: inline-block;
 }
 
 .footer-stat-pill {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 12px;
-  padding: 6px 12px;
+  padding: 6px 14px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .stat-big {
   font-family: var(--font-mono);
-  font-size: 17px;
-  font-weight: 800;
+  font-size: 19px;
+  font-weight: 900;
   color: #FFFFFF;
   line-height: 1;
 }
 
 .stat-unit {
   font-size: 9px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.12em;
-  color: var(--brand-orange-muted);
+  color: #38BDF8;
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
-.footer-summary {
-  font-size: 13px;
-  line-height: 1.5;
-  color: #E2E8F0;
-  max-width: 480px;
+/* BIG POWERFUL DISPLAY TITLE */
+.footer-power-title {
+  font-family: var(--font-display);
+  font-size: clamp(23px, 2.5vw, 31px);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 4px 0 0 0;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.8);
 }
 
-/* Bullet list with brand orange dots (Matching Image 2 data) */
-.footer-points-list {
-  list-style: none;
-  padding: 0;
-  margin: 4px 0 0;
+/* Service Category Subtitle */
+.footer-power-sub {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(226, 232, 240, 0.82);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0 0 4px 0;
+}
+
+/* Power Badges Row */
+.footer-power-tags {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.footer-points-list li {
-  display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
-  font-size: 12.5px;
-  font-weight: 500;
-  color: #CBD5E1;
-  line-height: 1.4;
+  margin-top: 6px;
 }
 
-.point-bullet {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: var(--brand-orange);
-  box-shadow: 0 0 8px rgba(248, 104, 0, 0.8);
-  flex-shrink: 0;
+.power-tag {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.power-tag:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px);
 }
 
 .footer-tags-row {
@@ -3935,128 +3947,70 @@ body {
   margin: 0 auto;
 }
 
-/* Laser Scanner Beam Rail */
-.process-laser-track {
-  position: relative;
-  width: 100%;
-  height: 4px;
-  background: rgba(0, 140, 216, 0.12);
-  border-radius: 9999px;
-  margin-bottom: 24px;
-  overflow: visible;
-}
-
-.process-laser-beam {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 25%;
-  background: linear-gradient(90deg, transparent 0%, rgba(0, 140, 216, 0.4) 30%, #00f2fe 75%, #ffffff 100%);
-  border-radius: 9999px;
-  box-shadow: 0 0 12px #00f2fe, 0 0 24px rgba(0, 140, 216, 0.85);
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.6s ease;
-  will-change: transform, width;
-}
-
-.laser-head-spark {
-  position: absolute;
-  right: -3px;
-  top: -4px;
-  width: 12px;
-  height: 12px;
-  background: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #00f2fe, 0 0 20px #008cd8, 0 0 30px #ffffff;
-  animation: laserPulse 1.2s ease-in-out infinite alternate;
-}
-
-@keyframes laserPulse {
-  0% { transform: scale(0.85); box-shadow: 0 0 8px #00f2fe, 0 0 16px #008cd8; }
-  100% { transform: scale(1.3); box-shadow: 0 0 14px #00f2fe, 0 0 28px #008cd8, 0 0 40px #ffffff; }
-}
-
 .process-grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  gap: 24px;
   position: relative;
+  margin-top: 48px;
 }
 
 .process-card {
-  background: rgba(248, 250, 252, 0.7);
-  border: 1.5px solid rgba(148, 163, 184, 0.25);
-  border-radius: 22px;
-  padding: 30px 24px 34px;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(226, 232, 240, 0.95);
+  border-radius: 20px;
+  padding: 28px 24px 24px;
   position: relative;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   overflow: hidden;
-  /* Default: grayed out when another card is active */
-  opacity: 0.35;
-  filter: grayscale(85%) contrast(85%);
-  transform: scale(0.97);
-  transition: all 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   outline: none;
+  box-shadow: 0 4px 18px -4px rgba(15, 23, 42, 0.05);
+  opacity: 0.88;
 }
 
 .process-card:hover {
-  opacity: 0.85;
-  filter: grayscale(20%) contrast(95%);
-  transform: scale(0.99);
+  opacity: 1;
+  border-color: rgba(0, 140, 216, 0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px -8px rgba(0, 140, 216, 0.16);
 }
 
-/* Active card: illuminated brightly by the laser */
+/* Active Stage Card: Illuminated and Elevated */
 .process-card.is-laser-active {
-  background: #ffffff;
-  border-color: #008cd8;
   opacity: 1;
-  filter: grayscale(0%) contrast(100%);
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 22px 50px -12px rgba(0, 140, 216, 0.32), 0 0 0 1.5px #008cd8, 0 0 25px rgba(0, 140, 216, 0.16);
+  background: #FFFFFF;
+  border-color: #008CD8;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px -10px rgba(0, 140, 216, 0.28), 0 0 0 1.5px #008CD8;
   z-index: 2;
 }
 
-/* Laser sweep line along the top border */
+/* Top Laser Scanner Line on the Active Card */
 .card-laser-scanner-line {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #008cd8, #00f2fe, #ffffff, #f86800, transparent);
+  height: 3.5px;
+  background: linear-gradient(90deg, #008CD8 0%, #00f2fe 50%, #F86800 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.85);
   pointer-events: none;
 }
 
 .process-card.is-laser-active .card-laser-scanner-line {
   opacity: 1;
-  animation: cardLaserSweep 2s ease-in-out infinite alternate;
+  animation: cardLaserPulse 2.8s linear infinite;
 }
 
-@keyframes cardLaserSweep {
-  0% { transform: translateX(-25%); opacity: 0.7; }
-  100% { transform: translateX(25%); opacity: 1; }
-}
-
-/* Radial Laser Glow inside card */
-.card-laser-glow-radial {
-  position: absolute;
-  top: -25px;
-  left: 15%;
-  right: 15%;
-  height: 50px;
-  background: radial-gradient(ellipse at center, rgba(0, 140, 216, 0.35) 0%, rgba(0, 242, 254, 0.15) 50%, transparent 80%);
-  filter: blur(12px);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.process-card.is-laser-active .card-laser-glow-radial {
-  opacity: 1;
+@keyframes cardLaserPulse {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.35); box-shadow: 0 0 18px rgba(0, 242, 254, 1); }
+  100% { filter: brightness(1); }
 }
 
 /* Card Header (Stage pill & duration tag) */
@@ -4064,25 +4018,27 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 .process-step-num {
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 800;
-  color: var(--brand-orange);
-  background: rgba(248, 104, 0, 0.1);
+  letter-spacing: 0.05em;
+  color: #F86800;
+  background: rgba(248, 104, 0, 0.09);
+  border: 1px solid rgba(248, 104, 0, 0.24);
   padding: 4px 10px;
   border-radius: 9999px;
-  letter-spacing: 0.04em;
   display: inline-block;
   transition: all 0.3s ease;
 }
 
 .process-card.is-laser-active .process-step-num {
   background: rgba(248, 104, 0, 0.16);
-  box-shadow: 0 0 10px rgba(248, 104, 0, 0.25);
+  border-color: rgba(248, 104, 0, 0.45);
+  box-shadow: 0 0 12px rgba(248, 104, 0, 0.2);
 }
 
 .process-duration-tag {
@@ -4090,60 +4046,131 @@ body {
   font-size: 11px;
   font-weight: 700;
   color: #0284C7;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
 }
 
 /* Stage Icon */
 .process-icon-wrap {
-  width: 50px;
-  height: 50px;
-  border-radius: 14px;
-  background: rgba(0, 140, 216, 0.06);
-  border: 1px solid rgba(0, 140, 216, 0.12);
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: rgba(0, 140, 216, 0.07);
+  border: 1px solid rgba(0, 140, 216, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #0284C7;
-  margin-bottom: 20px;
-  transition: all 0.4s ease;
+  margin-bottom: 18px;
+  transition: all 0.35s ease;
 }
 
 .process-card.is-laser-active .process-icon-wrap {
-  background: rgba(0, 140, 216, 0.14);
-  border-color: rgba(0, 140, 216, 0.35);
-  color: var(--brand-blue);
-  box-shadow: 0 4px 14px rgba(0, 140, 216, 0.2);
+  background: linear-gradient(135deg, rgba(0, 140, 216, 0.18) 0%, rgba(0, 242, 254, 0.12) 100%);
+  border-color: #008CD8;
+  color: #008CD8;
+  box-shadow: 0 4px 16px rgba(0, 140, 216, 0.25);
   transform: scale(1.06);
 }
 
-/* Process Tagline Title */
+/* Title & Description */
 .process-title {
   font-family: var(--font-display);
-  font-size: 18.5px;
+  font-size: 18px;
   font-weight: 700;
   color: #0F172A;
-  margin: 0;
+  margin: 0 0 10px;
   line-height: 1.35;
-  transition: color 0.3s ease;
 }
 
-.process-card.is-laser-active .process-title {
+.process-summary {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #64748B;
+  margin: 0 0 18px;
+  flex-grow: 1;
+}
+
+/* Deliverables Pill List */
+.process-mini-deliverables {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 22px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(226, 232, 240, 0.95);
+}
+
+.deliverable-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.deliverable-tag::before {
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  font-size: 9.5px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.process-card.is-laser-active .deliverable-tag {
   color: #0F172A;
+}
+
+/* Bottom Laser Progress Bar */
+.stage-laser-progress {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  background: rgba(226, 232, 240, 0.8);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.stage-laser-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: linear-gradient(90deg, #008CD8, #00f2fe);
+  border-radius: 9999px;
+}
+
+.process-card.is-laser-active .stage-laser-bar {
+  animation: laserFillProgress 2.8s linear forwards;
+  box-shadow: 0 0 10px #00f2fe;
+}
+
+@keyframes laserFillProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
 }
 
 @media (max-width: 992px) {
   .process-grid-4 {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
 @media (max-width: 580px) {
   .process-grid-4 {
     grid-template-columns: 1fr;
-  }
-  .process-laser-track {
-    display: none;
+    gap: 16px;
   }
 }
 

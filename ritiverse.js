@@ -1104,7 +1104,6 @@ function initSmoothAnchorScroll() {
 function initProcessLaser() {
   const processSection = document.getElementById('process');
   const cardsGrid = document.getElementById('processCardsGrid');
-  const laserBeam = document.getElementById('processLaserBeam');
   const cards = document.querySelectorAll('.process-card');
 
   if (!cards.length) return;
@@ -1113,28 +1112,25 @@ function initProcessLaser() {
   let laserTimer = null;
   let isHovered = false;
 
-  function updateLaserPosition(index) {
-    if (!laserBeam || !cardsGrid) return;
-    const card = cards[index];
-    if (!card) return;
-
-    const gridRect = cardsGrid.getBoundingClientRect();
-    const cardRect = card.getBoundingClientRect();
-    const leftOffset = cardRect.left - gridRect.left;
-    const width = cardRect.width;
-
-    laserBeam.style.transform = `translateX(${leftOffset}px)`;
-    laserBeam.style.width = `${width}px`;
-  }
-
   function setActiveStage(index) {
     currentIndex = index;
     cards.forEach((card, idx) => {
       const isActive = idx === index;
       card.classList.toggle('is-laser-active', isActive);
       card.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+
+      // Trigger restart of CSS laser progress animation
+      const bar = card.querySelector('.stage-laser-bar');
+      if (bar) {
+        if (isActive) {
+          bar.style.animation = 'none';
+          void bar.offsetWidth; // trigger DOM reflow to re-trigger CSS keyframe
+          bar.style.animation = '';
+        } else {
+          bar.style.animation = 'none';
+        }
+      }
     });
-    updateLaserPosition(index);
   }
 
   function startCycle() {
@@ -1184,11 +1180,6 @@ function initProcessLaser() {
     });
   }
 
-  // Handle window resizing to keep laser beam aligned
-  window.addEventListener('resize', () => {
-    updateLaserPosition(currentIndex);
-  });
-
   // Start with Card 0 active
   setActiveStage(0);
 
@@ -1198,7 +1189,6 @@ function initProcessLaser() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           startCycle();
-          updateLaserPosition(currentIndex);
         } else {
           stopCycle();
         }
