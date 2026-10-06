@@ -3228,7 +3228,7 @@ body {
 .synex-trust-section {
   position: relative;
   background: linear-gradient(180deg, #FFFFFF 0%, #F0F9FF 50%, #FFFFFF 100%);
-  padding: 80px 24px 90px 24px;
+  padding: 56px 24px 64px 24px;
   border-bottom: 1px solid rgba(0, 140, 216, 0.14);
   overflow: hidden;
 }
@@ -3240,7 +3240,7 @@ body {
 
 .trust-eyebrow-center {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .trust-marquee-label {
@@ -3268,157 +3268,164 @@ body {
   animation: pulse-ring 2s infinite ease-in-out;
 }
 
-/* Logos & Industries Horizontal Ticker */
-.trust-badges-row {
+/* ==========================================================================
+   TECHNOLOGY SLIDING ANIMATION (Infinite Continuous Marquee Ticker)
+   ========================================================================== */
+.tech-slider-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 10px 0;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.tech-slider-track {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: max-content;
+  animation: techMarqueeScroll 28s linear infinite;
+  will-change: transform;
+}
+
+.tech-slider-wrapper:hover .tech-slider-track {
+  animation-play-state: paused;
+}
+
+@keyframes techMarqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.tech-slide-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(0, 140, 216, 0.2);
+  border-radius: 9999px;
+  padding: 9px 20px 9px 12px;
+  box-shadow: 0 4px 18px rgba(0, 140, 216, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  cursor: default;
+  user-select: none;
+}
+
+.tech-slide-card:hover {
+  border-color: var(--brand-orange);
+  background: #FFFFFF;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 28px rgba(248, 104, 0, 0.18);
+}
+
+.tech-icon-pill {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 56px;
-}
-
-.trust-badge-card {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 140, 216, 0.2);
-  border-radius: 9999px;
-  padding: 9px 18px;
-  box-shadow: 0 4px 16px rgba(0, 140, 216, 0.06);
-  transition: all 0.25s ease;
-}
-
-.trust-badge-card:hover {
-  border-color: var(--brand-blue);
-  background: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 140, 216, 0.15);
-}
-
-.trust-badge-icon {
-  width: 18px;
-  height: 18px;
-  color: var(--brand-blue);
-  flex-shrink: 0;
-}
-
-.trust-badge-text {
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 600;
-  color: #1E293B;
-  letter-spacing: -0.01em;
-}
-
-.trust-badge-tag {
   font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+  color: #FFFFFF;
+}
+
+.icon-php {
+  background: #4F5B93;
+  box-shadow: 0 2px 10px rgba(79, 91, 147, 0.4);
+}
+
+.icon-laravel {
+  background: #FF2D20;
+  box-shadow: 0 2px 10px rgba(255, 45, 32, 0.4);
+}
+
+.icon-react {
+  background: #0F172A;
+  color: #00D8FF;
+  box-shadow: 0 2px 10px rgba(0, 216, 255, 0.35);
+}
+
+.icon-express {
+  background: #1E293B;
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(30, 41, 59, 0.35);
+}
+
+.icon-python {
+  background: linear-gradient(135deg, #3776AB 50%, #FFD43B 50%);
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(55, 118, 171, 0.4);
+}
+
+.icon-js {
+  background: #F7DF1E;
+  color: #000000;
+  box-shadow: 0 2px 10px rgba(247, 223, 30, 0.4);
+}
+
+.icon-html {
+  background: #E34F26;
+  box-shadow: 0 2px 10px rgba(227, 79, 38, 0.4);
+}
+
+.icon-css {
+  background: #1572B6;
+  box-shadow: 0 2px 10px rgba(21, 114, 182, 0.4);
+}
+
+.icon-node {
+  background: #339933;
+  box-shadow: 0 2px 10px rgba(51, 153, 51, 0.4);
+}
+
+.icon-mysql {
+  background: #00758F;
+  box-shadow: 0 2px 10px rgba(0, 117, 143, 0.4);
+}
+
+.tech-info-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.tech-name {
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.15;
+}
+
+.tech-sub-role {
   font-size: 10px;
+  font-family: var(--font-mono);
+  color: #64748B;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.tech-badge-tag {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
   font-weight: 700;
   color: var(--brand-orange);
   background: rgba(248, 104, 0, 0.08);
-  padding: 2px 7px;
-  border-radius: 6px;
-}
-
-/* 4-Stat Metric Strip */
-.trust-metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.trust-metric-box {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 140, 216, 0.2);
-  border-radius: 18px;
-  padding: 28px 24px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 10px 30px -5px rgba(0, 140, 216, 0.08);
-}
-
-.trust-metric-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--gradient-flame);
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-}
-
-.trust-metric-box:nth-child(2)::before {
-  background: var(--gradient-blue);
-}
-
-.trust-metric-box:nth-child(3)::before {
-  background: linear-gradient(135deg, #10B981 0%, #008CD8 100%);
-}
-
-.trust-metric-box:nth-child(4)::before {
-  background: var(--gradient-logo);
-}
-
-.trust-metric-box:hover {
-  transform: translateY(-4px);
-  border-color: var(--brand-blue);
-  box-shadow: 0 20px 45px -10px rgba(0, 140, 216, 0.2);
-}
-
-.trust-metric-val {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 3.2vw, 42px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: #0F172A;
-  line-height: 1.1;
-  margin-bottom: 6px;
-  display: flex;
-  align-items: baseline;
-  gap: 3px;
-}
-
-.trust-metric-val .metric-accent {
-  background: var(--gradient-flame);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.trust-metric-lbl {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 700;
-  color: #1E293B;
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
-}
-
-.trust-metric-desc {
-  font-size: 12.5px;
-  line-height: 1.55;
-  color: #64748B;
-  margin: 0;
-}
-
-@media (max-width: 900px) {
-  .trust-metrics-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 540px) {
-  .trust-metrics-grid {
-    grid-template-columns: 1fr;
-  }
+  border: 1px solid rgba(248, 104, 0, 0.2);
+  padding: 3px 8px;
+  border-radius: 9999px;
+  text-transform: uppercase;
 }
 
 /* ==========================================================================
@@ -3928,6 +3935,47 @@ body {
   margin: 0 auto;
 }
 
+/* Laser Scanner Beam Rail */
+.process-laser-track {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 140, 216, 0.12);
+  border-radius: 9999px;
+  margin-bottom: 24px;
+  overflow: visible;
+}
+
+.process-laser-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 25%;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 140, 216, 0.4) 30%, #00f2fe 75%, #ffffff 100%);
+  border-radius: 9999px;
+  box-shadow: 0 0 12px #00f2fe, 0 0 24px rgba(0, 140, 216, 0.85);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.6s ease;
+  will-change: transform, width;
+}
+
+.laser-head-spark {
+  position: absolute;
+  right: -3px;
+  top: -4px;
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00f2fe, 0 0 20px #008cd8, 0 0 30px #ffffff;
+  animation: laserPulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes laserPulse {
+  0% { transform: scale(0.85); box-shadow: 0 0 8px #00f2fe, 0 0 16px #008cd8; }
+  100% { transform: scale(1.3); box-shadow: 0 0 14px #00f2fe, 0 0 28px #008cd8, 0 0 40px #ffffff; }
+}
+
 .process-grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -3936,84 +3984,152 @@ body {
 }
 
 .process-card {
-  background: rgba(240, 249, 255, 0.4);
-  border: 1.5px solid rgba(0, 140, 216, 0.2);
-  border-radius: 20px;
-  padding: 32px 24px;
+  background: rgba(248, 250, 252, 0.7);
+  border: 1.5px solid rgba(148, 163, 184, 0.25);
+  border-radius: 22px;
+  padding: 30px 24px 34px;
   position: relative;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  overflow: hidden;
+  /* Default: grayed out when another card is active */
+  opacity: 0.35;
+  filter: grayscale(85%) contrast(85%);
+  transform: scale(0.97);
+  transition: all 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+  outline: none;
 }
 
 .process-card:hover {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: var(--brand-blue);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 45px -10px rgba(0, 140, 216, 0.18);
+  opacity: 0.85;
+  filter: grayscale(20%) contrast(95%);
+  transform: scale(0.99);
+}
+
+/* Active card: illuminated brightly by the laser */
+.process-card.is-laser-active {
+  background: #ffffff;
+  border-color: #008cd8;
+  opacity: 1;
+  filter: grayscale(0%) contrast(100%);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 22px 50px -12px rgba(0, 140, 216, 0.32), 0 0 0 1.5px #008cd8, 0 0 25px rgba(0, 140, 216, 0.16);
+  z-index: 2;
+}
+
+/* Laser sweep line along the top border */
+.card-laser-scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #008cd8, #00f2fe, #ffffff, #f86800, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.process-card.is-laser-active .card-laser-scanner-line {
+  opacity: 1;
+  animation: cardLaserSweep 2s ease-in-out infinite alternate;
+}
+
+@keyframes cardLaserSweep {
+  0% { transform: translateX(-25%); opacity: 0.7; }
+  100% { transform: translateX(25%); opacity: 1; }
+}
+
+/* Radial Laser Glow inside card */
+.card-laser-glow-radial {
+  position: absolute;
+  top: -25px;
+  left: 15%;
+  right: 15%;
+  height: 50px;
+  background: radial-gradient(ellipse at center, rgba(0, 140, 216, 0.35) 0%, rgba(0, 242, 254, 0.15) 50%, transparent 80%);
+  filter: blur(12px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.process-card.is-laser-active .card-laser-glow-radial {
+  opacity: 1;
+}
+
+/* Card Header (Stage pill & duration tag) */
+.process-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
 }
 
 .process-step-num {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 800;
   color: var(--brand-orange);
   background: rgba(248, 104, 0, 0.1);
   padding: 4px 10px;
   border-radius: 9999px;
+  letter-spacing: 0.04em;
   display: inline-block;
-  align-self: flex-start;
-  margin-bottom: 18px;
+  transition: all 0.3s ease;
+}
+
+.process-card.is-laser-active .process-step-num {
+  background: rgba(248, 104, 0, 0.16);
+  box-shadow: 0 0 10px rgba(248, 104, 0, 0.25);
 }
 
 .process-duration-tag {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   color: #0284C7;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  letter-spacing: 0.04em;
 }
 
-.process-title {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 700;
-  color: #0F172A;
-  margin-bottom: 12px;
-  line-height: 1.3;
-}
-
-.process-body-text {
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: #475569;
-  margin-bottom: 18px;
-  flex: 1;
-}
-
-.process-deliverables-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  border-top: 1px solid rgba(0, 140, 216, 0.12);
-  padding-top: 14px;
-}
-
-.process-deliverables-list li {
-  font-size: 12px;
-  color: #334155;
+/* Stage Icon */
+.process-icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: rgba(0, 140, 216, 0.06);
+  border: 1px solid rgba(0, 140, 216, 0.12);
   display: flex;
   align-items: center;
-  gap: 7px;
+  justify-content: center;
+  color: #0284C7;
+  margin-bottom: 20px;
+  transition: all 0.4s ease;
 }
 
-.p-check {
-  color: #10B981;
-  font-weight: bold;
+.process-card.is-laser-active .process-icon-wrap {
+  background: rgba(0, 140, 216, 0.14);
+  border-color: rgba(0, 140, 216, 0.35);
+  color: var(--brand-blue);
+  box-shadow: 0 4px 14px rgba(0, 140, 216, 0.2);
+  transform: scale(1.06);
+}
+
+/* Process Tagline Title */
+.process-title {
+  font-family: var(--font-display);
+  font-size: 18.5px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+  line-height: 1.35;
+  transition: color 0.3s ease;
+}
+
+.process-card.is-laser-active .process-title {
+  color: #0F172A;
 }
 
 @media (max-width: 992px) {
@@ -4025,6 +4141,9 @@ body {
 @media (max-width: 580px) {
   .process-grid-4 {
     grid-template-columns: 1fr;
+  }
+  .process-laser-track {
+    display: none;
   }
 }
 
@@ -4284,6 +4403,251 @@ body {
 
 .faq-answer-body p {
   margin: 0;
+}
+
+/* ==========================================================================
+   DUAL INTERSECTING MARQUEE CTA RIBBONS (From Reference Video)
+   ========================================================================== */
+.ribbon-marquee-section {
+  position: relative;
+  background: #000000;
+  padding: 100px 0 110px 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+.ribbon-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ribbon-track-link {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  position: absolute;
+  width: 140%;
+  left: -20%;
+  white-space: nowrap;
+  user-select: none;
+  transition: filter 0.3s ease;
+}
+
+/* Bottom Ribbon: Slanted at +2.8deg */
+.ribbon-bottom {
+  top: 75px;
+  transform: rotate(2.8deg);
+  z-index: 1;
+}
+
+.ribbon-bottom:hover {
+  filter: brightness(1.2);
+}
+
+/* Top Ribbon: Slanted at -4.5deg, overlapping over bottom ribbon */
+.ribbon-top {
+  top: 35px;
+  transform: rotate(-4.5deg);
+  z-index: 2;
+  background: #000000;
+  padding: 16px 0;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.95), 0 -4px 20px rgba(0, 0, 0, 0.8);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.16);
+}
+
+.ribbon-top:hover {
+  filter: brightness(1.25);
+}
+
+.ribbon-strip-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Continuous Marquee Animations */
+.track-forward {
+  animation: ribbonMarqueeLeft 28s linear infinite;
+}
+
+.track-reverse {
+  animation: ribbonMarqueeRight 32s linear infinite;
+}
+
+.ribbon-track-link:hover .ribbon-strip-track {
+  animation-play-state: paused;
+}
+
+@keyframes ribbonMarqueeLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes ribbonMarqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* --- Bottom Ribbon Pills Styling (CONTACT US) --- */
+.ribbon-pills-group {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding-right: 26px;
+}
+
+.ribbon-pill-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 13px 42px;
+  border-radius: 9999px;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.ribbon-pill-item.pill-solid {
+  background: #ffffff;
+  color: #000000;
+}
+
+.ribbon-pill-item.pill-outline {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+}
+
+/* --- Top Ribbon Big Words Styling (GET IN TOUCH ✻) --- */
+.ribbon-words-group {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  padding-right: 36px;
+}
+
+.ribbon-word-item {
+  font-family: var(--font-display);
+  font-size: 60px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.ribbon-word-item.word-solid {
+  color: #ffffff;
+}
+
+.ribbon-word-item.word-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px #ffffff;
+}
+
+.ribbon-star-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.ribbon-star-icon svg {
+  width: 100%;
+  height: 100%;
+  animation: ribbonStarSpin 10s linear infinite;
+}
+
+@keyframes ribbonStarSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+  .ribbon-marquee-section {
+    padding: 80px 0;
+  }
+  .ribbon-marquee-wrapper {
+    height: 200px;
+  }
+  .ribbon-word-item {
+    font-size: 44px;
+    -webkit-text-stroke-width: 1.8px;
+  }
+  .ribbon-pill-item {
+    font-size: 19px;
+    padding: 10px 32px;
+  }
+  .ribbon-star-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .ribbon-bottom {
+    top: 55px;
+  }
+  .ribbon-top {
+    top: 25px;
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .ribbon-marquee-section {
+    padding: 60px 0;
+  }
+  .ribbon-marquee-wrapper {
+    height: 160px;
+  }
+  .ribbon-word-item {
+    font-size: 32px;
+    -webkit-text-stroke-width: 1.4px;
+  }
+  .ribbon-words-group {
+    gap: 22px;
+    padding-right: 22px;
+  }
+  .ribbon-pills-group {
+    gap: 16px;
+    padding-right: 16px;
+  }
+  .ribbon-pill-item {
+    font-size: 15px;
+    padding: 8px 22px;
+  }
+  .ribbon-star-icon {
+    width: 18px;
+    height: 18px;
+  }
+  .ribbon-bottom {
+    top: 45px;
+  }
+  .ribbon-top {
+    top: 20px;
+    padding: 8px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track-forward,
+  .track-reverse,
+  .ribbon-star-icon svg {
+    animation: none;
+  }
 }
 
 /* ==========================================================================

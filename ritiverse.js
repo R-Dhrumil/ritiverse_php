@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeadingTypewriter();
   initFaqAccordion();
   initSmoothAnchorScroll();
+  initProcessLaser();
 });
 
 /* ==========================================================================
@@ -1096,5 +1097,119 @@ function initSmoothAnchorScroll() {
     });
   });
 }
+
+/* ==========================================================================
+   DELIVERY LIFECYCLE: LASER SCANNER & ACTIVE CARD ROTATION
+   ========================================================================== */
+function initProcessLaser() {
+  const processSection = document.getElementById('process');
+  const cardsGrid = document.getElementById('processCardsGrid');
+  const laserBeam = document.getElementById('processLaserBeam');
+  const cards = document.querySelectorAll('.process-card');
+
+  if (!cards.length) return;
+
+  let currentIndex = 0;
+  let laserTimer = null;
+  let isHovered = false;
+
+  function updateLaserPosition(index) {
+    if (!laserBeam || !cardsGrid) return;
+    const card = cards[index];
+    if (!card) return;
+
+    const gridRect = cardsGrid.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const leftOffset = cardRect.left - gridRect.left;
+    const width = cardRect.width;
+
+    laserBeam.style.transform = `translateX(${leftOffset}px)`;
+    laserBeam.style.width = `${width}px`;
+  }
+
+  function setActiveStage(index) {
+    currentIndex = index;
+    cards.forEach((card, idx) => {
+      const isActive = idx === index;
+      card.classList.toggle('is-laser-active', isActive);
+      card.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+    });
+    updateLaserPosition(index);
+  }
+
+  function startCycle() {
+    stopCycle();
+    laserTimer = setInterval(() => {
+      if (!isHovered) {
+        currentIndex = (currentIndex + 1) % cards.length;
+        setActiveStage(currentIndex);
+      }
+    }, 2800);
+  }
+
+  function stopCycle() {
+    if (laserTimer) {
+      clearInterval(laserTimer);
+      laserTimer = null;
+    }
+  }
+
+  // Interactive mouse / keyboard events
+  cards.forEach((card, idx) => {
+    card.addEventListener('mouseenter', () => {
+      isHovered = true;
+      setActiveStage(idx);
+    });
+
+    card.addEventListener('click', () => {
+      setActiveStage(idx);
+    });
+
+    card.addEventListener('focus', () => {
+      isHovered = true;
+      setActiveStage(idx);
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setActiveStage(idx);
+      }
+    });
+  });
+
+  if (cardsGrid) {
+    cardsGrid.addEventListener('mouseleave', () => {
+      isHovered = false;
+    });
+  }
+
+  // Handle window resizing to keep laser beam aligned
+  window.addEventListener('resize', () => {
+    updateLaserPosition(currentIndex);
+  });
+
+  // Start with Card 0 active
+  setActiveStage(0);
+
+  // IntersectionObserver to only animate when in viewport
+  if ('IntersectionObserver' in window && processSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startCycle();
+          updateLaserPosition(currentIndex);
+        } else {
+          stopCycle();
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(processSection);
+  } else {
+    startCycle();
+  }
+}
+
 
 

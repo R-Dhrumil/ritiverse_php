@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services & Capabilities — RiTiVerse Elite Engineering</title>
   <meta name="description"
-    content="Explore RiTiVerse engineering services: bespoke web applications, distributed APIs, cloud DevOps, and AI automation—all delivered with 100% full source ownership.">
+    content="Explore RiTiVerse engineering services: bespoke web applications, custom software & APIs, website hosting & maintenance, and AI automation—all delivered with 100% full source ownership.">
   <link rel="shortcut icon" href="assets/logo.png" type="image/png">
 
   <!-- Google Fonts: Outfit, Plus Jakarta Sans & JetBrains Mono -->
@@ -292,33 +292,30 @@
         </div>
       </div>
 
-      <!-- Capability 3: Cloud Infrastructure & Autonomous DevOps -->
+      <!-- Capability 3: Website Hosting & Maintenance -->
       <div class="capability-row">
         <div class="capability-content">
-          <span class="subpage-badge">Infrastructure & Cloud</span>
-          <h3>Cloud Systems, Kubernetes & Autonomous CI/CD</h3>
+          <span class="subpage-badge">Hosting & Maintenance</span>
+          <h3>Website Hosting, Server Setup & Ongoing Maintenance</h3>
           <p>
-            Zero downtime. Zero drift. We provision cloud environments as code (Terraform) directly within your AWS,
-            GCP, or Azure tenancy. Your pipelines, automated testing, and secrets stay under your security umbrella.
+            Keep your websites fast, secure, and always accessible. We handle full server setup, SSL configuration,
+            automated daily backups, and ongoing technical maintenance so you can focus entirely on growing your business.
           </p>
           <ul class="capability-feature-list">
             <li>
               <span class="check-icon-circle">✓</span>
-              <span><strong>Infrastructure as Code (IaC):</strong> Deterministic Terraform configurations ensuring your
-                infrastructure can be reproduced or audited in minutes.</span>
+              <span><strong>Server & Domain Setup:</strong> VPS, cloud, and shared hosting configuration with free SSL certificates and custom domain routing.</span>
             </li>
             <li>
               <span class="check-icon-circle">✓</span>
-              <span><strong>Automated GitOps CI/CD:</strong> GitHub Actions and ArgoCD pipelines running unit,
-                integration, and security scans on every pull request.</span>
+              <span><strong>Daily Backups & 99.9% Uptime:</strong> Automated daily website backups, uptime monitoring, and fast disaster recovery.</span>
             </li>
             <li>
               <span class="check-icon-circle">✓</span>
-              <span><strong>SOC2 & Enterprise Security:</strong> End-to-end encryption at rest and in transit, IAM
-                least-privilege policies, and automated vulnerability scanning.</span>
+              <span><strong>Speed Tuning & Security Updates:</strong> Regular PHP/database optimization, security patches, library updates, and speed enhancements.</span>
             </li>
           </ul>
-          <a href="contact.html" class="btn-secondary">Request DevOps Audit →</a>
+          <a href="contact.html" class="btn-secondary">Get Hosting & Maintenance →</a>
         </div>
 
         <div class="arch-card">
@@ -328,23 +325,22 @@
               <span class="term-dot term-yellow"></span>
               <span class="term-dot term-green"></span>
             </div>
-            <span class="arch-card-title">infrastructure.tf</span>
+            <span class="arch-card-title">nginx.conf</span>
           </div>
           <div class="arch-card-body">
-            <pre class="arch-code-block"><code><span class="code-comment"># Terraform Cloud Infrastructure Blueprint</span>
-<span class="code-keyword">resource</span> <span class="code-str">"aws_eks_cluster"</span> <span class="code-str">"client_prod"</span> {
-  <span class="code-prop">name</span>     = <span class="code-str">"ritiverse-prod-cluster"</span>
-  <span class="code-prop">role_arn</span> = aws_iam_role.cluster.arn
+            <pre class="arch-code-block"><code><span class="code-comment"># Optimized Web Server Configuration</span>
+<span class="code-keyword">server</span> {
+  <span class="code-prop">listen</span> 443 ssl http2;
+  <span class="code-prop">server_name</span> <span class="code-str">yourdomain.com www.yourdomain.com</span>;
 
-  <span class="code-keyword">vpc_config</span> {
-    <span class="code-prop">subnet_ids</span>              = aws_subnet.private[*].id
-    <span class="code-prop">endpoint_private_access</span> = <span class="code-keyword">true</span>
-  }
+  <span class="code-comment"># SSL & Fast Compression</span>
+  <span class="code-prop">ssl_certificate</span>     <span class="code-str">/etc/ssl/fullchain.pem</span>;
+  <span class="code-prop">ssl_certificate_key</span> <span class="code-str">/etc/ssl/privkey.pem</span>;
+  <span class="code-prop">gzip</span> on;
 
-  <span class="code-keyword">tags</span> = {
-    <span class="code-prop">Environment</span>   = <span class="code-str">"Production"</span>
-    <span class="code-prop">IP_Ownership</span>  = <span class="code-str">"100% Client Owned"</span>
-    <span class="code-prop">VendorLockIn</span>  = <span class="code-str">"Zero"</span>
+  <span class="code-comment"># PHP & Fast Web Routing</span>
+  <span class="code-keyword">location</span> / {
+    <span class="code-prop">try_files</span> $uri $uri/ /index.php?$query_string;
   }
 }</code></pre>
           </div>
@@ -524,17 +520,16 @@
 
       <!-- Modern Tech Stack Pills -->
       <div class="stack-pills-wrap" style="margin-top: 60px;">
-        <div class="stack-pill"><span class="stack-pill-dot"></span>Next.js 15</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>React 19</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>TypeScript</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>Node.js</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>PHP 8+</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>Laravel</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>React</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>Express.js</div>
         <div class="stack-pill"><span class="stack-pill-dot"></span>Python</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>Go</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>PostgreSQL</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>Redis</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>Docker</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>Kubernetes</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>AWS & Cloudflare</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>JavaScript</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>HTML5 & CSS3</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>Node.js</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>MySQL</div>
+        <div class="stack-pill"><span class="stack-pill-dot"></span>Web Hosting & SSL</div>
       </div>
     </div>
   </section>
