@@ -4799,19 +4799,19 @@ body {
 
 /* ==========================================================================
    DRIBBLLE-INSPIRED SPECIALIZED SERVICES SECTION
-   (Matches Agensip / Muhammad Rifqi Digiboost aesthetic)
+   (RiTiVerse Architectural Design System — Azure Blue & Flame Orange Palette)
    ========================================================================== */
 .dribbble-services-section {
   position: relative;
-  background: #080E15;
+  background: #0B131E;
   background-image: 
-    radial-gradient(circle at 18% 18%, rgba(45, 212, 191, 0.14) 0%, transparent 45%),
-    radial-gradient(circle at 82% 65%, rgba(0, 140, 216, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.8) 0%, #080E15 100%);
+    radial-gradient(circle at 18% 18%, rgba(0, 140, 216, 0.22) 0%, transparent 48%),
+    radial-gradient(circle at 82% 65%, rgba(248, 104, 0, 0.14) 0%, transparent 48%),
+    radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, #070C12 100%);
   padding: 120px 24px 140px;
   color: #FFFFFF;
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 140, 216, 0.16);
 }
 
 .dribbble-services-container {
@@ -4836,7 +4836,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #2DD4BF;
+  color: var(--brand-blue);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -4847,8 +4847,8 @@ body {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #2DD4BF;
-  box-shadow: 0 0 10px #2DD4BF;
+  background: var(--brand-blue);
+  box-shadow: 0 0 10px var(--brand-blue);
   animation: pulseDot 2s infinite;
 }
 
@@ -4863,7 +4863,7 @@ body {
 }
 
 .dribbble-accent-text {
-  background: linear-gradient(135deg, #2DD4BF 0%, #00F2FE 100%);
+  background: linear-gradient(135deg, #008CD8 0%, #38BDF8 50%, #F86800 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -4916,7 +4916,6 @@ body {
 .dribbble-item-header {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
 .dribbble-item-title {
@@ -4932,22 +4931,27 @@ body {
 }
 
 .dribbble-title-dot {
-  color: #2DD4BF;
+  color: var(--brand-orange);
   opacity: 0;
   transition: opacity 0.3s ease;
   margin-left: 2px;
 }
 
+/* Smooth Accordion Slide & Fade (No display:none stutter!) */
 .dribbble-item-desc {
   font-size: 14.5px;
   line-height: 1.65;
   color: #94A3B8;
   max-width: 520px;
   margin: 0;
-  display: none;
+  max-height: 0;
   opacity: 0;
+  overflow: hidden;
   transform: translateY(6px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: max-height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 0.4s ease,
+              transform 0.4s ease,
+              margin-top 0.3s ease;
 }
 
 /* Circle Arrow Button */
@@ -4956,7 +4960,7 @@ body {
   height: 46px;
   border-radius: 50%;
   border: 1.5px solid rgba(255, 255, 255, 0.18);
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4966,12 +4970,12 @@ body {
 
 /* Hover state on inactive item */
 .dribbble-service-item:hover .dribbble-item-title {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .dribbble-service-item:hover .dribbble-item-arrow {
-  border-color: rgba(45, 212, 191, 0.5);
-  color: #2DD4BF;
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
   transform: translateX(4px);
 }
 
@@ -4987,20 +4991,21 @@ body {
 
 .dribbble-service-item.is-active .dribbble-title-dot {
   opacity: 1;
-  text-shadow: 0 0 8px rgba(45, 212, 191, 0.8);
+  text-shadow: 0 0 10px rgba(248, 104, 0, 0.8);
 }
 
 .dribbble-service-item.is-active .dribbble-item-desc {
-  display: block;
+  max-height: 120px;
   opacity: 1;
   transform: translateY(0);
+  margin-top: 10px;
 }
 
 .dribbble-service-item.is-active .dribbble-item-arrow {
-  background: #2DD4BF;
-  border-color: #2DD4BF;
-  color: #080E15;
-  box-shadow: 0 0 20px rgba(45, 212, 191, 0.45);
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: #FFFFFF;
+  box-shadow: 0 0 20px rgba(0, 140, 216, 0.45);
   transform: rotate(-45deg);
 }
 
@@ -5014,21 +5019,20 @@ body {
   justify-content: center;
 }
 
+/* Clean GPU-accelerated card state (Controlled by GSAP without CSS transition fight) */
 .dribbble-preview-card {
   position: absolute;
   width: 100%;
   max-width: 460px;
   opacity: 0;
   visibility: hidden;
-  transform: scale(0.92) translateY(16px);
-  transition: all 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
   pointer-events: none;
+  will-change: transform, opacity;
 }
 
 .dribbble-preview-card.is-visible {
   opacity: 1;
   visibility: visible;
-  transform: scale(1) translateY(0);
   pointer-events: auto;
   z-index: 3;
 }
@@ -5040,7 +5044,7 @@ body {
   box-shadow: 
     0 30px 70px -15px rgba(0, 0, 0, 0.65),
     0 0 0 1px rgba(255, 255, 255, 0.15),
-    0 0 40px -10px rgba(45, 212, 191, 0.25);
+    0 0 40px -10px rgba(0, 140, 216, 0.25);
   overflow: visible;
   position: relative;
 }
@@ -5102,15 +5106,15 @@ body {
 
 /* Central Card Inside Window */
 .mockup-center-card {
-  background: #F0FDFA;
-  border: 1.5px solid rgba(45, 212, 191, 0.4);
+  background: #F0F9FF;
+  border: 1.5px solid rgba(0, 140, 216, 0.28);
   border-radius: 18px;
   padding: 26px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  box-shadow: 0 12px 30px -8px rgba(45, 212, 191, 0.2);
+  box-shadow: 0 12px 30px -8px rgba(0, 140, 216, 0.18);
   width: 80%;
   max-width: 260px;
   transition: transform 0.3s ease;
@@ -5124,7 +5128,8 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 16px;
-  background: rgba(45, 212, 191, 0.16);
+  background: rgba(0, 140, 216, 0.12);
+  color: var(--brand-blue);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5153,8 +5158,9 @@ body {
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
-  color: #0F766E;
-  background: #CCFBF1;
+  color: #0284C7;
+  background: rgba(0, 140, 216, 0.12);
+  border: 1px solid rgba(0, 140, 216, 0.22);
   padding: 4px 10px;
   border-radius: 9999px;
 }
@@ -5172,18 +5178,19 @@ body {
   z-index: 5;
 }
 
-/* Pill Top-Left: Mint avatar / icon badge */
+/* Pill Top-Left: Brand Blue icon badge */
 .pill-top-left {
   top: -16px;
   left: -16px;
   width: 44px;
   height: 44px;
-  background: #2DD4BF;
-  color: #042F2E;
+  background: var(--brand-blue);
+  color: #FFFFFF;
   border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 140, 216, 0.35);
 }
 
-/* Pill Top-Right: Bold [UX] badge */
+/* Pill Top-Right: Bold theme badge (UX, iOS, API, ERP, CRM) */
 .pill-top-right {
   top: -18px;
   right: -18px;
@@ -5191,23 +5198,25 @@ body {
   font-family: var(--font-display);
   font-size: 16px;
   letter-spacing: 0.05em;
-  background: #2DD4BF;
-  color: #042F2E;
+  background: linear-gradient(135deg, #008CD8 0%, #0077BC 100%);
+  color: #FFFFFF;
   border-radius: 14px;
-  box-shadow: 0 14px 30px rgba(45, 212, 191, 0.4);
+  box-shadow: 0 14px 30px rgba(0, 140, 216, 0.4);
   animation-delay: -1s;
 }
 
-/* Pill Bottom-Left: [UI] badge */
+/* Pill Bottom-Left: Flame Orange accent tag pill */
 .pill-bottom-left {
   bottom: -16px;
   left: -16px;
   padding: 10px 18px;
   font-family: var(--font-display);
-  font-size: 14px;
-  letter-spacing: 0.05em;
-  background: #E2E8F0;
-  color: #334155;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: rgba(248, 104, 0, 0.12);
+  border: 1.5px solid rgba(248, 104, 0, 0.35);
+  color: var(--brand-orange);
   border-radius: 12px;
   animation-delay: -2s;
 }
@@ -5238,7 +5247,8 @@ body {
 }
 
 .toggle-track.active {
-  background: #2DD4BF;
+  background: var(--brand-blue);
+  box-shadow: 0 0 10px rgba(0, 140, 216, 0.45);
 }
 
 .toggle-thumb {
