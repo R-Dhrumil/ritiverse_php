@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initSmoothAnchorScroll();
   initProcessLaser();
+  initDribbbleServices();
 });
 
 /* ==========================================================================
@@ -1201,5 +1202,60 @@ function initProcessLaser() {
   }
 }
 
+/* ==========================================================================
+   DRIBBLLE SERVICES SHOWCASE INTERACTIVITY
+   Seamless hover/click tabs for Website Dev, App Dev, Software, ERP, CRM
+   ========================================================================== */
+function initDribbbleServices() {
+  const serviceItems = document.querySelectorAll('.dribbble-service-item');
+  const previewCards = document.querySelectorAll('.dribbble-preview-card');
 
+  if (!serviceItems.length || !previewCards.length) return;
 
+  function activateService(serviceKey) {
+    // 1. Update service list items
+    serviceItems.forEach(item => {
+      const isMatch = item.getAttribute('data-service') === serviceKey;
+      item.classList.toggle('is-active', isMatch);
+      item.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+    });
+
+    // 2. Update preview cards
+    previewCards.forEach(card => {
+      const isMatch = card.getAttribute('data-preview') === serviceKey;
+      if (isMatch) {
+        card.classList.add('is-visible');
+        if (typeof gsap !== 'undefined') {
+          gsap.fromTo(card, 
+            { opacity: 0, scale: 0.94, y: 14 }, 
+            { opacity: 1, scale: 1, y: 0, duration: 0.42, ease: 'power2.out' }
+          );
+        }
+      } else {
+        card.classList.remove('is-visible');
+      }
+    });
+  }
+
+  serviceItems.forEach(item => {
+    const serviceKey = item.getAttribute('data-service');
+
+    // Activate on hover
+    item.addEventListener('mouseenter', () => {
+      activateService(serviceKey);
+    });
+
+    // Activate on click
+    item.addEventListener('click', () => {
+      activateService(serviceKey);
+    });
+
+    // Keyboard accessibility
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activateService(serviceKey);
+      }
+    });
+  });
+}

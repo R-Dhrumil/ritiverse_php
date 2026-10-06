@@ -172,240 +172,392 @@
     </div>
   </main>
 
-  <!-- Deep-Dive Capabilities Section -->
-  <section class="subpage-section">
-    <div class="subpage-container">
+  <!-- ==========================================================================
+       DRIBBLLE-INSPIRED SPECIALIZED SERVICES SHOWCASE
+       Featuring: Website Dev, App Dev, Custom Software, ERP, CRM
+       ========================================================================== -->
+  <section class="dribbble-services-section" id="services-showcase">
+    <div class="dribbble-services-container">
 
-      <!-- Capability 1: Bespoke Web Applications -->
-      <div class="capability-row">
-        <div class="capability-content">
-          <span class="subpage-badge">Frontend Engineering</span>
-          <h3>Bespoke Web Applications & Digital Flagships</h3>
-          <p>
-            We don't assemble commodity templates. We engineer bespoke, fluid web experiences built with Next.js 15,
-            React 19, and custom WebGL/GSAP pipelines calibrated for sub-second global load times and flawless
-            interaction design.
-          </p>
-          <ul class="capability-feature-list">
-            <li>
-              <span class="check-icon-circle">✓</span>
-              <span><strong>Lighthouse 100/100:</strong> Zero layout shift, optimized Core Web Vitals, and sub-200ms
-                TTFB worldwide via edge caching.</span>
-            </li>
-            <li>
-              <span class="check-icon-circle">✓</span>
-              <span><strong>Design Systems & Token Architecture:</strong> Modular, scalable component systems built in
-                strict TypeScript with comprehensive Storybook documentation.</span>
-            </li>
-            <li>
-              <span class="check-icon-circle">✓</span>
-              <span><strong>Accessibility (WCAG AA):</strong> Full keyboard navigation, semantic markup, and aria
-                attributes for universal usability.</span>
-            </li>
-          </ul>
-          <a href="projects.html" class="btn-secondary">View Web Case Studies →</a>
+      <!-- Header Matching Dribbble Shot (Two-Column Layout) -->
+      <div class="dribbble-services-header">
+        <div class="dribbble-header-left">
+          <div class="dribbble-eyebrow">
+            <span class="dribbble-eyebrow-dot"></span>
+            OUR SERVICE
+          </div>
+          <h2 class="dribbble-main-title">
+            What <span class="dribbble-accent-text">Services</span><br>
+            We're Offering
+          </h2>
         </div>
-
-        <div class="arch-card">
-          <div class="arch-card-header">
-            <div class="terminal-dots">
-              <span class="term-dot term-red"></span>
-              <span class="term-dot term-yellow"></span>
-              <span class="term-dot term-green"></span>
-            </div>
-            <span class="arch-card-title">web-architecture.config.ts</span>
-          </div>
-          <div class="arch-card-body">
-            <pre class="arch-code-block"><code><span class="code-comment">// High-performance Edge SSR Architecture</span>
-<span class="code-keyword">export const</span> flagshipConfig = {
-  <span class="code-prop">runtime</span>: <span class="code-str">'edge-distributed'</span>,
-  <span class="code-prop">rendering</span>: <span class="code-str">'hybrid-isr'</span>,
-  <span class="code-prop">cacheStrategy</span>: {
-    <span class="code-prop">ttfbTarget</span>: <span class="code-str">'&lt; 180ms'</span>,
-    <span class="code-prop">staleWhileRevalidate</span>: <span class="code-keyword">true</span>,
-    <span class="code-prop">globalPoPs</span>: <span class="code-str">'Cloudflare Tier 1'</span>
-  },
-  <span class="code-prop">sourceOwnership</span>: {
-    <span class="code-prop">repository</span>: <span class="code-str">'Client GitHub Enterprise'</span>,
-    <span class="code-prop">license</span>: <span class="code-str">'Perpetual / Proprietary Client IP'</span>,
-    <span class="code-prop">vendorLockIn</span>: <span class="code-str">'0%'</span>
-  }
-};</code></pre>
-          </div>
+        <div class="dribbble-header-right">
+          <p class="dribbble-header-desc">
+            We offer services that can help businesses improve their visibility and business reputation online, expand market reach, and increase turnover through effective digital strategies. Following are the services we provide:
+          </p>
         </div>
       </div>
 
-      <!-- Capability 2: Custom Software & APIs -->
-      <div class="capability-row reverse">
-        <div class="capability-content">
-          <span class="subpage-badge">Backend & Systems</span>
-          <h3>Custom Software & Distributed Backend APIs</h3>
-          <p>
-            When off-the-shelf software bottlenecks your enterprise, we build distributed, fault-tolerant backend
-            architectures in Go, Python, and Node.js. Scaled for high concurrent transactions, microsecond latency, and
-            ACID transactional safety.
-          </p>
-          <ul class="capability-feature-list">
-            <li>
-              <span class="check-icon-circle">✓</span>
-              <span><strong>Event-Driven Microservices:</strong> High-throughput message streaming utilizing Kafka and
-                Redis for decoupled asynchronous workflows.</span>
-            </li>
-            <li>
-              <span class="check-icon-circle">✓</span>
-              <span><strong>Resilient API Gateways:</strong> Type-safe GraphQL and REST interfaces with automated rate
-                limiting, circuit breakers, and telemetry.</span>
-            </li>
-            <li>
-              <span class="check-icon-circle">✓</span>
-              <span><strong>Optimized Database Schemas:</strong> PostgreSQL, TimescaleDB, and Redis clusters engineered
-                for concurrent read/write throughput without deadlocks.</span>
-            </li>
-          </ul>
-          <a href="contact.html" class="btn-secondary">Discuss Backend Scope →</a>
-        </div>
+      <!-- Services Interactive List & Dynamic Preview Arena -->
+      <div class="dribbble-services-layout">
 
-        <div class="arch-card">
-          <div class="arch-card-header">
-            <div class="terminal-dots">
-              <span class="term-dot term-red"></span>
-              <span class="term-dot term-yellow"></span>
-              <span class="term-dot term-green"></span>
+        <!-- Left Column: The 5 Service Items -->
+        <div class="dribbble-services-list" id="servicesList" role="tablist" aria-label="RiTiVerse Services">
+
+          <!-- Item 1: Website Development (Default Active) -->
+          <div class="dribbble-service-item is-active" data-service="web" tabindex="0" role="tab" aria-selected="true" aria-controls="preview-web">
+            <div class="dribbble-item-row">
+              <div class="dribbble-item-main">
+                <div class="dribbble-item-header">
+                  <h3 class="dribbble-item-title">
+                    Website Development<span class="dribbble-title-dot">.</span>
+                  </h3>
+                  <p class="dribbble-item-desc">
+                    High-speed bespoke websites engineered with React, modern PHP &amp; custom UX for maximum conversions and sub-second global load times.
+                  </p>
+                </div>
+              </div>
+              <div class="dribbble-item-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
             </div>
-            <span class="arch-card-title">distributed-cluster.go</span>
           </div>
-          <div class="arch-card-body">
-            <pre class="arch-code-block"><code><span class="code-comment">// High-Concurrency Gateway Pipeline</span>
-<span class="code-keyword">package</span> main
 
-<span class="code-keyword">type</span> ClusterTelemetry <span class="code-keyword">struct</span> {
-  ClusterID   <span class="code-keyword">string</span>  <span class="code-str">`json:"cluster_id"`</span>
-  ActiveNodes <span class="code-keyword">int</span>     <span class="code-str">`json:"active_nodes"`</span>
-  Throughput  <span class="code-keyword">float64</span> <span class="code-str">`json:"req_per_sec"`</span>
-  LatencyP99  <span class="code-keyword">string</span>  <span class="code-str">`json:"latency_p99"`</span>
-  SLAStatus   <span class="code-keyword">string</span>  <span class="code-str">`json:"sla_status"`</span>
-}
-
-<span class="code-comment">// Guaranteed client infrastructure isolation</span>
-<span class="code-keyword">const</span> DeploymentMode = <span class="code-str">"Client-Hosted-VPC"</span></code></pre>
-          </div>
-        </div>
-      </div>
-
-      <!-- Capability 3: Website Hosting & Maintenance -->
-      <div class="capability-row">
-        <div class="capability-content">
-          <span class="subpage-badge">Hosting & Maintenance</span>
-          <h3>Website Hosting, Server Setup & Ongoing Maintenance</h3>
-          <p>
-            Keep your websites fast, secure, and always accessible. We handle full server setup, SSL configuration,
-            automated daily backups, and ongoing technical maintenance so you can focus entirely on growing your business.
-          </p>
-          <ul class="capability-feature-list">
-            <li>
-              <span class="check-icon-circle">✓</span>
-              <span><strong>Server & Domain Setup:</strong> VPS, cloud, and shared hosting configuration with free SSL certificates and custom domain routing.</span>
-            </li>
-            <li>
-              <span class="check-icon-circle">✓</span>
-              <span><strong>Daily Backups & 99.9% Uptime:</strong> Automated daily website backups, uptime monitoring, and fast disaster recovery.</span>
-            </li>
-            <li>
-              <span class="check-icon-circle">✓</span>
-              <span><strong>Speed Tuning & Security Updates:</strong> Regular PHP/database optimization, security patches, library updates, and speed enhancements.</span>
-            </li>
-          </ul>
-          <a href="contact.html" class="btn-secondary">Get Hosting & Maintenance →</a>
-        </div>
-
-        <div class="arch-card">
-          <div class="arch-card-header">
-            <div class="terminal-dots">
-              <span class="term-dot term-red"></span>
-              <span class="term-dot term-yellow"></span>
-              <span class="term-dot term-green"></span>
+          <!-- Item 2: App Development -->
+          <div class="dribbble-service-item" data-service="app" tabindex="0" role="tab" aria-selected="false" aria-controls="preview-app">
+            <div class="dribbble-item-row">
+              <div class="dribbble-item-main">
+                <div class="dribbble-item-header">
+                  <h3 class="dribbble-item-title">
+                    App Development<span class="dribbble-title-dot">.</span>
+                  </h3>
+                  <p class="dribbble-item-desc">
+                    Native and cross-platform mobile apps for iOS &amp; Android built with fluid 60fps animations and offline-first architecture.
+                  </p>
+                </div>
+              </div>
+              <div class="dribbble-item-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
             </div>
-            <span class="arch-card-title">nginx.conf</span>
           </div>
-          <div class="arch-card-body">
-            <pre class="arch-code-block"><code><span class="code-comment"># Optimized Web Server Configuration</span>
-<span class="code-keyword">server</span> {
-  <span class="code-prop">listen</span> 443 ssl http2;
-  <span class="code-prop">server_name</span> <span class="code-str">yourdomain.com www.yourdomain.com</span>;
 
-  <span class="code-comment"># SSL & Fast Compression</span>
-  <span class="code-prop">ssl_certificate</span>     <span class="code-str">/etc/ssl/fullchain.pem</span>;
-  <span class="code-prop">ssl_certificate_key</span> <span class="code-str">/etc/ssl/privkey.pem</span>;
-  <span class="code-prop">gzip</span> on;
-
-  <span class="code-comment"># PHP & Fast Web Routing</span>
-  <span class="code-keyword">location</span> / {
-    <span class="code-prop">try_files</span> $uri $uri/ /index.php?$query_string;
-  }
-}</code></pre>
-          </div>
-        </div>
-      </div>
-
-      <!-- Capability 4: AI Agent Integration -->
-      <div class="capability-row reverse">
-        <div class="capability-content">
-          <span class="subpage-badge">AI Automation</span>
-          <h3>AI Agents & Enterprise Intelligence Pipelines</h3>
-          <p>
-            Move beyond trivial chat wrappers. We architect production-grade LLM agents, private Retrieval-Augmented
-            Generation (RAG) engines, and automated workflow orchestrators that operate within your secure VPC without
-            public data leakage.
-          </p>
-          <ul class="capability-feature-list">
-            <li>
-              <span class="check-icon-circle">✓</span>
-              <span><strong>Private VPC RAG:</strong> Vector indexing with pgvector/Pinecone over proprietary enterprise
-                documents with strict role-based access control.</span>
-            </li>
-            <li>
-              <span class="check-icon-circle">✓</span>
-              <span><strong>Multi-Agent Orchestration:</strong> Autonomous background workers handling synthesis,
-                triage, code generation, and data verification.</span>
-            </li>
-            <li>
-              <span class="check-icon-circle">✓</span>
-              <span><strong>Human-in-the-Loop Safeguards:</strong> Audit logging, hallucination filters, and manual
-                sign-off checkpoints for high-stakes operational flows.</span>
-            </li>
-          </ul>
-          <a href="contact.html" class="btn-secondary">Explore AI Integrations →</a>
-        </div>
-
-        <div class="arch-card">
-          <div class="arch-card-header">
-            <div class="terminal-dots">
-              <span class="term-dot term-red"></span>
-              <span class="term-dot term-yellow"></span>
-              <span class="term-dot term-green"></span>
+          <!-- Item 3: Custom Software Development -->
+          <div class="dribbble-service-item" data-service="software" tabindex="0" role="tab" aria-selected="false" aria-controls="preview-software">
+            <div class="dribbble-item-row">
+              <div class="dribbble-item-main">
+                <div class="dribbble-item-header">
+                  <h3 class="dribbble-item-title">
+                    Custom Software Development<span class="dribbble-title-dot">.</span>
+                  </h3>
+                  <p class="dribbble-item-desc">
+                    Tailored enterprise software, distributed microservice workflows, and high-throughput REST/GraphQL APIs engineered for scale.
+                  </p>
+                </div>
+              </div>
+              <div class="dribbble-item-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
             </div>
-            <span class="arch-card-title">agent-orchestrator.py</span>
           </div>
-          <div class="arch-card-body">
-            <pre
-              class="arch-code-block"><code><span class="code-comment"># Autonomous Enterprise Agent Pipeline</span>
-<span class="code-keyword">from</span> ritiverse_ai <span class="code-keyword">import</span> AgentCluster, VectorStore
 
-<span class="code-keyword">class</span> EnterpriseAgentPipeline:
-    <span class="code-keyword">def</span> <span class="code-prop">__init__</span>(self, vpc_endpoint: <span class="code-keyword">str</span>):
-        self.vector_store = VectorStore(
-            isolation=<span class="code-str">"dedicated-private-vpc"</span>,
-            encryption=<span class="code-str">"AES-256-GCM"</span>
-        )
-        self.cluster = AgentCluster(
-            model=<span class="code-str">"claude-3-7-sonnet"</span>,
-            fallback=<span class="code-str">"local-llama-3"</span>
-        )
-
-    <span class="code-keyword">def</span> <span class="code-prop">verify_compliance</span>(self):
-        <span class="code-keyword">return</span> {<span class="code-str">"data_retention"</span>: <span class="code-keyword">None</span>, <span class="code-str">"zero_training_opt_in"</span>: <span class="code-keyword">True</span>}</code></pre>
+          <!-- Item 4: ERP -->
+          <div class="dribbble-service-item" data-service="erp" tabindex="0" role="tab" aria-selected="false" aria-controls="preview-erp">
+            <div class="dribbble-item-row">
+              <div class="dribbble-item-main">
+                <div class="dribbble-item-header">
+                  <h3 class="dribbble-item-title">
+                    ERP<span class="dribbble-title-dot">.</span>
+                  </h3>
+                  <p class="dribbble-item-desc">
+                    Comprehensive Enterprise Resource Planning systems unifying operations, automated inventory, finance, and supply chain logistics.
+                  </p>
+                </div>
+              </div>
+              <div class="dribbble-item-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
           </div>
+
+          <!-- Item 5: CRM -->
+          <div class="dribbble-service-item" data-service="crm" tabindex="0" role="tab" aria-selected="false" aria-controls="preview-crm">
+            <div class="dribbble-item-row">
+              <div class="dribbble-item-main">
+                <div class="dribbble-item-header">
+                  <h3 class="dribbble-item-title">
+                    CRM<span class="dribbble-title-dot">.</span>
+                  </h3>
+                  <p class="dribbble-item-desc">
+                    Intelligent Customer Relationship Management platforms powering automated sales funnels, pipeline intelligence, and client retention.
+                  </p>
+                </div>
+              </div>
+              <div class="dribbble-item-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        <!-- Right Column: Dynamic Preview Arena Matching the Dribbble Hero Graphic -->
+        <div class="dribbble-preview-arena" id="previewArena">
+
+          <!-- Preview Card 1: Website Development -->
+          <div class="dribbble-preview-card is-visible" id="preview-web" data-preview="web" role="tabpanel">
+            <div class="dribbble-mockup-window">
+              <!-- Window Top Bar -->
+              <div class="mockup-window-header">
+                <div class="mockup-window-dots">
+                  <span class="m-dot red"></span>
+                  <span class="m-dot yellow"></span>
+                  <span class="m-dot green"></span>
+                </div>
+                <div class="mockup-window-url">ritiverse.com/web</div>
+                <div class="mockup-window-close">✕</div>
+              </div>
+
+              <!-- Main Inner Frame -->
+              <div class="mockup-window-body">
+                <!-- Floating Badge Top-Left (Avatar / Icon Pill like screenshot) -->
+                <div class="floating-pill-badge pill-top-left pill-mint">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="7" r="4"></circle><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path></svg>
+                </div>
+
+                <!-- Floating Badge Top-Right ([UX] Badge like screenshot) -->
+                <div class="floating-pill-badge pill-top-right pill-mint-bold">
+                  UX
+                </div>
+
+                <!-- Central Content Card (Profile / Hero Wireframe like screenshot) -->
+                <div class="mockup-center-card">
+                  <div class="center-card-avatar">
+                    <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#2DD4BF" stroke-width="2"><circle cx="12" cy="8" r="5"></circle><path d="M20 21a8 8 0 1 0-16 0"></path></svg>
+                  </div>
+                  <div class="center-card-lines">
+                    <div class="card-line long"></div>
+                    <div class="card-line short"></div>
+                  </div>
+                  <div class="center-card-tag">React 19 • 100/100</div>
+                </div>
+
+                <!-- Floating Badge Bottom-Left ([UI] Badge like screenshot) -->
+                <div class="floating-pill-badge pill-bottom-left pill-slate">
+                  UI
+                </div>
+
+                <!-- Floating Toggle Switch Bottom-Right (Toggle like screenshot) -->
+                <div class="floating-toggle-badge pill-bottom-right">
+                  <span class="toggle-track active">
+                    <span class="toggle-thumb"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview Card 2: App Development -->
+          <div class="dribbble-preview-card" id="preview-app" data-preview="app" role="tabpanel">
+            <div class="dribbble-mockup-window">
+              <div class="mockup-window-header">
+                <div class="mockup-window-dots">
+                  <span class="m-dot red"></span>
+                  <span class="m-dot yellow"></span>
+                  <span class="m-dot green"></span>
+                </div>
+                <div class="mockup-window-url">app.ritiverse.ios</div>
+                <div class="mockup-window-close">✕</div>
+              </div>
+
+              <div class="mockup-window-body">
+                <div class="floating-pill-badge pill-top-left pill-mint">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                </div>
+
+                <div class="floating-pill-badge pill-top-right pill-mint-bold">
+                  iOS
+                </div>
+
+                <div class="mockup-center-card">
+                  <div class="center-card-avatar phone-icon-wrap">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#2DD4BF" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"></rect><path d="M12 18h.01"></path></svg>
+                  </div>
+                  <div class="center-card-lines">
+                    <div class="card-line long"></div>
+                    <div class="card-line short"></div>
+                  </div>
+                  <div class="center-card-tag">+18.4K Active • 60 FPS</div>
+                </div>
+
+                <div class="floating-pill-badge pill-bottom-left pill-slate">
+                  Android
+                </div>
+
+                <div class="floating-toggle-badge pill-bottom-right">
+                  <span class="toggle-track active">
+                    <span class="toggle-thumb"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview Card 3: Custom Software Development -->
+          <div class="dribbble-preview-card" id="preview-software" data-preview="software" role="tabpanel">
+            <div class="dribbble-mockup-window">
+              <div class="mockup-window-header">
+                <div class="mockup-window-dots">
+                  <span class="m-dot red"></span>
+                  <span class="m-dot yellow"></span>
+                  <span class="m-dot green"></span>
+                </div>
+                <div class="mockup-window-url">api.ritiverse.net</div>
+                <div class="mockup-window-close">✕</div>
+              </div>
+
+              <div class="mockup-window-body">
+                <div class="floating-pill-badge pill-top-left pill-mint">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </div>
+
+                <div class="floating-pill-badge pill-top-right pill-mint-bold">
+                  API
+                </div>
+
+                <div class="mockup-center-card">
+                  <div class="center-card-avatar">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#2DD4BF" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                  </div>
+                  <div class="center-card-lines">
+                    <div class="card-line long"></div>
+                    <div class="card-line short"></div>
+                  </div>
+                  <div class="center-card-tag">&lt;120ms • 99.99% Live</div>
+                </div>
+
+                <div class="floating-pill-badge pill-bottom-left pill-slate">
+                  REST
+                </div>
+
+                <div class="floating-toggle-badge pill-bottom-right">
+                  <span class="toggle-track active">
+                    <span class="toggle-thumb"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview Card 4: ERP -->
+          <div class="dribbble-preview-card" id="preview-erp" data-preview="erp" role="tabpanel">
+            <div class="dribbble-mockup-window">
+              <div class="mockup-window-header">
+                <div class="mockup-window-dots">
+                  <span class="m-dot red"></span>
+                  <span class="m-dot yellow"></span>
+                  <span class="m-dot green"></span>
+                </div>
+                <div class="mockup-window-url">erp.enterprise.cloud</div>
+                <div class="mockup-window-close">✕</div>
+              </div>
+
+              <div class="mockup-window-body">
+                <div class="floating-pill-badge pill-top-left pill-mint">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+
+                <div class="floating-pill-badge pill-top-right pill-mint-bold">
+                  ERP
+                </div>
+
+                <div class="mockup-center-card">
+                  <div class="center-card-avatar">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#2DD4BF" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                  </div>
+                  <div class="center-card-lines">
+                    <div class="card-line long"></div>
+                    <div class="card-line short"></div>
+                  </div>
+                  <div class="center-card-tag">99.4% Resource Flow</div>
+                </div>
+
+                <div class="floating-pill-badge pill-bottom-left pill-slate">
+                  Supply
+                </div>
+
+                <div class="floating-toggle-badge pill-bottom-right">
+                  <span class="toggle-track active">
+                    <span class="toggle-thumb"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview Card 5: CRM -->
+          <div class="dribbble-preview-card" id="preview-crm" data-preview="crm" role="tabpanel">
+            <div class="dribbble-mockup-window">
+              <div class="mockup-window-header">
+                <div class="mockup-window-dots">
+                  <span class="m-dot red"></span>
+                  <span class="m-dot yellow"></span>
+                  <span class="m-dot green"></span>
+                </div>
+                <div class="mockup-window-url">crm.ritiverse.hub</div>
+                <div class="mockup-window-close">✕</div>
+              </div>
+
+              <div class="mockup-window-body">
+                <div class="floating-pill-badge pill-top-left pill-mint">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+
+                <div class="floating-pill-badge pill-top-right pill-mint-bold">
+                  CRM
+                </div>
+
+                <div class="mockup-center-card">
+                  <div class="center-card-avatar">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#2DD4BF" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                  </div>
+                  <div class="center-card-lines">
+                    <div class="card-line long"></div>
+                    <div class="card-line short"></div>
+                  </div>
+                  <div class="center-card-tag">Pipeline: $148K (Won)</div>
+                </div>
+
+                <div class="floating-pill-badge pill-bottom-left pill-slate">
+                  Leads
+                </div>
+
+                <div class="floating-toggle-badge pill-bottom-right">
+                  <span class="toggle-track active">
+                    <span class="toggle-thumb"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
     </div>
