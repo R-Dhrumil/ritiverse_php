@@ -25,14 +25,17 @@
   <header class="synex-nav" id="synex-nav">
     <div class="synex-nav-left">
       <!-- Modern & Minimal Floating Brand Wordmark with Logo -->
-      <a href="ritiverse.html" class="synex-brand" aria-label="RiTiVerse Home">
+      <a href="index.html" class="synex-brand" aria-label="RiTiVerse Home">
         <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
-        <span class="synex-brand-name">RiTiVerse</span>
+        <span class="synex-brand-name">RiTiVerse<span class="logo-accent-dot"></span></span>
       </a>
     </div>
 
-    <!-- Navigation Right Controls: 3-Line Animated Hamburger Trigger -->
+    <!-- Floating Center Desktop Navigation Pill -->
+
+    <!-- Navigation Right Controls: CTA Button & 3-Line Animated Hamburger Trigger -->
     <div class="synex-nav-right">
+      <a href="contact.html" class="synex-nav-cta-btn">Start a Project</a>
       <button class="synex-menu-trigger" id="synex-menu-trigger" aria-label="Open Fullscreen Navigation"
         aria-expanded="false" aria-controls="synex-fs-menu">
         <div class="hamburger-box">
@@ -63,9 +66,9 @@
     <!-- Fullscreen Menu Top Navigation Bar -->
     <div class="fs-menu-header">
       <div class="synex-nav-left">
-        <a href="ritiverse.html" class="synex-brand" aria-label="RiTiVerse Home">
+        <a href="index.html" class="synex-brand" aria-label="RiTiVerse Home">
           <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
-          <span class="synex-brand-name">RiTiVerse</span>
+          <span class="synex-brand-name">RiTiVerse<span class="logo-accent-dot"></span></span>
         </a>
       </div>
       <div class="synex-nav-right">
@@ -87,7 +90,7 @@
           <div class="fs-links-group">
             <ul class="fs-nav-list">
               <li class="fs-nav-item">
-                <a href="ritiverse.html" class="fs-nav-link">
+                <a href="index.html" class="fs-nav-link">
                   <span class="nav-text">Home</span>
                   <span class="nav-arrow">↗</span>
                 </a>
@@ -536,7 +539,96 @@
   </main>
 
   <!-- ==========================================================================
-       SECTION 2: CAPABILITIES SHOWCASE (Interactive Expanding Accordion)
+       SECTION 2: HIGH-TRUST ENTERPRISE TELEMETRY & DOMAIN MARQUEE
+       ========================================================================== -->
+  <section class="synex-trust-section" id="proof">
+    <div class="trust-container">
+      <div class="trust-eyebrow-center">
+        <span class="trust-marquee-label">
+          <span class="trust-marquee-label-dot"></span>
+          Enterprise Verified • Venture-Backed Production Standards
+        </span>
+      </div>
+
+      <!-- Domain Badges Row -->
+      <div class="trust-badges-row">
+        <div class="trust-badge-card">
+          <svg class="trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          <span class="trust-badge-text">FinTech Telemetry</span>
+          <span class="trust-badge-tag">&lt;50ms</span>
+        </div>
+
+        <div class="trust-badge-card">
+          <svg class="trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+          <span class="trust-badge-text">Supply Chain Cloud</span>
+          <span class="trust-badge-tag">99.99%</span>
+        </div>
+
+        <div class="trust-badge-card">
+          <svg class="trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 8v8M8 12h8"></path>
+          </svg>
+          <span class="trust-badge-text">MedTech AI Workflows</span>
+          <span class="trust-badge-tag">HIPAA Ready</span>
+        </div>
+
+        <div class="trust-badge-card">
+          <svg class="trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+          <span class="trust-badge-text">Autonomous AI Agents</span>
+          <span class="trust-badge-tag">Sub-sec RAG</span>
+        </div>
+
+        <div class="trust-badge-card">
+          <svg class="trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span class="trust-badge-text">Next.js 15 Flagships</span>
+          <span class="trust-badge-tag">100/100 Core</span>
+        </div>
+      </div>
+
+      <!-- 4-Stat High Impact Metric Strip -->
+      <div class="trust-metrics-grid">
+        <div class="trust-metric-box">
+          <div class="trust-metric-val">100<span class="metric-accent">%</span></div>
+          <div class="trust-metric-lbl">Source IP Ownership</div>
+          <p class="trust-metric-desc">Every line of code and cloud IaC transferred to your GitHub from Day 1. Zero proprietary hostage.</p>
+        </div>
+
+        <div class="trust-metric-box">
+          <div class="trust-metric-val">0<span class="metric-accent">%</span></div>
+          <div class="trust-metric-lbl">Vendor Lock-In</div>
+          <p class="trust-metric-desc">Standard Dockerized containers and open architectures. Never pay arbitrary maintenance ransoms.</p>
+        </div>
+
+        <div class="trust-metric-box">
+          <div class="trust-metric-val">99.99<span class="metric-accent">%</span></div>
+          <div class="trust-metric-lbl">Production Uptime SLA</div>
+          <p class="trust-metric-desc">Multi-region distributed clusters with automated failover and zero-drift infrastructure.</p>
+        </div>
+
+        <div class="trust-metric-box">
+          <div class="trust-metric-val">&lt;190<span class="metric-accent">ms</span></div>
+          <div class="trust-metric-lbl">Global TTFB Speed</div>
+          <p class="trust-metric-desc">Edge-distributed hybrid ISR caching delivering sub-second experiences worldwide.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: CAPABILITIES SHOWCASE (Interactive Expanding Accordion)
        ========================================================================== -->
   <section class="synex-showcase-section" id="services">
     <div class="showcase-container">
@@ -727,17 +819,394 @@
       </div>
 
       <!-- Bottom Headline Ticker (Matching Image 1) -->
-      <div class="showcase-bottom-banner">
-        <p class="bottom-banner-text">
+      <div class="showcase-bottom-banner" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+        <p class="bottom-banner-text" style="margin: 0;">
           Boundless engineering capabilities. <span>100% client source code ownership</span> delivered on Day 1.
         </p>
+        <a href="services.html" class="btn-inline-link">
+          Explore All Capabilities & Scope →
+        </a>
       </div>
 
     </div>
   </section>
 
   <!-- ==========================================================================
-       SECTION 3: TECH STACK SHOWCASE
+       SECTION 4: "ZERO VENDOR LOCK-IN" PHILOSOPHY & COMPARISON MATRIX
+       ========================================================================== -->
+  <section class="synex-philosophy-section" id="philosophy">
+    <div class="philosophy-container">
+      <div class="section-head-center">
+        <div class="section-eyebrow-pill">
+          <span class="section-eyebrow-dot"></span>
+          The RiTiVerse Doctrine & Studio Standards
+        </div>
+        <h2 class="section-main-heading">
+          The End of Agency Hostage.<br>
+          <span class="text-flame">100% Freedom by Design.</span>
+        </h2>
+        <p class="section-main-subtitle">
+          Most software agencies construct proprietary scaffolds to keep billing you monthly maintenance retainers.
+          RiTiVerse operates under an open-architecture doctrine: you own every line of code, Docker container, and cloud blueprint from Day 1.
+        </p>
+      </div>
+
+      <!-- Side-by-Side Comparison Matrix -->
+      <div class="philosophy-matrix-card">
+        <div class="matrix-header-row">
+          <div class="matrix-col-title">Engineering Dimension</div>
+          <div class="matrix-col-legacy">Legacy Digital Agencies</div>
+          <div class="matrix-col-ritiverse">The RiTiVerse Standard</div>
+        </div>
+
+        <!-- Row 1: Source Code Ownership -->
+        <div class="matrix-body-row">
+          <div class="matrix-feature-name">
+            Source Code & IP Rights
+            <span class="matrix-feature-sub">Who owns your intellectual property?</span>
+          </div>
+          <div class="matrix-legacy-cell">
+            <span class="matrix-cross-icon">✕</span>
+            <span>Hostage repositories, proprietary CMS licensing, restrictive vendor contracts.</span>
+          </div>
+          <div class="matrix-ritiverse-cell">
+            <span class="matrix-check-icon">✓</span>
+            <span><strong>100% Perpetual IP Transfer:</strong> Code commits directly into your GitHub & Cloud IAM from Day 1.</span>
+          </div>
+        </div>
+
+        <!-- Row 2: Team Caliber -->
+        <div class="matrix-body-row">
+          <div class="matrix-feature-name">
+            Engineering Team Caliber
+            <span class="matrix-feature-sub">Who actually builds your software?</span>
+          </div>
+          <div class="matrix-legacy-cell">
+            <span class="matrix-cross-icon">✕</span>
+            <span>Bait-and-switch: Senior sales pitch, outsourced to junior offshore contractors.</span>
+          </div>
+          <div class="matrix-ritiverse-cell">
+            <span class="matrix-check-icon">✓</span>
+            <span><strong>Dedicated Senior Staff Engineers:</strong> Principal architects crafting mission-critical software.</span>
+          </div>
+        </div>
+
+        <!-- Row 3: Architecture & Lock-in -->
+        <div class="matrix-body-row">
+          <div class="matrix-feature-name">
+            Architecture & Frameworks
+            <span class="matrix-feature-sub">Can your team run this without us?</span>
+          </div>
+          <div class="matrix-legacy-cell">
+            <span class="matrix-cross-icon">✕</span>
+            <span>Bloated closed templates, custom plugins, black-box vendor lock-in.</span>
+          </div>
+          <div class="matrix-ritiverse-cell">
+            <span class="matrix-check-icon">✓</span>
+            <span><strong>World-Class Open Standards:</strong> Next.js 15, Go, TypeScript, Docker, and Kubernetes.</span>
+          </div>
+        </div>
+
+        <!-- Row 4: Delivery Cadence -->
+        <div class="matrix-body-row">
+          <div class="matrix-feature-name">
+            Visibility & Sprint Velocity
+            <span class="matrix-feature-sub">How do you track actual progress?</span>
+          </div>
+          <div class="matrix-legacy-cell">
+            <span class="matrix-cross-icon">✕</span>
+            <span>Opaque monthly status reports, missed deadlines, unexpected scope-creep invoices.</span>
+          </div>
+          <div class="matrix-ritiverse-cell">
+            <span class="matrix-check-icon">✓</span>
+            <span><strong>Continuous Daily CI/CD:</strong> Live staging URLs, verified milestones, direct Slack/Jira access.</span>
+          </div>
+        </div>
+
+        <!-- Row 5: Internal Team Handover -->
+        <div class="matrix-body-row">
+          <div class="matrix-feature-name">
+            Handoff & Documentation
+            <span class="matrix-feature-sub">Developer ergonomics & transition</span>
+          </div>
+          <div class="matrix-legacy-cell">
+            <span class="matrix-cross-icon">✕</span>
+            <span>Undocumented spaghetti code intentionally designed to force lifetime retainers.</span>
+          </div>
+          <div class="matrix-ritiverse-cell">
+            <span class="matrix-check-icon">✓</span>
+            <span><strong>Production-Grade Storybook & Blueprints:</strong> Typed codebases your internal developers love.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Philosophy Bottom CTA Strip -->
+      <div class="philosophy-cta-strip">
+        <p class="philosophy-cta-text">
+          Want to know why venture-backed CTOs trust our open model? <strong>Read our full philosophy manifesto.</strong>
+        </p>
+        <a href="about.html" class="btn-inline-link">
+          Explore Our Philosophy & Standards →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 5: FEATURED PRODUCTION FLAGSHIPS & CASE STUDIES
+       ========================================================================== -->
+  <section class="synex-flagships-section" id="projects">
+    <div class="flagships-container">
+      <div class="section-head-center">
+        <div class="section-eyebrow-pill">
+          <span class="section-eyebrow-dot"></span>
+          Production Flagships & Telemetry
+        </div>
+        <h2 class="section-main-heading">
+          Battle-Tested Software.<br>
+          <span class="text-flame">Measurable Business Velocity.</span>
+        </h2>
+        <p class="section-main-subtitle">
+          We don't build vaporware or mockups. Explore high-performance platforms, distributed backends, and cloud engines engineered by RiTiVerse.
+        </p>
+      </div>
+
+      <!-- 3 Case Study Cards Grid -->
+      <div class="flagships-grid">
+
+        <!-- Case 1: Aegis Financial OS -->
+        <div class="flagship-card">
+          <div class="flagship-preview">
+            <img src="assets/card_software_apis.jpg" alt="Aegis Financial Telemetry OS" class="flagship-preview-img" />
+            <span class="flagship-overlay-badge">FinTech & Telemetry</span>
+            <span class="flagship-client-tag">Aegis Capital</span>
+          </div>
+          <div class="flagship-body">
+            <div>
+              <h3 class="flagship-title">Aegis Financial Telemetry OS</h3>
+              <p class="flagship-desc">
+                High-frequency algorithmic portfolio monitoring platform streaming real-time market data across 12 global exchanges with sub-50ms latency.
+              </p>
+              <div class="flagship-metrics-strip">
+                <div class="flagship-metric-item">
+                  <span class="f-metric-val">0.12s</span>
+                  <span class="f-metric-lbl">Global TTFB</span>
+                </div>
+                <div class="flagship-metric-item">
+                  <span class="f-metric-val">120K+</span>
+                  <span class="f-metric-lbl">Daily Trades</span>
+                </div>
+                <div class="flagship-metric-item">
+                  <span class="f-metric-val">100%</span>
+                  <span class="f-metric-lbl">Client IP</span>
+                </div>
+              </div>
+              <div class="flagship-tags">
+                <span class="flagship-pill">Go</span>
+                <span class="flagship-pill">Next.js 15</span>
+                <span class="flagship-pill">TimescaleDB</span>
+                <span class="flagship-pill">AWS EKS</span>
+              </div>
+            </div>
+            <a href="projects.html" class="flagship-card-cta">
+              <span>View Full Case Study</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Case 2: Verve Global Logistics -->
+        <div class="flagship-card">
+          <div class="flagship-preview">
+            <img src="assets/card_cloud_devops.jpg" alt="Verve Global Logistics Engine" class="flagship-preview-img" />
+            <span class="flagship-overlay-badge">Supply Chain Cloud</span>
+            <span class="flagship-client-tag">Verve Systems</span>
+          </div>
+          <div class="flagship-body">
+            <div>
+              <h3 class="flagship-title">Verve Global Logistics Engine</h3>
+              <p class="flagship-desc">
+                Self-healing containerized microservices architecture replacing a legacy monolith, handling dynamic routing for 4,000+ freight vehicles.
+              </p>
+              <div class="flagship-metrics-strip">
+                <div class="flagship-metric-item">
+                  <span class="f-metric-val">99.99%</span>
+                  <span class="f-metric-lbl">Uptime SLA</span>
+                </div>
+                <div class="flagship-metric-item">
+                  <span class="f-metric-val">-68%</span>
+                  <span class="f-metric-lbl">Dispatch Latency</span>
+                </div>
+                <div class="flagship-metric-item">
+                  <span class="f-metric-val">4.2K</span>
+                  <span class="f-metric-lbl">Fleet Units</span>
+                </div>
+              </div>
+              <div class="flagship-tags">
+                <span class="flagship-pill">Rust</span>
+                <span class="flagship-pill">Kubernetes</span>
+                <span class="flagship-pill">Redis Cluster</span>
+                <span class="flagship-pill">Cloudflare</span>
+              </div>
+            </div>
+            <a href="projects.html" class="flagship-card-cta">
+              <span>View Full Case Study</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Case 3: PulseHealth AI -->
+        <div class="flagship-card">
+          <div class="flagship-preview">
+            <img src="assets/card_ai_agents.jpg" alt="PulseHealth Clinical AI" class="flagship-preview-img" />
+            <span class="flagship-overlay-badge">MedTech AI Workflows</span>
+            <span class="flagship-client-tag">PulseHealth</span>
+          </div>
+          <div class="flagship-body">
+            <div>
+              <h3 class="flagship-title">PulseHealth AI Clinical Intelligence</h3>
+              <p class="flagship-desc">
+                Secure HIPAA-compliant private clinical diagnostics assistant combining semantic vector search with automated medical record synthesis.
+              </p>
+              <div class="flagship-metrics-strip">
+                <div class="flagship-metric-item">
+                  <span class="f-metric-val">4.8x</span>
+                  <span class="f-metric-lbl">Diagnosis Speed</span>
+                </div>
+                <div class="flagship-metric-item">
+                  <span class="f-metric-val">100%</span>
+                  <span class="f-metric-lbl">HIPAA Isolated</span>
+                </div>
+                <div class="flagship-metric-item">
+                  <span class="f-metric-val">0.34s</span>
+                  <span class="f-metric-lbl">RAG Speed</span>
+                </div>
+              </div>
+              <div class="flagship-tags">
+                <span class="flagship-pill">Python</span>
+                <span class="flagship-pill">PyTorch</span>
+                <span class="flagship-pill">pgvector</span>
+                <span class="flagship-pill">React 19</span>
+              </div>
+            </div>
+            <a href="projects.html" class="flagship-card-cta">
+              <span>View Full Case Study</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Flagships Bottom Action -->
+      <div class="flagships-bottom-bar">
+        <a href="projects.html" class="btn-all-projects">
+          Explore All 6 Production Flagships & Case Studies
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6: 4-STAGE TRANSPARENT DELIVERY BLUEPRINT
+       ========================================================================== -->
+  <section class="synex-process-section" id="process">
+    <div class="process-container">
+      <div class="section-head-center">
+        <div class="section-eyebrow-pill">
+          <span class="section-eyebrow-dot"></span>
+          Engineering Lifecycle & Delivery
+        </div>
+        <h2 class="section-main-heading">
+          From Architecture to Production.<br>
+          <span class="text-flame">Zero Surprises. 100% Transparency.</span>
+        </h2>
+        <p class="section-main-subtitle">
+          How we architect, engineer, and handover mission-critical software systems on predictable fixed-scope milestones.
+        </p>
+      </div>
+
+      <!-- 4-Stage Progressive Timeline Cards -->
+      <div class="process-grid-4">
+        <!-- Stage 1 -->
+        <div class="process-card">
+          <span class="process-step-num">STAGE 01</span>
+          <span class="process-duration-tag">Days 1 – 5</span>
+          <h3 class="process-title">Architectural Blueprint & Threat Model</h3>
+          <p class="process-body-text">
+            We map full data schema topologies, security perimeter controls, API contracts, and cloud cost projections before writing a single line of code.
+          </p>
+          <ul class="process-deliverables-list">
+            <li><span class="p-check">✓</span> System Architecture Diagram</li>
+            <li><span class="p-check">✓</span> Tech Stack & Library Lock</li>
+            <li><span class="p-check">✓</span> Fixed Milestone Timeline</li>
+          </ul>
+        </div>
+
+        <!-- Stage 2 -->
+        <div class="process-card">
+          <span class="process-step-num">STAGE 02</span>
+          <span class="process-duration-tag">Weeks 2 – 6</span>
+          <h3 class="process-title">High-Velocity Agile Sprints</h3>
+          <p class="process-body-text">
+            Continuous development with bi-weekly sprint deliverables. You test live features on automated staging preview links every single day.
+          </p>
+          <ul class="process-deliverables-list">
+            <li><span class="p-check">✓</span> Daily Staging CI/CD Deploys</li>
+            <li><span class="p-check">✓</span> Direct Slack with Lead Engineers</li>
+            <li><span class="p-check">✓</span> Live GitHub Commit Transparency</li>
+          </ul>
+        </div>
+
+        <!-- Stage 3 -->
+        <div class="process-card">
+          <span class="process-step-num">STAGE 03</span>
+          <span class="process-duration-tag">Week 7</span>
+          <h3 class="process-title">Performance & Security Hardening</h3>
+          <p class="process-body-text">
+            Stress testing across simulated global edge networks. We tune every page for Lighthouse 100/100 Core Web Vitals and run automated penetration audits.
+          </p>
+          <ul class="process-deliverables-list">
+            <li><span class="p-check">✓</span> Lighthouse 100/100 Certification</li>
+            <li><span class="p-check">✓</span> 100k RPS Load Simulation</li>
+            <li><span class="p-check">✓</span> OWASP Top 10 Security Audit</li>
+          </ul>
+        </div>
+
+        <!-- Stage 4 -->
+        <div class="process-card">
+          <span class="process-step-num">STAGE 04</span>
+          <span class="process-duration-tag">Week 8+</span>
+          <h3 class="process-title">Zero-Downtime Handover & IP Transfer</h3>
+          <p class="process-body-text">
+            Seamless production DNS switchover. We hand over repository owner permissions, cloud IAM access keys, and walk your in-house engineers through every module.
+          </p>
+          <ul class="process-deliverables-list">
+            <li><span class="p-check">✓</span> 100% Repository & Cloud IP Transfer</li>
+            <li><span class="p-check">✓</span> Storybook Component Documentation</li>
+            <li><span class="p-check">✓</span> Zero-Downtime Production Cutover</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 7: TECH STACK SHOWCASE
        ========================================================================== -->
   <section class="synex-stack-section" id="stack">
     <div class="stack-container">
@@ -767,35 +1236,303 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION 4: CALL TO ACTION FOOTER BANNER
+       SECTION 8: CLIENT TESTIMONIALS & REPUTATION
+       ========================================================================== -->
+  <section class="synex-reviews-section" id="reviews">
+    <div class="reviews-container">
+      <div class="section-head-center">
+        <div class="section-eyebrow-pill">
+          <span class="section-eyebrow-dot"></span>
+          Client Confidence & Verified Reputation
+        </div>
+        <h2 class="section-main-heading">
+          Trusted by Engineering Leaders.<br>
+          <span class="text-flame">Proven in Production.</span>
+        </h2>
+        <p class="section-main-subtitle">
+          Discover why technical founders, CTOs, and product directors trust RiTiVerse with mission-critical software.
+        </p>
+      </div>
+
+      <!-- 3 Testimonial Cards Grid -->
+      <div class="reviews-grid-3">
+
+        <!-- Testimonial 1 -->
+        <div class="review-card">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote-text">
+              “RiTiVerse built our algorithmic trading telemetry platform from zero to production scale in 7 weeks.
+              We received <span class="highlight">100% full source code ownership on Day 1</span> with zero technical debt. Outstanding engineering rigor.”
+            </p>
+          </div>
+          <div class="review-author-wrap">
+            <div class="review-avatar-circle">MV</div>
+            <div class="review-author-meta">
+              <span class="review-author-name">Marcus Vance</span>
+              <span class="review-author-title">Chief Technology Officer</span>
+              <span class="review-author-company">Aegis Global Capital</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="review-card">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote-text">
+              “Unlike typical agencies who lock you into proprietary platforms, RiTiVerse delivered
+              <span class="highlight">clean, containerized Go and Kubernetes microservices</span> that our internal engineering team scaled without missing a single beat.”
+            </p>
+          </div>
+          <div class="review-author-wrap">
+            <div class="review-avatar-circle avatar-orange">ER</div>
+            <div class="review-author-meta">
+              <span class="review-author-name">Elena Rostova</span>
+              <span class="review-author-title">Founder &amp; CEO</span>
+              <span class="review-author-company">Verve Cloud Systems</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="review-card">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote-text">
+              “The performance telemetry speaks for itself: <span class="highlight">100/100 Lighthouse, sub-180ms TTFB globally</span>, and flawless design execution.
+              They are easily in the top 1% of software engineering studios worldwide.”
+            </p>
+          </div>
+          <div class="review-author-wrap">
+            <div class="review-avatar-circle">DS</div>
+            <div class="review-author-meta">
+              <span class="review-author-name">David Sterling</span>
+              <span class="review-author-title">VP of Engineering</span>
+              <span class="review-author-company">PulseHealth AI</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Verified Badges Strip -->
+      <div class="reviews-badges-strip">
+        <div class="v-badge-item">
+          <span class="v-badge-dot"></span>
+          5.0 / 5.0 Clutch Verified Reviews
+        </div>
+        <div class="v-badge-item">
+          <span class="v-badge-dot"></span>
+          GitHub Enterprise Verified Partner
+        </div>
+        <div class="v-badge-item">
+          <span class="v-badge-dot"></span>
+          AWS Certified Solutions Architecture
+        </div>
+        <div class="v-badge-item">
+          <span class="v-badge-dot"></span>
+          SOC2 Type II Aligned Engineering
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 9: FREQUENTLY ASKED QUESTIONS & RISK REVERSAL
+       ========================================================================== -->
+  <section class="synex-faq-section" id="faq">
+    <div class="faq-container">
+      <div class="section-head-center">
+        <div class="section-eyebrow-pill">
+          <span class="section-eyebrow-dot"></span>
+          Clear Answers & Zero Ambiguity
+        </div>
+        <h2 class="section-main-heading">
+          Frequently Asked Questions.<br>
+          <span class="text-flame">Everything Upfront.</span>
+        </h2>
+        <p class="section-main-subtitle">
+          Transparent answers about our 100% IP ownership guarantee, pricing predictability, developer ergonomics, and post-launch handovers.
+        </p>
+      </div>
+
+      <!-- Interactive FAQ List -->
+      <div class="faq-list">
+
+        <!-- FAQ Item 1 (Default Open) -->
+        <div class="faq-item is-open">
+          <button class="faq-question-btn" type="button" aria-expanded="true">
+            <span class="faq-q-text">Do we truly own 100% of the code, containers, and intellectual property?</span>
+            <span class="faq-icon-indicator">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-body">
+              <p>
+                <strong>Yes, absolutely and unconditionally.</strong> On Day 1, our contract legally assigns 100% perpetual, exclusive intellectual property rights to your company. All code is authored directly in your designated GitHub organization and deployed into your cloud accounts. You never pay recurring software licensing or platform hostage fees to us.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button" aria-expanded="false">
+            <span class="faq-q-text">How is RiTiVerse different from traditional agencies or freelance platforms?</span>
+            <span class="faq-icon-indicator">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-body">
+              <p>
+                Traditional agencies employ junior developers supervised by account managers, rely on closed CMS templates, and intentionally introduce technical debt to sell you monthly retainers. RiTiVerse deploys dedicated Senior Staff Engineers who craft bespoke, typed, cloud-native software following open-source industry standards with full automated CI/CD and zero vendor lock-in.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button" aria-expanded="false">
+            <span class="faq-q-text">How do you price projects and ensure no budget or timeline inflation?</span>
+            <span class="faq-icon-indicator">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-body">
+              <p>
+                We operate on transparent fixed-scope milestone deliverables or dedicated high-velocity sprint pods. Prior to kickoff, we deliver a comprehensive Architectural Blueprint defining exact scope, data structures, and milestone gates—eliminating unexpected billing surprises.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button" aria-expanded="false">
+            <span class="faq-q-text">Can our internal engineering team easily maintain and extend the software?</span>
+            <span class="faq-icon-indicator">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-body">
+              <p>
+                Yes. We engineer every application specifically for developer ergonomics: strict TypeScript typings, modular folder structures, Storybook UI component catalogs, containerized Docker environments, and step-by-step architectural diagrams. We also conduct dedicated transition walk-through sessions with your engineers.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="faq-item">
+          <button class="faq-question-btn" type="button" aria-expanded="false">
+            <span class="faq-q-text">What post-launch warranty and SLA support do you provide?</span>
+            <span class="faq-icon-indicator">+</span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-body">
+              <p>
+                Every production deployment includes a comprehensive 30-day warranty window covering any potential bug fixes or performance tuning at zero additional cost. For ongoing platform expansion, we offer dedicated engineering sprint pods and 24/7 SLA incident coverage.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 10 & 11: CALL TO ACTION BANNER & ARCHITECTURAL FOOTER SITEMAP
        ========================================================================== -->
   <footer class="synex-footer" id="contact">
     <div class="footer-container">
+
+      <!-- Consultation Card -->
       <div class="footer-cta-card">
         <div class="footer-cta-glow" aria-hidden="true"></div>
         <span class="footer-eyebrow">Initiate Consultation</span>
-        <h2 class="footer-headline">Have a project in mind?<br>Let's build something remarkable.</h2>
-        <p class="footer-subtext">Partner with an elite engineering studio dedicated to quality, speed, and design
-          precision.</p>
-        <a href="contact.html" class="footer-cta-btn">
-          Start a Conversation
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
+        <h2 class="footer-headline">Have a mission-critical project?<br>Let's architect something remarkable.</h2>
+        <p class="footer-subtext">
+          Partner with an elite engineering studio dedicated to craftsmanship, sub-second speed, and 100% client source code ownership.
+        </p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
+          <a href="contact.html" class="footer-cta-btn">
+            Start a Conversation
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="services.html" class="btn-inline-link" style="padding: 12px 24px; font-weight: 700;">
+            Review Capabilities First →
+          </a>
+        </div>
       </div>
 
+      <!-- 4-Column Architectural Footer Sitemap -->
+      <div class="footer-sitemap-grid">
+        <!-- Col 1: Brand Wordmark & Location -->
+        <div class="footer-brand-col">
+          <div class="footer-brand" style="gap: 10px;">
+            <img src="assets/logo.png" alt="RiTiVerse Logo" style="height: 28px; width: auto;" />
+            <span class="footer-logo">RiTiVerse<span class="logo-accent-dot"></span></span>
+          </div>
+          <p class="footer-col-desc">
+            Bespoke website and software development engineered for extreme scale, sub-second latency, and 100% client source code ownership from Day 1.
+          </p>
+          <div class="footer-contact-mini">
+            <span><strong>HQ:</strong> 17 Kingsway Avenue, London, UK</span>
+            <span><strong>Email:</strong> <a href="mailto:contact@ritiverse.com">contact@ritiverse.com</a></span>
+            <span><strong>Phone:</strong> +44 20 8654 3927</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Engineering Capabilities -->
+        <div class="footer-sitemap-col">
+          <h3 class="footer-col-title">Capabilities</h3>
+          <ul class="footer-links-list">
+            <li><a href="services.html">Bespoke Web Applications</a></li>
+            <li><a href="services.html">Custom Software &amp; APIs</a></li>
+            <li><a href="services.html">Cloud Systems &amp; DevOps</a></li>
+            <li><a href="services.html">AI Agent Integration</a></li>
+            <li><a href="services.html">Zero Lock-In Architecture</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Flagships & Proof -->
+        <div class="footer-sitemap-col">
+          <h3 class="footer-col-title">Flagships</h3>
+          <ul class="footer-links-list">
+            <li><a href="projects.html">Aegis Financial OS</a></li>
+            <li><a href="projects.html">Verve Logistics Engine</a></li>
+            <li><a href="projects.html">PulseHealth Clinical AI</a></li>
+            <li><a href="projects.html">All Case Studies (6)</a></li>
+            <li><a href="projects.html">Telemetry Metrics</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Studio & Trust -->
+        <div class="footer-sitemap-col">
+          <h3 class="footer-col-title">Studio &amp; Trust</h3>
+          <ul class="footer-links-list">
+            <li><a href="about.html">Philosophy &amp; Standards</a></li>
+            <li><a href="#process">4-Stage Blueprint</a></li>
+            <li><a href="#reviews">Verified Client Reviews</a></li>
+            <li><a href="#faq">Frequently Asked Questions</a></li>
+            <li><a href="contact.html">Start a Consultation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Row -->
       <div class="footer-bottom-row">
         <div class="footer-brand">
-          <span class="footer-logo">RItiverse<span class="logo-accent-dot"></span></span>
-          <span class="footer-copy">© 2026 RItiverse Studio. All rights reserved.</span>
+          <span class="footer-copy">© 2026 RiTiVerse Studio. All rights reserved. 100% Client Source Code Ownership Guaranteed.</span>
         </div>
         <div class="footer-status-pill">
           <span class="footer-status-dot"></span>
-          All Systems Operational • 99.99% Uptime
+          All Systems Operational • 99.99% Uptime SLA
         </div>
       </div>
+
     </div>
   </footer>
 

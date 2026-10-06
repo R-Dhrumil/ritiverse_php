@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCapabilitiesAccordion();
   initShowcaseSearch();
   initHeadingTypewriter();
+  initFaqAccordion();
+  initSmoothAnchorScroll();
 });
 
 /* ==========================================================================
@@ -1026,6 +1028,73 @@ function initHeadingTypewriter() {
     // Fallback if IntersectionObserver is not supported
     preparedList.forEach(h => startTyping(h));
   }
+}
+
+/* ==========================================================================
+   HOMEPAGE INTERACTIVE FAQ ACCORDION
+   ========================================================================== */
+function initFaqAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach(item => {
+    const trigger = item.querySelector('.faq-question-btn');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+
+      // Close all others for crisp accordion behavior
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('is-open');
+          const otherBtn = otherItem.querySelector('.faq-question-btn');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Toggle current
+      if (isOpen) {
+        item.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   SMOOTH IN-PAGE ANCHOR SCROLLING
+   ========================================================================== */
+function initSmoothAnchorScroll() {
+  const anchorLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
+  anchorLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href').slice(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        // If fullscreen menu is open, close it first
+        const fsMenu = document.getElementById('synex-fs-menu');
+        const trigger = document.getElementById('synex-menu-trigger');
+        if (fsMenu && fsMenu.classList.contains('is-active')) {
+          fsMenu.classList.remove('is-active');
+          fsMenu.setAttribute('aria-hidden', 'true');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('fs-menu-locked');
+        }
+
+        const navHeight = 90;
+        const targetPos = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+        window.scrollTo({
+          top: targetPos,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
 }
 
 
