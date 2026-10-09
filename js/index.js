@@ -713,103 +713,20 @@ function initFaqAccordion() {
    ========================================================================== */
 
 function initProcessLaser() {
-  const processSection = document.getElementById('process');
-  const cardsGrid = document.getElementById('processCardsGrid');
-  const cards = document.querySelectorAll('.process-card');
+  const stage = document.getElementById('stage');
+  if (!stage) return;
 
+  const cards = stage.querySelectorAll('[data-card]');
   if (!cards.length) return;
 
-  let currentIndex = 0;
-  let laserTimer = null;
-  let isHovered = false;
-
-  function setActiveStage(index) {
-    currentIndex = index;
-    cards.forEach((card, idx) => {
-      const isActive = idx === index;
-      card.classList.toggle('is-laser-active', isActive);
-      card.setAttribute('aria-expanded', isActive ? 'true' : 'false');
-
-      // Trigger restart of CSS laser progress animation
-      const bar = card.querySelector('.stage-laser-bar');
-      if (bar) {
-        if (isActive) {
-          bar.style.animation = 'none';
-          void bar.offsetWidth; // trigger DOM reflow to re-trigger CSS keyframe
-          bar.style.animation = '';
-        } else {
-          bar.style.animation = 'none';
-        }
-      }
-    });
-  }
-
-  function startCycle() {
-    stopCycle();
-    laserTimer = setInterval(() => {
-      if (!isHovered) {
-        currentIndex = (currentIndex + 1) % cards.length;
-        setActiveStage(currentIndex);
-      }
-    }, 2800);
-  }
-
-  function stopCycle() {
-    if (laserTimer) {
-      clearInterval(laserTimer);
-      laserTimer = null;
+  cards.forEach((card) => {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'region');
+    const titleEl = card.querySelector('.card-title');
+    if (titleEl) {
+      card.setAttribute('aria-label', titleEl.textContent);
     }
-  }
-
-  // Interactive mouse / keyboard events
-  cards.forEach((card, idx) => {
-    card.addEventListener('mouseenter', () => {
-      isHovered = true;
-      setActiveStage(idx);
-    });
-
-    card.addEventListener('click', () => {
-      setActiveStage(idx);
-    });
-
-    card.addEventListener('focus', () => {
-      isHovered = true;
-      setActiveStage(idx);
-    });
-
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        setActiveStage(idx);
-      }
-    });
   });
-
-  if (cardsGrid) {
-    cardsGrid.addEventListener('mouseleave', () => {
-      isHovered = false;
-    });
-  }
-
-  // Start with Card 0 active
-  setActiveStage(0);
-
-  // IntersectionObserver to only animate when in viewport
-  if ('IntersectionObserver' in window && processSection) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          startCycle();
-        } else {
-          stopCycle();
-        }
-      });
-    }, { threshold: 0.15 });
-
-    observer.observe(processSection);
-  } else {
-    startCycle();
-  }
 }
 
 /* ==========================================================================

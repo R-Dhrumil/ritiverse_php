@@ -60,28 +60,6 @@
   visibility: visible;
 }
 
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--brand-orange);
-  background: var(--brand-orange-subtle);
-  border: 1px solid var(--brand-orange-border);
-  padding: 5px 13px;
-  border-radius: 999px;
-  margin-bottom: 22px;
-  opacity: 1;
-}
-
-.eyebrow-spark {
-  width: 11px;
-  height: 11px;
-  fill: var(--brand-orange);
-}
 
 .hero-title {
   font-family: var(--font-display);
@@ -249,31 +227,6 @@
   opacity: 1;
 }
 
-/* Tech Capabilities Micro Tags */
-.hero-tech-tags {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 24px;
-  font-size: 12px;
-  color: #64748B;
-  opacity: 0;
-  animation: synexFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
-}
-
-.tech-tag-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.tech-tag-dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--brand-orange);
-}
 
 /* ==========================================================================
    HERO STAGE & GSAP SCROLL-LINKED SCALE TARGET (Apple-Style Clean Reveal)
@@ -526,14 +479,6 @@
   opacity: 1;
 }
 
-.sidebar-badge {
-  font-size: 9px;
-  font-weight: 700;
-  background: var(--gradient-flame);
-  color: #FFFFFF;
-  padding: 1px 6px;
-  border-radius: 999px;
-}
 
 .sidebar-footer {
   border-top: 1px solid rgba(0, 140, 216, 0.12);
@@ -1396,46 +1341,6 @@
   transform: translateY(-2px);
 }
 
-.footer-tags-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  padding-top: 4px;
-}
-
-.footer-tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  color: #F8FAFC;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 3px 9px;
-  border-radius: 6px;
-}
-
-/* Bottom Ticker Headline (Matching Image 1's "Boundless passes to 100+ mentorships.") */
-.showcase-bottom-banner {
-  margin-top: 80px;
-  text-align: center;
-  padding-top: 36px;
-  border-top: 1px solid rgba(0, 140, 216, 0.12);
-}
-
-.bottom-banner-text {
-  font-family: var(--font-display);
-  font-size: clamp(20px, 2.5vw, 32px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: #0F172A;
-  line-height: 1.3;
-}
-
-.bottom-banner-text span {
-  color: var(--brand-orange);
-}
 
 /* Responsive Adaptations */
 @media (max-width: 1080px) {
@@ -1492,65 +1397,6 @@
 
 
 
-/* ==========================================================================
-   TECH STACK SECTION (Luminous Skyblue Glassmorphic Surface)
-   ========================================================================== */
-.synex-stack-section {
-  background: linear-gradient(180deg, #F0F9FF 0%, #E0F2FE 100%);
-  padding: 80px 24px;
-  border-top: 1px solid rgba(0, 140, 216, 0.16);
-}
-
-.stack-container {
-  max-width: 1140px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.stack-header {
-  margin-bottom: 40px;
-}
-
-.stack-pills-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.stack-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 140, 216, 0.22);
-  border-radius: 9999px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 600;
-  color: #0F172A;
-  box-shadow: 0 4px 14px rgba(0, 140, 216, 0.08);
-  transition: all 0.2s ease;
-}
-
-.stack-pill:hover {
-  border-color: var(--brand-orange);
-  background: #FFFFFF;
-  transform: translateY(-2px);
-  color: var(--brand-orange);
-  box-shadow: 0 6px 18px rgba(248, 104, 0, 0.2);
-}
-
-.stack-pill-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--brand-orange);
-}
 
 
 
@@ -1956,29 +1802,6 @@
   margin-top: 2px;
 }
 
-/* Philosophy Bottom CTA Bar */
-.philosophy-cta-strip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 249, 255, 0.95) 100%);
-  border: 1px solid rgba(0, 140, 216, 0.22);
-  border-radius: 16px;
-  padding: 22px 32px;
-  box-shadow: 0 10px 30px -5px rgba(0, 140, 216, 0.08);
-}
-
-.philosophy-cta-text {
-  font-family: var(--font-display);
-  font-size: 15.5px;
-  font-weight: 600;
-  color: #1E293B;
-  margin: 0;
-}
-
-.philosophy-cta-text strong {
-  color: var(--brand-orange);
-}
 
 .btn-inline-link {
   display: inline-flex;
@@ -2012,11 +1835,7 @@
     gap: 12px;
     padding: 20px;
   }
-  .philosophy-cta-strip {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-  }
+
 }
 
 
@@ -2263,243 +2082,213 @@
 /* ==========================================================================
    HOMEPAGE SECTION: 4-STAGE TRANSPARENT DELIVERY BLUEPRINT
    ========================================================================== */
-.synex-process-section {
+/* ==========================================================================
+   HOMEPAGE SECTION: 4-STAGE DELIVERY BLUEPRINT ("HOW IT WORKS" PINNED CARDS)
+   ========================================================================== */
+.synex-process-section.hiw {
   position: relative;
   background: #FFFFFF;
-  padding: 110px 24px;
+  padding: 100px 24px 110px;
   border-bottom: 1px solid rgba(0, 140, 216, 0.14);
-}
-
-.process-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.process-grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  position: relative;
-  margin-top: 48px;
-}
-
-.process-card {
-  background: #FFFFFF;
-  border: 1.5px solid rgba(226, 232, 240, 0.95);
-  border-radius: 20px;
-  padding: 28px 24px 24px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  outline: none;
-  box-shadow: 0 4px 18px -4px rgba(15, 23, 42, 0.05);
-  opacity: 0.88;
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --card: #ffffff;
+  --card-border: #f1f5f9;
+  --card-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+  --title: #1e293b;
+  --desc: #64748b;
+  --path: #cbd5e1;
+  --lines-dark: 0.05;
+  --lines-light: 0;
+  --o-bg: #fff7ed; --o-text: #f97316; --o-border: #ffedd5;
+  --b-bg: #eff6ff; --b-text: #2563eb; --b-border: #dbeafe;
+  --p-bg: #faf5ff; --p-text: #9333ea; --p-border: #f3e8ff;
 }
 
-.process-card:hover {
-  opacity: 1;
-  border-color: rgba(0, 140, 216, 0.45);
-  transform: translateY(-4px);
-  box-shadow: 0 14px 32px -8px rgba(0, 140, 216, 0.16);
-}
-
-/* Active Stage Card: Illuminated and Elevated */
-.process-card.is-laser-active {
-  opacity: 1;
-  background: #FFFFFF;
-  border-color: #008CD8;
-  transform: translateY(-8px);
-  box-shadow: 0 20px 45px -10px rgba(0, 140, 216, 0.28), 0 0 0 1.5px #008CD8;
-  z-index: 2;
-}
-
-/* Top Laser Scanner Line on the Active Card */
-.card-laser-scanner-line {
+.hiw-lines, .hiw-fade {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3.5px;
-  background: linear-gradient(90deg, #008CD8 0%, #00f2fe 50%, #F86800 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  box-shadow: 0 0 12px rgba(0, 242, 254, 0.85);
   pointer-events: none;
 }
 
-.process-card.is-laser-active .card-laser-scanner-line {
-  opacity: 1;
-  animation: cardLaserPulse 2.8s linear infinite;
+.hiw-lines {
+  inset: 0;
+  background-size: 100% 32px;
+  margin-top: 4px;
 }
 
-@keyframes cardLaserPulse {
-  0% { filter: brightness(1); }
-  50% { filter: brightness(1.35); box-shadow: 0 0 18px rgba(0, 242, 254, 1); }
-  100% { filter: brightness(1); }
+.hiw-lines.dark {
+  background-image: linear-gradient(#000 1px, transparent 1px);
+  opacity: var(--lines-dark, 0.05);
 }
 
-/* Card Header (Stage pill & duration tag) */
-.process-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+.hiw-lines.light {
+  background-image: linear-gradient(#fff 1px, transparent 1px);
+  opacity: var(--lines-light, 0);
 }
 
-.process-step-num {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: #F86800;
-  background: rgba(248, 104, 0, 0.09);
-  border: 1px solid rgba(248, 104, 0, 0.24);
-  padding: 4px 10px;
-  border-radius: 9999px;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-.process-card.is-laser-active .process-step-num {
-  background: rgba(248, 104, 0, 0.16);
-  border-color: rgba(248, 104, 0, 0.45);
-  box-shadow: 0 0 12px rgba(248, 104, 0, 0.2);
-}
-
-.process-duration-tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  color: #0284C7;
-  letter-spacing: 0.03em;
-}
-
-/* Stage Icon */
-.process-icon-wrap {
-  width: 48px;
-  height: 48px;
-  border-radius: 13px;
-  background: rgba(0, 140, 216, 0.07);
-  border: 1px solid rgba(0, 140, 216, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #0284C7;
-  margin-bottom: 18px;
-  transition: all 0.35s ease;
-}
-
-.process-card.is-laser-active .process-icon-wrap {
-  background: linear-gradient(135deg, rgba(0, 140, 216, 0.18) 0%, rgba(0, 242, 254, 0.12) 100%);
-  border-color: #008CD8;
-  color: #008CD8;
-  box-shadow: 0 4px 16px rgba(0, 140, 216, 0.25);
-  transform: scale(1.06);
-}
-
-/* Title & Description */
-.process-title {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 700;
-  color: #0F172A;
-  margin: 0 0 10px;
-  line-height: 1.35;
-}
-
-.process-summary {
-  font-size: 13px;
-  line-height: 1.55;
-  color: #64748B;
-  margin: 0 0 18px;
-  flex-grow: 1;
-}
-
-/* Deliverables Pill List */
-.process-mini-deliverables {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  margin-bottom: 22px;
-  padding-top: 14px;
-  border-top: 1px dashed rgba(226, 232, 240, 0.95);
-}
-
-.deliverable-tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  color: #334155;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.deliverable-tag::before {
-  content: "✓";
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: rgba(16, 185, 129, 0.12);
-  color: #059669;
-  font-size: 9.5px;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-
-.process-card.is-laser-active .deliverable-tag {
-  color: #0F172A;
-}
-
-/* Bottom Laser Progress Bar */
-.stage-laser-progress {
-  position: relative;
-  width: 100%;
-  height: 3px;
-  background: rgba(226, 232, 240, 0.8);
-  border-radius: 9999px;
-  overflow: hidden;
-  margin-top: auto;
-}
-
-.stage-laser-bar {
-  position: absolute;
-  left: 0;
+.hiw-fade {
   top: 0;
   bottom: 0;
-  width: 0%;
-  background: linear-gradient(90deg, #008CD8, #00f2fe);
-  border-radius: 9999px;
+  width: 40%;
+  z-index: 2;
 }
 
-.process-card.is-laser-active .stage-laser-bar {
-  animation: laserFillProgress 2.8s linear forwards;
-  box-shadow: 0 0 10px #00f2fe;
+.hiw-fade.left  { left: 0;  background: linear-gradient(to right, #FFFFFF, transparent); }
+.hiw-fade.right { right: 0; background: linear-gradient(to left,  #FFFFFF, transparent); }
+
+.hiw-inner {
+  position: relative;
+  z-index: 10;
+  max-width: 72rem;
+  margin: 0 auto;
 }
 
-@keyframes laserFillProgress {
-  0% { width: 0%; }
-  100% { width: 100%; }
+.hiw-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 50px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-@media (max-width: 992px) {
-  .process-grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+.hiw-path {
+  display: none;
+}
+
+/* Card */
+.hiw-stage .card {
+  position: relative;
+  width: 100%;
+  transition: transform .35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow .35s ease;
+  z-index: 5;
+}
+
+.hiw-stage .card:hover {
+  z-index: 30;
+  transform: scale(1.05);
+}
+
+.card-outer {
+  background: var(--card);
+  padding: 10px;
+  border-radius: 25px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+}
+
+.pin {
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 20px;
+  color: var(--c-text);
+  position: relative;
+  z-index: 20;
+  transition: transform 0.25s ease;
+}
+
+.hiw-stage .card:hover .pin {
+  transform: scale(1.15) rotate(6deg);
+}
+
+.card-inner {
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  padding: 22px 20px 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-num {
+  color: var(--c-text);
+  font-size: 38px;
+  line-height: 40px;
+  margin-bottom: 18px;
+  font-family: var(--font-display, "Comic Sans MS", sans-serif);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.card-title {
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--title);
+  font-family: var(--font-display, sans-serif);
+  letter-spacing: -0.015em;
+}
+
+.card-desc {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: var(--desc);
+  font-family: var(--font-body, sans-serif);
+}
+
+/* Color Themes */
+.theme-orange { --c-bg: var(--o-bg); --c-text: var(--o-text); --c-border: var(--o-border); }
+.theme-blue   { --c-bg: var(--b-bg); --c-text: var(--b-text); --c-border: var(--b-border); }
+.theme-purple { --c-bg: var(--p-bg); --c-text: var(--p-text); --c-border: var(--p-border); }
+
+/* Desktop: absolute layout with curved connector */
+@media (min-width: 768px) {
+  .synex-process-section.hiw { padding: 90px 32px 110px; }
+  .hiw-stage { display: block; gap: 0; height: var(--stage-h, 880px); }
+  .hiw-path {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hiw-stage .card {
+    position: absolute;
+    width: 290px;
+    transform: rotate(var(--rot, 0deg));
+  }
+  .hiw-stage .card:hover {
+    transform: scale(1.06) rotate(var(--rot, 0deg));
+  }
+
+  /* Step positions on desktop */
+  .hiw-stage .card[data-step="0"] { top: 0; left: 14%; }
+  .hiw-stage .card[data-step="1"] { top: 130px; right: 14%; }
+  .hiw-stage .card[data-step="2"] { top: 410px; left: 14%; }
+  .hiw-stage .card[data-step="3"] { top: 550px; right: 14%; }
+}
+
+.path-line {
+  fill: none;
+  stroke: var(--path);
+  stroke-width: 2.5;
+  stroke-dasharray: 8 6;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  animation: dashPath 3s linear infinite;
+}
+
+@keyframes dashPath {
+  to {
+    stroke-dashoffset: -140;
   }
 }
 
-@media (max-width: 580px) {
-  .process-grid-4 {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .path-line { animation: none; }
+  .hiw-stage .card { transition: none; }
 }
 
 
