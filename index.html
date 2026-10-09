@@ -947,92 +947,134 @@
         </p>
       </div>
 
-      <!-- Side-by-Side Comparison Matrix -->
-      <div class="philosophy-matrix-card">
-        <div class="matrix-header-row">
-          <div class="matrix-col-title">Engineering Dimension</div>
-          <div class="matrix-col-legacy">Legacy Digital Agencies</div>
-          <div class="matrix-col-ritiverse">The RiTiVerse Standard</div>
-        </div>
+      <!-- Side-by-Side Comparison Table -->
+      <div class="philosophy-table-card">
+        <div class="table-scroll-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th scope="col" class="th-dim">Engineering Dimension</th>
+                <th scope="col" class="th-legacy">Legacy Digital Agencies</th>
+                <th scope="col" class="th-ritiverse hl">
+                  <div class="th-ritiverse-wrap">
+                    <span class="table-pill-badge">Zero Lock-In</span>
+                    <span>The RiTiVerse Standard</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row 1: Source Code Ownership -->
+              <tr>
+                <td class="td-dim">
+                  <div class="dim-content">
+                    <strong class="dim-title">Source Code &amp; IP Rights</strong>
+                    <span class="dim-sub">Who owns your intellectual property?</span>
+                  </div>
+                </td>
+                <td class="td-legacy">
+                  <div class="cell-content">
+                    <span class="cell-status status-no" aria-hidden="true">✕</span>
+                    <span class="cell-text">Hostage repositories, proprietary CMS licensing, restrictive vendor contracts.</span>
+                  </div>
+                </td>
+                <td class="td-ritiverse hl">
+                  <div class="cell-content">
+                    <span class="cell-status status-yes" aria-hidden="true">✓</span>
+                    <span class="cell-text"><strong>100% Perpetual IP Transfer:</strong> Code commits directly into your GitHub &amp; Cloud IAM from Day 1.</span>
+                  </div>
+                </td>
+              </tr>
 
-        <!-- Row 1: Source Code Ownership -->
-        <div class="matrix-body-row">
-          <div class="matrix-feature-name">
-            Source Code & IP Rights
-            <span class="matrix-feature-sub">Who owns your intellectual property?</span>
-          </div>
-          <div class="matrix-legacy-cell">
-            <span class="matrix-cross-icon">✕</span>
-            <span>Hostage repositories, proprietary CMS licensing, restrictive vendor contracts.</span>
-          </div>
-          <div class="matrix-ritiverse-cell">
-            <span class="matrix-check-icon">✓</span>
-            <span><strong>100% Perpetual IP Transfer:</strong> Code commits directly into your GitHub & Cloud IAM from Day 1.</span>
-          </div>
-        </div>
+              <!-- Row 2: Team Caliber -->
+              <tr>
+                <td class="td-dim">
+                  <div class="dim-content">
+                    <strong class="dim-title">Engineering Team Caliber</strong>
+                    <span class="dim-sub">Who actually builds your software?</span>
+                  </div>
+                </td>
+                <td class="td-legacy">
+                  <div class="cell-content">
+                    <span class="cell-status status-no" aria-hidden="true">✕</span>
+                    <span class="cell-text">Bait-and-switch: Senior sales pitch, outsourced to junior offshore contractors.</span>
+                  </div>
+                </td>
+                <td class="td-ritiverse hl">
+                  <div class="cell-content">
+                    <span class="cell-status status-yes" aria-hidden="true">✓</span>
+                    <span class="cell-text"><strong>Dedicated Senior Staff Engineers:</strong> Principal architects crafting mission-critical software.</span>
+                  </div>
+                </td>
+              </tr>
 
-        <!-- Row 2: Team Caliber -->
-        <div class="matrix-body-row">
-          <div class="matrix-feature-name">
-            Engineering Team Caliber
-            <span class="matrix-feature-sub">Who actually builds your software?</span>
-          </div>
-          <div class="matrix-legacy-cell">
-            <span class="matrix-cross-icon">✕</span>
-            <span>Bait-and-switch: Senior sales pitch, outsourced to junior offshore contractors.</span>
-          </div>
-          <div class="matrix-ritiverse-cell">
-            <span class="matrix-check-icon">✓</span>
-            <span><strong>Dedicated Senior Staff Engineers:</strong> Principal architects crafting mission-critical software.</span>
-          </div>
-        </div>
+              <!-- Row 3: Architecture & Lock-in -->
+              <tr>
+                <td class="td-dim">
+                  <div class="dim-content">
+                    <strong class="dim-title">Architecture &amp; Frameworks</strong>
+                    <span class="dim-sub">Can your team run this without us?</span>
+                  </div>
+                </td>
+                <td class="td-legacy">
+                  <div class="cell-content">
+                    <span class="cell-status status-no" aria-hidden="true">✕</span>
+                    <span class="cell-text">Bloated closed templates, custom plugins, black-box vendor lock-in.</span>
+                  </div>
+                </td>
+                <td class="td-ritiverse hl">
+                  <div class="cell-content">
+                    <span class="cell-status status-yes" aria-hidden="true">✓</span>
+                    <span class="cell-text"><strong>Proven Modern Standards:</strong> PHP, Laravel, React, Express.js, Python, JavaScript, HTML5 &amp; CSS3.</span>
+                  </div>
+                </td>
+              </tr>
 
-        <!-- Row 3: Architecture & Lock-in -->
-        <div class="matrix-body-row">
-          <div class="matrix-feature-name">
-            Architecture & Frameworks
-            <span class="matrix-feature-sub">Can your team run this without us?</span>
-          </div>
-          <div class="matrix-legacy-cell">
-            <span class="matrix-cross-icon">✕</span>
-            <span>Bloated closed templates, custom plugins, black-box vendor lock-in.</span>
-          </div>
-          <div class="matrix-ritiverse-cell">
-            <span class="matrix-check-icon">✓</span>
-            <span><strong>Proven Modern Standards:</strong> PHP, Laravel, React, Express.js, Python, JavaScript, HTML5 &amp; CSS3.</span>
-          </div>
-        </div>
+              <!-- Row 4: Delivery Cadence -->
+              <tr>
+                <td class="td-dim">
+                  <div class="dim-content">
+                    <strong class="dim-title">Visibility &amp; Sprint Velocity</strong>
+                    <span class="dim-sub">How do you track actual progress?</span>
+                  </div>
+                </td>
+                <td class="td-legacy">
+                  <div class="cell-content">
+                    <span class="cell-status status-no" aria-hidden="true">✕</span>
+                    <span class="cell-text">Opaque monthly status reports, missed deadlines, unexpected scope-creep invoices.</span>
+                  </div>
+                </td>
+                <td class="td-ritiverse hl">
+                  <div class="cell-content">
+                    <span class="cell-status status-yes" aria-hidden="true">✓</span>
+                    <span class="cell-text"><strong>Continuous Daily CI/CD:</strong> Live staging URLs, verified milestones, direct Slack/Jira access.</span>
+                  </div>
+                </td>
+              </tr>
 
-        <!-- Row 4: Delivery Cadence -->
-        <div class="matrix-body-row">
-          <div class="matrix-feature-name">
-            Visibility & Sprint Velocity
-            <span class="matrix-feature-sub">How do you track actual progress?</span>
-          </div>
-          <div class="matrix-legacy-cell">
-            <span class="matrix-cross-icon">✕</span>
-            <span>Opaque monthly status reports, missed deadlines, unexpected scope-creep invoices.</span>
-          </div>
-          <div class="matrix-ritiverse-cell">
-            <span class="matrix-check-icon">✓</span>
-            <span><strong>Continuous Daily CI/CD:</strong> Live staging URLs, verified milestones, direct Slack/Jira access.</span>
-          </div>
-        </div>
-
-        <!-- Row 5: Internal Team Handover -->
-        <div class="matrix-body-row">
-          <div class="matrix-feature-name">
-            Handoff & Documentation
-            <span class="matrix-feature-sub">Developer ergonomics & transition</span>
-          </div>
-          <div class="matrix-legacy-cell">
-            <span class="matrix-cross-icon">✕</span>
-            <span>Undocumented spaghetti code intentionally designed to force lifetime retainers.</span>
-          </div>
-          <div class="matrix-ritiverse-cell">
-            <span class="matrix-check-icon">✓</span>
-            <span><strong>Production-Grade Storybook & Blueprints:</strong> Typed codebases your internal developers love.</span>
-          </div>
+              <!-- Row 5: Internal Team Handover -->
+              <tr>
+                <td class="td-dim">
+                  <div class="dim-content">
+                    <strong class="dim-title">Handoff &amp; Documentation</strong>
+                    <span class="dim-sub">Developer ergonomics &amp; transition</span>
+                  </div>
+                </td>
+                <td class="td-legacy">
+                  <div class="cell-content">
+                    <span class="cell-status status-no" aria-hidden="true">✕</span>
+                    <span class="cell-text">Undocumented spaghetti code intentionally designed to force lifetime retainers.</span>
+                  </div>
+                </td>
+                <td class="td-ritiverse hl">
+                  <div class="cell-content">
+                    <span class="cell-status status-yes" aria-hidden="true">✓</span>
+                    <span class="cell-text"><strong>Production-Grade Storybook &amp; Blueprints:</strong> Typed codebases your internal developers love.</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
