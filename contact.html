@@ -16,8 +16,9 @@
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
 
-  <!-- RiTiVerse Design System Stylesheet -->
-  <link rel="stylesheet" href="ritiverse.css">
+  <!-- RiTiVerse Base & Contact Page Modular Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/contact.css">
 </head>
 
 <body>
@@ -361,32 +362,10 @@
     </div>
   </footer>
 
-  <!-- GSAP & JavaScript -->
+  <!-- GSAP & Modular JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="ritiverse.js"></script>
-  <script>
-    function handleContactSubmit() {
-      const btn = document.getElementById('contact-submit-btn');
-      const status = document.getElementById('contact-form-status');
-      const name = document.getElementById('contact-name').value;
-
-      btn.disabled = true;
-      btn.innerHTML = 'Transmitting Scope...';
-
-      setTimeout(() => {
-        btn.innerHTML = 'Inquiry Dispatched ✓';
-        btn.style.background = '#10B981';
-
-        status.style.display = 'block';
-        status.style.background = 'rgba(16, 185, 129, 0.15)';
-        status.style.border = '1px solid rgba(52, 211, 153, 0.3)';
-        status.style.color = '#34D399';
-        status.textContent = `Thank you, ${name}. Your architectural inquiry has been routed to our principal engineering team. We will review your scope and respond within 24 hours.`;
-
-        document.getElementById('contact-inquiry-form').reset();
-      }, 1200);
-    }
-  </script>
+  <script src="js/nav.js"></script>
+  <script src="js/contact.js"></script>
 </body>
 
 </html>

@@ -15,8 +15,9 @@
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
 
-  <!-- RItiverse Design System Stylesheet -->
-  <link rel="stylesheet" href="ritiverse.css">
+  <!-- RItiverse Base & Homepage Modular Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -27,7 +28,7 @@
       <!-- Modern & Minimal Floating Brand Wordmark with Logo -->
       <a href="index.html" class="synex-brand" aria-label="RiTiVerse Home">
         <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
-        <span class="synex-brand-name">RiTiVerse</span>
+        <span class="synex-brand-name">RiTiVerse<span class="logo-accent-dot"></span></span>
       </a>
     </div>
 
@@ -740,6 +741,7 @@
             </div>
             <span class="tech-badge-tag">Database</span>
           </div>
+        </div>
       </div>
     </div>
   </section>
@@ -923,21 +925,18 @@
 
       </div>
 
-      <!-- Bottom Headline Ticker 
+      <!-- Bottom Headline Ticker -->
 
     </div>
   </section>
 
-========================================================
+  <!-- ==========================================================================
        SECTION 4: "ZERO VENDOR LOCK-IN" PHILOSOPHY & COMPARISON MATRIX
        ========================================================================== -->
   <section class="synex-philosophy-section" id="philosophy">
     <div class="philosophy-container">
       <div class="section-head-center">
-        <div class="section-eyebrow-pill">
-          <span class="section-eyebrow-dot"></span>
-          The RiTiVerse Doctrine & Studio Standards
-        </div>
+        
         <h2 class="section-main-heading">
           The End of Agency Hostage.<br>
           <span class="text-flame">100% Freedom by Design.</span>
@@ -1697,7 +1696,7 @@
         <div class="footer-brand-col">
           <div class="footer-brand" style="gap: 10px;">
             <img src="assets/logo.png" alt="RiTiVerse Logo" style="height: 28px; width: auto;" />
-            <span class="footer-logo">RiTiVerse<span class="logo-accent-dot"></span></span>
+            <span class="footer-logo">RiTiVerse</span>
           </div>
           <p class="footer-col-desc">
             Bespoke website and software development engineered for extreme scale, sub-second latency, and 100% client source code ownership from Day 1.
@@ -1765,7 +1764,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- Interactive JavaScript Logic -->
-  <script src="ritiverse.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>

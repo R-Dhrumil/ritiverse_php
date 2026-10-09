@@ -1,0 +1,164 @@
+/* ==========================================================================
+   RITIVERSE — PROJECTS PAGE DEDICATED STYLES
+   (projects.html)
+   ========================================================================== */
+
+/* Projects Case Study Grid */
+.projects-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.project-filter-btn {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 140, 216, 0.2);
+  color: #475569;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 140, 216, 0.05);
+  transition: all 0.18s ease;
+}
+
+.project-filter-btn:hover,
+.project-filter-btn.active {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(248, 104, 0, 0.3);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.case-study-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 140, 216, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px -15px rgba(0, 140, 216, 0.12);
+  transition: all 0.25s ease;
+}
+
+.case-study-card:hover {
+  border-color: var(--brand-blue);
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -15px rgba(0, 140, 216, 0.2);
+}
+
+.case-card-hero {
+  height: 200px;
+  background: linear-gradient(135deg, rgba(240, 249, 255, 0.95) 0%, rgba(224, 242, 254, 0.95) 100%);
+  border-bottom: 1px solid rgba(0, 140, 216, 0.15);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.case-tag-pill {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 140, 216, 0.25);
+  color: var(--brand-blue);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.case-card-body {
+  padding: 26px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.case-card-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 10px;
+}
+
+.case-card-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+.case-metrics-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(240, 249, 255, 0.7);
+  border: 1px solid rgba(0, 140, 216, 0.15);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.case-metric-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.case-metric-val {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.case-metric-lbl {
+  font-size: 10px;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.case-tech-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.case-tech-pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #334155;
+  border: 1px solid rgba(0, 140, 216, 0.18);
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+
+
+
+/* Projects Responsive Adjustments */
+@media (max-width: 980px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}

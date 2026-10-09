@@ -16,8 +16,9 @@
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
 
-  <!-- RiTiVerse Design System Stylesheet -->
-  <link rel="stylesheet" href="ritiverse.css">
+  <!-- RiTiVerse Base & Projects Page Modular Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/projects.css">
 </head>
 
 <body>
@@ -477,34 +478,10 @@
     </div>
   </footer>
 
-  <!-- GSAP & JavaScript -->
+  <!-- GSAP & Modular JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="ritiverse.js"></script>
-  <script>
-    // Interactive Project Filtering
-    document.addEventListener('DOMContentLoaded', () => {
-      const filterBtns = document.querySelectorAll('.project-filter-btn');
-      const cards = document.querySelectorAll('.case-study-card');
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-
-          const filter = btn.dataset.filter;
-
-          cards.forEach(card => {
-            const categories = card.dataset.category || '';
-            if (filter === 'all' || categories.includes(filter)) {
-              card.style.display = 'flex';
-            } else {
-              card.style.display = 'none';
-            }
-          });
-        });
-      });
-    });
-  </script>
+  <script src="js/nav.js"></script>
+  <script src="js/projects.js"></script>
 </body>
 
 </html>

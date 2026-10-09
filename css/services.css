@@ -1,0 +1,657 @@
+/* ==========================================================================
+   RITIVERSE — SERVICES PAGE DEDICATED STYLES
+   (services.html)
+   ========================================================================== */
+
+/* ==========================================================================
+   DRIBBLLE-INSPIRED SPECIALIZED SERVICES SECTION (LIGHT THEME)
+   (RiTiVerse Architectural Design System — Azure Blue & Flame Orange Palette)
+   ========================================================================== */
+.dribbble-services-section {
+  position: relative;
+  background: #F8FAFC;
+  background-image: 
+    radial-gradient(circle at 18% 18%, rgba(0, 140, 216, 0.08) 0%, transparent 48%),
+    radial-gradient(circle at 82% 65%, rgba(248, 104, 0, 0.05) 0%, transparent 48%),
+    radial-gradient(circle at 50% 50%, #FFFFFF 0%, #F8FAFC 100%);
+  padding: 120px 24px 140px;
+  color: #0F172A;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0, 140, 216, 0.12);
+}
+
+.dribbble-services-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header: 2 Columns Matching Dribbble Shot */
+.dribbble-services-header {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 60px;
+  align-items: flex-end;
+  margin-bottom: 70px;
+}
+
+.dribbble-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.dribbble-eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand-blue);
+  box-shadow: 0 0 10px rgba(0, 140, 216, 0.45);
+  animation: pulseDot 2s infinite;
+}
+
+.dribbble-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5vw, 56px);
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.dribbble-accent-text {
+  background: linear-gradient(135deg, #008CD8 0%, #0284C7 50%, #F86800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dribbble-header-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #475569;
+  margin: 0;
+  max-width: 480px;
+}
+
+/* Services Interactive List & Dynamic Preview Arena */
+.dribbble-services-layout {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+}
+
+.dribbble-services-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.dribbble-service-item {
+  border-top: 1px solid #E2E8F0;
+  padding: 34px 0;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  outline: none;
+}
+
+.dribbble-service-item:last-child {
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.dribbble-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.dribbble-item-main {
+  flex: 1;
+}
+
+.dribbble-item-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.dribbble-item-title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 600;
+  color: #64748B;
+  line-height: 1.2;
+  margin: 0;
+  transition: color 0.35s ease, transform 0.35s ease;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.dribbble-title-dot {
+  color: var(--brand-orange);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-left: 2px;
+}
+
+/* Smooth Accordion Slide & Fade (No display:none stutter!) */
+.dribbble-item-desc {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #475569;
+  max-width: 520px;
+  margin: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(6px);
+  transition: max-height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 0.4s ease,
+              transform 0.4s ease,
+              margin-top 0.3s ease;
+}
+
+/* Circle Arrow Button */
+.dribbble-item-arrow {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid #CBD5E1;
+  background: #FFFFFF;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* Hover state on inactive item */
+.dribbble-service-item:hover .dribbble-item-title {
+  color: #0F172A;
+}
+
+.dribbble-service-item:hover .dribbble-item-arrow {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+  transform: translateX(4px);
+  box-shadow: 0 4px 14px rgba(0, 140, 216, 0.18);
+}
+
+/* ACTIVE ITEM: Like 'UI/UX Design .' in screenshot */
+.dribbble-service-item.is-active {
+  padding: 40px 0;
+}
+
+.dribbble-service-item.is-active .dribbble-item-title {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+.dribbble-service-item.is-active .dribbble-title-dot {
+  opacity: 1;
+  text-shadow: 0 0 10px rgba(248, 104, 0, 0.5);
+}
+
+.dribbble-service-item.is-active .dribbble-item-desc {
+  max-height: 120px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 10px;
+  color: #334155;
+}
+
+.dribbble-service-item.is-active .dribbble-item-arrow {
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(0, 140, 216, 0.35);
+  transform: rotate(-45deg);
+}
+
+/* Right Column: Dynamic Preview Arena */
+.dribbble-preview-arena {
+  position: sticky;
+  top: 130px;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Clean GPU-accelerated card state (Controlled by GSAP without CSS transition fight) */
+.dribbble-preview-card {
+  position: absolute;
+  width: 100%;
+  max-width: 460px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.dribbble-preview-card.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 3;
+}
+
+/* Main Window Container */
+.dribbble-mockup-window {
+  background: #FFFFFF;
+  border-radius: 22px;
+  border: 1px solid rgba(0, 140, 216, 0.16);
+  box-shadow: 
+    0 25px 60px -15px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.04),
+    0 10px 30px -10px rgba(0, 140, 216, 0.18);
+  overflow: visible;
+  position: relative;
+}
+
+/* Window Header Bar */
+.mockup-window-header {
+  background: #F8FAFC;
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mockup-window-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.m-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.m-dot.red { background: #EF4444; }
+.m-dot.yellow { background: #F59E0B; }
+.m-dot.green { background: #10B981; }
+
+.mockup-window-url {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #64748B;
+  background: #EDF2F7;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+}
+
+.mockup-window-close {
+  font-size: 11px;
+  color: #94A3B8;
+}
+
+/* Window Body Area */
+.mockup-window-body {
+  padding: 42px 32px;
+  min-height: 290px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+}
+
+/* Central Card Inside Window */
+.mockup-center-card {
+  background: #F0F9FF;
+  border: 1.5px solid rgba(0, 140, 216, 0.28);
+  border-radius: 18px;
+  padding: 26px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 12px 30px -8px rgba(0, 140, 216, 0.18);
+  width: 80%;
+  max-width: 260px;
+  transition: transform 0.3s ease;
+}
+
+.mockup-center-card:hover {
+  transform: scale(1.03);
+}
+
+.center-card-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: rgba(0, 140, 216, 0.12);
+  color: var(--brand-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.center-card-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.card-line {
+  height: 7px;
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+.card-line.long { width: 75%; }
+.card-line.short { width: 45%; }
+
+.center-card-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: #0284C7;
+  background: rgba(0, 140, 216, 0.12);
+  border: 1px solid rgba(0, 140, 216, 0.22);
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
+/* Floating Elements (Layered Badges) */
+.floating-pill-badge {
+  position: absolute;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  animation: floatElement 4s ease-in-out infinite alternate;
+  z-index: 5;
+}
+
+/* Pill Top-Left: Brand Blue icon badge */
+.pill-top-left {
+  top: -16px;
+  left: -16px;
+  width: 44px;
+  height: 44px;
+  background: var(--brand-blue);
+  color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 140, 216, 0.35);
+}
+
+/* Pill Top-Right: Bold theme badge (UX, iOS, API, ERP, CRM) */
+.pill-top-right {
+  top: -18px;
+  right: -18px;
+  padding: 12px 20px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #008CD8 0%, #0077BC 100%);
+  color: #FFFFFF;
+  border-radius: 14px;
+  box-shadow: 0 14px 30px rgba(0, 140, 216, 0.4);
+  animation-delay: -1s;
+}
+
+/* Pill Bottom-Left: Flame Orange accent tag pill */
+.pill-bottom-left {
+  bottom: -16px;
+  left: -16px;
+  padding: 10px 18px;
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: rgba(248, 104, 0, 0.12);
+  border: 1.5px solid rgba(248, 104, 0, 0.35);
+  color: var(--brand-orange);
+  border-radius: 12px;
+  animation-delay: -2s;
+}
+
+/* Floating Toggle Switch on Bottom-Right */
+.floating-toggle-badge {
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  background: #FFFFFF;
+  padding: 8px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #E2E8F0;
+  animation: floatElement 3.5s ease-in-out infinite alternate;
+  animation-delay: -1.5s;
+  z-index: 5;
+}
+
+.toggle-track {
+  display: block;
+  width: 36px;
+  height: 20px;
+  background: #E2E8F0;
+  border-radius: 9999px;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.toggle-track.active {
+  background: var(--brand-blue);
+  box-shadow: 0 0 10px rgba(0, 140, 216, 0.45);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.toggle-track.active .toggle-thumb {
+  transform: translateX(16px);
+}
+
+@keyframes floatElement {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-8px); }
+}
+
+@media (max-width: 1024px) {
+  .dribbble-services-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .dribbble-services-header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .dribbble-preview-arena {
+    position: static;
+    min-height: 380px;
+  }
+  .dribbble-item-title {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .dribbble-services-section {
+    padding: 80px 18px 100px;
+  }
+  .dribbble-item-title {
+    font-size: 24px;
+  }
+  .dribbble-item-arrow {
+    width: 38px;
+    height: 38px;
+  }
+  .mockup-window-body {
+    padding: 30px 16px;
+  }
+  .pill-top-right {
+    right: -8px;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  .pill-top-left {
+    left: -8px;
+    width: 38px;
+    height: 38px;
+  }
+  .pill-bottom-left {
+    left: -8px;
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+  .floating-toggle-badge {
+    right: -8px;
+  }
+}
+
+/* Ownership Matrix Comparison Table */
+.matrix-table-wrap {
+  overflow-x: auto;
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 140, 216, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px -15px rgba(0, 140, 216, 0.12);
+}
+
+.matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.matrix-table th {
+  padding: 20px 24px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(0, 140, 216, 0.15);
+}
+
+.matrix-table th:first-child {
+  color: #64748B;
+  width: 40%;
+}
+
+.matrix-table th.col-ritiverse {
+  color: var(--brand-orange);
+  background: var(--brand-orange-subtle);
+}
+
+.matrix-table th.col-trad {
+  color: #64748B;
+}
+
+.matrix-table td {
+  padding: 18px 24px;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 140, 216, 0.08);
+  color: #334155;
+}
+
+.matrix-table td.col-ritiverse {
+  background: var(--brand-orange-subtle);
+  color: #0F172A;
+  font-weight: 600;
+}
+
+.matrix-table td.col-trad {
+  color: #64748B;
+}
+
+
+
+/* 4-Step Process Grid */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.process-step-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 140, 216, 0.2);
+  border-radius: 14px;
+  padding: 28px 22px;
+  position: relative;
+  box-shadow: 0 10px 30px -10px rgba(0, 140, 216, 0.1);
+  transition: all 0.22s ease;
+}
+
+.process-step-card:hover {
+  border-color: var(--brand-orange);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -10px rgba(248, 104, 0, 0.18);
+}
+
+.process-step-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brand-orange);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.process-step-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 10px;
+}
+
+.process-step-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+
+
+/* Services Responsive Adjustments */
+@media (max-width: 980px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+}
