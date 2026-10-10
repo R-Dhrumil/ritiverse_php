@@ -1678,14 +1678,14 @@
   margin: 0 auto;
 }
 
-/* Side-by-Side Comparison Table */
+/* Side-by-Side Comparison Table (Image 1 Style) */
 .philosophy-table-card {
   background: #FFFFFF;
-  border: 1px solid rgba(0, 140, 216, 0.2);
-  border-radius: 20px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 50px -15px rgba(0, 140, 216, 0.12);
-  margin-top: 48px;
+  box-shadow: 0 4px 24px -2px rgba(15, 23, 42, 0.05);
+  margin-top: 40px;
   margin-bottom: 40px;
 }
 
@@ -1698,73 +1698,62 @@
   width: 100%;
   min-width: 720px;
   table-layout: fixed;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .compare-table th,
 .compare-table td {
-  padding: 20px 24px;
-  vertical-align: top;
-  border-bottom: 1px solid rgba(0, 140, 216, 0.1);
+  padding: 18px 24px;
+  vertical-align: middle;
+  border-bottom: 1px solid #F1F5F9;
 }
 
 .compare-table thead th {
   background: #F8FAFC;
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   text-align: left;
-  border-bottom: 1.5px solid rgba(0, 140, 216, 0.18);
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .compare-table .th-dim {
-  width: 32%;
+  width: 30%;
   color: #64748B;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .compare-table .th-legacy {
-  width: 34%;
+  width: 35%;
   color: #64748B;
-  font-size: 14px;
 }
 
-.compare-table .th-ritiverse {
-  width: 34%;
+/* RiTiVerse Highlighted Navy Header Cell (Matching Image 1) */
+.compare-table thead th.th-ritiverse {
+  width: 35%;
+  background: #0B1327;
+  color: var(--brand-orange);
+  border-radius: 12px 12px 0 0;
+  border-bottom: none;
+  padding: 16px 24px;
+  vertical-align: middle;
 }
 
-.th-ritiverse-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.table-pill-badge {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+.compare-table thead th.th-ritiverse .th-brand-pill {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--brand-orange);
   text-transform: uppercase;
-  color: var(--brand-orange);
-  background: var(--brand-orange-subtle);
-  border: 1px solid var(--brand-orange-border);
-  padding: 2px 8px;
-  border-radius: 999px;
+  display: block;
 }
 
-/* Highlighted Column: The RiTiVerse Standard */
-.compare-table .hl {
-  background: rgba(248, 104, 0, 0.035);
-}
-
-.compare-table thead th.hl {
-  color: var(--brand-orange);
-  background: rgba(248, 104, 0, 0.065);
+/* Highlighted Column Background in Body */
+.compare-table td.hl {
+  background: rgba(248, 104, 0, 0.018);
 }
 
 /* Row Hover States */
@@ -1777,7 +1766,7 @@
 }
 
 .compare-table tbody tr:hover td.hl {
-  background-color: rgba(248, 104, 0, 0.06);
+  background-color: rgba(248, 104, 0, 0.04);
 }
 
 .compare-table tbody tr:last-child td {
@@ -1785,68 +1774,51 @@
 }
 
 /* Cell Contents & Typography */
-.dim-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.dim-title {
+.compare-table .dim-title {
   font-family: var(--font-display);
   font-size: 14.5px;
   font-weight: 700;
   color: #0F172A;
-}
-
-.dim-sub {
-  font-size: 12px;
-  color: #64748B;
   line-height: 1.4;
 }
 
-.cell-content {
+.compare-table .cell-content {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  line-height: 1.55;
-  font-size: 13.5px;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.5;
+  font-size: 14px;
 }
 
-.td-legacy .cell-text {
+.compare-table .td-legacy .cell-text {
   color: #64748B;
+  font-size: 14px;
+  font-weight: 400;
 }
 
-.td-ritiverse .cell-text {
+.compare-table .td-ritiverse .cell-text {
   color: #0F172A;
-  font-weight: 500;
-}
-
-.td-ritiverse .cell-text strong {
-  color: #0F172A;
+  font-size: 14px;
   font-weight: 700;
 }
 
-.cell-status {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+/* Clean Inline Diff Icons (Matching Image 1) */
+.diff-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
   flex-shrink: 0;
-  font-size: 11px;
-  font-weight: 900;
-  margin-top: 2px;
+  line-height: 1;
 }
 
-.status-no {
-  background: rgba(239, 68, 68, 0.1);
-  color: var(--brand-red);
+.diff-no {
+  color: #EF4444;
 }
 
-.status-yes {
-  background: var(--brand-orange-subtle);
-  color: var(--brand-orange);
+.diff-yes {
+  color: #10B981;
 }
 
 
