@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initProcessLaser();
   initFlagships3DOrbit();
+  initAdminControl();
 });
 
 function initNumberCounter() {
@@ -205,6 +206,7 @@ function initHeroScrollReveal() {
         // Enable card interactivity once revealed into view
         if (prog > 0.55) {
           scrollTarget.style.pointerEvents = 'auto';
+          if (window.refreshAdminIndicator) window.refreshAdminIndicator();
         } else {
           scrollTarget.style.pointerEvents = 'none';
         }
@@ -1020,5 +1022,182 @@ function initFlagships3DOrbit() {
   // Initial render
   renderOrbit();
 }
+
+/* ==========================================================================
+   TAILORED ADMIN CONTROL CONSOLE (Interactive Demo Logic)
+   ========================================================================== */
+
+function initAdminControl() {
+  const adminSection = document.getElementById('admin-control');
+  if (!adminSection) return;
+
+  // ---------- State ----------
+  const state = {
+    activeTab: 'cms',
+    promo: true,
+    chat: true,
+    maintenance: false,
+    leads: { 1: 'New Lead', 2: 'Contacted' },
+  };
+
+  // ---------- Tabs ----------
+  const tabsEl = adminSection.querySelector('#tabs');
+  if (!tabsEl) return;
+  const tabs = [...tabsEl.querySelectorAll('.tab')];
+  const indicator = adminSection.querySelector('#tabIndicator');
+  let switching = false;
+
+  function moveIndicator() {
+    const active = tabsEl.querySelector('.tab.active');
+    if (!active || !indicator) return;
+    indicator.style.width = active.offsetWidth + 'px';
+    indicator.style.height = active.offsetHeight + 'px';
+    indicator.style.transform = `translate(${active.offsetLeft}px, ${active.offsetTop}px)`;
+  }
+
+  // Expose global hook so GSAP scroll reveal can refresh indicator immediately on scale
+  window.refreshAdminIndicator = moveIndicator;
+
+  function setTab(id) {
+    if (id === state.activeTab || switching) return;
+    switching = true;
+
+    const current = adminSection.querySelector('#panel-' + state.activeTab);
+    const next = adminSection.querySelector('#panel-' + id);
+
+    state.activeTab = id;
+    tabs.forEach(t => {
+      const isCur = t.dataset.tab === id;
+      t.classList.toggle('active', isCur);
+      t.setAttribute('aria-selected', String(isCur));
+    });
+    moveIndicator();
+
+    if (current && next) {
+      current.classList.remove('active');
+      current.classList.add('leaving');
+      setTimeout(() => {
+        current.classList.remove('leaving');
+        next.classList.add('active');
+        switching = false;
+      }, 200);
+    } else {
+      switching = false;
+    }
+  }
+
+  tabs.forEach(t => t.addEventListener('click', () => setTab(t.dataset.tab)));
+  window.addEventListener('resize', moveIndicator);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveIndicator);
+  setTimeout(moveIndicator, 60);
+
+  // ---------- CMS (Live Editor) ----------
+  const heroInput = adminSection.querySelector('#heroInput');
+  const heroPreview = adminSection.querySelector('#heroPreview');
+  const chips = adminSection.querySelectorAll('.chip');
+
+  if (heroInput && heroPreview) {
+    heroInput.addEventListener('input', () => {
+      heroPreview.textContent = heroInput.value.trim() || 'Transforming Your Business With Modern Technology';
+      chips.forEach(c => c.classList.remove('active-preset'));
+    });
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active-preset'));
+        chip.classList.add('active-preset');
+        heroInput.value = chip.dataset.heading;
+        heroPreview.textContent = chip.dataset.heading;
+      });
+    });
+  }
+
+  // ---------- Feature Toggles ----------
+  function renderToggle(btn) {
+    const key = btn.dataset.toggle;
+    const on = state[key];
+    const color = btn.dataset.onColor;
+    const card = btn.closest('.toggle-card');
+    const status = card ? card.querySelector('.toggle-status') : null;
+
+    btn.setAttribute('aria-pressed', String(on));
+    btn.classList.remove('on-emerald', 'on-amber');
+    if (status) status.classList.remove('on-emerald', 'on-amber');
+    if (card) card.classList.toggle('is-active', on);
+
+    if (on) {
+      btn.classList.add('on-' + color);
+      if (status) status.classList.add('on-' + color);
+    }
+    const useEl = btn.querySelector('use');
+    if (useEl) {
+      useEl.setAttribute('href', on ? '#i-toggle-right' : '#i-toggle-left');
+    }
+    if (status) {
+      status.textContent = on ? btn.dataset.on : btn.dataset.off;
+    }
+  }
+
+  adminSection.querySelectorAll('.toggle-btn').forEach(btn => {
+    renderToggle(btn);
+    btn.addEventListener('click', () => {
+      state[btn.dataset.toggle] = !state[btn.dataset.toggle];
+      renderToggle(btn);
+    });
+  });
+
+  // ---------- Leads & Inquiries ----------
+  const lead1 = adminSection.querySelector('#lead1');
+  const lead2 = adminSection.querySelector('#lead2');
+  const exportBtn = adminSection.querySelector('#exportLeadsBtn');
+
+  function renderLeads() {
+    if (lead1) {
+      lead1.textContent = state.leads[1];
+      lead1.classList.remove('contacted', 'blue');
+      if (state.leads[1] === 'Contacted') lead1.classList.add('contacted');
+      else if (state.leads[1] === 'Qualified') lead1.classList.add('blue');
+    }
+    if (lead2) {
+      lead2.textContent = state.leads[2];
+      lead2.classList.remove('contacted', 'blue');
+      if (state.leads[2] === 'Contacted') lead2.classList.add('blue');
+      else if (state.leads[2] === 'Proposal Sent') lead2.classList.add('contacted');
+    }
+  }
+
+  if (lead1) {
+    lead1.addEventListener('click', () => {
+      // 3-state cycle
+      if (state.leads[1] === 'New Lead') state.leads[1] = 'Contacted';
+      else if (state.leads[1] === 'Contacted') state.leads[1] = 'Qualified';
+      else state.leads[1] = 'New Lead';
+      renderLeads();
+    });
+  }
+
+  if (lead2) {
+    lead2.addEventListener('click', () => {
+      // 2-state cycle
+      state.leads[2] = state.leads[2] === 'Contacted' ? 'Proposal Sent' : 'Contacted';
+      renderLeads();
+    });
+  }
+  renderLeads();
+
+  // Export CSV tactile feedback
+  if (exportBtn) {
+    exportBtn.addEventListener('click', () => {
+      const origHtml = exportBtn.innerHTML;
+      exportBtn.innerHTML = '<svg class="btn-icon" style="color: #10B981;"><use href="#i-check"/></svg><span>CSV Exported!</span>';
+      exportBtn.style.background = '#065F46';
+      setTimeout(() => {
+        exportBtn.innerHTML = origHtml;
+        exportBtn.style.background = '';
+      }, 1600);
+    });
+  }
+}
+
 
 

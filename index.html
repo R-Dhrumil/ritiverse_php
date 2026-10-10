@@ -199,13 +199,242 @@
       <!-- GSAP Scroll-Linked Scale Target (Apple-Style Clean Reveal) -->
       <div class="dashboard-scroll-target" id="dashboard-scroll-target">
 
-        <!-- Centerpiece: RItiverse Production & Velocity Console -->
-        <div class="synex-dashboard-window" id="synex-dashboard">
+        <!-- =========================================================================
+             TAILORED CLIENT ADMIN CONSOLE (Interactive Scroll Reveal Centerpiece)
+             ========================================================================= -->
+        <div class="console admin-console" id="admin-control">
 
-          <!-- Sidebar Navigation -->
+          <!-- Top bar: macOS / Studio Chrome Header -->
+          <div class="console-top">
+            <div class="console-top-left">
+              <div class="dots" aria-hidden="true">
+                <span class="dot rose"></span>
+                <span class="dot amber"></span>
+                <span class="dot emerald"></span>
+              </div>
+              <span class="console-title">Client Admin Console</span>
+              <span class="console-path" aria-hidden="true">ritiverse://studio/live-v2.4</span>
+            </div>
+            <div class="console-live">
+              <span class="ping" aria-hidden="true"></span>
+              <span class="mono">Live Interactive Demo</span>
+            </div>
+          </div>
+
+          <!-- Navigation Tab Bar -->
+          <div class="tabs" id="tabs" role="tablist" aria-label="Admin Control Modules">
+            <span class="tab-indicator" id="tabIndicator" aria-hidden="true"></span>
+            <button class="tab active" role="tab" data-tab="cms" id="tab-cms" aria-selected="true">
+              <svg class="icon"><use href="#i-file-text"/></svg>
+              <span>Content CMS</span>
+            </button>
+            <button class="tab" role="tab" data-tab="toggles" id="tab-toggles" aria-selected="false">
+              <svg class="icon"><use href="#i-sliders"/></svg>
+              <span>Feature Switches</span>
+            </button>
+            <button class="tab" role="tab" data-tab="leads" id="tab-leads" aria-selected="false">
+              <svg class="icon"><use href="#i-inbox"/></svg>
+              <span>Leads &amp; Inquiries</span>
+            </button>
+            <button class="tab" role="tab" data-tab="roles" id="tab-roles" aria-selected="false">
+              <svg class="icon"><use href="#i-users"/></svg>
+              <span>Team Roles</span>
+            </button>
+          </div>
+
+          <!-- Main Interactive Console Body -->
+          <div class="console-body">
+            <div class="panels">
+
+              <!-- Module 1: CMS Live Content Management -->
+              <div class="panel stack-5 active" id="panel-cms" role="tabpanel" aria-labelledby="tab-cms">
+                <div class="panel-head between">
+                  <div class="panel-head-left">
+                    <span class="label">Production Copy Editor</span>
+                    <span class="label-sub">Update site copy in real-time with zero developer delays</span>
+                  </div>
+                  <span class="badge-amber">
+                    <span class="badge-dot"></span>
+                    Instant Live Sync
+                  </span>
+                </div>
+                <div class="grid cols-2 gap-6">
+                  <div class="cms-input-col">
+                    <label class="field-label" for="heroInput">Headline Copy (Live Target)</label>
+                    <input type="text" id="heroInput" class="input" value="Transforming Your Business With Modern Technology" placeholder="Type new headline to preview..." autocomplete="off" />
+                    <div class="chip-row">
+                      <button type="button" class="chip active-preset" data-heading="Enterprise Software Solutions for Modern Scale">Example: Enterprise SaaS</button>
+                      <button type="button" class="chip" data-heading="High-Performance Digital Commerce Platform">Example: E-Commerce</button>
+                      <button type="button" class="chip" data-heading="Cloud Architecture & Zero-Vendor Lock-In">Example: Cloud Architecture</button>
+                    </div>
+                  </div>
+                  <div class="preview-box">
+                    <div class="mono-label">
+                      <svg class="icon amber"><use href="#i-eye"/></svg>
+                      <span>Live Customer Viewport</span>
+                      <span class="live-pill"><span class="live-pill-dot"></span>CDN Edge 0.02s</span>
+                    </div>
+                    <div class="preview-card">
+                      <h5 id="heroPreview">Transforming Your Business With Modern Technology</h5>
+                      <p>Instant cache invalidation pushed globally across edge servers upon save.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Module 2: Feature Switches & Toggles -->
+              <div class="panel stack-5" id="panel-toggles" role="tabpanel" aria-labelledby="tab-toggles">
+                <div class="panel-head between">
+                  <div class="panel-head-left">
+                    <span class="label">Feature Gate Controls</span>
+                    <span class="label-sub">Toggle client-facing modules on/off dynamically without code deployments</span>
+                  </div>
+                  <span class="badge-status">3 Services Connected</span>
+                </div>
+                <div class="grid cols-3 gap-4">
+                  <div class="card toggle-card" id="card-toggle-promo">
+                    <div class="between">
+                      <div class="card-title-group">
+                        <span class="card-icon-wrap emerald"><svg class="card-icon"><use href="#i-sliders"/></svg></span>
+                        <span class="card-title">Promo Banner</span>
+                      </div>
+                      <button class="toggle-btn" data-toggle="promo" data-on-color="emerald" data-on="Active on Site" data-off="Disabled" aria-pressed="true" aria-label="Toggle Promo Banner">
+                        <svg class="toggle-icon"><use href="#i-toggle-right"/></svg>
+                      </button>
+                    </div>
+                    <span class="toggle-status"></span>
+                  </div>
+                  <div class="card toggle-card" id="card-toggle-chat">
+                    <div class="between">
+                      <div class="card-title-group">
+                        <span class="card-icon-wrap emerald"><svg class="card-icon"><use href="#i-users"/></svg></span>
+                        <span class="card-title">WhatsApp Chat</span>
+                      </div>
+                      <button class="toggle-btn" data-toggle="chat" data-on-color="emerald" data-on="Enabled" data-off="Disabled" aria-pressed="true" aria-label="Toggle WhatsApp Chat">
+                        <svg class="toggle-icon"><use href="#i-toggle-right"/></svg>
+                      </button>
+                    </div>
+                    <span class="toggle-status"></span>
+                  </div>
+                  <div class="card toggle-card" id="card-toggle-maintenance">
+                    <div class="between">
+                      <div class="card-title-group">
+                        <span class="card-icon-wrap amber"><svg class="card-icon"><use href="#i-shield-check"/></svg></span>
+                        <span class="card-title">Maintenance Alert</span>
+                      </div>
+                      <button class="toggle-btn" data-toggle="maintenance" data-on-color="amber" data-on="Active Notice" data-off="Off" aria-pressed="false" aria-label="Toggle Maintenance Alert">
+                        <svg class="toggle-icon"><use href="#i-toggle-left"/></svg>
+                      </button>
+                    </div>
+                    <span class="toggle-status"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Module 3: Leads & Direct Inquiries -->
+              <div class="panel stack-5" id="panel-leads" role="tabpanel" aria-labelledby="tab-leads">
+                <div class="panel-head between">
+                  <div class="panel-head-left">
+                    <span class="label">Real-Time Inbound Leads</span>
+                    <span class="label-sub">Direct submissions with instant notification webhooks</span>
+                  </div>
+                  <button type="button" class="btn-dark" id="exportLeadsBtn">
+                    <svg class="btn-icon"><use href="#i-file-text"/></svg>
+                    <span>Export CSV</span>
+                  </button>
+                </div>
+                <div class="stack-2-5">
+                  <div class="card lead between">
+                    <div class="lead-info">
+                      <div class="lead-header-row">
+                        <p class="lead-name">David Miller</p>
+                        <span class="lead-time">9m ago</span>
+                      </div>
+                      <p class="lead-sub">Custom Web App + Admin Suite &bull; £14,000 Budget</p>
+                    </div>
+                    <button type="button" class="status-btn" id="lead1" title="Click to update status">New Lead</button>
+                  </div>
+                  <div class="card lead between">
+                    <div class="lead-info">
+                      <div class="lead-header-row">
+                        <p class="lead-name">Rachel Adams</p>
+                        <span class="lead-time">42m ago</span>
+                      </div>
+                      <p class="lead-sub">E-Commerce &amp; Inventory Portal &bull; Enterprise Scope</p>
+                    </div>
+                    <button type="button" class="status-btn blue" id="lead2" title="Click to update status">Contacted</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Module 4: Role-Based Access Control -->
+              <div class="panel stack-4" id="panel-roles" role="tabpanel" aria-labelledby="tab-roles">
+                <div class="panel-head between">
+                  <div class="panel-head-left">
+                    <span class="label">Role-Based Access Control (RBAC)</span>
+                    <span class="label-sub">Isolated user tiers protect sensitive billing, code &amp; content</span>
+                  </div>
+                  <span class="badge-status">Enterprise Security</span>
+                </div>
+                <div class="grid cols-3 gap-4">
+                  <div class="card role">
+                    <div class="role-title">
+                      <svg class="icon lg emerald"><use href="#i-shield-check"/></svg>
+                      <span>Super Admin</span>
+                    </div>
+                    <p>Full control over production billing, API keys, credentials &amp; team access.</p>
+                    <span class="role-pill emerald">Full Ownership</span>
+                  </div>
+                  <div class="card role">
+                    <div class="role-title">
+                      <svg class="icon lg blue"><use href="#i-file-text"/></svg>
+                      <span>Content Editor</span>
+                    </div>
+                    <p>Direct rights to edit headlines, publish blogs, media assets &amp; SEO tags.</p>
+                    <span class="role-pill blue">Publish &amp; Edit</span>
+                  </div>
+                  <div class="card role">
+                    <div class="role-title">
+                      <svg class="icon lg amber"><use href="#i-inbox"/></svg>
+                      <span>Sales &amp; Support</span>
+                    </div>
+                    <p>Review customer inquiries, sync CRM feeds, and manage client quotes.</p>
+                    <span class="role-pill amber">Inquiry Access</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Bottom callout: Studio Ownership Guarantee -->
+            <div class="callout">
+              <div class="callout-text">
+                <div class="callout-icon-badge">
+                  <svg class="icon emerald"><use href="#i-check"/></svg>
+                </div>
+                <span>Custom-tailored to your exact business workflow upon delivery. 100% full source ownership transferred.</span>
+              </div>
+              <a href="contact.html" class="cta">
+                <span>Request Custom Admin Build</span>
+                <svg class="icon"><use href="#i-arrow-right"/></svg>
+              </a>
+            </div>
+          </div>
+        </div><!-- /.admin-console -->
+
+<!-- =========================================================================
+             PREVIOUS ARCHITECTURE TELEMETRY CONSOLE (SAFELY COMMENTED OUT)
+             =========================================================================
+/* =========================================================================
+             PREVIOUS ARCHITECTURE TELEMETRY CONSOLE (COMMENTED OUT)
+             ========================================================================= */
+        /*
+<div class="synex-dashboard-window" id="synex-dashboard">
+
+          /* Sidebar Navigation */
           <aside class="dash-sidebar">
             <div>
-              <!-- Workspace Profile -->
+              /* Workspace Profile */
               <div class="sidebar-profile">
                 <div class="profile-avatar">R</div>
                 <div class="profile-info">
@@ -217,7 +446,7 @@
                 </div>
               </div>
 
-              <!-- Engineering OS Navigation -->
+              /* Engineering OS Navigation */
               <div class="sidebar-section">
                 <div class="sidebar-section-title">Engineering OS</div>
                 <ul class="sidebar-nav-list">
@@ -276,7 +505,7 @@
                 </ul>
               </div>
 
-              <!-- Client Deliverables -->
+              /* Client Deliverables */
               <div class="sidebar-section">
                 <div class="sidebar-section-title">Client Deliverables</div>
                 <ul class="sidebar-nav-list">
@@ -301,7 +530,7 @@
               </div>
             </div>
 
-            <!-- Sidebar Footer -->
+            /* Sidebar Footer */
             <div class="sidebar-footer">
               <a href="#docs" class="sidebar-footer-link">
                 <svg class="nav-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -313,10 +542,10 @@
             </div>
           </aside>
 
-          <!-- Main Dashboard View Area -->
+          /* Main Dashboard View Area */
           <div class="dash-content">
 
-            <!-- Top Bar with User & Range Filters -->
+            /* Top Bar with User & Range Filters */
             <div class="dash-top-bar">
               <div class="dash-user-welcome">
                 <div class="dash-avatar-mini">RI</div>
@@ -327,7 +556,7 @@
               </div>
 
               <div class="dash-top-actions">
-                <!-- Sprint Status Pill -->
+                /* Sprint Status Pill */
                 <button class="dash-pill-btn" type="button">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -340,14 +569,14 @@
                   </svg>
                 </button>
 
-                <!-- Currency Switcher -->
+                /* Currency Switcher */
                 <div class="dash-currency-toggle">
                   <button class="currency-option" data-curr="EUR">RUPE (₹)</button>
                   <button class="currency-option active" data-curr="USD">USD ($)</button>
 
                 </div>
 
-                <!-- Quick Search Button -->
+                /* Quick Search Button */
                 <button class="dash-pill-btn" type="button" title="Quick Search">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
@@ -358,7 +587,7 @@
               </div>
             </div>
 
-            <!-- Production Value Hero Metric -->
+            /* Production Value Hero Metric */
             <div class="dash-metric-hero">
               <div class="metric-hero-left">
                 <span class="metric-eyebrow">Interactive Platform Model</span>
@@ -381,7 +610,7 @@
               </div>
             </div>
 
-            <!-- 3 Submetrics Cards Row -->
+            /* 3 Submetrics Cards Row */
             <div class="dash-submetrics-row">
               <div class="submetric-card">
                 <div class="submetric-header">
@@ -408,7 +637,7 @@
               </div>
             </div>
 
-            <!-- Interactive Chart Area -->
+            /* Interactive Chart Area */
             <div class="dash-chart-section">
               <div class="chart-header">
                 <div class="chart-title-group">
@@ -422,14 +651,14 @@
               </div>
 
               <div class="chart-body-wrapper">
-                <!-- Background Horizontal Gridlines -->
+                /* Background Horizontal Gridlines */
                 <div class="chart-guidelines">
                   <div class="guideline"></div>
                   <div class="guideline"></div>
                   <div class="guideline"></div>
                 </div>
 
-                <!-- Interactive Bars for 12 Months -->
+                /* Interactive Bars for 12 Months */
                 <div class="chart-bars-container">
                   <div class="chart-bar-col" data-month="jan">
                     <div class="chart-tooltip">$182,400</div>
@@ -494,7 +723,7 @@
                 </div>
               </div>
 
-              <!-- Stack Breakdown Bottom Row -->
+              /* Stack Breakdown Bottom Row */
               <div class="dash-allocations-row">
                 <div class="allocation-item">
                   <span class="alloc-dot" style="background-color: var(--brand-orange);"></span>
@@ -521,7 +750,10 @@
 
           </div>
         </div>
+        */
 
+
+        ========================================================================= -->
       </div><!-- /.dashboard-scroll-target -->
 
     </div><!-- /#hero-stage -->
@@ -535,6 +767,22 @@
     </div>
 
   </main>
+
+  <!-- ==========================================================================
+       ICON SPRITE FOR ADMIN CONSOLE (Lucide Icons)
+       ========================================================================== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="i-file-text" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></symbol>
+    <symbol id="i-inbox" viewBox="0 0 24 24"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-toggle-right" viewBox="0 0 24 24"><rect width="20" height="12" x="2" y="6" rx="6"/><circle cx="16" cy="12" r="2"/></symbol>
+    <symbol id="i-toggle-left" viewBox="0 0 24 24"><rect width="20" height="12" x="2" y="6" rx="6"/><circle cx="8" cy="12" r="2"/></symbol>
+  </svg>
 
 
 
