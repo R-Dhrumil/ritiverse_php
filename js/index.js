@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initShowcaseSearch();
   initFaqAccordion();
   initProcessLaser();
+  initFlagships3DOrbit();
 });
 
 function initNumberCounter() {
@@ -730,7 +731,294 @@ function initProcessLaser() {
 }
 
 /* ==========================================================================
-   DRIBBLLE SERVICES SHOWCASE INTERACTIVITY
-   Seamless hover/click tabs for Website Dev, App Dev, Software, ERP, CRM
+   PRODUCTION FLAGSHIPS: 3D REVOLVING CARD ORBIT CAROUSEL
+   Interactive 3D orbit, smooth drag/wheel/stepper, and dynamic editorial update
    ========================================================================== */
+
+function initFlagships3DOrbit() {
+  const disc = document.getElementById('flagshipsDisc');
+  if (!disc) return;
+
+  const FLAGSHIPS_DATA = [
+    {
+      index: 0,
+      badge: "FinTech & Telemetry",
+      client: "Aegis Capital",
+      subheading: "Aegis Capital • High-Frequency Systems",
+      title: "Aegis Financial Telemetry OS",
+      description: "High-frequency algorithmic portfolio monitoring platform streaming real-time market data across 12 global exchanges with sub-50ms latency.",
+      metrics: [
+        { val: "0.12s", lbl: "Global TTFB" },
+        { val: "120K+", lbl: "Daily Trades" },
+        { val: "100%", lbl: "Client IP" }
+      ],
+      tags: ["PHP", "Laravel", "React", "MySQL"],
+      link: "projects.html"
+    },
+    {
+      index: 1,
+      badge: "Supply Chain Cloud",
+      client: "Verve Systems",
+      subheading: "Verve Systems • Fleet Telemetry",
+      title: "Verve Global Logistics Engine",
+      description: "Clean RESTful microservices architecture replacing a legacy monolith, handling dynamic routing for 4,000+ commercial freight vehicles.",
+      metrics: [
+        { val: "99.99%", lbl: "Uptime SLA" },
+        { val: "-68%", lbl: "Dispatch Latency" },
+        { val: "4.2K", lbl: "Fleet Units" }
+      ],
+      tags: ["Express.js", "Node.js", "JavaScript", "REST APIs"],
+      link: "projects.html"
+    },
+    {
+      index: 2,
+      badge: "HealthTech Portal",
+      client: "PulseHealth",
+      subheading: "PulseHealth • Clinical Diagnostics",
+      title: "PulseHealth Diagnostics Portal",
+      description: "High-speed clinical workflow assistant combining automated Python data synthesis with modern responsive React and CSS3 interfaces.",
+      metrics: [
+        { val: "4.8x", lbl: "Workflow Speed" },
+        { val: "100%", lbl: "Client IP" },
+        { val: "0.34s", lbl: "Query Speed" }
+      ],
+      tags: ["Python", "React", "HTML5", "CSS3"],
+      link: "projects.html"
+    },
+    {
+      index: 3,
+      badge: "Enterprise AI & RAG",
+      client: "OmniSphere Labs",
+      subheading: "OmniSphere Labs • Document Intelligence",
+      title: "OmniSphere Private AI Workspace",
+      description: "Air-gapped enterprise intelligence workspace indexing 500,000+ proprietary scientific documents with vector semantic search and multi-agent synthesis.",
+      metrics: [
+        { val: "85%", lbl: "Faster Research" },
+        { val: "SOC2", lbl: "Compliant" },
+        { val: "Private", lbl: "VPC Isolated" }
+      ],
+      tags: ["Python", "FastAPI", "pgvector", "React"],
+      link: "projects.html"
+    },
+    {
+      index: 4,
+      badge: "Headless Web Platform",
+      client: "Pulse Global",
+      subheading: "Pulse Global • Digital Flagship",
+      title: "Pulse Luxury Digital Flagship",
+      description: "Cinematic, 60fps editorial buying experience built with Next.js edge rendering, bespoke responsive interactions, and sub-second page transitions.",
+      metrics: [
+        { val: "100/100", lbl: "Lighthouse Score" },
+        { val: "+42%", lbl: "Conversion Lift" },
+        { val: "0.18s", lbl: "Average TTFB" }
+      ],
+      tags: ["React", "Next.js", "Cloudflare", "Tailored Tokens"],
+      link: "projects.html"
+    }
+  ];
+
+  let activeIndex = 0;
+  const totalCards = FLAGSHIPS_DATA.length;
+  const cardElements = disc.querySelectorAll('.orbit-card-item');
+
+  const badgeCategory = document.getElementById('fBadgeCategory');
+  const subheading = document.getElementById('fSubheading');
+  const title = document.getElementById('fTitle');
+  const description = document.getElementById('fDescription');
+  const activeIndexEl = document.getElementById('fActiveIndex');
+  const tagsRow = document.getElementById('fTagsRow');
+  const ctaBtn = document.getElementById('fCtaBtn');
+
+  const metricVal1 = document.getElementById('fMetricVal1');
+  const metricLbl1 = document.getElementById('fMetricLbl1');
+  const metricVal2 = document.getElementById('fMetricVal2');
+  const metricLbl2 = document.getElementById('fMetricLbl2');
+  const metricVal3 = document.getElementById('fMetricVal3');
+  const metricLbl3 = document.getElementById('fMetricLbl3');
+  const paginationDots = document.getElementById('fPaginationDots');
+
+  function renderOrbit() {
+    const isMobile = window.innerWidth <= 640;
+    const isTablet = window.innerWidth <= 1024 && !isMobile;
+
+    const scaleActive = isMobile ? 1.05 : (isTablet ? 1.12 : 1.18);
+    const scaleSide = isMobile ? 0.78 : 0.86;
+    const scaleFar = isMobile ? 0.64 : 0.72;
+
+    const transXSide = isMobile ? 140 : (isTablet ? 170 : 190);
+    const transXFar = isMobile ? 230 : (isTablet ? 275 : 305);
+
+    cardElements.forEach((card) => {
+      const itemIdx = parseInt(card.getAttribute('data-index'), 10);
+      let diff = (itemIdx - activeIndex) % totalCards;
+      if (diff > totalCards / 2) diff -= totalCards;
+      if (diff < -totalCards / 2) diff += totalCards;
+
+      if (diff === 0) {
+        card.classList.add('is-active');
+        card.style.transform = `translateX(0px) translateY(-8px) translateZ(160px) rotateY(0deg) rotateZ(0deg) scale(${scaleActive})`;
+      } else if (diff === -1) {
+        card.classList.remove('is-active');
+        card.style.transform = `translateX(-${transXSide}px) translateY(18px) translateZ(-45px) rotateY(24deg) rotateZ(-10deg) scale(${scaleSide})`;
+      } else if (diff === 1) {
+        card.classList.remove('is-active');
+        card.style.transform = `translateX(${transXSide}px) translateY(18px) translateZ(-45px) rotateY(-24deg) rotateZ(10deg) scale(${scaleSide})`;
+      } else if (diff === -2 || diff < -1) {
+        card.classList.remove('is-active');
+        card.style.transform = `translateX(-${transXFar}px) translateY(45px) translateZ(-190px) rotateY(38deg) rotateZ(-18deg) scale(${scaleFar})`;
+      } else if (diff === 2 || diff > 1) {
+        card.classList.remove('is-active');
+        card.style.transform = `translateX(${transXFar}px) translateY(45px) translateZ(-190px) rotateY(-38deg) rotateZ(18deg) scale(${scaleFar})`;
+      }
+    });
+
+    updateTextInfo();
+  }
+
+  function updateTextInfo() {
+    const data = FLAGSHIPS_DATA[activeIndex];
+    if (!data) return;
+
+    if (badgeCategory) badgeCategory.textContent = data.badge;
+    if (subheading) subheading.textContent = data.subheading;
+
+    if (title) {
+      title.textContent = data.title;
+      title.classList.remove('f-text-fade-in');
+      void title.offsetWidth; // Trigger DOM reflow for CSS keyframe
+      title.classList.add('f-text-fade-in');
+    }
+
+    if (description) description.textContent = data.description;
+    if (activeIndexEl) activeIndexEl.textContent = `0${activeIndex + 1}`;
+
+    if (metricVal1 && data.metrics[0]) {
+      metricVal1.textContent = data.metrics[0].val;
+      metricLbl1.textContent = data.metrics[0].lbl;
+    }
+    if (metricVal2 && data.metrics[1]) {
+      metricVal2.textContent = data.metrics[1].val;
+      metricLbl2.textContent = data.metrics[1].lbl;
+    }
+    if (metricVal3 && data.metrics[2]) {
+      metricVal3.textContent = data.metrics[2].val;
+      metricLbl3.textContent = data.metrics[2].lbl;
+    }
+
+    if (tagsRow) {
+      tagsRow.innerHTML = data.tags.map(t => `<span class="flagship-tag-item">${t}</span>`).join('');
+    }
+
+    if (ctaBtn) {
+      ctaBtn.href = data.link;
+    }
+
+    if (paginationDots) {
+      const dots = paginationDots.querySelectorAll('.orbit-dot');
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.classList.add('is-active');
+        } else {
+          dot.classList.remove('is-active');
+        }
+      });
+    }
+  }
+
+  function nextCard() {
+    activeIndex = (activeIndex + 1) % totalCards;
+    renderOrbit();
+  }
+
+  function prevCard() {
+    activeIndex = (activeIndex - 1 + totalCards) % totalCards;
+    renderOrbit();
+  }
+
+  function goToCard(idx) {
+    activeIndex = idx;
+    renderOrbit();
+  }
+
+  cardElements.forEach(card => {
+    card.addEventListener('click', () => {
+      const targetIdx = parseInt(card.getAttribute('data-index'), 10);
+      if (targetIdx !== activeIndex) {
+        activeIndex = targetIdx;
+        renderOrbit();
+      }
+    });
+  });
+
+  const nextBtn = document.getElementById('fNextBtn');
+  const prevBtn = document.getElementById('fPrevBtn');
+  if (nextBtn) nextBtn.addEventListener('click', nextCard);
+  if (prevBtn) prevBtn.addEventListener('click', prevCard);
+
+  if (paginationDots) {
+    const dots = paginationDots.querySelectorAll('.orbit-dot');
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => goToCard(idx));
+    });
+  }
+
+  // Mouse wheel with debounce
+  let wheelTimeout = null;
+  disc.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    if (wheelTimeout) return;
+    if (e.deltaY > 20 || e.deltaX > 20) {
+      nextCard();
+      wheelTimeout = setTimeout(() => { wheelTimeout = null; }, 280);
+    } else if (e.deltaY < -20 || e.deltaX < -20) {
+      prevCard();
+      wheelTimeout = setTimeout(() => { wheelTimeout = null; }, 280);
+    }
+  }, { passive: false });
+
+  // Touch & Pointer drag
+  let startX = 0;
+  let isDragging = false;
+
+  disc.addEventListener('pointerdown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+  });
+
+  window.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    const deltaX = e.clientX - startX;
+    if (deltaX > 70) {
+      prevCard();
+      isDragging = false;
+    } else if (deltaX < -70) {
+      nextCard();
+      isDragging = false;
+    }
+  });
+
+  window.addEventListener('pointerup', () => {
+    isDragging = false;
+  });
+
+  // Keyboard navigation when hovering or focusing within the section
+  const section = document.getElementById('projects');
+  if (section) {
+    window.addEventListener('keydown', (e) => {
+      const rect = section.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!inView) return;
+
+      if (e.key === 'ArrowRight') nextCard();
+      if (e.key === 'ArrowLeft') prevCard();
+    });
+  }
+
+  // Window resize to recalculate offsets
+  window.addEventListener('resize', renderOrbit);
+
+  // Initial render
+  renderOrbit();
+}
+
 

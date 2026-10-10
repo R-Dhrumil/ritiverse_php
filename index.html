@@ -1087,7 +1087,7 @@
   <!-- ==========================================================================
        SECTION 5: FEATURED PRODUCTION FLAGSHIPS & CASE STUDIES
        ========================================================================== -->
-  <section class="synex-flagships-section" id="projects">
+  <!-- <section class="synex-flagships-section" id="projects">
     <div class="flagships-container">
       <div class="section-head-center">
         <div class="section-eyebrow-pill">
@@ -1103,147 +1103,264 @@
         </p>
       </div>
 
-      <!-- 3 Case Study Cards Grid -->
-      <div class="flagships-grid">
+      /* 3D Revolving Card Orbit Showcase */
+      <div class="flagships-showcase-grid">
 
-        <!-- Case 1: Aegis Financial OS -->
-        <div class="flagship-card">
-          <div class="flagship-preview">
-            <img src="assets/card_software_apis.jpg" alt="Aegis Financial Telemetry OS" class="flagship-preview-img" />
-            <span class="flagship-overlay-badge">FinTech & Telemetry</span>
-            <span class="flagship-client-tag">Aegis Capital</span>
+        /* Left Column: Editorial & Dynamic Meta Context */
+        <div class="flagships-editorial-col">
+          <div class="flagship-meta-badge">
+            <span class="flagship-badge-dot" id="fBadgeDot"></span>
+            <span class="flagship-badge-text" id="fBadgeCategory">FINTECH &amp; TELEMETRY</span>
           </div>
-          <div class="flagship-body">
-            <div>
-              <h3 class="flagship-title">Aegis Financial Telemetry OS</h3>
-              <p class="flagship-desc">
-                High-frequency algorithmic portfolio monitoring platform streaming real-time market data across 12 global exchanges with sub-50ms latency.
-              </p>
-              <div class="flagship-metrics-strip">
-                <div class="flagship-metric-item">
-                  <span class="f-metric-val">0.12s</span>
-                  <span class="f-metric-lbl">Global TTFB</span>
-                </div>
-                <div class="flagship-metric-item">
-                  <span class="f-metric-val">120K+</span>
-                  <span class="f-metric-lbl">Daily Trades</span>
-                </div>
-                <div class="flagship-metric-item">
-                  <span class="f-metric-val">100%</span>
-                  <span class="f-metric-lbl">Client IP</span>
-                </div>
-              </div>
-              <div class="flagship-tags">
-                <span class="flagship-pill">PHP</span>
-                <span class="flagship-pill">Laravel</span>
-                <span class="flagship-pill">React</span>
-                <span class="flagship-pill">MySQL</span>
-              </div>
+
+          <div class="flagship-headline-wrap">
+            <p class="flagship-client-lead" id="fSubheading">Aegis Capital • High-Frequency Systems</p>
+            <h3 class="flagship-active-title" id="fTitle">Aegis Financial Telemetry OS</h3>
+          </div>
+
+          <p class="flagship-active-desc" id="fDescription">
+            High-frequency algorithmic portfolio monitoring platform streaming real-time market data across 12 global exchanges with sub-50ms latency.
+          </p>
+
+          /* Dynamic Feature Metrics Strip */
+          <div class="flagship-metrics-grid" id="fMetricsGrid">
+            <div class="f-metric-card">
+              <span class="f-metric-number" id="fMetricVal1">0.12s</span>
+              <span class="f-metric-caption" id="fMetricLbl1">Global TTFB</span>
             </div>
-            <a href="projects.html" class="flagship-card-cta">
-              <span>View Full Case Study</span>
+            <div class="f-metric-card">
+              <span class="f-metric-number" id="fMetricVal2">120K+</span>
+              <span class="f-metric-caption" id="fMetricLbl2">Daily Trades</span>
+            </div>
+            <div class="f-metric-card">
+              <span class="f-metric-number" id="fMetricVal3">100%</span>
+              <span class="f-metric-caption" id="fMetricLbl3">Client IP</span>
+            </div>
+          </div>
+
+          /* Dynamic Tech Tags Row */
+          <div class="flagship-tags-row" id="fTagsRow">
+            <span class="flagship-tag-item">PHP</span>
+            <span class="flagship-tag-item">Laravel</span>
+            <span class="flagship-tag-item">React</span>
+            <span class="flagship-tag-item">MySQL</span>
+          </div>
+
+          /* Action Controls: CTA, Stepper, Counter */
+          <div class="flagship-controls-bar">
+            <a href="projects.html" class="flagship-primary-btn" id="fCtaBtn">
+              <span>View Case Study</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </a>
+
+            <div class="flagship-stepper-group">
+              <button type="button" class="flagship-step-btn" id="fPrevBtn" aria-label="Previous Project">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button type="button" class="flagship-step-btn" id="fNextBtn" aria-label="Next Project">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <div class="flagship-index-counter">
+              <span class="counter-curr" id="fActiveIndex">01</span>
+              <span class="counter-sep">/</span>
+              <span class="counter-total">05</span>
+            </div>
+          </div>
+
+          /* Interaction Hint */
+          <div class="flagship-drag-hint">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 8v8m-4-4l4-4 4 4"></path>
+            </svg>
+            <span>DRAG, SCROLL WHEEL, OR CLICK ANY CARD TO ROTATE</span>
           </div>
         </div>
 
-        <!-- Case 2: Verve Global Logistics -->
-        <div class="flagship-card">
-          <div class="flagship-preview">
-            <img src="assets/card_cloud_devops.jpg" alt="Verve Global Logistics Engine" class="flagship-preview-img" />
-            <span class="flagship-overlay-badge">Supply Chain Cloud</span>
-            <span class="flagship-client-tag">Verve Systems</span>
+        /* Right Column: Interactive 3D Revolving Card Orbit */
+        <div class="flagships-stage-col stage-3d" aria-label="Interactive 3D Revolving Showcase">
+          /* Ambient Orbit Rings Background */
+          <div class="orbit-rings-backdrop" aria-hidden="true">
+            <div class="orbit-glow-disc"></div>
+            <div class="orbit-ring ring-outer"></div>
+            <div class="orbit-ring ring-middle"></div>
+            <div class="orbit-ring ring-inner"></div>
           </div>
-          <div class="flagship-body">
-            <div>
-              <h3 class="flagship-title">Verve Global Logistics Engine</h3>
-              <p class="flagship-desc">
-                Clean RESTful microservices architecture replacing a legacy monolith, handling dynamic routing for 4,000+ freight vehicles.
-              </p>
-              <div class="flagship-metrics-strip">
-                <div class="flagship-metric-item">
-                  <span class="f-metric-val">99.99%</span>
-                  <span class="f-metric-lbl">Uptime SLA</span>
-                </div>
-                <div class="flagship-metric-item">
-                  <span class="f-metric-val">-68%</span>
-                  <span class="f-metric-lbl">Dispatch Latency</span>
-                </div>
-                <div class="flagship-metric-item">
-                  <span class="f-metric-val">4.2K</span>
-                  <span class="f-metric-lbl">Fleet Units</span>
-                </div>
-              </div>
-              <div class="flagship-tags">
-                <span class="flagship-pill">Express.js</span>
-                <span class="flagship-pill">Node.js</span>
-                <span class="flagship-pill">JavaScript</span>
-                <span class="flagship-pill">REST APIs</span>
-              </div>
-            </div>
-            <a href="projects.html" class="flagship-card-cta">
-              <span>View Full Case Study</span>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </a>
-          </div>
-        </div>
 
-        <!-- Case 3: PulseHealth AI -->
-        <div class="flagship-card">
-          <div class="flagship-preview">
-            <img src="assets/card_ai_agents.jpg" alt="PulseHealth Clinical AI" class="flagship-preview-img" />
-            <span class="flagship-overlay-badge">HealthTech Portal</span>
-            <span class="flagship-client-tag">PulseHealth</span>
-          </div>
-          <div class="flagship-body">
-            <div>
-              <h3 class="flagship-title">PulseHealth Web Diagnostics Portal</h3>
-              <p class="flagship-desc">
-                High-speed clinical workflow assistant combining automated Python data synthesis with modern responsive React and CSS3 interfaces.
-              </p>
-              <div class="flagship-metrics-strip">
-                <div class="flagship-metric-item">
-                  <span class="f-metric-val">4.8x</span>
-                  <span class="f-metric-lbl">Workflow Speed</span>
+          /* 3D Carousel Disc Track */
+          <div class="flagships-carousel-disc" id="flagshipsDisc">
+
+            /* Card 0: Aegis Financial OS */
+            <article class="orbit-card-item is-active" data-index="0" tabindex="0" role="button" aria-label="Aegis Financial Telemetry OS">
+              <div class="orbit-card-inner">
+                <div class="orbit-card-media">
+                  <img src="assets/card_software_apis.jpg" alt="Aegis Financial Telemetry OS" class="orbit-card-img" />
+                  <div class="orbit-card-gradient"></div>
+                  <span class="orbit-card-badge"><span class="orbit-badge-dot"></span>FinTech &amp; Telemetry</span>
+                  <span class="orbit-card-client">Aegis Capital</span>
+                  <span class="orbit-card-kicker">Series A • Production Flagship</span>
                 </div>
-                <div class="flagship-metric-item">
-                  <span class="f-metric-val">100%</span>
-                  <span class="f-metric-lbl">Client IP</span>
+                <div class="orbit-card-footer">
+                  <div>
+                    <h4 class="orbit-card-title">Aegis Financial OS</h4>
+                    <p class="orbit-card-sub">Algorithmic Trading &amp; Telemetry</p>
+                  </div>
+                  <div class="orbit-card-meta">
+                    <span class="orbit-card-pill"><strong class="pill-val">0.12s</strong> TTFB</span>
+                    <span class="orbit-card-pill"><strong class="pill-val">120K+</strong> Trades</span>
+                  </div>
+                  <div class="orbit-card-tags">
+                    <span class="orbit-mini-tag">PHP</span>
+                    <span class="orbit-mini-tag">Laravel</span>
+                    <span class="orbit-mini-tag">React</span>
+                  </div>
                 </div>
-                <div class="flagship-metric-item">
-                  <span class="f-metric-val">0.34s</span>
-                  <span class="f-metric-lbl">Query Speed</span>
-                </div>
+                <div class="orbit-hologram-shimmer" aria-hidden="true"></div>
               </div>
-              <div class="flagship-tags">
-                <span class="flagship-pill">Python</span>
-                <span class="flagship-pill">React</span>
-                <span class="flagship-pill">HTML5</span>
-                <span class="flagship-pill">CSS3</span>
+            </article>
+
+            /* Card 1: Verve Logistics */
+            <article class="orbit-card-item" data-index="1" tabindex="0" role="button" aria-label="Verve Global Logistics Engine">
+              <div class="orbit-card-inner">
+                <div class="orbit-card-media">
+                  <img src="assets/card_cloud_devops.jpg" alt="Verve Global Logistics Engine" class="orbit-card-img" />
+                  <div class="orbit-card-gradient"></div>
+                  <span class="orbit-card-badge"><span class="orbit-badge-dot"></span>Supply Chain Cloud</span>
+                  <span class="orbit-card-client">Verve Systems</span>
+                  <span class="orbit-card-kicker">Enterprise • Microservices</span>
+                </div>
+                <div class="orbit-card-footer">
+                  <div>
+                    <h4 class="orbit-card-title">Verve Logistics Engine</h4>
+                    <p class="orbit-card-sub">Dynamic Route Fleet Telemetry</p>
+                  </div>
+                  <div class="orbit-card-meta">
+                    <span class="orbit-card-pill"><strong class="pill-val">99.99%</strong> SLA</span>
+                    <span class="orbit-card-pill"><strong class="pill-val">4.2K</strong> Fleet</span>
+                  </div>
+                  <div class="orbit-card-tags">
+                    <span class="orbit-mini-tag">Express.js</span>
+                    <span class="orbit-mini-tag">Node.js</span>
+                    <span class="orbit-mini-tag">REST APIs</span>
+                  </div>
+                </div>
+                <div class="orbit-hologram-shimmer" aria-hidden="true"></div>
               </div>
-            </div>
-            <a href="projects.html" class="flagship-card-cta">
-              <span>View Full Case Study</span>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </a>
+            </article>
+
+            /* Card 2: PulseHealth */
+            <article class="orbit-card-item" data-index="2" tabindex="0" role="button" aria-label="PulseHealth Diagnostics Portal">
+              <div class="orbit-card-inner">
+                <div class="orbit-card-media">
+                  <img src="assets/card_ai_agents.jpg" alt="PulseHealth Clinical AI" class="orbit-card-img" />
+                  <div class="orbit-card-gradient"></div>
+                  <span class="orbit-card-badge"><span class="orbit-badge-dot"></span>HealthTech Portal</span>
+                  <span class="orbit-card-client">PulseHealth</span>
+                  <span class="orbit-card-kicker">Clinical AI • Diagnostics</span>
+                </div>
+                <div class="orbit-card-footer">
+                  <div>
+                    <h4 class="orbit-card-title">PulseHealth Portal</h4>
+                    <p class="orbit-card-sub">Workflow Intelligence Engine</p>
+                  </div>
+                  <div class="orbit-card-meta">
+                    <span class="orbit-card-pill"><strong class="pill-val">4.8x</strong> Speed</span>
+                    <span class="orbit-card-pill"><strong class="pill-val">100%</strong> IP</span>
+                  </div>
+                  <div class="orbit-card-tags">
+                    <span class="orbit-mini-tag">Python</span>
+                    <span class="orbit-mini-tag">React</span>
+                    <span class="orbit-mini-tag">CSS3</span>
+                  </div>
+                </div>
+                <div class="orbit-hologram-shimmer" aria-hidden="true"></div>
+              </div>
+            </article>
+
+            /* Card 3: OmniSphere AI */
+            <article class="orbit-card-item" data-index="3" tabindex="0" role="button" aria-label="OmniSphere Private AI Workspace">
+              <div class="orbit-card-inner">
+                <div class="orbit-card-media">
+                  <img src="assets/card_cloud_ai.jpg" alt="OmniSphere AI Workspace" class="orbit-card-img" />
+                  <div class="orbit-card-gradient"></div>
+                  <span class="orbit-card-badge"><span class="orbit-badge-dot"></span>Enterprise AI &amp; RAG</span>
+                  <span class="orbit-card-client">OmniSphere Labs</span>
+                  <span class="orbit-card-kicker">Air-Gapped • Vector RAG</span>
+                </div>
+                <div class="orbit-card-footer">
+                  <div>
+                    <h4 class="orbit-card-title">OmniSphere AI Workspace</h4>
+                    <p class="orbit-card-sub">Scientific Document Intelligence</p>
+                  </div>
+                  <div class="orbit-card-meta">
+                    <span class="orbit-card-pill"><strong class="pill-val">85%</strong> Faster</span>
+                    <span class="orbit-card-pill"><strong class="pill-val">SOC-2</strong> Ready</span>
+                  </div>
+                  <div class="orbit-card-tags">
+                    <span class="orbit-mini-tag">Python</span>
+                    <span class="orbit-mini-tag">FastAPI</span>
+                    <span class="orbit-mini-tag">pgvector</span>
+                  </div>
+                </div>
+                <div class="orbit-hologram-shimmer" aria-hidden="true"></div>
+              </div>
+            </article>
+
+            /* Card 4: Pulse Luxury Flagship */
+            <article class="orbit-card-item" data-index="4" tabindex="0" role="button" aria-label="Pulse Luxury Digital Flagship">
+              <div class="orbit-card-inner">
+                <div class="orbit-card-media">
+                  <img src="assets/card_web_apps.jpg" alt="Pulse Luxury Digital Flagship" class="orbit-card-img" />
+                  <div class="orbit-card-gradient"></div>
+                  <span class="orbit-card-badge"><span class="orbit-badge-dot"></span>Headless Web Platform</span>
+                  <span class="orbit-card-client">Pulse Global</span>
+                  <span class="orbit-card-kicker">Edge Render • Sub-Second</span>
+                </div>
+                <div class="orbit-card-footer">
+                  <div>
+                    <h4 class="orbit-card-title">Pulse Luxury Flagship</h4>
+                    <p class="orbit-card-sub">High-Velocity Digital Flagship</p>
+                  </div>
+                  <div class="orbit-card-meta">
+                    <span class="orbit-card-pill"><strong class="pill-val">100/100</strong> Score</span>
+                    <span class="orbit-card-pill"><strong class="pill-val">+42%</strong> Lift</span>
+                  </div>
+                  <div class="orbit-card-tags">
+                    <span class="orbit-mini-tag">Next.js</span>
+                    <span class="orbit-mini-tag">React</span>
+                    <span class="orbit-mini-tag">Cloudflare</span>
+                  </div>
+                </div>
+                <div class="orbit-hologram-shimmer" aria-hidden="true"></div>
+              </div>
+            </article>
+
           </div>
         </div>
 
       </div>
 
-      <!-- Flagships Bottom Action -->
+      /* Flagships Bottom Action Bar */
       <div class="flagships-bottom-bar">
+        <div class="flagships-pagination-pills" id="fPaginationDots">
+          <button type="button" class="orbit-dot is-active" aria-label="Go to project 1" data-target="0"></button>
+          <button type="button" class="orbit-dot" aria-label="Go to project 2" data-target="1"></button>
+          <button type="button" class="orbit-dot" aria-label="Go to project 3" data-target="2"></button>
+          <button type="button" class="orbit-dot" aria-label="Go to project 4" data-target="3"></button>
+          <button type="button" class="orbit-dot" aria-label="Go to project 5" data-target="4"></button>
+        </div>
+
         <a href="projects.html" class="btn-all-projects">
-          Explore All 6 Production Flagships & Case Studies
+          <span>Explore All 6 Production Flagships &amp; Case Studies</span>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
@@ -1251,7 +1368,7 @@
         </a>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- ==========================================================================
        SECTION 6: 4-STAGE TRANSPARENT DELIVERY BLUEPRINT (HOW IT WORKS)
@@ -1343,7 +1460,7 @@
   <!-- ==========================================================================
        SECTION 8: CLIENT TESTIMONIALS & REPUTATION
        ========================================================================== -->
-  <section class="synex-reviews-section" id="reviews">
+  <!-- <section class="synex-reviews-section" id="reviews">
     <div class="reviews-container">
       <div class="section-head-center">
         <div class="section-eyebrow-pill">
@@ -1359,10 +1476,10 @@
         </p>
       </div>
 
-      <!-- 3 Testimonial Cards Grid -->
+  3 Testimonial Cards Grid 
       <div class="reviews-grid-3">
 
-        <!-- Testimonial 1 -->
+        Testimonial 1 
         <div class="review-card">
           <div>
             <div class="review-stars">★★★★★</div>
@@ -1381,7 +1498,7 @@
           </div>
         </div>
 
-        <!-- Testimonial 2 -->
+         Testimonial 2 
         <div class="review-card">
           <div>
             <div class="review-stars">★★★★★</div>
@@ -1400,7 +1517,7 @@
           </div>
         </div>
 
-        <!-- Testimonial 3 -->
+         Testimonial 3 
         <div class="review-card">
           <div>
             <div class="review-stars">★★★★★</div>
@@ -1421,7 +1538,7 @@
 
       </div>
 
-      <!-- Verified Badges Strip -->
+       Verified Badges Strip 
       <div class="reviews-badges-strip">
         <div class="v-badge-item">
           <span class="v-badge-dot"></span>
@@ -1441,7 +1558,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- ==========================================================================
        SECTION 9: FREQUENTLY ASKED QUESTIONS & RISK REVERSAL
