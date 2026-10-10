@@ -87,7 +87,7 @@
   display: grid;
   grid-template-columns: 1fr 480px;
   gap: 60px;
-  align-items: center;
+  align-items: start;
   position: relative;
 }
 

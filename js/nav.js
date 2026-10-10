@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFloatingNavScroll();
   initHeadingTypewriter();
   initSmoothAnchorScroll();
+  initGlobalFaqAccordion();
 });
 
 function initFullscreenNav() {
@@ -393,6 +394,43 @@ function initSmoothAnchorScroll() {
 }
 
 /* ==========================================================================
-   DELIVERY LIFECYCLE: LASER SCANNER & ACTIVE CARD ROTATION
+   GLOBAL INTERACTIVE FAQ ACCORDION (Works across all pages)
    ========================================================================== */
+
+function initGlobalFaqAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach(item => {
+    const trigger = item.querySelector('.faq-question-btn');
+    if (!trigger) return;
+
+    // Remove any duplicate listeners by cloning or checking flag
+    if (trigger._faqInitialized) return;
+    trigger._faqInitialized = true;
+
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+
+      // Close siblings in the same container for clean accordion UX
+      const parent = item.parentElement;
+      const siblingFaqs = parent ? parent.querySelectorAll('.faq-item') : faqItems;
+      siblingFaqs.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('is-open');
+          const otherBtn = otherItem.querySelector('.faq-question-btn');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isOpen) {
+        item.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
 

@@ -1113,7 +1113,7 @@
 
 .accordion-card {
   position: relative;
-  flex: 0.72;
+  flex: 0.65;
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
@@ -1132,13 +1132,13 @@
 }
 
 .accordion-card.is-active {
-  flex: 3.8;
+  flex: 3.4;
   cursor: default;
   box-shadow: 0 30px 70px -20px rgba(0, 140, 216, 0.3), 0 0 0 1.5px rgba(248, 104, 0, 0.4);
 }
 
 .accordion-card:not(.is-active):hover {
-  flex: 0.95;
+  flex: 0.82;
   transform: translateY(-4px);
   box-shadow: 0 25px 50px -15px rgba(0, 140, 216, 0.25);
 }
