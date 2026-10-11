@@ -41,6 +41,9 @@ define('CONTACT_EMAIL', 'info@ritiverse.in');
 define('SUPPORT_EMAIL', 'support@ritiverse.in');
 define('CONTACT_PHONE', '+91 98765 43210');
 
+// Google Search Console Site Verification Token
+define('GOOGLE_SITE_VERIFICATION', getenv('GOOGLE_SITE_VERIFICATION') ?: '');
+
 // Dynamic Base URL detection for cPanel
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? 'https://' : 'http://';
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8000';

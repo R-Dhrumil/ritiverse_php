@@ -33,6 +33,9 @@ $seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'websit
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="geo.region" content="IN">
   <meta name="geo.placename" content="India">
+  <?php if (defined('GOOGLE_SITE_VERIFICATION') && GOOGLE_SITE_VERIFICATION !== ''): ?>
+  <meta name="google-site-verification" content="<?= e(GOOGLE_SITE_VERIFICATION) ?>">
+  <?php endif; ?>
 
   <!-- Open Graph / Facebook / LinkedIn / WhatsApp Rich Previews -->
   <meta property="og:type" content="website">
@@ -62,14 +65,20 @@ $seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'websit
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "ProfessionalService",
+        "@type": ["ProfessionalService", "Organization"],
         "@id": "<?= SITE_URL ?>/#organization",
         "name": "RiTiVerse",
+        "alternateName": ["RiTiVerse Official", "RiTiVerse Studio", "RiTiVerse Software Studio", "ritiverse.in"],
         "legalName": "RiTiVerse Studio",
         "url": "<?= SITE_URL ?>",
         "logo": "<?= SITE_URL ?>/assets/logo.png",
         "image": "<?= SITE_URL ?>/assets/logo.png",
-        "description": "Top-rated Website Making, Custom CRM, ERP Software Development, and Mobile Application Engineering Company with 100% Client Code Ownership.",
+        "brand": {
+          "@type": "Brand",
+          "name": "RiTiVerse",
+          "url": "<?= SITE_URL ?>"
+        },
+        "description": "Official website of RiTiVerse — Top-rated Website Making, Custom CRM, ERP Software Development, and Mobile Application Engineering Company with 100% Client Code Ownership.",
         "email": "info@ritiverse.in",
         "telephone": "+91-98765-43210",
         "priceRange": "$$",
@@ -130,7 +139,8 @@ $seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'websit
         "@id": "<?= SITE_URL ?>/#website",
         "url": "<?= SITE_URL ?>",
         "name": "RiTiVerse",
-        "description": "Custom Website Making, CRM & ERP Software Development",
+        "alternateName": ["RiTiVerse Official Website", "ritiverse.in", "RiTiVerse Studio"],
+        "description": "Official Website of RiTiVerse — Custom Website Making, CRM & ERP Software Development",
         "publisher": {
           "@id": "<?= SITE_URL ?>/#organization"
         }

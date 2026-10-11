@@ -2,7 +2,7 @@
 /**
  * RiTiVerse — RItiverse — Elite Website & Software Development
  */
-$page_title = 'RiTiVerse — Website Making, Custom CRM & ERP Software Development Company';
+$page_title = 'RiTiVerse Official Website — Custom Website Making, CRM & ERP Development Company';
 $page_description = 'Top software development company in India specializing in custom website making, tailored CRM platforms, ERP billing systems, and mobile applications with 100% source code ownership.';
 $current_page = 'home';
 $extra_css = ['css/index.css'];
@@ -20,6 +20,10 @@ require_once __DIR__ . '/includes/header.php';
 
     <!-- Hero Header & Typography -->
     <div class="hero-header">
+      <div class="subpage-badge" style="margin-bottom: 16px;">
+        <span class="subpage-badge-dot"></span>
+        RiTiVerse Official Studio
+      </div>
       <h1 class="hero-title">
         <span class="hero-title-main">You Own It.</span>
         <span class="hero-rotator-wrapper" aria-label="Zero Lock-In.">
