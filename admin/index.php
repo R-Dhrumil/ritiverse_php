@@ -31,15 +31,23 @@ if ($db) {
 }
 ?>
 
-<!-- DB Connection Advisory (If not imported yet) -->
+<!-- cPanel Deployment & Database Setup Advisory -->
 <?php if (!is_db_connected()): ?>
   <div style="background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 12px; padding: 18px 22px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 14px;">
     <span style="font-size: 22px;">💡</span>
-    <div>
-      <h3 style="font-size: 15px; font-weight: 700; color: #B45309; margin-bottom: 4px;">cPanel Database Setup Instruction</h3>
-      <p style="font-size: 13px; color: #78350F; line-height: 1.5;">
-        MySQL connection is currently offline. To enable live database inquiries and project management, open <strong>cPanel &gt; phpMyAdmin</strong>, create a database named <code>ritiverse_db</code>, and import the <code>database.sql</code> file provided in your project root.
-      </p>
+    <div style="width: 100%;">
+      <h3 style="font-size: 15px; font-weight: 700; color: #B45309; margin-bottom: 6px;">cPanel Deployment &amp; Database Checklist</h3>
+      <div style="font-size: 13px; color: #78350F; line-height: 1.6;">
+        <p style="margin-bottom: 8px;">
+          <strong>1. File Manager Location:</strong> Saara code direct <code>public_html/</code> root folder me hona chahiye (jaise <code>public_html/index.php</code>). Agar zip kisi subfolder me extract ho gayi ho, to use move karke direct <code>public_html/</code> me daalein.
+        </p>
+        <p style="margin-bottom: 8px;">
+          <strong>2. Default index.html:</strong> Agar hosting ki koi default <code>index.html</code> ya <code>default.html</code> file padi ho, to use delete karein taaki aapka <code>index.php</code> direct load ho sake.
+        </p>
+        <p style="margin-bottom: 0;">
+          <strong>3. MySQL Database:</strong> cPanel &gt; phpMyAdmin open karein, database select karein, aur root me di gayi <code>database.sql</code> file import karein. Uske baad <code>includes/config.php</code> me <code>DB_NAME</code>, <code>DB_USER</code>, aur <code>DB_PASS</code> match karein.
+        </p>
+      </div>
     </div>
   </div>
 <?php endif; ?>

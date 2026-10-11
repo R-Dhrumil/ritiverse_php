@@ -2,6 +2,15 @@
 /**
  * RiTiVerse — Central Application Configuration
  * Optimized for cPanel / Apache / LiteSpeed Deployment
+ * 
+ * -----------------------------------------------------------------------------
+ * cPanel File Manager Deployment Checklist:
+ * 1. Right Folder: Saara code direct `public_html/` ke root me hona chahiye
+ *    (e.g. `public_html/index.php`, `public_html/css/`, `public_html/includes/`).
+ *    Agar zip kisi subfolder me extract hui ho, to use move karke direct `public_html/` me daalein.
+ * 2. Default index.html: Hosting provider ki default `index.html` ya `default.html`
+ *    ko delete ya rename karein taaki aapka `index.php` direct load ho.
+ * -----------------------------------------------------------------------------
  */
 
 // Error reporting settings: Production-safe
@@ -16,9 +25,9 @@ define('APP_DESCRIPTION', 'Engineering studio delivering custom websites, mobile
 
 // Database Credentials (Configure for local dev or cPanel phpMyAdmin)
 define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
-define('DB_NAME', getenv('DB_NAME') ?: 'ritiverse_db');
-define('DB_USER', getenv('DB_USER') ?: 'root');
-define('DB_PASS', getenv('DB_PASS') ?: '');
+define('DB_NAME', getenv('DB_NAME') ?: 'ritivers_main');
+define('DB_USER', getenv('DB_USER') ?: 'ritivers_main');
+define('DB_PASS', getenv('DB_PASS') ?: 'ritivers_main');
 define('DB_CHARSET', 'utf8mb4');
 
 // High-Priority SEO Search Keywords (Rank #1 for Website Making, CRM, ERP, Software Dev)
