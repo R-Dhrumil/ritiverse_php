@@ -1,173 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+/**
+ * RiTiVerse — Our Services — RiTiVerse
+ */
+$page_title = 'Software Services — Custom Website Making, CRM & ERP Development | RiTiVerse';
+$page_description = 'Complete development services for custom websites, enterprise CRM platforms, billing ERP systems, and Android/iOS mobile apps. 100% code ownership guaranteed.';
+$current_page = 'services';
+$extra_css = ['css/services.css'];
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services & Capabilities — RiTiVerse Elite Engineering</title>
-  <meta name="description"
-    content="Explore RiTiVerse engineering services: bespoke web applications, custom software & APIs, website hosting & maintenance, and AI automation—all delivered with 100% full source ownership.">
-  <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+require_once __DIR__ . '/includes/header.php';
+?>
 
-  <!-- Google Fonts: Outfit, Plus Jakarta Sans & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
-  <!-- RiTiVerse Base & Services Page Modular Stylesheets -->
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/services.css">
-</head>
-
-<body>
-
-  <!-- Top Floating Minimalist Navigation -->
-  <header class="synex-nav" id="synex-nav">
-    <div class="synex-nav-left">
-      <a href="index.html" class="synex-brand" aria-label="RiTiVerse Home">
-        <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
-        <span class="synex-brand-name">RiTiVerse</span>
-      </a>
-    </div>
-
-    <div class="synex-nav-right">
-      <button class="synex-menu-trigger" id="synex-menu-trigger" aria-label="Open Fullscreen Navigation"
-        aria-expanded="false" aria-controls="synex-fs-menu">
-        <div class="hamburger-box">
-          <span class="hamburger-line line-1"></span>
-          <span class="hamburger-line line-2"></span>
-          <span class="hamburger-line line-3"></span>
-        </div>
-      </button>
-    </div>
-  </header>
-
-  <!-- Fullscreen Architectural Navigation Overlay -->
-  <div class="synex-fs-menu" id="synex-fs-menu" aria-hidden="true" role="dialog" aria-modal="true"
-    aria-label="Navigation Menu">
-    <div class="fs-grid-overlay" aria-hidden="true">
-      <div class="fs-grid-col"></div>
-      <div class="fs-grid-col"></div>
-      <div class="fs-grid-col"></div>
-      <div class="fs-grid-col"></div>
-      <div class="fs-grid-cross cross-1">+</div>
-      <div class="fs-grid-cross cross-2">+</div>
-      <div class="fs-grid-cross cross-3">+</div>
-      <div class="fs-grid-cross cross-4">+</div>
-      <div class="fs-ambient-glow" aria-hidden="true"></div>
-    </div>
-
-    <div class="fs-menu-header">
-      <div class="synex-nav-left">
-        <a href="index.html" class="synex-brand" aria-label="RiTiVerse Home">
-          <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
-          <span class="synex-brand-name">RiTiVerse</span>
-        </a>
-      </div>
-      <div class="synex-nav-right">
-        <button class="fs-close-btn" id="fs-close-btn" aria-label="Close Navigation Menu">
-          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="fs-menu-container">
-      <div class="fs-nav-main-col">
-        <div class="fs-nav-links-grid">
-          <div class="fs-links-group">
-            <ul class="fs-nav-list">
-              <li class="fs-nav-item">
-                <a href="index.html" class="fs-nav-link">
-                  <span class="nav-text">Home</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-              <li class="fs-nav-item">
-                <a href="services.html" class="fs-nav-link active">
-                  <span class="nav-text">Services</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-              <li class="fs-nav-item">
-                <a href="contact.html" class="fs-nav-link">
-                  <span class="nav-text">Contact</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="fs-links-group">
-            <ul class="fs-nav-list">
-              <li class="fs-nav-item">
-                <a href="about.html" class="fs-nav-link">
-                  <span class="nav-text">About</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-              <!-- <li class="fs-nav-item">
-                <a href="projects.html" class="fs-nav-link">
-                  <span class="nav-text">Projects</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li> -->
-            </ul>
-          </div>
-        </div>
-
-        <div class="fs-menu-footer">
-          <div class="fs-meta-block">
-            <span class="fs-meta-label">FOLLOW</span>
-            <div class="fs-social-links">
-              <a href="https://linkedin.com" target="_blank" rel="noopener" class="fs-social-link">LinkedIn</a>
-              <a href="https://twitter.com" target="_blank" rel="noopener" class="fs-social-link">X (Twitter)</a>
-              <a href="https://github.com" target="_blank" rel="noopener" class="fs-social-link">GitHub</a>
-              <a href="https://instagram.com" target="_blank" rel="noopener" class="fs-social-link">Instagram</a>
-            </div>
-          </div>
-
-          <div class="fs-meta-block">
-            <span class="fs-meta-label">DIRECT CONTACT</span>
-            <div class="fs-contact-info">
-              <a href="mailto:info@ritiverse.in" class="fs-contact-email">info@ritiverse.in</a>
-              <a href="mailto:support@ritiverse.in" class="fs-contact-email" style="margin-top: 4px;">support@ritiverse.in</a>
-              <span class="fs-contact-address">Modern Engineering Studio • 100% Client Ownership</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Hero Section -->
+<!-- Hero Section -->
   <main class="subpage-hero">
     <div class="subpage-hero-container">
       <div class="subpage-badge">
         <span class="subpage-badge-dot"></span>
-        Engineering Capabilities & Architectural Scope
+        Our Services &amp; Capabilities
       </div>
       <h1 class="subpage-title">
-        Engineered for Real Growth.<br>
-        Built for <span class="accent-text">100% Client Ownership.</span>
+        Websites &amp; Software Built for Real Business Growth.<br>
+        <span class="accent-text">You Own 100% of the Code.</span>
       </h1>
       <p class="subpage-subtitle">
-        We craft custom websites, mobile applications, CRM, ERP, and e-commerce platforms—transferred directly into your control with zero vendor lock-in.
+        We build fast websites, mobile apps, custom CRM, ERP software, and e-commerce stores tailored to your business. No monthly platform lock-in, no hidden charges.
       </p>
       <div class="subpage-cta-group">
-        <a href="contact.html" class="btn-primary">
-          Initiate Architectural Review
+        <a href="contact.php" class="btn-primary">
+          Get a Free Project Quote
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
         </a>
-        <a href="#matrix" class="btn-secondary">Compare Ownership Model</a>
+        <a href="#matrix" class="btn-secondary">See Why We're Different</a>
       </div>
     </div>
   </main>
@@ -184,18 +49,16 @@
         <div class="dribbble-header-left">
           <div class="dribbble-eyebrow">
             <span class="dribbble-eyebrow-dot"></span>
-            OUR SERVICE
+            OUR CORE SERVICES
           </div>
           <h2 class="dribbble-main-title">
-            What <span class="dribbble-accent-text">Services</span><br>
-            We're Offering
+            Services We <span class="dribbble-accent-text">Provide</span><br>
+            For Your Business
           </h2>
         </div>
         <div class="dribbble-header-right">
           <p class="dribbble-header-desc">
-            We engineer bespoke websites, mobile &amp; web applications, custom CRM platforms, automated ERP systems,
-            high-converting e-commerce storefronts, and tailored software solutions—delivered with 100% client code
-            ownership.
+            We build custom business websites, mobile apps, CRM systems, ERP platforms, and e-commerce stores—with 100% full source code ownership handed over directly to you.
           </p>
         </div>
       </div>
@@ -216,8 +79,7 @@
                     Website Development<span class="dribbble-title-dot">.</span>
                   </h3>
                   <p class="dribbble-item-desc">
-                    High-speed bespoke websites engineered with React, modern PHP &amp; custom UX for maximum
-                    conversions and sub-second global load times.
+                    Fast, clean, and mobile-friendly websites built with React and PHP. Designed to load in under 2 seconds and convert visitors into inquiries.
                   </p>
                 </div>
               </div>
@@ -238,11 +100,10 @@
               <div class="dribbble-item-main">
                 <div class="dribbble-item-header">
                   <h3 class="dribbble-item-title">
-                    App Development<span class="dribbble-title-dot">.</span>
+                    Mobile App Development<span class="dribbble-title-dot">.</span>
                   </h3>
                   <p class="dribbble-item-desc">
-                    Native and cross-platform mobile apps for iOS &amp; Android built with fluid 60fps animations and
-                    offline-first architecture.
+                    High-performance Android and iOS apps with smooth animations, offline data access, and instant push notifications for your users.
                   </p>
                 </div>
               </div>
@@ -263,11 +124,10 @@
               <div class="dribbble-item-main">
                 <div class="dribbble-item-header">
                   <h3 class="dribbble-item-title">
-                    Custom Software Development<span class="dribbble-title-dot">.</span>
+                    Custom Software &amp; APIs<span class="dribbble-title-dot">.</span>
                   </h3>
                   <p class="dribbble-item-desc">
-                    Tailored enterprise software, distributed microservice workflows, and high-throughput REST/GraphQL
-                    APIs engineered for scale.
+                    Tailored business software that fits your exact workflow. Automate daily manual tasks and connect third-party APIs easily.
                   </p>
                 </div>
               </div>
@@ -288,11 +148,10 @@
               <div class="dribbble-item-main">
                 <div class="dribbble-item-header">
                   <h3 class="dribbble-item-title">
-                    ERP<span class="dribbble-title-dot">.</span>
+                    Custom ERP Systems<span class="dribbble-title-dot">.</span>
                   </h3>
                   <p class="dribbble-item-desc">
-                    Comprehensive Enterprise Resource Planning systems unifying operations, automated inventory,
-                    finance, and supply chain logistics.
+                    Complete management software for billing, stock inventory, purchasing, finances, and staff tracking—custom-built for your business.
                   </p>
                 </div>
               </div>
@@ -313,11 +172,10 @@
               <div class="dribbble-item-main">
                 <div class="dribbble-item-header">
                   <h3 class="dribbble-item-title">
-                    CRM<span class="dribbble-title-dot">.</span>
+                    Custom CRM Platforms<span class="dribbble-title-dot">.</span>
                   </h3>
                   <p class="dribbble-item-desc">
-                    Intelligent Customer Relationship Management platforms powering automated sales funnels, pipeline
-                    intelligence, and client retention.
+                    Manage customer inquiries, assign leads to sales reps, set WhatsApp/email reminders, and track conversion pipelines easily.
                   </p>
                 </div>
               </div>
@@ -338,11 +196,10 @@
               <div class="dribbble-item-main">
                 <div class="dribbble-item-header">
                   <h3 class="dribbble-item-title">
-                    E-Commerce Development<span class="dribbble-title-dot">.</span>
+                    E-Commerce Storefronts<span class="dribbble-title-dot">.</span>
                   </h3>
                   <p class="dribbble-item-desc">
-                    High-converting digital storefronts, customized cart checkouts, multi-gateway payments, and automated
-                    inventory sync for scalable commerce.
+                    Fast online shopping stores with one-click checkout, automated order management, and secure Razorpay, UPI, and card payments.
                   </p>
                 </div>
               </div>
@@ -695,17 +552,16 @@
   </section>
 
   <section class="subpage-section" id="matrix"
-    style="background: rgba(240, 249, 255, 0.85); backdrop-filter: blur(20px); border-top: 1px solid rgba(0, 140, 216, 0.15); border-bottom: 1px solid rgba(0, 140, 216, 0.15);">
+    style="background: rgba(250, 247, 238, 0.9); backdrop-filter: blur(20px); border-top: 1px solid rgba(226, 218, 204, 0.85); border-bottom: 1px solid rgba(226, 218, 204, 0.85);">
     <div class="subpage-container">
       <div class="section-badge-header">
         <span class="section-eyebrow">
           <span class="section-eyebrow-dot"></span>
-          The RiTiVerse Differentiator
+          Why Choose RiTiVerse?
         </span>
-        <h2 class="section-title">Ownership Model: RiTiVerse vs. Traditional Agencies</h2>
+        <h2 class="section-title">RiTiVerse vs. Traditional Agencies &amp; Freelancers</h2>
         <p class="section-subtitle">
-          Why leading enterprises choose RiTiVerse: total transparency, zero recurring markup, and 100% control of
-          intellectual property.
+          Why growing businesses and startups choose us: complete transparency, fair milestone pricing, and 100% source code ownership.
         </p>
       </div>
 
@@ -713,36 +569,36 @@
         <table class="matrix-table">
           <thead>
             <tr>
-              <th>Evaluation Metric</th>
-              <th class="col-ritiverse">RiTiVerse Engineering</th>
-              <th class="col-trad">Traditional Web Agencies</th>
+              <th>What Matters To You</th>
+              <th class="col-ritiverse">RiTiVerse</th>
+              <th class="col-trad">Traditional Agencies &amp; Freelancers</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Source Code Ownership</strong></td>
-              <td class="col-ritiverse">100% Transferred on Day 1 (Your GitHub/GitLab)</td>
-              <td class="col-trad">Withheld or leased under proprietary license</td>
+              <td class="col-ritiverse">100% Yours. Pushed directly to your company's GitHub / GitLab account</td>
+              <td class="col-trad">Code is withheld, or charged heavy yearly renewal fees</td>
             </tr>
             <tr>
-              <td><strong>Cloud & Hosting Infrastructure</strong></td>
-              <td class="col-ritiverse">Self-hosted in your AWS / GCP account (No markup)</td>
-              <td class="col-trad">Hosted on agency servers with marked-up retainer</td>
+              <td><strong>Cloud &amp; Hosting Accounts</strong></td>
+              <td class="col-ritiverse">Setup directly in your own AWS/GCP/Hostinger account (No hidden markups)</td>
+              <td class="col-trad">Hosted on agency servers with expensive monthly retainers</td>
             </tr>
             <tr>
-              <td><strong>Vendor Lock-In</strong></td>
-              <td class="col-ritiverse">Zero. Standard, portable open-source tech stacks</td>
-              <td class="col-trad">High. Proprietary CMS or closed plugin ecosystems</td>
+              <td><strong>Developer Lock-In</strong></td>
+              <td class="col-ritiverse">Zero. Standard, clean code that any competent developer can maintain</td>
+              <td class="col-trad">High. Locked inside rigid templates or proprietary CMS platforms</td>
             </tr>
             <tr>
-              <td><strong>CI/CD & Live Telemetry</strong></td>
-              <td class="col-ritiverse">Full access to live builds, commits, and tests</td>
-              <td class="col-trad">Opaque milestone deliveries every 6-8 weeks</td>
+              <td><strong>Project Updates &amp; Demos</strong></td>
+              <td class="col-ritiverse">Weekly live staging demos so you see real working progress every week</td>
+              <td class="col-trad">No updates for weeks; unexpected delays right before deadlines</td>
             </tr>
             <tr>
-              <td><strong>Post-Launch Independence</strong></td>
-              <td class="col-ritiverse">Your in-house engineers can manage 100% from Day 1</td>
-              <td class="col-trad">Mandatory costly retainers to make minor updates</td>
+              <td><strong>After-Launch Support</strong></td>
+              <td class="col-ritiverse">Free 30-day bug fix warranty and technical handover training</td>
+              <td class="col-trad">Costly monthly retainers just to make minor text or image updates</td>
             </tr>
           </tbody>
         </table>
@@ -756,71 +612,161 @@
       <div class="section-badge-header">
         <span class="section-eyebrow">
           <span class="section-eyebrow-dot"></span>
-          Execution Discipline
+          Our Project Process
         </span>
-        <h2 class="section-title">The 4-Stage Architectural Delivery Lifecycle</h2>
+        <h2 class="section-title">How We Work: From Idea to Live Launch</h2>
         <p class="section-subtitle">
-          Predictable milestones, rigorous code reviews, and constant velocity from discovery to production launch.
+          Clear milestones, weekly progress demos, and on-time delivery with zero hidden surprises.
         </p>
       </div>
 
       <div class="process-grid">
         <div class="process-step-card">
-          <span class="process-step-num">PHASE 01</span>
-          <h3 class="process-step-title">Blueprint & Discovery</h3>
+          <span class="process-step-num">STEP 01</span>
+          <h3 class="process-step-title">Discovery &amp; Planning</h3>
           <p class="process-step-desc">
-            We review technical requirements, define database schemas, architect cloud topology, and establish
-            measurable performance benchmarks.
+            We understand your exact business goals, design the user flow, and give you a transparent project scope with fixed pricing and timelines.
           </p>
         </div>
 
         <div class="process-step-card">
-          <span class="process-step-num">PHASE 02</span>
-          <h3 class="process-step-title">Agile Production Sprints</h3>
+          <span class="process-step-num">STEP 02</span>
+          <h3 class="process-step-title">Design &amp; Development</h3>
           <p class="process-step-desc">
-            Weekly deployments to your staging environment. Clean, modular code written in PHP/Laravel, React, Node.js,
-            or Python with automated CI/CD and comprehensive unit &amp; integration testing.
+            We build with clean, modular code in React, PHP/Laravel, and Node.js. You get live demo links every week to review real progress.
           </p>
         </div>
 
         <div class="process-step-card">
-          <span class="process-step-num">PHASE 03</span>
-          <h3 class="process-step-title">Security &amp; Performance Audits</h3>
+          <span class="process-step-num">STEP 03</span>
+          <h3 class="process-step-title">Testing &amp; Speed Checks</h3>
           <p class="process-step-desc">
-            Responsive viewport validation, Lighthouse Core Web Vitals optimization, and enterprise-grade data security
-            checks.
+            We test across various Android phones, iPhones, tablets, and laptops to ensure fast loading on mobile networks and complete data security.
           </p>
         </div>
 
         <div class="process-step-card">
-          <span class="process-step-num">PHASE 04</span>
-          <h3 class="process-step-title">Full IP Handover</h3>
+          <span class="process-step-num">STEP 04</span>
+          <h3 class="process-step-title">Live Launch &amp; Handover</h3>
           <p class="process-step-desc">
-            Production DNS switch, complete repository and AWS/GCP key transfer, and comprehensive engineering
-            architecture documentation.
+            We deploy your platform live. You receive 100% source code, admin credentials, domain DNS setup, and complete technical training.
           </p>
         </div>
       </div>
 
-      <!-- Modern Tech Stack Pills -->
-      <div class="stack-pills-wrap" style="margin-top: 60px;">
-        <div class="stack-pill"><span class="stack-pill-dot"></span>PHP 8+</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>Laravel</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>React</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>Express.js</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>Python</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>JavaScript</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>HTML5 & CSS3</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>Node.js</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>MySQL</div>
-        <div class="stack-pill"><span class="stack-pill-dot"></span>Web Hosting & SSL</div>
+      <!-- Modern Tech Stack Showcase -->
+      <div class="tech-stack-showcase-box">
+        <div class="tech-stack-header">
+          <div class="tech-stack-eyebrow">
+            <span class="tech-stack-dot"></span>
+            <span>Our Technology Stack</span>
+          </div>
+          <h3 class="tech-stack-heading">Modern Technologies We Build With</h3>
+          <p class="tech-stack-subheading">
+            Reliable, secure, and industry-standard technologies to ensure your website and software run fast, stay secure, and scale easily.
+          </p>
+        </div>
+
+        <div class="stack-pills-wrap">
+          <div class="stack-pill">
+            <span class="stack-pill-icon icon-php">PHP</span>
+            <div class="stack-pill-text">
+              <span class="stack-pill-name">PHP 8+</span>
+              <span class="stack-pill-role">Backend Engine</span>
+            </div>
+            <span class="stack-pill-tag">Core</span>
+          </div>
+
+          <div class="stack-pill">
+            <span class="stack-pill-icon icon-laravel">LV</span>
+            <div class="stack-pill-text">
+              <span class="stack-pill-name">Laravel</span>
+              <span class="stack-pill-role">Enterprise MVC</span>
+            </div>
+            <span class="stack-pill-tag">Framework</span>
+          </div>
+
+          <div class="stack-pill">
+            <span class="stack-pill-icon icon-react">⚛</span>
+            <div class="stack-pill-text">
+              <span class="stack-pill-name">React</span>
+              <span class="stack-pill-role">Component UI</span>
+            </div>
+            <span class="stack-pill-tag">Frontend</span>
+          </div>
+
+          <div class="stack-pill">
+            <span class="stack-pill-icon icon-express">EX</span>
+            <div class="stack-pill-text">
+              <span class="stack-pill-name">Express.js</span>
+              <span class="stack-pill-role">Fast REST APIs</span>
+            </div>
+            <span class="stack-pill-tag">API Layer</span>
+          </div>
+
+          <div class="stack-pill">
+            <span class="stack-pill-icon icon-python">PY</span>
+            <div class="stack-pill-text">
+              <span class="stack-pill-name">Python</span>
+              <span class="stack-pill-role">Automation &amp; Data</span>
+            </div>
+            <span class="stack-pill-tag">Backend</span>
+          </div>
+
+          <div class="stack-pill">
+            <span class="stack-pill-icon icon-js">JS</span>
+            <div class="stack-pill-text">
+              <span class="stack-pill-name">JavaScript</span>
+              <span class="stack-pill-role">Modern ES6+</span>
+            </div>
+            <span class="stack-pill-tag">Logic</span>
+          </div>
+
+          <div class="stack-pill">
+            <span class="stack-pill-icon icon-html">&lt;/&gt;</span>
+            <div class="stack-pill-text">
+              <span class="stack-pill-name">HTML5 &amp; CSS3</span>
+              <span class="stack-pill-role">Semantic Design</span>
+            </div>
+            <span class="stack-pill-tag">Markup</span>
+          </div>
+
+          <div class="stack-pill">
+            <span class="stack-pill-icon icon-node">NODE</span>
+            <div class="stack-pill-text">
+              <span class="stack-pill-name">Node.js</span>
+              <span class="stack-pill-role">Async Runtime</span>
+            </div>
+            <span class="stack-pill-tag">Server</span>
+          </div>
+
+          <div class="stack-pill">
+            <span class="stack-pill-icon icon-mysql">SQL</span>
+            <div class="stack-pill-text">
+              <span class="stack-pill-name">MySQL</span>
+              <span class="stack-pill-role">Relational DB</span>
+            </div>
+            <span class="stack-pill-tag">Database</span>
+          </div>
+
+          <div class="stack-pill">
+            <span class="stack-pill-icon icon-cloud">SSL</span>
+            <div class="stack-pill-text">
+              <span class="stack-pill-name">Hosting &amp; SSL</span>
+              <span class="stack-pill-role">Cloud &amp; Security</span>
+            </div>
+            <span class="stack-pill-tag">DevOps</span>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
+
   <!-- ==========================================================================
        SECTION 5: FREQUENTLY ASKED QUESTIONS (Services & Delivery)
        ========================================================================== -->
   <section class="subpage-section" id="faq"
-    style="background: rgba(240, 249, 255, 0.85); backdrop-filter: blur(20px); border-top: 1px solid rgba(0, 140, 216, 0.15);">
+    style="background: rgba(250, 247, 238, 0.9); backdrop-filter: blur(20px); border-top: 1px solid rgba(226, 218, 204, 0.85);">
     <div class="subpage-container" style="max-width: 880px;">
       <div class="section-badge-header">
         <span class="section-eyebrow">
@@ -838,15 +784,15 @@
         <!-- FAQ 1 -->
         <div class="faq-item is-open">
           <button class="faq-question-btn" type="button" aria-expanded="true">
-            <span class="faq-q-text">What are RiTiVerse's primary engineering services?</span>
+            <span class="faq-q-text">What core services does RiTiVerse provide?</span>
             <span class="faq-icon-indicator">+</span>
           </button>
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                We focus exclusively on 6 high-demand disciplines: <strong>Website Development</strong>, <strong>Mobile &amp; Web Application Development</strong>,
-                <strong>Custom CRM Platforms</strong>, <strong>Enterprise Resource Planning (ERP) Systems</strong>, <strong>E-Commerce Storefronts</strong>,
-                and <strong>Tailored Custom Software &amp; APIs</strong>. Every solution is architected with modern open-source stacks and 100% client source code ownership.
+                We specialize in 6 main areas: <strong>Custom Website Development</strong>, <strong>Android &amp; iOS Mobile Apps</strong>,
+                <strong>Custom CRM Platforms</strong>, <strong>ERP Systems</strong>, <strong>E-Commerce Storefronts</strong>,
+                and <strong>Custom Software &amp; APIs</strong>. Every solution is custom-built for your business and comes with 100% full source code ownership.
               </p>
             </div>
           </div>
@@ -855,13 +801,13 @@
         <!-- FAQ 2 -->
         <div class="faq-item">
           <button class="faq-question-btn" type="button" aria-expanded="false">
-            <span class="faq-q-text">Why build a custom CRM or ERP instead of commercial SaaS?</span>
+            <span class="faq-q-text">Why build a custom CRM or ERP instead of paying monthly SaaS subscriptions?</span>
             <span class="faq-icon-indicator">+</span>
           </button>
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                Off-the-shelf SaaS tools charge recurring monthly per-seat fees that balloon as your team grows, while forcing your business into rigid generic templates. A custom CRM or ERP built by RiTiVerse matches your unique business logic 100%, belongs entirely to your company, and incurs zero recurring software license fees.
+                Ready-made SaaS tools charge recurring monthly per-user fees that get very expensive as your team expands. Also, they force you into generic templates. A custom CRM or ERP built by RiTiVerse is tailored 100% to your daily workflow, sales pipelines, and billing. You own the software forever with zero recurring user license fees.
               </p>
             </div>
           </div>
@@ -870,13 +816,13 @@
         <!-- FAQ 3 -->
         <div class="faq-item">
           <button class="faq-question-btn" type="button" aria-expanded="false">
-            <span class="faq-q-text">How do you build E-Commerce stores and Websites for maximum conversion?</span>
+            <span class="faq-q-text">How do you ensure our website or online store loads fast and converts visitors?</span>
             <span class="faq-icon-indicator">+</span>
           </button>
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                We build bespoke websites and digital storefronts using React, modern PHP/Laravel, and Node.js. We optimize for sub-second page loads, responsive viewports, frictionless one-click checkouts, secure multi-currency payment gateways (Stripe, PayPal), and automated inventory synchronization—never slow, bloated generic site builders.
+                We build fast, clean websites using React, modern PHP/Laravel, and Node.js—never slow, bloated page builders. We optimize images, ensure sub-2-second loading on mobile networks, design clean user journeys, and integrate reliable payment gateways (Razorpay, UPI, Stripe) with automated inventory updates.
               </p>
             </div>
           </div>
@@ -885,13 +831,13 @@
         <!-- FAQ 4 -->
         <div class="faq-item">
           <button class="faq-question-btn" type="button" aria-expanded="false">
-            <span class="faq-q-text">Do we truly own 100% of the code and intellectual property?</span>
+            <span class="faq-q-text">Do we truly own 100% of the source code and accounts?</span>
             <span class="faq-icon-indicator">+</span>
           </button>
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                <strong>Yes, absolutely and unconditionally.</strong> All code is committed directly into your repository organization from Day 1. You receive full, exclusive, perpetual intellectual property rights upon milestone completion. We never withhold code, charge platform lock-in fees, or host your software on closed proprietary servers.
+                <strong>Yes, 100% unconditionally.</strong> From day one, all code is pushed directly to your company's GitHub or GitLab account. Once milestones are delivered, all intellectual property, cloud servers, and domain DNS belong permanently to you. We never withhold code or charge platform lock-in fees.
               </p>
             </div>
           </div>
@@ -900,13 +846,13 @@
         <!-- FAQ 5 -->
         <div class="faq-item">
           <button class="faq-question-btn" type="button" aria-expanded="false">
-            <span class="faq-q-text">How do milestone deliverables and project payments work?</span>
+            <span class="faq-q-text">How do project milestones and payments work?</span>
             <span class="faq-icon-indicator">+</span>
           </button>
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                We establish clear architectural milestones and fixed scopes before kickoff. You review live staging builds weekly and approve each deliverable before milestone sign-off, ensuring total predictability and zero surprise costs.
+                We work on milestone-based payments tied to clear deliverables. Before starting, we provide a clear scope document with exact timelines and fixed costs. You test and approve live working demo links at every milestone before releasing payment, so there are zero surprise bills.
               </p>
             </div>
           </div>
@@ -921,7 +867,7 @@
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                Every production release includes a 30-day warranty window for bug fixes, performance tuning, and technical walk-throughs at zero extra cost, ensuring your internal team can operate and extend the system with complete confidence.
+                Every project includes a free 30-day post-launch warranty for bug fixes, performance checks, and technical walkthroughs. We also offer affordable monthly maintenance plans if you want our team to manage server backups, security, and ongoing updates.
               </p>
             </div>
           </div>
@@ -931,85 +877,8 @@
     </div>
   </section>
 
-  <!-- CTA Banner & Footer -->
-  <footer class="synex-footer" id="contact">
-    <div class="footer-container">
-      <div class="footer-cta-card">
-        <div class="footer-cta-glow" aria-hidden="true"></div>
-        <span class="footer-eyebrow">Ready to Build?</span>
-        <h2 class="footer-headline">Let's discuss your architectural requirements.</h2>
-        <p class="footer-subtext">Book a consultation directly with our principal engineers. No salespeople, no delays.
-        </p>
-        <a href="contact.html" class="footer-cta-btn">
-          Start a Project Consultation
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-      </div>
-
-      <!-- 3-Column Architectural Footer Sitemap (Website Services & Contacts) -->
-      <div class="footer-sitemap-grid">
-        <!-- Col 1: Brand Wordmark & Direct Contacts -->
-        <div class="footer-brand-col">
-          <div class="footer-brand" style="gap: 10px;">
-            <img src="assets/logo.png" alt="RiTiVerse Logo" style="height: 28px; width: auto;" />
-            <span class="footer-logo">RiTiVerse</span>
-          </div>
-          <p class="footer-col-desc">
-            Bespoke website, application, CRM, ERP, and custom software development. Engineered for performance and delivered with 100% client source code ownership from Day 1.
-          </p>
-          <div class="footer-contact-mini">
-            <span><strong>Inquiries:</strong> <a href="mailto:info@ritiverse.in">info@ritiverse.in</a></span>
-            <span><strong>Support:</strong> <a href="mailto:support@ritiverse.in">support@ritiverse.in</a></span>
-            <span><strong>Consultation:</strong> <a href="contact.html">Book Architectural Scoping</a></span>
-          </div>
-        </div>
-
-        <!-- Col 2: Core Engineering Services -->
-        <div class="footer-sitemap-col">
-          <h3 class="footer-col-title">Services</h3>
-          <ul class="footer-links-list">
-            <li><a href="services.html#services-showcase">Website Development</a></li>
-            <li><a href="services.html#services-showcase">Application Development</a></li>
-            <li><a href="services.html#services-showcase">E-Commerce Solutions</a></li>
-            <li><a href="services.html#services-showcase">CRM Platforms</a></li>
-            <li><a href="services.html#services-showcase">ERP Systems</a></li>
-            <li><a href="services.html#services-showcase">Custom Software Development</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 3: Studio & Direct Navigation -->
-        <div class="footer-sitemap-col">
-          <h3 class="footer-col-title">Studio &amp; Trust</h3>
-          <ul class="footer-links-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">All Services</a></li>
-            <li><a href="about.html">Philosophy &amp; Standards</a></li>
-            <li><a href="#faq">Frequently Asked Questions</a></li>
-            <li><a href="contact.html">Start a Consultation</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Bottom Row -->
-      <div class="footer-bottom-row">
-        <div class="footer-brand">
-          <span class="footer-copy">© 2026 RiTiVerse Studio. All rights reserved. 100% Client Source Code Ownership Guaranteed.</span>
-        </div>
-        <div class="footer-status-pill">
-          <span class="footer-status-dot"></span>
-          Zero Vendor Lock-In • 100% Code Ownership
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- GSAP & Modular JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/services.js"></script>
-</body>
-
-</html>
+<?php
+$show_footer_cta = true;
+$extra_js = ['js/services.js'];
+require_once __DIR__ . '/includes/footer.php';
+?>

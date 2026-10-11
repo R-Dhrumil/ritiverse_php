@@ -1,158 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+/**
+ * RiTiVerse — RItiverse — Elite Website & Software Development
+ */
+$page_title = 'RiTiVerse — Website Making, Custom CRM & ERP Software Development Company';
+$page_description = 'Top software development company in India specializing in custom website making, tailored CRM platforms, ERP billing systems, and mobile applications with 100% source code ownership.';
+$current_page = 'home';
+$extra_css = ['css/index.css'];
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RItiverse — Elite Website & Software Development</title>
-  <meta name="description"
-    content="RItiverse designs, engineers, and scales high-performance web applications, bespoke enterprise software, and world-class digital platforms.">
-  <link rel="shortcut icon" href="./assets/logo.png" type="image/png">
-  <!-- Google Fonts: Outfit, Plus Jakarta Sans & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+require_once __DIR__ . '/includes/header.php';
+?>
 
-  <!-- RItiverse Base & Homepage Modular Stylesheets -->
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/index.css">
-</head>
-
-<body>
-
-  <!-- Top Floating Minimalist Navigation (Closed State) -->
-  <header class="synex-nav" id="synex-nav">
-    <div class="synex-nav-left">
-      <!-- Modern & Minimal Floating Brand Wordmark with Logo -->
-      <a href="index.html" class="synex-brand" aria-label="RiTiVerse Home">
-        <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
-        <span class="synex-brand-name">RiTiVerse</span>
-      </a>
-    </div>
-
-    <!-- Navigation Right Controls: 3-Line Animated Hamburger Trigger -->
-    <div class="synex-nav-right">
-      <button class="synex-menu-trigger" id="synex-menu-trigger" aria-label="Open Fullscreen Navigation"
-        aria-expanded="false" aria-controls="synex-fs-menu">
-        <div class="hamburger-box">
-          <span class="hamburger-line line-1"></span>
-          <span class="hamburger-line line-2"></span>
-          <span class="hamburger-line line-3"></span>
-        </div>
-      </button>
-    </div>
-  </header>
-
-  <!-- Fullscreen Architectural Navigation Overlay (Open State) -->
-  <div class="synex-fs-menu" id="synex-fs-menu" aria-hidden="true" role="dialog" aria-modal="true"
-    aria-label="Navigation Menu">
-    <!-- Architectural Framer-Style Grid Background -->
-    <div class="fs-grid-overlay" aria-hidden="true">
-      <div class="fs-grid-col"></div>
-      <div class="fs-grid-col"></div>
-      <div class="fs-grid-col"></div>
-      <div class="fs-grid-col"></div>
-      <div class="fs-grid-cross cross-1">+</div>
-      <div class="fs-grid-cross cross-2">+</div>
-      <div class="fs-grid-cross cross-3">+</div>
-      <div class="fs-grid-cross cross-4">+</div>
-      <div class="fs-ambient-glow" aria-hidden="true"></div>
-    </div>
-
-    <!-- Fullscreen Menu Top Navigation Bar -->
-    <div class="fs-menu-header">
-      <div class="synex-nav-left">
-        <a href="index.html" class="synex-brand" aria-label="RiTiVerse Home">
-          <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
-          <span class="synex-brand-name">RiTiVerse</span>
-        </a>
-      </div>
-      <div class="synex-nav-right">
-        <button class="fs-close-btn" id="fs-close-btn" aria-label="Close Navigation Menu">
-          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Fullscreen Menu Content -->
-    <div class="fs-menu-container">
-      <div class="fs-nav-main-col">
-        <div class="fs-nav-links-grid">
-          <!-- Navigation Column 1 -->
-          <div class="fs-links-group">
-            <ul class="fs-nav-list">
-              <li class="fs-nav-item">
-                <a href="index.html" class="fs-nav-link">
-                  <span class="nav-text">Home</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-              <li class="fs-nav-item">
-                <a href="services.html" class="fs-nav-link">
-                  <span class="nav-text">Services</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-              <li class="fs-nav-item">
-                <a href="contact.html" class="fs-nav-link">
-                  <span class="nav-text">Contact</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Navigation Column 2 -->
-          <div class="fs-links-group">
-            <ul class="fs-nav-list">
-              <li class="fs-nav-item">
-                <a href="about.html" class="fs-nav-link">
-                  <span class="nav-text">About</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-              <!-- <li class="fs-nav-item">
-                <a href="projects.html" class="fs-nav-link">
-                  <span class="nav-text">Projects</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li> -->
-            </ul>
-          </div>
-        </div>
-
-        <!-- Menu Footer: Social Follow & Direct Contact Info -->
-        <div class="fs-menu-footer">
-          <div class="fs-meta-block">
-            <span class="fs-meta-label">FOLLOW</span>
-            <div class="fs-social-links">
-              <a href="https://linkedin.com" target="_blank" rel="noopener" class="fs-social-link">LinkedIn</a>
-              <a href="https://twitter.com" target="_blank" rel="noopener" class="fs-social-link">X (Twitter)</a>
-              <a href="https://github.com" target="_blank" rel="noopener" class="fs-social-link">GitHub</a>
-              <a href="https://instagram.com" target="_blank" rel="noopener" class="fs-social-link">Instagram</a>
-            </div>
-          </div>
-
-          <div class="fs-meta-block">
-            <span class="fs-meta-label">DIRECT CONTACT</span>
-            <div class="fs-contact-info">
-              <a href="mailto:info@ritiverse.in" class="fs-contact-email">info@ritiverse.in</a>
-              <a href="mailto:support@ritiverse.in" class="fs-contact-email" style="margin-top: 4px;">support@ritiverse.in</a>
-              <span class="fs-contact-address">Modern Engineering Studio • 100% Client Ownership</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Hero Section -->
+<!-- Main Hero Section -->
   <main class="synex-hero" id="synex-hero">
 
     <!-- 3D Particle Silk-Dust Motion Canvas -->
@@ -226,19 +84,19 @@
             <span class="tab-indicator" id="tabIndicator" aria-hidden="true"></span>
             <button class="tab active" role="tab" data-tab="cms" id="tab-cms" aria-selected="true">
               <svg class="icon"><use href="#i-file-text"/></svg>
-              <span>Content CMS</span>
+              <span>Website Content</span>
             </button>
             <button class="tab" role="tab" data-tab="toggles" id="tab-toggles" aria-selected="false">
               <svg class="icon"><use href="#i-sliders"/></svg>
-              <span>Feature Switches</span>
+              <span>Feature Toggles</span>
             </button>
             <button class="tab" role="tab" data-tab="leads" id="tab-leads" aria-selected="false">
               <svg class="icon"><use href="#i-inbox"/></svg>
-              <span>Leads &amp; Inquiries</span>
+              <span>Customer Inquiries</span>
             </button>
             <button class="tab" role="tab" data-tab="roles" id="tab-roles" aria-selected="false">
               <svg class="icon"><use href="#i-users"/></svg>
-              <span>Team Roles</span>
+              <span>Staff Permissions</span>
             </button>
           </div>
 
@@ -250,8 +108,8 @@
               <div class="panel stack-5 active" id="panel-cms" role="tabpanel" aria-labelledby="tab-cms">
                 <div class="panel-head between">
                   <div class="panel-head-left">
-                    <span class="label">Production Copy Editor</span>
-                    <span class="label-sub">Update site copy in real-time with zero developer delays</span>
+                    <span class="label">Live Website Content Editor</span>
+                    <span class="label-sub">Update site copy, prices, and banners instantly without waiting for developers</span>
                   </div>
                   <span class="badge-amber">
                     <span class="badge-dot"></span>
@@ -260,23 +118,23 @@
                 </div>
                 <div class="grid cols-2 gap-6">
                   <div class="cms-input-col">
-                    <label class="field-label" for="heroInput">Headline Copy (Live Target)</label>
-                    <input type="text" id="heroInput" class="input" value="Transforming Your Business With Modern Technology" placeholder="Type new headline to preview..." autocomplete="off" />
+                    <label class="field-label" for="heroInput">Hero Headline (Live Preview)</label>
+                    <input type="text" id="heroInput" class="input" value="Grow Your Business With Modern Websites &amp; Custom Software" placeholder="Type new headline to preview..." autocomplete="off" />
                     <div class="chip-row">
-                      <button type="button" class="chip active-preset" data-heading="Enterprise Software Solutions for Modern Scale">Example: Enterprise SaaS</button>
-                      <button type="button" class="chip" data-heading="High-Performance Digital Commerce Platform">Example: E-Commerce</button>
-                      <button type="button" class="chip" data-heading="Cloud Architecture & Zero-Vendor Lock-In">Example: Cloud Architecture</button>
+                      <button type="button" class="chip active-preset" data-heading="Grow Your Business With Modern Websites &amp; Custom Software">Example: Business Website</button>
+                      <button type="button" class="chip" data-heading="Complete ERP &amp; Billing Portal for Operations">Example: ERP &amp; Billing</button>
+                      <button type="button" class="chip" data-heading="High-Converting Online Store With Instant UPI &amp; Razorpay">Example: E-Commerce Store</button>
                     </div>
                   </div>
                   <div class="preview-box">
                     <div class="mono-label">
                       <svg class="icon amber"><use href="#i-eye"/></svg>
                       <span>Live Customer Viewport</span>
-                      <span class="live-pill"><span class="live-pill-dot"></span>CDN Edge 0.02s</span>
+                      <span class="live-pill"><span class="live-pill-dot"></span>Loads in 0.02s</span>
                     </div>
                     <div class="preview-card">
-                      <h5 id="heroPreview">Transforming Your Business With Modern Technology</h5>
-                      <p>Instant cache invalidation pushed globally across edge servers upon save.</p>
+                      <h5 id="heroPreview">Grow Your Business With Modern Websites &amp; Custom Software</h5>
+                      <p>Changes update immediately across all visitor screens once you save.</p>
                     </div>
                   </div>
                 </div>
@@ -286,8 +144,8 @@
               <div class="panel stack-5" id="panel-toggles" role="tabpanel" aria-labelledby="tab-toggles">
                 <div class="panel-head between">
                   <div class="panel-head-left">
-                    <span class="label">Feature Gate Controls</span>
-                    <span class="label-sub">Toggle client-facing modules on/off dynamically without code deployments</span>
+                    <span class="label">Feature Switches &amp; Banners</span>
+                    <span class="label-sub">Turn customer-facing features on or off with a single click—no code changes required</span>
                   </div>
                   <span class="badge-status">3 Services Connected</span>
                 </div>
@@ -296,9 +154,9 @@
                     <div class="between">
                       <div class="card-title-group">
                         <span class="card-icon-wrap emerald"><svg class="card-icon"><use href="#i-sliders"/></svg></span>
-                        <span class="card-title">Promo Banner</span>
+                        <span class="card-title">Festival Offer Banner</span>
                       </div>
-                      <button class="toggle-btn" data-toggle="promo" data-on-color="emerald" data-on="Active on Site" data-off="Disabled" aria-pressed="true" aria-label="Toggle Promo Banner">
+                      <button class="toggle-btn" data-toggle="promo" data-on-color="emerald" data-on="Active on Site" data-off="Disabled" aria-pressed="true" aria-label="Toggle Festival Offer Banner">
                         <svg class="toggle-icon"><use href="#i-toggle-right"/></svg>
                       </button>
                     </div>
@@ -308,9 +166,9 @@
                     <div class="between">
                       <div class="card-title-group">
                         <span class="card-icon-wrap emerald"><svg class="card-icon"><use href="#i-users"/></svg></span>
-                        <span class="card-title">WhatsApp Chat</span>
+                        <span class="card-title">WhatsApp Chat Widget</span>
                       </div>
-                      <button class="toggle-btn" data-toggle="chat" data-on-color="emerald" data-on="Enabled" data-off="Disabled" aria-pressed="true" aria-label="Toggle WhatsApp Chat">
+                      <button class="toggle-btn" data-toggle="chat" data-on-color="emerald" data-on="Enabled" data-off="Disabled" aria-pressed="true" aria-label="Toggle WhatsApp Chat Widget">
                         <svg class="toggle-icon"><use href="#i-toggle-right"/></svg>
                       </button>
                     </div>
@@ -320,9 +178,9 @@
                     <div class="between">
                       <div class="card-title-group">
                         <span class="card-icon-wrap amber"><svg class="card-icon"><use href="#i-shield-check"/></svg></span>
-                        <span class="card-title">Maintenance Alert</span>
+                        <span class="card-title">Maintenance Notice</span>
                       </div>
-                      <button class="toggle-btn" data-toggle="maintenance" data-on-color="amber" data-on="Active Notice" data-off="Off" aria-pressed="false" aria-label="Toggle Maintenance Alert">
+                      <button class="toggle-btn" data-toggle="maintenance" data-on-color="amber" data-on="Active Notice" data-off="Off" aria-pressed="false" aria-label="Toggle Maintenance Notice">
                         <svg class="toggle-icon"><use href="#i-toggle-left"/></svg>
                       </button>
                     </div>
@@ -335,32 +193,32 @@
               <div class="panel stack-5" id="panel-leads" role="tabpanel" aria-labelledby="tab-leads">
                 <div class="panel-head between">
                   <div class="panel-head-left">
-                    <span class="label">Real-Time Inbound Leads</span>
-                    <span class="label-sub">Direct submissions with instant notification webhooks</span>
+                    <span class="label">Real-Time Customer Inquiries</span>
+                    <span class="label-sub">Direct submissions from your website with instant alerts</span>
                   </div>
                   <button type="button" class="btn-dark" id="exportLeadsBtn">
                     <svg class="btn-icon"><use href="#i-file-text"/></svg>
-                    <span>Export CSV</span>
+                    <span>Export to Excel/CSV</span>
                   </button>
                 </div>
                 <div class="stack-2-5">
                   <div class="card lead between">
                     <div class="lead-info">
                       <div class="lead-header-row">
-                        <p class="lead-name">David Miller</p>
+                        <p class="lead-name">Amit Sharma</p>
                         <span class="lead-time">9m ago</span>
                       </div>
-                      <p class="lead-sub">Custom Web App + Admin Suite &bull; £14,000 Budget</p>
+                      <p class="lead-sub">Custom Web App + Admin Portal &bull; ₹2,50,000 Budget</p>
                     </div>
                     <button type="button" class="status-btn" id="lead1" title="Click to update status">New Lead</button>
                   </div>
                   <div class="card lead between">
                     <div class="lead-info">
                       <div class="lead-header-row">
-                        <p class="lead-name">Rachel Adams</p>
+                        <p class="lead-name">Pooja Verma</p>
                         <span class="lead-time">42m ago</span>
                       </div>
-                      <p class="lead-sub">E-Commerce &amp; Inventory Portal &bull; Enterprise Scope</p>
+                      <p class="lead-sub">E-Commerce Store &amp; Inventory &bull; Launch Scope</p>
                     </div>
                     <button type="button" class="status-btn blue" id="lead2" title="Click to update status">Contacted</button>
                   </div>
@@ -371,8 +229,8 @@
               <div class="panel stack-4" id="panel-roles" role="tabpanel" aria-labelledby="tab-roles">
                 <div class="panel-head between">
                   <div class="panel-head-left">
-                    <span class="label">Role-Based Access Control (RBAC)</span>
-                    <span class="label-sub">Isolated user tiers protect sensitive billing, code &amp; content</span>
+                    <span class="label">Staff &amp; Team Permissions</span>
+                    <span class="label-sub">Control who can access accounts, customer leads, and website settings</span>
                   </div>
                   <span class="badge-status">Enterprise Security</span>
                 </div>
@@ -380,9 +238,9 @@
                   <div class="card role">
                     <div class="role-title">
                       <svg class="icon lg emerald"><use href="#i-shield-check"/></svg>
-                      <span>Super Admin</span>
+                      <span>Admin Owner</span>
                     </div>
-                    <p>Full control over production billing, API keys, credentials &amp; team access.</p>
+                    <p>Full control over website settings, billing, team accounts, and database backups.</p>
                     <span class="role-pill emerald">Full Ownership</span>
                   </div>
                   <div class="card role">
@@ -390,7 +248,7 @@
                       <svg class="icon lg blue"><use href="#i-file-text"/></svg>
                       <span>Content Editor</span>
                     </div>
-                    <p>Direct rights to edit headlines, publish blogs, media assets &amp; SEO tags.</p>
+                    <p>Can edit page headlines, upload product photos, publish blogs, and update banners.</p>
                     <span class="role-pill blue">Publish &amp; Edit</span>
                   </div>
                   <div class="card role">
@@ -398,7 +256,7 @@
                       <svg class="icon lg amber"><use href="#i-inbox"/></svg>
                       <span>Sales &amp; Support</span>
                     </div>
-                    <p>Review customer inquiries, sync CRM feeds, and manage client quotes.</p>
+                    <p>Review customer inquiries, manage client quotes, and follow up with new leads.</p>
                     <span class="role-pill amber">Inquiry Access</span>
                   </div>
                 </div>
@@ -412,10 +270,10 @@
                 <div class="callout-icon-badge">
                   <svg class="icon emerald"><use href="#i-check"/></svg>
                 </div>
-                <span>Custom-tailored to your exact business workflow upon delivery. 100% full source ownership transferred.</span>
+                <span>Built specifically for your business workflow. 100% full source code ownership handed over upon delivery.</span>
               </div>
-              <a href="contact.html" class="cta">
-                <span>Request Custom Admin Build</span>
+              <a href="contact.php" class="cta">
+                <span>Get a Custom Software Quote</span>
                 <svg class="icon"><use href="#i-arrow-right"/></svg>
               </a>
             </div>
@@ -798,24 +656,23 @@
         <div class="showcase-left-col">
           <div class="showcase-badge">
             <span class="showcase-badge-dot"></span>
-            ENGINEERING CAPABILITIES
+            OUR CORE SERVICES
           </div>
 
           <h2 class="showcase-title">
-            <span class="title-word">Architecting</span>
-            <span class="title-word">Next-Generation</span>
-            <span class="title-word">Digital Flagships</span>
+            <span class="title-word">Building</span>
+            <span class="title-word">Modern Websites</span>
+            <span class="title-word">&amp; Custom Software</span>
           </h2>
 
           <p class="showcase-subtitle">
-            Fast. Scalable. Beautiful. We craft bespoke websites and high-performance digital products engineered to
-            grow your business.
+            Fast, reliable, and easy to manage. We design and build high-quality websites, mobile apps, and custom business software tailored to help your business grow.
           </p>
 
           <!-- Interactive Search / Vision Input Capsule (Matching Image 1) -->
           <form class="showcase-search-box" id="showcase-search-form">
             <input type="text" class="showcase-search-input" id="showcase-query-input"
-              placeholder="Website, App, CRM, ERP, E-Commerce..." required aria-label="Project requirement">
+              placeholder="Website, Mobile App, CRM, ERP, E-Commerce..." required aria-label="Project requirement">
             <button type="submit" class="showcase-search-btn" aria-label="Start consultation">
               <span>Start</span>
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -849,18 +706,18 @@
               <!-- Expanded Card Bottom Overlay Content -->
               <div class="card-expanded-footer">
                 <div class="footer-meta-top">
-                  <span class="footer-chip">MODERN WEB ENGINEERING</span>
+                  <span class="footer-chip">MODERN WEB DEVELOPMENT</span>
                   <div class="footer-stat-pill">
-                    <span class="stat-big">FAST</span>
+                    <span class="stat-big">&lt; 2 SEC</span>
                     <span class="stat-unit">LOAD TIME</span>
                   </div>
                 </div>
-                <h3 class="footer-power-title">Bespoke Websites.<br>Modern &amp; Fast.</h3>
+                <h3 class="footer-power-title">Custom Websites.<br>Fast &amp; Mobile-Ready.</h3>
                 <span class="footer-power-sub">Website Development</span>
                 <div class="footer-power-tags">
-                  <span class="power-tag">React</span>
                   <span class="power-tag">PHP &amp; Laravel</span>
-                  <span class="power-tag">Responsive UX</span>
+                  <span class="power-tag">React</span>
+                  <span class="power-tag">Responsive Design</span>
                   <span class="power-tag">SEO Ready</span>
                 </div>
               </div>
@@ -884,17 +741,17 @@
                 <div class="footer-meta-top">
                   <span class="footer-chip">MOBILE &amp; WEB APPS</span>
                   <div class="footer-stat-pill">
-                    <span class="stat-big">60 FPS</span>
-                    <span class="stat-unit">FLUID UI</span>
+                    <span class="stat-big">SMOOTH</span>
+                    <span class="stat-unit">UI &amp; SPEED</span>
                   </div>
                 </div>
-                <h3 class="footer-power-title">Intuitive Apps.<br>Cross-Platform.</h3>
+                <h3 class="footer-power-title">Custom Apps.<br>Android &amp; iOS.</h3>
                 <span class="footer-power-sub">Application Development</span>
                 <div class="footer-power-tags">
-                  <span class="power-tag">iOS &amp; Android</span>
+                  <span class="power-tag">Android &amp; iOS</span>
                   <span class="power-tag">Web Portals</span>
-                  <span class="power-tag">Offline-First</span>
-                  <span class="power-tag">Smooth Motion</span>
+                  <span class="power-tag">Offline Support</span>
+                  <span class="power-tag">Fast Backend</span>
                 </div>
               </div>
             </div>
@@ -915,19 +772,19 @@
               <!-- Expanded Card Bottom Overlay Content -->
               <div class="card-expanded-footer">
                 <div class="footer-meta-top">
-                  <span class="footer-chip">DIGITAL STOREFRONTS</span>
+                  <span class="footer-chip">ONLINE STOREFRONTS</span>
                   <div class="footer-stat-pill">
-                    <span class="stat-big">HIGH CONV.</span>
-                    <span class="stat-unit">OPTIMIZED</span>
+                    <span class="stat-big">FAST CHECKOUT</span>
+                    <span class="stat-unit">UPI &amp; CARDS</span>
                   </div>
                 </div>
-                <h3 class="footer-power-title">High-Converting.<br>Secure Checkout.</h3>
+                <h3 class="footer-power-title">Online Stores.<br>Razorpay &amp; UPI.</h3>
                 <span class="footer-power-sub">E-Commerce Development</span>
                 <div class="footer-power-tags">
-                  <span class="power-tag">Payment Gateways</span>
-                  <span class="power-tag">Product Catalogs</span>
-                  <span class="power-tag">Fast Cart</span>
-                  <span class="power-tag">Inventory Sync</span>
+                  <span class="power-tag">Razorpay &amp; UPI</span>
+                  <span class="power-tag">Product Catalog</span>
+                  <span class="power-tag">Order Tracking</span>
+                  <span class="power-tag">Stock Sync</span>
                 </div>
               </div>
             </div>
@@ -948,19 +805,19 @@
               <!-- Expanded Card Bottom Overlay Content -->
               <div class="card-expanded-footer">
                 <div class="footer-meta-top">
-                  <span class="footer-chip">SALES &amp; PIPELINE INTEL</span>
+                  <span class="footer-chip">SALES &amp; LEAD MANAGEMENT</span>
                   <div class="footer-stat-pill">
                     <span class="stat-big">AUTOMATED</span>
-                    <span class="stat-unit">LEAD FLOW</span>
+                    <span class="stat-unit">FOLLOW-UPS</span>
                   </div>
                 </div>
-                <h3 class="footer-power-title">Pipeline Control.<br>Lead Automation.</h3>
-                <span class="footer-power-sub">CRM Solutions</span>
+                <h3 class="footer-power-title">Track Leads.<br>Close More Deals.</h3>
+                <span class="footer-power-sub">Custom CRM Platforms</span>
                 <div class="footer-power-tags">
-                  <span class="power-tag">Lead Funnels</span>
-                  <span class="power-tag">Client Portals</span>
-                  <span class="power-tag">Team Inbox</span>
-                  <span class="power-tag">Action Analytics</span>
+                  <span class="power-tag">Lead Pipelines</span>
+                  <span class="power-tag">WhatsApp Alerts</span>
+                  <span class="power-tag">Customer History</span>
+                  <span class="power-tag">Team Reminders</span>
                 </div>
               </div>
             </div>
@@ -981,19 +838,19 @@
               <!-- Expanded Card Bottom Overlay Content -->
               <div class="card-expanded-footer">
                 <div class="footer-meta-top">
-                  <span class="footer-chip">OPERATIONS &amp; RESOURCES</span>
+                  <span class="footer-chip">OPERATIONS &amp; BILLING</span>
                   <div class="footer-stat-pill">
-                    <span class="stat-big">REAL-TIME</span>
-                    <span class="stat-unit">SYNC</span>
+                    <span class="stat-big">ALL-IN-ONE</span>
+                    <span class="stat-unit">MANAGEMENT</span>
                   </div>
                 </div>
-                <h3 class="footer-power-title">Streamlined Ops.<br>Unified Workflows.</h3>
-                <span class="footer-power-sub">Enterprise Resource Planning</span>
+                <h3 class="footer-power-title">Smooth Ops.<br>Billing &amp; Stock.</h3>
+                <span class="footer-power-sub">Custom ERP Systems</span>
                 <div class="footer-power-tags">
                   <span class="power-tag">Inventory Control</span>
-                  <span class="power-tag">Order Management</span>
-                  <span class="power-tag">Invoicing</span>
-                  <span class="power-tag">Process Automation</span>
+                  <span class="power-tag">GST Invoicing</span>
+                  <span class="power-tag">Order Dispatch</span>
+                  <span class="power-tag">Staff Permissions</span>
                 </div>
               </div>
             </div>
@@ -1014,19 +871,19 @@
               <!-- Expanded Card Bottom Overlay Content -->
               <div class="card-expanded-footer">
                 <div class="footer-meta-top">
-                  <span class="footer-chip">TAILORED ARCHITECTURE</span>
+                  <span class="footer-chip">TAILORED SOFTWARE &amp; APIS</span>
                   <div class="footer-stat-pill">
                     <span class="stat-big">CLEAN CODE</span>
                     <span class="stat-unit">ZERO LOCK-IN</span>
                   </div>
                 </div>
-                <h3 class="footer-power-title">Tailored Logic.<br>Robust APIs.</h3>
-                <span class="footer-power-sub">Custom Software Development</span>
+                <h3 class="footer-power-title">Custom Software.<br>100% Owned by You.</h3>
+                <span class="footer-power-sub">Custom Software &amp; APIs</span>
                 <div class="footer-power-tags">
                   <span class="power-tag">Laravel</span>
                   <span class="power-tag">Express.js</span>
                   <span class="power-tag">Python</span>
-                  <span class="power-tag">MySQL &amp; REST</span>
+                  <span class="power-tag">MySQL Database</span>
                 </div>
               </div>
             </div>
@@ -1035,8 +892,6 @@
         </div>
 
       </div>
-
-      <!-- Bottom Headline Ticker -->
 
     </div>
   </section>
@@ -1259,8 +1114,8 @@
       <div class="section-head-center">
         
         <h2 class="section-main-heading">
-          The End of Agency Hostage.<br>
-          <span class="text-flame">100% Freedom by Design.</span>
+          The End of Agency Lock-In.<br>
+          <span class="text-flame">100% Code Ownership &amp; Transparency.</span>
         </h2>
         
       </div>
@@ -1293,7 +1148,7 @@
                 <td class="td-ritiverse hl">
                   <div class="cell-content">
                     <span class="diff-icon diff-yes" aria-hidden="true">✓</span>
-                    <span class="cell-text">Instant via your custom Admin Panel (0 sec)</span>
+                    <span class="cell-text">Instant updates via your custom Admin Panel (0 sec)</span>
                   </div>
                 </td>
               </tr>
@@ -1306,13 +1161,13 @@
                 <td class="td-legacy">
                   <div class="cell-content">
                     <span class="diff-icon diff-no" aria-hidden="true">✕</span>
-                    <span class="cell-text">Agency locks code on their servers</span>
+                    <span class="cell-text">Agency keeps your code and hosting hostage</span>
                   </div>
                 </td>
                 <td class="td-ritiverse hl">
                   <div class="cell-content">
                     <span class="diff-icon diff-yes" aria-hidden="true">✓</span>
-                    <span class="cell-text">100% transferred to your GitHub &amp; Cloud</span>
+                    <span class="cell-text">100% transferred to your own GitHub &amp; cloud</span>
                   </div>
                 </td>
               </tr>
@@ -1320,18 +1175,18 @@
               <!-- Row 3: Monthly Platform Rent -->
               <tr>
                 <td class="td-dim">
-                  <strong class="dim-title">Monthly Platform Rent</strong>
+                  <strong class="dim-title">Monthly Platform Charges</strong>
                 </td>
                 <td class="td-legacy">
                   <div class="cell-content">
                     <span class="diff-icon diff-no" aria-hidden="true">✕</span>
-                    <span class="cell-text">$50–$300/mo proprietary lock-in</span>
+                    <span class="cell-text">₹4,000–₹25,000/month recurring fees to stay online</span>
                   </div>
                 </td>
                 <td class="td-ritiverse hl">
                   <div class="cell-content">
                     <span class="diff-icon diff-yes" aria-hidden="true">✓</span>
-                    <span class="cell-text">$0 monthly platform fee</span>
+                    <span class="cell-text">₹0 monthly platform charges—you own the software</span>
                   </div>
                 </td>
               </tr>
@@ -1344,13 +1199,13 @@
                 <td class="td-legacy">
                   <div class="cell-content">
                     <span class="diff-icon diff-no" aria-hidden="true">✕</span>
-                    <span class="cell-text">Months of delays and vague billable hours</span>
+                    <span class="cell-text">Months of delays and vague hourly bills</span>
                   </div>
                 </td>
                 <td class="td-ritiverse hl">
                   <div class="cell-content">
                     <span class="diff-icon diff-yes" aria-hidden="true">✓</span>
-                    <span class="cell-text">Fixed 2–4 week milestone delivery</span>
+                    <span class="cell-text">Fixed 2–4 week milestone delivery with weekly demos</span>
                   </div>
                 </td>
               </tr>
@@ -1358,18 +1213,18 @@
               <!-- Row 5: Handover & Training -->
               <tr>
                 <td class="td-dim">
-                  <strong class="dim-title">Handover &amp; Training</strong>
+                  <strong class="dim-title">Handover &amp; Support</strong>
                 </td>
                 <td class="td-legacy">
                   <div class="cell-content">
                     <span class="diff-icon diff-no" aria-hidden="true">✕</span>
-                    <span class="cell-text">ZIP file sent with zero guidance</span>
+                    <span class="cell-text">ZIP file sent with zero guidance or support</span>
                   </div>
                 </td>
                 <td class="td-ritiverse hl">
                   <div class="cell-content">
                     <span class="diff-icon diff-yes" aria-hidden="true">✓</span>
-                    <span class="cell-text">Live 1-on-1 video call + recorded guides</span>
+                    <span class="cell-text">Live 1-on-1 video call + video guides + 30-day warranty</span>
                   </div>
                 </td>
               </tr>
@@ -1446,7 +1301,7 @@
 
           /* Action Controls: CTA, Stepper, Counter */
           <div class="flagship-controls-bar">
-            <a href="projects.html" class="flagship-primary-btn" id="fCtaBtn">
+            <a href="projects.php" class="flagship-primary-btn" id="fCtaBtn">
               <span>View Case Study</span>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1657,7 +1512,7 @@
           <button type="button" class="orbit-dot" aria-label="Go to project 5" data-target="4"></button>
         </div>
 
-        <a href="projects.html" class="btn-all-projects">
+        <a href="projects.php" class="btn-all-projects">
           <span>Explore All 6 Production Flagships &amp; Case Studies</span>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1681,7 +1536,7 @@
       <div class="section-head-center">
 
         <h2 class="section-main-heading">
-          From Architecture to Production.<br>
+          From Requirement to Live Launch.<br>
           <span class="text-flame">Zero Surprises. 100% Transparency.</span>
         </h2>
 
@@ -1705,9 +1560,8 @@
             </svg>
             <div class="card-inner">
               <span class="card-num">01</span>
-              <h3 class="card-title">Architectural Blueprint</h3>
-              <p class="card-desc">System mapping, database schema design, and fixed-scope delivery milestones with full
-                architectural transparency.</p>
+              <h3 class="card-title">Planning &amp; Architecture</h3>
+              <p class="card-desc">We map out your business workflow, design the user screens and database, and provide a fixed quote with clear milestone delivery dates.</p>
             </div>
           </div>
         </div>
@@ -1722,9 +1576,8 @@
             </svg>
             <div class="card-inner">
               <span class="card-num">02</span>
-              <h3 class="card-title">Agile Development Sprints</h3>
-              <p class="card-desc">Rapid bi-weekly feature sprints with continuous integration, direct Slack channels,
-                and live staging URLs.</p>
+              <h3 class="card-title">Development &amp; Weekly Demos</h3>
+              <p class="card-desc">Clean, modern coding with weekly live demo links on a staging URL, so you can test working features and see genuine progress every week.</p>
             </div>
           </div>
         </div>
@@ -1739,9 +1592,8 @@
             </svg>
             <div class="card-inner">
               <span class="card-num">03</span>
-              <h3 class="card-title">Testing &amp; Speed QA</h3>
-              <p class="card-desc">Rigorous speed tuning for 100/100 Lighthouse performance, cross-device QA, and
-                enterprise-grade security hardening.</p>
+              <h3 class="card-title">Testing &amp; Speed Tuning</h3>
+              <p class="card-desc">Thorough multi-device testing, speed optimization for sub-2-second loading on mobile data, and complete security checks before launch.</p>
             </div>
           </div>
         </div>
@@ -1756,9 +1608,8 @@
             </svg>
             <div class="card-inner">
               <span class="card-num">04</span>
-              <h3 class="card-title">Live Launch &amp; Handover</h3>
-              <p class="card-desc">Zero-downtime DNS deployment with 100% full source code ownership transferred
-                directly to your organization on Day 1.</p>
+              <h3 class="card-title">Live Launch &amp; Full Handover</h3>
+              <p class="card-desc">We deploy your project live on your own domain and cloud servers, transferring 100% source code ownership directly to you on Day 1.</p>
             </div>
           </div>
         </div>
@@ -1879,15 +1730,14 @@
       <div class="section-head-center">
         <div class="section-eyebrow-pill">
           <span class="section-eyebrow-dot"></span>
-          Clear Answers & Zero Ambiguity
+          Clear Answers &amp; Zero Hidden Terms
         </div>
         <h2 class="section-main-heading">
           Frequently Asked Questions.<br>
           <span class="text-flame">Everything Upfront.</span>
         </h2>
         <p class="section-main-subtitle">
-          Transparent answers about our 100% IP ownership guarantee, pricing predictability, developer ergonomics, and
-          post-launch handovers.
+          Honest answers about project pricing, 100% source code ownership, delivery timelines, and free post-launch support.
         </p>
       </div>
 
@@ -1903,11 +1753,11 @@
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                We focus exclusively on 6 high-demand engineering pillars: <strong>Bespoke Website Development</strong>,
-                <strong>Native &amp; Cross-Platform Application Development</strong>, <strong>Custom CRM Platforms</strong>,
-                <strong>Enterprise Resource Planning (ERP) Systems</strong>, <strong>High-Converting E-Commerce Storefronts</strong>,
-                and <strong>Tailored Custom Software &amp; APIs</strong>. Every solution is architected for speed, scalability,
-                and 100% client code ownership.
+                We specialize in 6 high-demand areas: <strong>Custom Business Websites</strong>,
+                <strong>Android &amp; iOS Mobile Apps</strong>, <strong>Custom CRM Platforms</strong>,
+                <strong>Enterprise Resource Planning (ERP) Systems</strong>, <strong>E-Commerce Storefronts</strong>,
+                and <strong>Custom Software &amp; APIs</strong>. Every solution is built for speed, security,
+                and 100% client code ownership with zero monthly lock-in.
               </p>
             </div>
           </div>
@@ -1922,10 +1772,7 @@
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                Commercial SaaS tools charge escalating monthly fees per seat and force your business into rigid, generic
-                templates. A custom CRM or ERP built by RiTiVerse is engineered 100% around your proprietary operations,
-                sales pipelines, and inventory workflows. You own the software permanently with zero recurring user licenses
-                or third-party platform dependencies.
+                Off-the-shelf SaaS tools charge monthly per-user fees that get expensive as your team expands, and they force you into generic templates. A custom CRM or ERP built by RiTiVerse is made 100% for your daily operations, sales pipelines, and billing. You own the software permanently with zero recurring user license fees.
               </p>
             </div>
           </div>
@@ -1941,8 +1788,8 @@
             <div class="faq-answer-body">
               <p>
                 We build fast, responsive websites and digital storefronts using React, modern PHP/Laravel, and Node.js.
-                We optimize for sub-second load times, Core Web Vitals, frictionless checkouts, multi-currency payment
-                gateways (Stripe, PayPal), and automated catalog and inventory synchronization—never bloated generic page builders.
+                We optimize for sub-2-second loading on mobile networks, clean call-to-actions, and integrated payment
+                gateways (Razorpay, UPI, Stripe) with automated order and inventory tracking.
               </p>
             </div>
           </div>
@@ -1957,9 +1804,9 @@
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                Yes. We build responsive web applications, client portals, and cross-platform mobile apps for iOS and Android.
-                Our applications feature fluid 60fps animations, intuitive modern interfaces, offline caching capabilities,
-                and high-throughput REST and GraphQL backends.
+                Yes. We build responsive web applications, customer portals, and cross-platform mobile apps for both iOS and Android.
+                Our applications feature smooth 60fps animations, intuitive interfaces, offline data storage,
+                and fast, secure backends.
               </p>
             </div>
           </div>
@@ -1974,9 +1821,9 @@
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                <strong>Yes, absolutely and unconditionally.</strong> From Day 1, all source code is authored directly in your
-                designated GitHub organization and deployed into your cloud accounts. Our contract legally assigns 100% perpetual,
-                exclusive intellectual property rights to your company. You never pay recurring licensing or platform hostage fees to us.
+                <strong>Yes, absolutely and unconditionally.</strong> From Day 1, all source code is stored directly in your
+                company's GitHub or GitLab repository. Once milestones are completed, all intellectual property, domain setup,
+                and cloud server accounts belong permanently to you. We never charge monthly hostage or licensing fees.
               </p>
             </div>
           </div>
@@ -1991,9 +1838,7 @@
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                Traditional agencies use junior developers, closed CMS locks, and intentional technical debt to trap clients
-                in expensive monthly retainers. RiTiVerse operates on truth, transparency, and engineering rigor: you work directly
-                with senior developers who build modular, documented software on open industry standards with zero vendor lock-in.
+                Traditional agencies often assign junior developers, use slow closed CMS templates, and charge expensive monthly retainers for simple edits. At RiTiVerse, you work directly with experienced senior developers who write clean, documented code using modern open standards—with complete transparency and zero vendor lock-in.
               </p>
             </div>
           </div>
@@ -2008,9 +1853,7 @@
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                We operate on transparent, fixed-scope milestone deliverables. Prior to development, we deliver an Architectural
-                Blueprint defining exact scope, data structures, and milestone gates. You review and test weekly demo builds on a
-                staging environment before signing off on milestone completion—eliminating budget overruns and billing surprises.
+                We work on transparent, fixed-scope milestone deliverables. Before starting, we provide a clear project plan detailing exact features, timelines, and costs. You test working demo links every week on a staging link before approving each milestone—eliminating budget overruns and surprise bills.
               </p>
             </div>
           </div>
@@ -2025,9 +1868,7 @@
           <div class="faq-answer-wrap">
             <div class="faq-answer-body">
               <p>
-                Yes. We engineer every project with clean modular architecture, thorough technical documentation, and containerized
-                environments that any competent developer can maintain. Every production deployment also includes a 30-day warranty
-                window for bug fixes, performance tuning, and transition walk-throughs at zero extra cost.
+                Yes. We build every project with clean, modular code, clear documentation, and standard frameworks that any competent developer can easily manage. Every project also includes a free 30-day warranty window for bug fixes, performance checks, and technical walkthroughs at zero extra cost.
               </p>
             </div>
           </div>
@@ -2046,22 +1887,21 @@
       <!-- Consultation Card -->
       <div class="footer-cta-card">
         <div class="footer-cta-glow" aria-hidden="true"></div>
-        <span class="footer-eyebrow">Initiate Consultation</span>
-        <h2 class="footer-headline">Have a mission-critical project?<br>Let's architect something remarkable.</h2>
+        <span class="footer-eyebrow">Let's Discuss Your Project</span>
+        <h2 class="footer-headline">Planning a new website, mobile app, or custom software?<br>Let's build it together.</h2>
         <p class="footer-subtext">
-          Partner with an elite engineering studio dedicated to craftsmanship, sub-second speed, and 100% client source
-          code ownership.
+          Work directly with experienced developers. Get fixed milestone pricing, weekly progress demo links, and 100% source code ownership from Day 1.
         </p>
         <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
-          <a href="contact.html" class="footer-cta-btn">
-            Start a Conversation
+          <a href="contact.php" class="footer-cta-btn">
+            Get a Free Project Quote
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </a>
-          <a href="services.html" class="btn-inline-link" style="padding: 12px 24px; font-weight: 700;">
-            Review Capabilities First →
+          <a href="services.php" class="btn-inline-link" style="padding: 12px 24px; font-weight: 700;">
+            Explore All Services →
           </a>
         </div>
       </div>
@@ -2075,7 +1915,7 @@
     <div class="ribbon-marquee-wrapper">
 
       <!-- Underneath Ribbon: Tilted Pill Badges (CONTACT US) -->
-      <a href="contact.html" class="ribbon-track-link ribbon-bottom" aria-label="Contact Us">
+      <a href="contact.php" class="ribbon-track-link ribbon-bottom" aria-label="Contact Us">
         <div class="ribbon-strip-track track-reverse">
           <div class="ribbon-pills-group">
             <span class="ribbon-pill-item pill-solid">CONTACT US</span>
@@ -2101,7 +1941,7 @@
       </a>
 
       <!-- Foreground Ribbon: Tilted Giant Tape (GET IN TOUCH ✻) -->
-      <a href="contact.html" class="ribbon-track-link ribbon-top" aria-label="Get in Touch">
+      <a href="contact.php" class="ribbon-track-link ribbon-top" aria-label="Get in Touch">
         <div class="ribbon-strip-track track-forward">
           <div class="ribbon-words-group">
             <span class="ribbon-word-item word-solid">GET IN TOUCH</span>
@@ -2172,73 +2012,9 @@
   <!-- ==========================================================================
        SECTION 12: ARCHITECTURAL FOOTER SITEMAP
        ========================================================================== -->
-  <footer class="synex-footer" id="contact">
-    <div class="footer-container">
-      <!-- 3-Column Architectural Footer Sitemap (Website Services & Contacts) -->
-      <div class="footer-sitemap-grid">
-        <!-- Col 1: Brand Wordmark & Direct Contacts -->
-        <div class="footer-brand-col">
-          <div class="footer-brand" style="gap: 10px;">
-            <img src="assets/logo.png" alt="RiTiVerse Logo" style="height: 28px; width: auto;" />
-            <span class="footer-logo">RiTiVerse</span>
-          </div>
-          <p class="footer-col-desc">
-            Bespoke website, application, CRM, ERP, and custom software development. Engineered for performance and delivered with 100% client source code ownership from Day 1.
-          </p>
-          <div class="footer-contact-mini">
-            <span><strong>Inquiries:</strong> <a href="mailto:info@ritiverse.in">info@ritiverse.in</a></span>
-            <span><strong>Support:</strong> <a href="mailto:support@ritiverse.in">support@ritiverse.in</a></span>
-            <span><strong>Consultation:</strong> <a href="contact.html">Book Architectural Scoping</a></span>
-          </div>
-        </div>
 
-        <!-- Col 2: Core Engineering Services -->
-        <div class="footer-sitemap-col">
-          <h3 class="footer-col-title">Services</h3>
-          <ul class="footer-links-list">
-            <li><a href="services.html#services-showcase">Website Development</a></li>
-            <li><a href="services.html#services-showcase">Application Development</a></li>
-            <li><a href="services.html#services-showcase">E-Commerce Solutions</a></li>
-            <li><a href="services.html#services-showcase">CRM Platforms</a></li>
-            <li><a href="services.html#services-showcase">ERP Systems</a></li>
-            <li><a href="services.html#services-showcase">Custom Software Development</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 3: Studio & Direct Navigation -->
-        <div class="footer-sitemap-col">
-          <h3 class="footer-col-title">Studio &amp; Trust</h3>
-          <ul class="footer-links-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">All Services</a></li>
-            <li><a href="about.html">Philosophy &amp; Standards</a></li>
-            <li><a href="#faq">Frequently Asked Questions</a></li>
-            <li><a href="contact.html">Start a Consultation</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Bottom Row -->
-      <div class="footer-bottom-row">
-        <div class="footer-brand">
-          <span class="footer-copy">© 2026 RiTiVerse Studio. All rights reserved. 100% Client Source Code Ownership Guaranteed.</span>
-        </div>
-        <div class="footer-status-pill">
-          <span class="footer-status-dot"></span>
-          Zero Vendor Lock-In • 100% Code Ownership
-        </div>
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- GSAP & ScrollTrigger Libraries for Apple/Antigravity Style Reveal -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <!-- Interactive JavaScript Logic -->
-  <script src="js/nav.js?v=2.0"></script>
-  <script src="js/index.js?v=2.0"></script>
-</body>
-
-</html>
+<?php
+$show_footer_cta = false;
+$extra_js = ['js/index.js'];
+require_once __DIR__ . '/includes/footer.php';
+?>

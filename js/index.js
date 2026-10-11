@@ -211,10 +211,10 @@ function initHeroScrollReveal() {
           scrollTarget.style.pointerEvents = 'none';
         }
 
-        // Studio drop shadow expansion as card blooms to full screen (clean natural shadow, no neon glow)
+        // Studio drop shadow expansion as card blooms to full screen (clean natural warm shadow)
         const blur = Math.round(20 + prog * 45);
         const yOffset = Math.round(8 + prog * 24);
-        scrollTarget.style.filter = `drop-shadow(0 ${yOffset}px ${blur}px rgba(0, 140, 216, 0.18))`;
+        scrollTarget.style.filter = `drop-shadow(0 ${yOffset}px ${blur}px rgba(217, 119, 6, 0.14))`;
       }
     }
   });
@@ -358,7 +358,7 @@ function initEmailCapture() {
       btn.style.background = 'linear-gradient(135deg, #10B981 0%, #059669 100%)';
 
       if (msg) {
-        msg.textContent = 'Engineering team notified. We will reply within 24 hours.';
+        msg.textContent = 'Thank you! Our team has received your email and will get back to you within 24 hours.';
         msg.classList.add('visible');
       }
 
@@ -577,13 +577,13 @@ function initMotionWave() {
 
       if (alpha > 0.015) {
         const r = Math.max(0.4, size * scale);
-        // Tri-tone brand particles matching the owl logo: Azure Blue on the crest, Flame Orange highlights, and deep slate base
+        // Amber Minimal palette particles: Warm Amber on the crest, Flame Orange highlights, and soft slate base
         if (Math.abs(v - 0.08) < 0.12 && i % 6 === 0) {
-          ctx.fillStyle = `rgba(0, 140, 216, ${(alpha * 0.75).toFixed(3)})`;
+          ctx.fillStyle = `rgba(245, 158, 11, ${(alpha * 0.75).toFixed(3)})`;
         } else if (Math.abs(v - 0.18) < 0.14 && i % 7 === 0) {
           ctx.fillStyle = `rgba(248, 104, 0, ${(alpha * 0.75).toFixed(3)})`;
         } else {
-          ctx.fillStyle = `rgba(30, 41, 59, ${(alpha * 0.55).toFixed(3)})`;
+          ctx.fillStyle = `rgba(71, 85, 105, ${(alpha * 0.55).toFixed(3)})`;
         }
         ctx.beginPath();
         ctx.arc(screenX, screenY, r, 0, Math.PI * 2);
@@ -664,7 +664,7 @@ function initShowcaseSearch() {
     if (!query) return;
 
     if (feedback) {
-      feedback.textContent = `Analyzing requirements for "${query}"... Redirecting to team consultation.`;
+      feedback.textContent = `Looking up options for "${query}"... Taking you to consultation.`;
       setTimeout(() => {
         const contactSection = document.getElementById('contact');
         if (contactSection) {

@@ -49,31 +49,53 @@ function initFaqAccordion() {
 }
 
 function handleContactSubmit() {
+  const form = document.getElementById('contact-inquiry-form');
   const btn = document.getElementById('contact-submit-btn');
   const status = document.getElementById('contact-form-status');
-  const nameInput = document.getElementById('contact-name');
-  const name = nameInput ? nameInput.value : '';
+  if (!form) return;
+
+  const formData = new FormData(form);
 
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = 'Transmitting Scope...';
+    btn.innerHTML = 'Submitting Inquiry...';
   }
 
-  setTimeout(() => {
-    if (btn) {
-      btn.innerHTML = 'Inquiry Dispatched ✓';
-      btn.style.background = '#10B981';
+  fetch('api/contact-process.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      if (btn) {
+        btn.innerHTML = 'Inquiry Sent Successfully ✓';
+        btn.style.background = '#10B981';
+      }
+      if (status) {
+        status.style.display = 'block';
+        status.style.background = 'rgba(254, 243, 199, 0.9)';
+        status.style.border = '1px solid rgba(245, 158, 11, 0.4)';
+        status.style.color = '#B45309';
+        status.textContent = data.message;
+      }
+      form.reset();
+    } else {
+      throw new Error(data.message || 'Submission failed');
     }
-
+  })
+  .catch(err => {
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = 'Send Project Inquiry (Free Estimate)';
+      btn.style.background = '';
+    }
     if (status) {
       status.style.display = 'block';
-      status.style.background = 'rgba(16, 185, 129, 0.15)';
-      status.style.border = '1px solid rgba(52, 211, 153, 0.3)';
-      status.style.color = '#34D399';
-      status.textContent = 'Thank you, ' + name + '. Your architectural inquiry has been routed to our principal engineering team. We will review your scope and respond within 24 hours.';
+      status.style.background = 'rgba(239, 68, 68, 0.1)';
+      status.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+      status.style.color = '#EF4444';
+      status.textContent = err.message || 'Something went wrong. Please email us directly at info@ritiverse.in';
     }
-
-    const form = document.getElementById('contact-inquiry-form');
-    if (form) form.reset();
-  }, 1200);
+  });
 }

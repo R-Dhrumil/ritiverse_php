@@ -1,0 +1,137 @@
+<?php
+/**
+ * RiTiVerse — Central Application Configuration
+ * Optimized for cPanel / Apache / LiteSpeed Deployment
+ */
+
+// Error reporting settings: Production-safe
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+
+// Application Identity & Metadata
+define('APP_NAME', 'RiTiVerse');
+define('APP_LEGAL_NAME', 'RiTiVerse Studio');
+define('APP_TAGLINE', 'Elite Website & Software Development');
+define('APP_DESCRIPTION', 'Engineering studio delivering custom websites, mobile apps, CRM, ERP, and bespoke software with 100% client source code ownership.');
+
+// Database Credentials (Configure for local dev or cPanel phpMyAdmin)
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_NAME', getenv('DB_NAME') ?: 'ritiverse_db');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') ?: '');
+define('DB_CHARSET', 'utf8mb4');
+
+// High-Priority SEO Search Keywords (Rank #1 for Website Making, CRM, ERP, Software Dev)
+define('SEO_PRIMARY_KEYWORDS', 'website making, website development company India, custom CRM development, ERP software development, ERP billing software, custom software development, mobile app development, e-commerce website design, React PHP development agency, zero vendor lock-in software');
+define('SEO_AUTHOR', 'RiTiVerse Engineering Studio');
+define('SEO_GEO_REGION', 'IN');
+define('SEO_GEO_PLACENAME', 'India');
+
+// Contact & Support Coordinates
+define('CONTACT_EMAIL', 'info@ritiverse.in');
+define('SUPPORT_EMAIL', 'support@ritiverse.in');
+define('CONTACT_PHONE', '+91 98765 43210');
+
+// Dynamic Base URL detection for cPanel
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? 'https://' : 'http://';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost:8000';
+define('SITE_URL', $protocol . $host);
+
+/**
+ * Helper: Generate clean link (works with or without mod_rewrite)
+ */
+function url($path = '') {
+    $cleanPath = ltrim($path, '/');
+    return '/' . $cleanPath;
+}
+
+/**
+ * Helper: Check active navigation page
+ */
+function is_active($page, $currentPage) {
+    return ($page === $currentPage) ? 'active' : '';
+}
+
+/**
+ * Helper: Escape HTML strings safely
+ */
+function e($string) {
+    return htmlspecialchars($string ?? '', ENT_QUOTES, 'UTF-8');
+}
+
+/**
+ * Helper: Start secure session with modern cookie attributes
+ */
+function start_secure_session() {
+    if (session_status() === PHP_SESSION_NONE) {
+        $is_https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443);
+        session_set_cookie_params([
+            'lifetime' => 0,
+            'path' => '/',
+            'domain' => '',
+            'secure' => $is_https,
+            'httponly' => true,
+            'samesite' => 'Lax'
+        ]);
+        session_start();
+    }
+}
+
+/**
+ * Helper: CSRF token generation
+ */
+function csrf_token() {
+    start_secure_session();
+    if (empty($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION['csrf_token'];
+}
+
+/**
+ * Helper: Generate hidden CSRF input field
+ */
+function csrf_field() {
+    return '<input type="hidden" name="csrf_token" value="' . e(csrf_token()) . '">';
+}
+
+/**
+ * Helper: Verify CSRF token safely with timing-attack safe comparison
+ */
+function verify_csrf_token($token) {
+    start_secure_session();
+    if (empty($_SESSION['csrf_token']) || empty($token)) {
+        return false;
+    }
+    return hash_equals($_SESSION['csrf_token'], $token);
+}
+
+/**
+ * Helper: Rate limiting check for sensitive operations (per IP/session)
+ * @param string $action Unique identifier for the action
+ * @param int $max_attempts Maximum allowed attempts in the window
+ * @param int $decay_seconds Window size in seconds
+ * @return bool True if allowed, false if limit exceeded
+ */
+function check_rate_limit($action, $max_attempts = 5, $decay_seconds = 300) {
+    start_secure_session();
+    $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+    $key = 'rate_limit_' . md5($action . '_' . $ip);
+    
+    $now = time();
+    $data = $_SESSION[$key] ?? ['attempts' => 0, 'first_attempt' => $now];
+    
+    if ($now - $data['first_attempt'] > $decay_seconds) {
+        $data = ['attempts' => 1, 'first_attempt' => $now];
+        $_SESSION[$key] = $data;
+        return true;
+    }
+    
+    if ($data['attempts'] >= $max_attempts) {
+        return false;
+    }
+    
+    $data['attempts']++;
+    $_SESSION[$key] = $data;
+    return true;
+}

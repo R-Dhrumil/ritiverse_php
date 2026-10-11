@@ -8,14 +8,14 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 140, 216, 0.2);
+  border: 1px solid rgba(226, 218, 204, 0.85);
   border-radius: 16px;
   padding: 36px 30px;
   margin: 60px 0;
   text-align: center;
-  box-shadow: 0 20px 40px -15px rgba(0, 140, 216, 0.12);
+  box-shadow: 0 20px 40px -15px rgba(217, 119, 6, 0.08);
 }
 
 .stat-item-num {
@@ -45,13 +45,13 @@
 }
 
 .process-step-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 140, 216, 0.2);
+  border: 1px solid rgba(226, 218, 204, 0.85);
   border-radius: 14px;
   padding: 28px 22px;
   position: relative;
-  box-shadow: 0 10px 30px -10px rgba(0, 140, 216, 0.1);
+  box-shadow: 0 10px 25px -10px rgba(15, 23, 42, 0.04);
   transition: all 0.22s ease;
 }
 
@@ -142,9 +142,9 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: rgba(0, 140, 216, 0.15);
-  border: 1px solid rgba(0, 140, 216, 0.3);
-  color: var(--brand-blue);
+  background: rgba(254, 243, 199, 0.9);
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  color: #B45309;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,23 +156,23 @@
 
 
 
-/* Architecture Card Visual (Glassmorphism & Skyblue System) */
+/* Architecture Card Visual (Amber Minimal Surface) */
 .arch-card {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 140, 216, 0.2);
+  border: 1px solid rgba(226, 218, 204, 0.85);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 40px -15px rgba(0, 140, 216, 0.12);
+  box-shadow: 0 20px 40px -15px rgba(217, 119, 6, 0.08);
 }
 
 .arch-card-header {
-  background: rgba(240, 249, 255, 0.95);
+  background: rgba(250, 247, 238, 0.95);
   padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(0, 140, 216, 0.15);
+  border-bottom: 1px solid rgba(226, 218, 204, 0.85);
 }
 
 .terminal-dots {

@@ -1,0 +1,77 @@
+# ==============================================================================
+# RITIVERSE — CPANEL & APACHE / LITESPEED PRODUCTION CONFIGURATION
+# Hardened Security & High-Performance SEO Configuration
+# ==============================================================================
+
+# Disable Directory Browsing
+Options -Indexes
+
+DirectoryIndex index.php index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Protect Hidden Files & Dotfiles (.git, .env, etc.)
+  RewriteRule ^\.(.*)$ - [F,L]
+
+  # 2. Block direct access to internal / backend directories
+  RewriteRule ^(includes|logs|\.agents|\.claude)/ - [F,L]
+
+  # 3. Redirect legacy .html URLs to clean URL
+  RewriteCond %{THE_REQUEST} /([^.]+)\.html(\s|\?) [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # 4. Clean URLs: Serve .php file without requiring extension in the URL
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.php -f
+  RewriteRule ^([^/]+)/?$ $1.php [L,QSA]
+</IfModule>
+
+# Custom Error Handling
+ErrorDocument 404 /404.php
+
+# Gzip / Brotli Compression for High Speed (PageSpeed 95+)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# Browser Caching Headers for Core Web Vitals
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresDefault "access plus 2 days"
+</IfModule>
+
+# Enterprise Security Headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # Strict-Transport-Security on HTTPS
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
+</IfModule>
+
+# Block Sensitive Database Dumps, Logs, Environment & Source Files
+<FilesMatch "\.(sql|log|ini|env|sh|bak|swp)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+<FilesMatch "^(package|package-lock|skills-lock)\.(json|lock)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>

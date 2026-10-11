@@ -1,149 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+/**
+ * RiTiVerse — Projects & Reference Architectures
+ */
+$page_title = 'Custom Software Development, CRM, ERP & Website Projects — RiTiVerse';
+$page_description = 'Explore production software engines, custom CRM, ERP platforms, and business websites built by RiTiVerse with 100% full source ownership.';
+$current_page = 'projects';
+$extra_css = ['css/projects.css'];
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects & Case Studies — RiTiVerse Flagships</title>
-  <meta name="description"
-    content="Explore production case studies engineered by RiTiVerse: high-speed web flagships, scalable distributed backends, cloud architectures, and enterprise AI workflows.">
-  <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+require_once __DIR__ . '/includes/header.php';
 
-  <!-- Google Fonts: Outfit, Plus Jakarta Sans & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
-  <!-- RiTiVerse Base & Projects Page Modular Stylesheets -->
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/projects.css">
-</head>
-
-<body>
-
-  <!-- Top Floating Minimalist Navigation -->
-  <header class="synex-nav" id="synex-nav">
-    <div class="synex-nav-left">
-      <a href="index.html" class="synex-brand" aria-label="RiTiVerse Home">
-        <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
-        <span class="synex-brand-name">RiTiVerse</span>
-      </a>
-    </div>
-
-    <div class="synex-nav-right">
-      <button class="synex-menu-trigger" id="synex-menu-trigger" aria-label="Open Fullscreen Navigation"
-        aria-expanded="false" aria-controls="synex-fs-menu">
-        <div class="hamburger-box">
-          <span class="hamburger-line line-1"></span>
-          <span class="hamburger-line line-2"></span>
-          <span class="hamburger-line line-3"></span>
-        </div>
-      </button>
-    </div>
-  </header>
-
-  <!-- Fullscreen Architectural Navigation Overlay -->
-  <div class="synex-fs-menu" id="synex-fs-menu" aria-hidden="true" role="dialog" aria-modal="true"
-    aria-label="Navigation Menu">
-    <div class="fs-grid-overlay" aria-hidden="true">
-      <div class="fs-grid-col"></div>
-      <div class="fs-grid-col"></div>
-      <div class="fs-grid-col"></div>
-      <div class="fs-grid-col"></div>
-      <div class="fs-grid-cross cross-1">+</div>
-      <div class="fs-grid-cross cross-2">+</div>
-      <div class="fs-grid-cross cross-3">+</div>
-      <div class="fs-grid-cross cross-4">+</div>
-      <div class="fs-ambient-glow" aria-hidden="true"></div>
-    </div>
-
-    <div class="fs-menu-header">
-      <div class="synex-nav-left">
-        <a href="index.html" class="synex-brand" aria-label="RiTiVerse Home">
-          <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
-          <span class="synex-brand-name">RiTiVerse</span>
-        </a>
-      </div>
-      <div class="synex-nav-right">
-        <button class="fs-close-btn" id="fs-close-btn" aria-label="Close Navigation Menu">
-          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="fs-menu-container">
-      <div class="fs-nav-main-col">
-        <div class="fs-nav-links-grid">
-          <div class="fs-links-group">
-            <ul class="fs-nav-list">
-              <li class="fs-nav-item">
-                <a href="index.html" class="fs-nav-link">
-                  <span class="nav-text">Home</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-              <li class="fs-nav-item">
-                <a href="services.html" class="fs-nav-link">
-                  <span class="nav-text">Services</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-              <li class="fs-nav-item">
-                <a href="contact.html" class="fs-nav-link">
-                  <span class="nav-text">Contact</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="fs-links-group">
-            <ul class="fs-nav-list">
-              <li class="fs-nav-item">
-                <a href="about.html" class="fs-nav-link">
-                  <span class="nav-text">About</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-              <li class="fs-nav-item">
-                <a href="projects.html" class="fs-nav-link active">
-                  <span class="nav-text">Projects</span>
-                  <span class="nav-arrow">↗</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="fs-menu-footer">
-          <div class="fs-meta-block">
-            <span class="fs-meta-label">FOLLOW</span>
-            <div class="fs-social-links">
-              <a href="https://linkedin.com" target="_blank" rel="noopener" class="fs-social-link">LinkedIn</a>
-              <a href="https://twitter.com" target="_blank" rel="noopener" class="fs-social-link">X (Twitter)</a>
-              <a href="https://github.com" target="_blank" rel="noopener" class="fs-social-link">GitHub</a>
-              <a href="https://instagram.com" target="_blank" rel="noopener" class="fs-social-link">Instagram</a>
-            </div>
-          </div>
-
-          <div class="fs-meta-block">
-            <span class="fs-meta-label">DIRECT CONTACT</span>
-            <div class="fs-contact-info">
-              <a href="mailto:info@ritiverse.in" class="fs-contact-email">info@ritiverse.in</a>
-              <a href="mailto:support@ritiverse.in" class="fs-contact-email" style="margin-top: 4px;">support@ritiverse.in</a>
-              <span class="fs-contact-address">Modern Engineering Studio • 100% Client Ownership</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+$db = get_db();
+$db_projects = [];
+if ($db) {
+    try {
+        $stmt = $db->query("SELECT * FROM projects WHERE is_featured = 1 ORDER BY display_order ASC, id ASC");
+        $db_projects = $stmt->fetchAll();
+    } catch (Exception $e) {
+        $db_projects = [];
+    }
+}
+?>
 
   <!-- Hero Section -->
   <main class="subpage-hero">
@@ -163,7 +39,7 @@
 
       <!-- Category Filter Pills -->
       <div class="projects-filter-bar">
-        <button class="project-filter-btn active" data-filter="all">All Architectures (6)</button>
+        <button class="project-filter-btn active" data-filter="all">All Architectures (<?= !empty($db_projects) ? count($db_projects) : 6 ?>)</button>
         <button class="project-filter-btn" data-filter="web">Web Applications</button>
         <button class="project-filter-btn" data-filter="custom">Custom Software</button>
         <button class="project-filter-btn" data-filter="cloud">Hosting &amp; Systems</button>
@@ -177,6 +53,55 @@
     <div class="subpage-container">
       <div class="projects-grid">
 
+<?php if (!empty($db_projects)): ?>
+  <?php foreach ($db_projects as $proj): ?>
+    <div class="case-study-card" data-category="<?= e($proj['category']) ?>">
+      <div class="case-card-hero">
+        <span class="case-tag-pill"><?= e($proj['tag_label']) ?></span>
+        <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="var(--accent-terracotta)" stroke-width="1.5" opacity="0.85">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+      </div>
+      <div class="case-card-body">
+        <div>
+          <h3 class="case-card-title"><?= e($proj['title']) ?></h3>
+          <p class="case-card-desc"><?= e($proj['description']) ?></p>
+        </div>
+        <div>
+          <div class="case-metrics-strip">
+            <?php if (!empty($proj['metric_1_val'])): ?>
+            <div class="case-metric-box">
+              <span class="case-metric-val"><?= e($proj['metric_1_val']) ?></span>
+              <span class="case-metric-lbl"><?= e($proj['metric_1_lbl']) ?></span>
+            </div>
+            <?php endif; ?>
+            <?php if (!empty($proj['metric_2_val'])): ?>
+            <div class="case-metric-box">
+              <span class="case-metric-val"><?= e($proj['metric_2_val']) ?></span>
+              <span class="case-metric-lbl"><?= e($proj['metric_2_lbl']) ?></span>
+            </div>
+            <?php endif; ?>
+            <?php if (!empty($proj['metric_3_val'])): ?>
+            <div class="case-metric-box">
+              <span class="case-metric-val"><?= e($proj['metric_3_val']) ?></span>
+              <span class="case-metric-lbl"><?= e($proj['metric_3_lbl']) ?></span>
+            </div>
+            <?php endif; ?>
+          </div>
+          <div class="case-tech-tags">
+            <?php foreach (explode(',', $proj['tech_tags']) as $tag): ?>
+              <?php if (trim($tag)): ?>
+                <span class="case-tech-pill"><?= e(trim($tag)) ?></span>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endforeach; ?>
+<?php else: ?>
         <!-- Project 1: Aegis Financial OS -->
         <div class="case-study-card" data-category="custom web">
           <div class="case-card-hero">
@@ -436,90 +361,13 @@
             </div>
           </div>
         </div>
-
+<?php endif; ?>
       </div>
     </div>
   </section>
 
-  <!-- CTA Banner & Footer -->
-  <footer class="synex-footer" id="contact">
-    <div class="footer-container">
-      <div class="footer-cta-card">
-        <div class="footer-cta-glow" aria-hidden="true"></div>
-        <span class="footer-eyebrow">Have a Flagship to Build?</span>
-        <h2 class="footer-headline">Let's build your next digital asset together.</h2>
-        <p class="footer-subtext">Work directly with principal software engineers committed to your total technical
-          independence.</p>
-        <a href="contact.html" class="footer-cta-btn">
-          Start a Conversation
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-      </div>
-
-      <!-- 3-Column Architectural Footer Sitemap (Website Services & Contacts) -->
-      <div class="footer-sitemap-grid">
-        <!-- Col 1: Brand Wordmark & Direct Contacts -->
-        <div class="footer-brand-col">
-          <div class="footer-brand" style="gap: 10px;">
-            <img src="assets/logo.png" alt="RiTiVerse Logo" style="height: 28px; width: auto;" />
-            <span class="footer-logo">RiTiVerse</span>
-          </div>
-          <p class="footer-col-desc">
-            Bespoke website, application, CRM, ERP, and custom software development. Engineered for performance and delivered with 100% client source code ownership from Day 1.
-          </p>
-          <div class="footer-contact-mini">
-            <span><strong>Inquiries:</strong> <a href="mailto:info@ritiverse.in">info@ritiverse.in</a></span>
-            <span><strong>Support:</strong> <a href="mailto:support@ritiverse.in">support@ritiverse.in</a></span>
-            <span><strong>Consultation:</strong> <a href="contact.html">Book Architectural Scoping</a></span>
-          </div>
-        </div>
-
-        <!-- Col 2: Core Engineering Services -->
-        <div class="footer-sitemap-col">
-          <h3 class="footer-col-title">Services</h3>
-          <ul class="footer-links-list">
-            <li><a href="services.html#services-showcase">Website Development</a></li>
-            <li><a href="services.html#services-showcase">Application Development</a></li>
-            <li><a href="services.html#services-showcase">E-Commerce Solutions</a></li>
-            <li><a href="services.html#services-showcase">CRM Platforms</a></li>
-            <li><a href="services.html#services-showcase">ERP Systems</a></li>
-            <li><a href="services.html#services-showcase">Custom Software Development</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 3: Studio & Direct Navigation -->
-        <div class="footer-sitemap-col">
-          <h3 class="footer-col-title">Studio &amp; Trust</h3>
-          <ul class="footer-links-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">All Services</a></li>
-            <li><a href="about.html">Philosophy &amp; Standards</a></li>
-            <li><a href="index.html#faq">Frequently Asked Questions</a></li>
-            <li><a href="contact.html">Start a Consultation</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Bottom Row -->
-      <div class="footer-bottom-row">
-        <div class="footer-brand">
-          <span class="footer-copy">© 2026 RiTiVerse Studio. All rights reserved. 100% Client Source Code Ownership Guaranteed.</span>
-        </div>
-        <div class="footer-status-pill">
-          <span class="footer-status-dot"></span>
-          Zero Vendor Lock-In • 100% Code Ownership
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- GSAP & Modular JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/projects.js"></script>
-</body>
-
-</html>
+<?php
+$show_footer_cta = true;
+$extra_js = ['js/projects.js'];
+require_once __DIR__ . '/includes/footer.php';
+?>
