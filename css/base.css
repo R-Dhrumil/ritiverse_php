@@ -865,7 +865,7 @@ body {
   width: 100%;
   background: linear-gradient(180deg, #FAF7EE 0%, #F5EFE0 100%);
   color: #0F172A;
-  padding: 80px clamp(20px, 4vw, 56px) 48px;
+  padding: 52px clamp(20px, 4vw, 56px) 32px;
   border-top: 1px solid rgba(226, 218, 204, 0.85);
   box-sizing: border-box;
 }
@@ -957,8 +957,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 32px;
-  border-top: 1px solid rgba(0, 140, 216, 0.15);
+  padding-top: 10px;
   font-size: 13px;
   color: #64748B;
 }
@@ -966,7 +965,7 @@ body {
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 20px;
+
 }
 
 .footer-logo {
@@ -1278,9 +1277,9 @@ body {
 .footer-sitemap-grid {
   display: grid;
   grid-template-columns: 2.2fr 1.4fr 1.4fr;
-  gap: 48px;
-  margin-bottom: 64px;
-  padding-bottom: 48px;
+  gap: 36px;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
   border-bottom: 1px solid rgba(0, 140, 216, 0.15);
 }
 

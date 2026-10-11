@@ -141,7 +141,22 @@ require_once __DIR__ . '/includes/header.php';
             </div>
           </div>
 
-          <!-- Direct Engineering Studio Item -->
+          <!-- Phone Contact Item -->
+          <div class="direct-contact-item">
+            <div class="contact-icon-bubble">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.29 6.29l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Call Us Directly</h4>
+              <a href="tel:+919426782646">+91 94267 82646</a>
+              <a href="tel:+919104253289" style="display:block; margin-top: 4px;">+91 91042 53289</a>
+              <p style="font-size: 11px; color: var(--text-secondary-dark); margin-top: 2px;">Mon – Sat, 10 AM – 7 PM IST</p>
+            </div>
+          </div>
+
+
           <div class="direct-contact-item">
             <div class="contact-icon-bubble">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">

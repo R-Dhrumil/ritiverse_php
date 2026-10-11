@@ -44,7 +44,7 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
           <div class="footer-contact-mini">
             <span><strong>Inquiries:</strong> <a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a></span>
             <span><strong>Support:</strong> <a href="mailto:<?= e(SUPPORT_EMAIL) ?>"><?= e(SUPPORT_EMAIL) ?></a></span>
-            <span><strong>Consultation:</strong> <a href="contact.php">Book Free Consultation</a></span>
+            <span><strong>Phone:</strong> <a href="tel:+919426782646">+91 94267 82646</a> , <a href="tel:+919104253289">+91 91042 53289</a></span>
           </div>
         </div>
 
