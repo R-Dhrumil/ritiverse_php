@@ -212,10 +212,10 @@ function initHeadingTypewriter() {
   // Filter out any elements inside hero section, hidden overlays, menus, or dashboard windows
   const headings = Array.from(candidateElements).filter(el => {
     return !el.closest('.synex-hero') &&
-           !el.closest('.hero-header') &&
-           !el.closest('.fs-menu-overlay') &&
-           !el.closest('.dash-sidebar') &&
-           !el.closest('.synex-dashboard-window');
+      !el.closest('.hero-header') &&
+      !el.closest('.fs-menu-overlay') &&
+      !el.closest('.dash-sidebar') &&
+      !el.closest('.synex-dashboard-window');
   });
 
   // Helper to extract text nodes that have meaningful content
@@ -225,7 +225,7 @@ function initHeadingTypewriter() {
       element,
       NodeFilter.SHOW_TEXT,
       {
-        acceptNode: function(node) {
+        acceptNode: function (node) {
           if (!node.nodeValue || node.nodeValue.trim() === '') {
             return NodeFilter.FILTER_REJECT;
           }
@@ -405,11 +405,13 @@ function initGlobalFaqAccordion() {
     const trigger = item.querySelector('.faq-question-btn');
     if (!trigger) return;
 
-    // Remove any duplicate listeners by cloning or checking flag
-    if (trigger._faqInitialized) return;
+    // Guard against duplicate event listener registration
+    if (trigger._faqInitialized || trigger.dataset.faqBound === 'true') return;
     trigger._faqInitialized = true;
+    trigger.dataset.faqBound = 'true';
 
-    trigger.addEventListener('click', () => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
       const isOpen = item.classList.contains('is-open');
 
       // Close siblings in the same container for clean accordion UX

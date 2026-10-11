@@ -680,14 +680,23 @@ function initShowcaseSearch() {
    ========================================================================== */
 
 function initFaqAccordion() {
+  // Handled globally across all pages by initGlobalFaqAccordion in nav.js
+  if (typeof initGlobalFaqAccordion === 'function') {
+    initGlobalFaqAccordion();
+    return;
+  }
+
   const faqItems = document.querySelectorAll('.faq-item');
   if (!faqItems.length) return;
 
   faqItems.forEach(item => {
     const trigger = item.querySelector('.faq-question-btn');
-    if (!trigger) return;
+    if (!trigger || trigger.dataset.faqBound === 'true' || trigger._faqInitialized) return;
+    trigger.dataset.faqBound = 'true';
+    trigger._faqInitialized = true;
 
-    trigger.addEventListener('click', () => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
       const isOpen = item.classList.contains('is-open');
 
       // Close all others for crisp accordion behavior
