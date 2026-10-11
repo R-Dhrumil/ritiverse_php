@@ -118,6 +118,23 @@ if ($db) {
 
   <!-- Main Container -->
   <main class="admin-main">
+
+    <!-- Mobile Top Navigation Bar (Active on tablets & mobile screens) -->
+    <nav class="admin-mobile-nav">
+      <div class="admin-mobile-brand">
+        <img src="../assets/logo.png" alt="RiTiVerse" class="admin-mobile-logo">
+        <span class="admin-mobile-title">RiTiVerse Admin</span>
+      </div>
+      <div class="admin-mobile-links">
+        <a href="index.php" class="admin-m-link <?= ($active_tab === 'dashboard') ? 'active' : '' ?>">Dashboard</a>
+        <a href="inquiries.php" class="admin-m-link <?= ($active_tab === 'inquiries') ? 'active' : '' ?>">Leads <?= $new_inquiries_count > 0 ? "($new_inquiries_count)" : '' ?></a>
+        <a href="projects.php" class="admin-m-link <?= ($active_tab === 'projects') ? 'active' : '' ?>">Projects</a>
+        <a href="settings.php" class="admin-m-link <?= ($active_tab === 'settings') ? 'active' : '' ?>">Settings</a>
+        <a href="../index.php" target="_blank" class="admin-m-link">Live ↗</a>
+        <a href="logout.php" class="admin-m-link m-logout">Exit</a>
+      </div>
+    </nav>
+
     <!-- Top Bar -->
     <header class="admin-topbar">
       <div class="admin-topbar-title">

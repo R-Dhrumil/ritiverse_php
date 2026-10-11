@@ -532,6 +532,34 @@
   }
 }
 
+@media (max-width: 480px) {
+  .dribbble-services-section {
+    padding: 60px 14px 80px;
+    overflow: hidden;
+  }
+  .dribbble-item-title {
+    font-size: 20px;
+  }
+  .dribbble-item-desc {
+    font-size: 13.5px;
+  }
+  .dribbble-preview-arena {
+    min-height: 280px;
+    padding: 12px 6px;
+    overflow: hidden;
+  }
+  .pill-top-right,
+  .pill-top-left,
+  .pill-bottom-left,
+  .floating-toggle-badge {
+    display: none !important;
+  }
+  .matrix-table-wrap {
+    margin-top: 24px;
+    border-radius: 12px;
+  }
+}
+
 /* Ownership Matrix Comparison Table */
 .matrix-table-wrap {
   overflow-x: auto;

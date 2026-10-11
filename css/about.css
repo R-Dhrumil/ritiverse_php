@@ -296,11 +296,42 @@
 @media (max-width: 600px) {
   .process-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .stats-banner {
     grid-template-columns: 1fr;
     gap: 24px;
     padding: 24px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-banner {
+    padding: 20px 14px;
+    margin: 30px 0;
+  }
+
+  .capability-content h3 {
+    font-size: 22px;
+  }
+
+  .capability-row {
+    gap: 28px;
+    margin-bottom: 50px;
+  }
+
+  .process-step-card {
+    padding: 20px 16px;
+  }
+
+  .arch-card-body {
+    padding: 16px 14px;
+  }
+
+  .arch-code-block {
+    font-size: 11px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }

@@ -140,6 +140,9 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -147,7 +150,9 @@ body {
   background-color: var(--bg-page);
   color: var(--text-primary-dark);
   min-height: 100dvh;
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
   position: relative;
 }
 
@@ -371,6 +376,8 @@ body {
 .synex-fs-menu {
   position: fixed;
   inset: 0;
+  width: 100%;
+  max-width: 100vw;
   z-index: 9999;
   background-color: rgba(250, 247, 238, 0.96);
   backdrop-filter: blur(32px);
@@ -379,7 +386,7 @@ body {
   visibility: hidden;
   pointer-events: none;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: clip;
   transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
 }
 
@@ -709,7 +716,7 @@ body {
   }
 
   .synex-brand {
-    padding: 9px 16px;
+    padding: 8px 16px;
   }
 
   .synex-brand-name {
@@ -744,8 +751,97 @@ body {
     margin-top: 36px;
     padding-top: 24px;
   }
+}
 
+@media (max-width: 480px) {
 
+  .synex-nav,
+  .fs-menu-header {
+    padding: 12px 14px;
+  }
+
+  .synex-nav.is-scrolled {
+    padding: 10px 14px;
+  }
+
+  .synex-brand {
+    padding: 7px 13px 7px 10px;
+    gap: 8px;
+  }
+
+  .synex-brand-logo {
+    height: 24px;
+    max-width: 36px;
+  }
+
+  .synex-brand-name {
+    font-size: 15.5px;
+    letter-spacing: -0.02em;
+  }
+
+  .synex-menu-trigger {
+    padding: 8px 12px;
+  }
+
+  .hamburger-box {
+    width: 24px;
+    height: 14px;
+  }
+
+  .hamburger-line.line-1,
+  .hamburger-line.line-3 {
+    width: 22px;
+  }
+
+  .hamburger-line.line-2 {
+    width: 16px;
+  }
+
+  .fs-menu-container {
+    padding: 20px 14px 40px;
+  }
+
+  .fs-nav-link {
+    font-size: clamp(1.8rem, 7.8vw, 2.4rem);
+    gap: 10px;
+  }
+
+  .fs-social-links {
+    gap: 12px;
+  }
+
+  .fs-social-link {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .synex-nav,
+  .fs-menu-header {
+    padding: 10px 10px;
+  }
+
+  .synex-brand {
+    padding: 6px 10px 6px 8px;
+    gap: 6px;
+  }
+
+  .synex-brand-logo {
+    height: 21px;
+  }
+
+  .synex-brand-name {
+    font-size: 14px;
+  }
+
+  .synex-menu-trigger {
+    padding: 7px 10px;
+  }
+
+  .fs-nav-link {
+    font-size: 1.65rem;
+  }
 }
 
 
@@ -912,6 +1008,95 @@ body {
   .footer-brand {
     flex-direction: column;
     gap: 8px;
+  }
+
+  .footer-cta-card {
+    padding: 48px 24px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+  }
+
+  .subpage-hero {
+    padding: 115px 20px 55px;
+  }
+
+  .subpage-section {
+    padding: 60px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .synex-cta-section {
+    padding: 50px 14px 40px;
+  }
+
+  .synex-footer {
+    padding: 50px 14px 36px;
+  }
+
+  .footer-cta-card {
+    padding: 36px 16px;
+    border-radius: 18px;
+    margin-bottom: 32px;
+  }
+
+  .footer-headline {
+    font-size: clamp(22px, 6.5vw, 28px);
+  }
+
+  .footer-subtext {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .footer-cta-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+  }
+
+  .subpage-hero {
+    padding: 95px 14px 40px;
+  }
+
+  .subpage-title {
+    font-size: clamp(24px, 7.5vw, 34px);
+    margin-bottom: 14px;
+  }
+
+  .subpage-subtitle {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .subpage-cta-group {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .subpage-cta-group .btn-primary,
+  .subpage-cta-group .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+  }
+
+  .subpage-section {
+    padding: 42px 14px;
+  }
+
+  .faq-question-btn {
+    padding: 16px 18px;
+  }
+
+  .faq-q-text {
+    font-size: 15px;
+  }
+
+  .faq-answer-body {
+    padding: 0 18px 18px 18px;
+    font-size: 13.5px;
   }
 }
 
