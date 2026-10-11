@@ -231,14 +231,64 @@
 }
 
 /* Hero Mobile & Tablet Adaptations */
+@media (max-width: 991px) {
+  .synex-hero {
+    min-height: auto;
+    height: auto;
+    padding: 95px 16px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: visible;
+  }
+
+  .hero-header {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto 32px auto;
+  }
+
+  .hero-stage-container {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto;
+    display: flex !important;
+    justify-content: center;
+    align-items: stretch;
+    pointer-events: auto !important;
+    z-index: 10;
+  }
+
+  .dashboard-scroll-target {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    filter: drop-shadow(0 15px 35px rgba(217, 119, 6, 0.09)) !important;
+  }
+
+  .hero-scroll-prompt {
+    display: none !important;
+  }
+}
+
 @media (max-width: 768px) {
   .synex-hero {
-    padding: 100px 18px 45px;
-    min-height: auto;
+    padding: 88px 14px 44px;
   }
 
   .hero-header {
     max-width: 100%;
+    margin-bottom: 24px;
   }
 
   .hero-title {
@@ -248,13 +298,13 @@
 
   .hero-description {
     font-size: 15px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
 }
 
 @media (max-width: 480px) {
   .synex-hero {
-    padding: 85px 14px 40px;
+    padding: 82px 12px 36px;
   }
 
   .hero-title {
@@ -270,7 +320,7 @@
   .hero-description {
     font-size: 14px;
     line-height: 1.55;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
     padding: 0 4px;
   }
 
@@ -306,7 +356,7 @@
 
 @media (max-width: 360px) {
   .synex-hero {
-    padding: 78px 10px 32px;
+    padding: 76px 10px 30px;
   }
 
   .hero-title {
@@ -4449,7 +4499,9 @@
 @media (max-width: 639px) {
   .admin-console {
     border-radius: 14px;
-    margin: 0 -4px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .admin-console .console-top {

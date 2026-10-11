@@ -171,90 +171,132 @@ function initHeroScrollReveal() {
   // Register GSAP ScrollTrigger plugin
   gsap.registerPlugin(ScrollTrigger);
 
-  // Initial State: Card is positioned down at bottom (y: 350), scaled small (0.35), 0 opacity
-  gsap.set(scrollTarget, {
-    scale: 0.35,
-    y: 350,
-    autoAlpha: 0,
-    transformOrigin: "center bottom",
-    pointerEvents: "none"
-  });
+  ScrollTrigger.matchMedia({
+    // Desktop View (992px and up): Apple-Style Pinned Scale Reveal
+    "(min-width: 992px)": function() {
+      gsap.set(scrollTarget, {
+        scale: 0.35,
+        y: 350,
+        autoAlpha: 0,
+        transformOrigin: "center bottom",
+        pointerEvents: "none"
+      });
 
-  if (heroHeader) {
-    gsap.set(heroHeader, {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      visibility: "visible",
-      pointerEvents: "auto"
-    });
-  }
-
-  // Master Apple-Style Scroll-Linked Scale Timeline (Card ascends from bottom to full screen)
-  const heroTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: heroSection,
-      start: "top top",
-      end: "+=1300", // Pinned scroll track distance for dramatic reveal
-      pin: true,
-      scrub: 1.15, // Weighted physics scrub lag for buttery smooth motion
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        const prog = self.progress;
-
-        // Enable card interactivity once revealed into view
-        if (prog > 0.55) {
-          scrollTarget.style.pointerEvents = 'auto';
-          if (window.refreshAdminIndicator) window.refreshAdminIndicator();
-        } else {
-          scrollTarget.style.pointerEvents = 'none';
-        }
-
-        // Studio drop shadow expansion as card blooms to full screen (clean natural warm shadow)
-        const blur = Math.round(20 + prog * 45);
-        const yOffset = Math.round(8 + prog * 24);
-        scrollTarget.style.filter = `drop-shadow(0 ${yOffset}px ${blur}px rgba(217, 119, 6, 0.14))`;
+      if (heroHeader) {
+        gsap.set(heroHeader, {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          visibility: "visible",
+          pointerEvents: "auto"
+        });
       }
+
+      if (scrollPrompt) {
+        gsap.set(scrollPrompt, {
+          display: "flex",
+          opacity: 1,
+          y: 0
+        });
+      }
+
+      const heroTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroSection,
+          start: "top top",
+          end: "+=1300",
+          pin: true,
+          scrub: 1.15,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const prog = self.progress;
+            if (prog > 0.55) {
+              scrollTarget.style.pointerEvents = 'auto';
+              if (window.refreshAdminIndicator) window.refreshAdminIndicator();
+            } else {
+              scrollTarget.style.pointerEvents = 'none';
+            }
+            const blur = Math.round(20 + prog * 45);
+            const yOffset = Math.round(8 + prog * 24);
+            scrollTarget.style.filter = `drop-shadow(0 ${yOffset}px ${blur}px rgba(217, 119, 6, 0.14))`;
+          }
+        }
+      });
+
+      if (heroHeader) {
+        heroTimeline.fromTo(heroHeader, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          visibility: "visible",
+          pointerEvents: "auto"
+        }, {
+          opacity: 0,
+          y: -60,
+          scale: 0.9,
+          pointerEvents: "none",
+          ease: "power2.inOut",
+          duration: 0.35
+        }, 0);
+      }
+
+      if (scrollPrompt) {
+        heroTimeline.to(scrollPrompt, {
+          opacity: 0,
+          y: 12,
+          ease: "power1.out",
+          duration: 0.18
+        }, 0);
+      }
+
+      heroTimeline.to(scrollTarget, {
+        autoAlpha: 1,
+        scale: 1.04,
+        y: 0,
+        ease: "power2.out",
+        duration: 0.88
+      }, 0.12);
+
+      return () => {
+        heroTimeline.kill();
+      };
+    },
+
+    // Mobile & Tablet (under 992px): Natural flow without scroll-jacking
+    "(max-width: 991px)": function() {
+      gsap.set(scrollTarget, {
+        clearProps: "all",
+        autoAlpha: 1,
+        opacity: 1,
+        visibility: "visible",
+        scale: 1,
+        y: 0,
+        pointerEvents: "auto"
+      });
+
+      if (heroHeader) {
+        gsap.set(heroHeader, {
+          clearProps: "all",
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          visibility: "visible",
+          pointerEvents: "auto"
+        });
+      }
+
+      if (scrollPrompt) {
+        gsap.set(scrollPrompt, {
+          display: "none"
+        });
+      }
+
+      setTimeout(() => {
+        if (window.refreshAdminIndicator) window.refreshAdminIndicator();
+      }, 150);
     }
   });
-
-  // Step 1 (0 -> 0.35): Hero text dissolves & gently ascends out of view
-  if (heroHeader) {
-    heroTimeline.fromTo(heroHeader, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      visibility: "visible",
-      pointerEvents: "auto"
-    }, {
-      opacity: 0,
-      y: -60,
-      scale: 0.9,
-      pointerEvents: "none",
-      ease: "power2.inOut",
-      duration: 0.35
-    }, 0);
-  }
-
-  // Floating scroll prompt disappears early on scroll
-  if (scrollPrompt) {
-    heroTimeline.to(scrollPrompt, {
-      opacity: 0,
-      y: 12,
-      ease: "power1.out",
-      duration: 0.18
-    }, 0);
-  }
-
-  // Step 2 (0.12 -> 1.0): Card rises up from the bottom & scales to Full Screen (1.04)
-  heroTimeline.to(scrollTarget, {
-    autoAlpha: 1,
-    scale: 1.04,
-    y: 0, // Ascends from bottom (y: 350 -> 0) into optical center
-    ease: "power2.out",
-    duration: 0.88
-  }, 0.12);
 
   window.addEventListener('load', () => {
     ScrollTrigger.refresh();
@@ -266,12 +308,14 @@ function initHeroScrollReveal() {
  */
 
 function initFallbackScrollScale() {
+  if (window.innerWidth < 992) return;
   const scrollTarget = document.getElementById('dashboard-scroll-target');
   const heroHeader = document.querySelector('.hero-header');
   const scrollPrompt = document.getElementById('hero-scroll-prompt');
   if (!scrollTarget) return;
 
   function onScroll() {
+    if (window.innerWidth < 992) return;
     const scrollY = window.scrollY || window.pageYOffset || 0;
     const progress = Math.min(1, Math.max(0, scrollY / 650));
 
@@ -465,7 +509,7 @@ function initMotionWave() {
   });
 
   // Generate Ribbon Particle Dust
-  const PARTICLE_COUNT = 9000;
+  const PARTICLE_COUNT = window.innerWidth < 768 ? 2500 : 9000;
   const particles = new Float32Array(PARTICLE_COUNT * 6); // [u, v, jitterX, jitterY, jitterZ, size]
 
   for (let i = 0; i < PARTICLE_COUNT; i++) {

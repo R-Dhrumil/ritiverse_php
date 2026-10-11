@@ -217,11 +217,11 @@ $seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'websit
     rel="stylesheet">
 
   <!-- Core Base Stylesheet (Design System & Tokens) -->
-  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/base.css?v=2.2">
 
   <!-- Page-Specific Modular Stylesheets -->
   <?php foreach ($extra_css as $css_path): ?>
-    <link rel="stylesheet" href="<?= e($css_path) ?>">
+    <link rel="stylesheet" href="<?= e($css_path) ?>?v=2.2">
   <?php endforeach; ?>
 </head>
 

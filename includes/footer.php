@@ -96,11 +96,11 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
   <?php endif; ?>
 
   <!-- Core Interactive Navigation Logic -->
-  <script src="js/nav.js?v=2.1"></script>
+  <script src="js/nav.js?v=2.2"></script>
 
   <!-- Page-Specific Modular Scripts -->
   <?php foreach ($extra_js as $js_path): ?>
-    <script src="<?= e($js_path) ?>?v=2.1"></script>
+    <script src="<?= e($js_path) ?>?v=2.2"></script>
   <?php endforeach; ?>
 </body>
 
