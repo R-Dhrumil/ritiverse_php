@@ -27,7 +27,10 @@ DirectoryIndex index.php index.html index.htm default.html default.htm
   RewriteCond %{THE_REQUEST} /([^.]+)\.html(\s|\?) [NC]
   RewriteRule ^ /%1 [R=301,L]
 
-  # 4. Clean URLs: Serve .php file without requiring extension in the URL
+  # 4. Route root favicon requests directly to assets/logo.png
+  RewriteRule ^favicon\.(ico|png)$ assets/logo.png [L]
+
+  # 5. Clean URLs: Serve .php file without requiring extension in the URL
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}.php -f
   RewriteRule ^([^/]+)/?$ $1.php [L,QSA]

@@ -19,7 +19,13 @@ $extra_css = isset($extra_css) && is_array($extra_css) ? $extra_css : [];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= e($page_title) ?></title>
   <meta name="description" content="<?= e($page_description) ?>">
-  <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+  <!-- High-Resolution Favicons & Google Search Brand Icons -->
+  <link rel="icon" type="image/png" sizes="192x192" href="<?= SITE_URL ?>/assets/logo.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="<?= SITE_URL ?>/assets/logo.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="<?= SITE_URL ?>/assets/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?= SITE_URL ?>/assets/logo.png">
+  <link rel="shortcut icon" href="<?= SITE_URL ?>/assets/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="<?= SITE_URL ?>/assets/logo.png">
 
 <?php
 // Canonical & Page Metadata
