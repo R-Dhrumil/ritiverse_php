@@ -37,7 +37,7 @@ $seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'websit
   <meta name="google-site-verification" content="<?= e(GOOGLE_SITE_VERIFICATION) ?>">
   <?php endif; ?>
 
-  <!-- Open Graph / Facebook / LinkedIn / WhatsApp Rich Previews -->
+  <!-- Open Graph / Facebook / WhatsApp Rich Previews -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="<?= e($canonical_url) ?>">
   <meta property="og:title" content="<?= e($page_title) ?>">
@@ -80,7 +80,13 @@ $seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'websit
         },
         "description": "Official website of RiTiVerse — Top-rated Website Making, Custom CRM, ERP Software Development, and Mobile Application Engineering Company with 100% Client Code Ownership.",
         "email": "info@ritiverse.in",
-        "telephone": "+91-98765-43210",
+        "telephone": "+91-94267-82646",
+        "sameAs": [
+          "<?= e(SOCIAL_INSTAGRAM) ?>",
+          "<?= e(SOCIAL_GITHUB) ?>",
+          "<?= e(SOCIAL_X) ?>",
+          "<?= e(SOCIAL_FACEBOOK) ?>"
+        ],
         "priceRange": "$$",
         "address": {
           "@type": "PostalAddress",
@@ -337,10 +343,10 @@ $seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'websit
           <div class="fs-meta-block">
             <span class="fs-meta-label">FOLLOW</span>
             <div class="fs-social-links">
-              <a href="https://linkedin.com" target="_blank" rel="noopener" class="fs-social-link">LinkedIn</a>
-              <a href="https://twitter.com" target="_blank" rel="noopener" class="fs-social-link">X (Twitter)</a>
-              <a href="https://github.com" target="_blank" rel="noopener" class="fs-social-link">GitHub</a>
-              <a href="https://instagram.com" target="_blank" rel="noopener" class="fs-social-link">Instagram</a>
+              <a href="<?= e(SOCIAL_INSTAGRAM) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">Instagram</a>
+              <a href="<?= e(SOCIAL_GITHUB) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">GitHub</a>
+              <a href="<?= e(SOCIAL_X) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">X (Twitter)</a>
+              <a href="<?= e(SOCIAL_FACEBOOK) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">Facebook</a>
             </div>
           </div>
 

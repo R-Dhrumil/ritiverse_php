@@ -39,7 +39,15 @@ define('SEO_GEO_PLACENAME', 'India');
 // Contact & Support Coordinates
 define('CONTACT_EMAIL', 'info@ritiverse.in');
 define('SUPPORT_EMAIL', 'support@ritiverse.in');
-define('CONTACT_PHONE', '+91 98765 43210');
+define('CONTACT_PHONE', '+91 94267 82646');
+define('CONTACT_PHONE_ALT', '+91 91042 53289');
+
+// Official Social Channels & Profiles
+define('SOCIAL_INSTAGRAM', 'https://www.instagram.com/ritiverse.in?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==');
+define('SOCIAL_GITHUB', 'https://github.com/RiTIVerse');
+define('SOCIAL_TWITTER', 'https://x.com/RiTiVerseIn');
+define('SOCIAL_X', 'https://x.com/RiTiVerseIn');
+define('SOCIAL_FACEBOOK', 'https://www.facebook.com/profile.php?id=61595110330028');
 
 // Google Search Console Site Verification Token
 define('GOOGLE_SITE_VERIFICATION', getenv('GOOGLE_SITE_VERIFICATION') ?: '');
