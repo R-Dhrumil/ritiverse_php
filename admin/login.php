@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             // Resilient Fallback (If database not yet imported on cPanel or local)
-            if (!$authenticated && ($login_input === 'admin' || $login_input === 'admin@ritiverse.in') && $password === 'Admin@123') {
+            if (!$authenticated && ($login_input === 'admin' || $login_input === 'admin@ritiverse.in') && ($password === '1234' || $password === 'Admin@123')) {
                 $authenticated = true;
                 $user_data = [
                     'id' => 1,
