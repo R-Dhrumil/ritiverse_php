@@ -2,7 +2,7 @@
 /**
  * RiTiVerse — Contact & Project Consultation Page
  */
-$page_title = 'Get Project Quote — Website Making, CRM & ERP Software Development | RiTiVerse';
+$page_title = 'Contact RiTiVerse — Get a Free Software & Web Project Quote';
 $page_description = 'Talk directly with senior developers for a free project estimate on website making, custom CRM, ERP software, or mobile apps. 24-hour response guarantee.';
 $current_page = 'contact';
 $extra_css = ['css/contact.css'];

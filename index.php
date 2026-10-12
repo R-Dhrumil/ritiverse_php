@@ -2,8 +2,8 @@
 /**
  * RiTiVerse — RItiverse — Elite Website & Software Development
  */
-$page_title = 'RiTiVerse Official Website — Custom Website Making, CRM & ERP Development Company';
-$page_description = 'Top software development company in India specializing in custom website making, tailored CRM platforms, ERP billing systems, and mobile applications with 100% source code ownership.';
+$page_title = 'RiTiVerse — Custom Website, CRM & ERP Software Development';
+$page_description = 'RiTiVerse builds custom websites, CRM platforms, ERP billing systems, and mobile apps with 100% source code ownership and zero monthly lock-in.';
 $current_page = 'home';
 $extra_css = ['css/index.css'];
 

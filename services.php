@@ -2,8 +2,8 @@
 /**
  * RiTiVerse — Our Services — RiTiVerse
  */
-$page_title = 'Software Services — Custom Website Making, CRM & ERP Development | RiTiVerse';
-$page_description = 'Complete development services for custom websites, enterprise CRM platforms, billing ERP systems, and Android/iOS mobile apps. 100% code ownership guaranteed.';
+$page_title = 'Website Making, CRM & ERP Development Services — RiTiVerse';
+$page_description = 'Custom development services for business websites, enterprise CRM platforms, ERP billing systems, and mobile apps with 100% client source code ownership.';
 $current_page = 'services';
 $extra_css = ['css/services.css'];
 

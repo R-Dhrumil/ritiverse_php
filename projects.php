@@ -2,7 +2,7 @@
 /**
  * RiTiVerse — Projects & Reference Architectures
  */
-$page_title = 'Custom Software Development, CRM, ERP & Website Projects — RiTiVerse';
+$page_title = 'Client Projects & Case Studies — RiTiVerse Studio';
 $page_description = 'Explore production software engines, custom CRM, ERP platforms, and business websites built by RiTiVerse with 100% full source ownership.';
 $current_page = 'projects';
 $extra_css = ['css/projects.css'];
