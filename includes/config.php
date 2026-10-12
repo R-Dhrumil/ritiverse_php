@@ -49,8 +49,9 @@ define('SOCIAL_TWITTER', 'https://x.com/RiTiVerseIn');
 define('SOCIAL_X', 'https://x.com/RiTiVerseIn');
 define('SOCIAL_FACEBOOK', 'https://www.facebook.com/profile.php?id=61595110330028');
 
-// Google Search Console Site Verification Token
+// Google & Bing Search Console Verification Tokens
 define('GOOGLE_SITE_VERIFICATION', getenv('GOOGLE_SITE_VERIFICATION') ?: '');
+define('BING_SITE_VERIFICATION', getenv('BING_SITE_VERIFICATION') ?: '');
 
 // Dynamic Base URL detection for cPanel
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? 'https://' : 'http://';

@@ -1,0 +1,23 @@
+{
+  "name": "RiTiVerse — Elite Website Making & Software Development",
+  "short_name": "RiTiVerse",
+  "description": "Custom websites, mobile apps, CRM, ERP, and bespoke software with 100% client source code ownership.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF7EE",
+  "theme_color": "#F86800",
+  "icons": [
+    {
+      "src": "/assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

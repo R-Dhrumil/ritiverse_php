@@ -27,6 +27,12 @@ $extra_css = isset($extra_css) && is_array($extra_css) ? $extra_css : [];
   <link rel="shortcut icon" href="<?= SITE_URL ?>/assets/logo.png" type="image/png">
   <link rel="apple-touch-icon" href="<?= SITE_URL ?>/assets/logo.png">
 
+  <!-- Universal Progressive Web App Manifest & Browser Theme Colors -->
+  <link rel="manifest" href="<?= SITE_URL ?>/site.webmanifest">
+  <meta name="theme-color" content="#FAF7EE">
+  <meta name="msapplication-TileColor" content="#F86800">
+  <meta name="msapplication-TileImage" content="<?= SITE_URL ?>/assets/logo.png">
+
 <?php
 // Canonical & Page Metadata
 $canonical_url = SITE_URL . '/' . ($current_page === 'home' ? '' : ($current_page . '.php'));
@@ -41,6 +47,9 @@ $seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'websit
   <meta name="geo.placename" content="India">
   <?php if (defined('GOOGLE_SITE_VERIFICATION') && GOOGLE_SITE_VERIFICATION !== ''): ?>
   <meta name="google-site-verification" content="<?= e(GOOGLE_SITE_VERIFICATION) ?>">
+  <?php endif; ?>
+  <?php if (defined('BING_SITE_VERIFICATION') && BING_SITE_VERIFICATION !== ''): ?>
+  <meta name="msvalidate.01" content="<?= e(BING_SITE_VERIFICATION) ?>">
   <?php endif; ?>
 
   <!-- Open Graph / Facebook / WhatsApp Rich Previews -->
