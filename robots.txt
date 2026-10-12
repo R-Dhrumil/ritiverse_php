@@ -19,4 +19,11 @@ Disallow: /api/
 Disallow: /includes/
 Disallow: /logs/
 
+User-agent: Bravebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /includes/
+Disallow: /logs/
+
 Sitemap: https://ritiverse.in/sitemap.xml
