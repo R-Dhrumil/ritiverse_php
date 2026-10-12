@@ -238,11 +238,18 @@ $seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'websit
     rel="stylesheet">
 
   <!-- Core Base Stylesheet (Design System & Tokens) -->
-  <link rel="stylesheet" href="css/base.css?v=2.2">
+  <?php 
+    $base_css_file = __DIR__ . '/../css/base.css';
+    $base_css_ver = file_exists($base_css_file) ? filemtime($base_css_file) : '2.3';
+  ?>
+  <link rel="stylesheet" href="css/base.css?v=<?= $base_css_ver ?>">
 
   <!-- Page-Specific Modular Stylesheets -->
-  <?php foreach ($extra_css as $css_path): ?>
-    <link rel="stylesheet" href="<?= e($css_path) ?>?v=2.2">
+  <?php foreach ($extra_css as $css_path): 
+    $full_css = __DIR__ . '/../' . ltrim($css_path, '/');
+    $cver = file_exists($full_css) ? filemtime($full_css) : '2.3';
+  ?>
+    <link rel="stylesheet" href="<?= e($css_path) ?>?v=<?= $cver ?>">
   <?php endforeach; ?>
 </head>
 
