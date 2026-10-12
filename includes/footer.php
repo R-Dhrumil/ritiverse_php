@@ -46,6 +46,12 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
             <span><strong>Support:</strong> <a href="mailto:<?= e(SUPPORT_EMAIL) ?>"><?= e(SUPPORT_EMAIL) ?></a></span>
             <span><strong>Phone:</strong> <a href="tel:+919426782646">+91 94267 82646</a> , <a href="tel:+919104253289">+91 91042 53289</a></span>
           </div>
+          <div class="footer-social-links">
+            <a href="<?= e(SOCIAL_INSTAGRAM) ?>" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Instagram" aria-label="RiTiVerse on Instagram">Instagram</a>
+            <a href="<?= e(SOCIAL_GITHUB) ?>" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="GitHub" aria-label="RiTiVerse on GitHub">GitHub</a>
+            <a href="<?= e(SOCIAL_X) ?>" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="X (Twitter)" aria-label="RiTiVerse on X">X (Twitter)</a>
+            <a href="<?= e(SOCIAL_FACEBOOK) ?>" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Facebook" aria-label="RiTiVerse on Facebook">Facebook</a>
+          </div>
         </div>
 
         <!-- Col 2: Core Engineering Services -->
