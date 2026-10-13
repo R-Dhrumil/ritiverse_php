@@ -118,7 +118,7 @@ INSERT INTO `site_settings` (`setting_key`, `setting_value`, `setting_group`) VA
 ('consultation_turnaround', '24 Hours Guaranteed', 'general'),
 ('bing_site_verification', '37D47CA67C44D215674E7B6D860E11FE', 'seo'),
 ('google_site_verification', '', 'seo'),
-('google_analytics_id', '', 'seo'),
+('google_analytics_id', 'G-18XT3VN71N', 'seo'),
 ('meta_pixel_id', '', 'seo'),
 ('seo_primary_keywords', 'website making, website development company India, custom CRM development, ERP software development, ERP billing software, custom software development, mobile app development, e-commerce website design, React PHP development agency, zero vendor lock-in software', 'seo'),
 ('social_linkedin', 'https://www.linkedin.com/company/ritiverse', 'social'),

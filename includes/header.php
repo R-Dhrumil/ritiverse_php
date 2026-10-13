@@ -11,11 +11,27 @@ $page_title = isset($page_title) ? $page_title : (APP_NAME . ' — ' . APP_TAGLI
 $page_description = isset($page_description) ? $page_description : APP_DESCRIPTION;
 $current_page = isset($current_page) ? $current_page : 'home';
 $extra_css = isset($extra_css) && is_array($extra_css) ? $extra_css : [];
+
+$google_analytics_id = trim(get_setting('google_analytics_id', defined('GOOGLE_ANALYTICS_ID') ? GOOGLE_ANALYTICS_ID : 'G-18XT3VN71N'));
+if (preg_match('/(G-[A-Z0-9]+|GTM-[A-Z0-9]+|UA-[0-9]+-[0-9]+)/i', $google_analytics_id, $m_ga)) {
+    $google_analytics_id = strtoupper($m_ga[1]);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <?php if (!empty($google_analytics_id)): ?>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<?= e($google_analytics_id) ?>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '<?= e($google_analytics_id) ?>');
+  </script>
+  <?php endif; ?>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= e($page_title) ?></title>
@@ -38,10 +54,25 @@ $extra_css = isset($extra_css) && is_array($extra_css) ? $extra_css : [];
 // Dynamic Canonical, SEO & Connectivity Directives
 $canonical_url = SITE_URL . '/' . ($current_page === 'home' ? '' : ($current_page . '.php'));
 $seo_keywords = get_setting('seo_primary_keywords', defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'website making, CRM software, ERP development, software development company');
-$google_verification = get_setting('google_site_verification', defined('GOOGLE_SITE_VERIFICATION') ? GOOGLE_SITE_VERIFICATION : '');
-$bing_verification = get_setting('bing_site_verification', defined('BING_SITE_VERIFICATION') ? BING_SITE_VERIFICATION : '37D47CA67C44D215674E7B6D860E11FE');
-$google_analytics_id = trim(get_setting('google_analytics_id', defined('GOOGLE_ANALYTICS_ID') ? GOOGLE_ANALYTICS_ID : ''));
+$google_verification = trim(get_setting('google_site_verification', defined('GOOGLE_SITE_VERIFICATION') ? GOOGLE_SITE_VERIFICATION : ''));
+if (preg_match('/content=["\']([^"\']+)["\']/i', $google_verification, $m_gsc)) {
+    $google_verification = $m_gsc[1];
+}
+
+$bing_verification = trim(get_setting('bing_site_verification', defined('BING_SITE_VERIFICATION') ? BING_SITE_VERIFICATION : '37D47CA67C44D215674E7B6D860E11FE'));
+if (preg_match('/content=["\']([^"\']+)["\']/i', $bing_verification, $m_bing)) {
+    $bing_verification = $m_bing[1];
+}
+
+$google_analytics_id = trim(get_setting('google_analytics_id', defined('GOOGLE_ANALYTICS_ID') ? GOOGLE_ANALYTICS_ID : 'G-18XT3VN71N'));
+if (preg_match('/(G-[A-Z0-9]+|GTM-[A-Z0-9]+|UA-[0-9]+-[0-9]+)/i', $google_analytics_id, $m_ga)) {
+    $google_analytics_id = strtoupper($m_ga[1]);
+}
+
 $meta_pixel_id = trim(get_setting('meta_pixel_id', defined('META_PIXEL_ID') ? META_PIXEL_ID : ''));
+if (preg_match('/([0-9]{10,20})/', $meta_pixel_id, $m_pixel)) {
+    $meta_pixel_id = $m_pixel[1];
+}
 
 // Dynamic Social Coordinates
 $social_linkedin = get_setting('social_linkedin', defined('SOCIAL_LINKEDIN') ? SOCIAL_LINKEDIN : 'https://www.linkedin.com/company/ritiverse');
@@ -64,16 +95,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
   <meta name="msvalidate.01" content="<?= e($bing_verification) ?>">
   <?php endif; ?>
 
-  <?php if (!empty($google_analytics_id)): ?>
-  <!-- Google tag (gtag.js) Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=<?= e($google_analytics_id) ?>"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '<?= e($google_analytics_id) ?>');
-  </script>
-  <?php endif; ?>
+
 
   <?php if (!empty($meta_pixel_id)): ?>
   <!-- Meta Pixel Code -->

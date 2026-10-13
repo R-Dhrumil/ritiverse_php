@@ -50,6 +50,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif ($db) {
         // --- 2. Save All Site Settings & SMTP Config ---
+        // Pre-extract clean tokens if user pasted full script tags or meta tags
+        $raw_gsc = trim($_POST['google_site_verification'] ?? '');
+        if (preg_match('/content=["\']([^"\']+)["\']/i', $raw_gsc, $m_gsc)) {
+            $raw_gsc = $m_gsc[1];
+        }
+
+        $raw_ga = trim($_POST['google_analytics_id'] ?? '');
+        if (preg_match('/(G-[A-Z0-9]+|GTM-[A-Z0-9]+|UA-[0-9]+-[0-9]+)/i', $raw_ga, $m_ga)) {
+            $raw_ga = strtoupper($m_ga[1]);
+        }
+
+        $raw_pixel = trim($_POST['meta_pixel_id'] ?? '');
+        if (preg_match('/([0-9]{10,20})/', $raw_pixel, $m_pixel)) {
+            $raw_pixel = $m_pixel[1];
+        }
+
         $settings_to_update = [
             // 1. General & Coordinates
             'site_name' => trim($_POST['site_name'] ?? APP_NAME),
@@ -61,14 +77,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'whatsapp_number' => trim($_POST['whatsapp_number'] ?? '+919426782646'),
 
             // 2. SEO & Webmaster Verification
-            'google_site_verification' => trim($_POST['google_site_verification'] ?? ''),
+            'google_site_verification' => $raw_gsc,
             'bing_site_verification' => trim($_POST['bing_site_verification'] ?? '37D47CA67C44D215674E7B6D860E11FE'),
             'seo_primary_keywords' => trim($_POST['seo_primary_keywords'] ?? SEO_PRIMARY_KEYWORDS),
             'seo_author' => trim($_POST['seo_author'] ?? SEO_AUTHOR),
 
             // 3. Analytics & Ad Pixels
-            'google_analytics_id' => trim($_POST['google_analytics_id'] ?? ''),
-            'meta_pixel_id' => trim($_POST['meta_pixel_id'] ?? ''),
+            'google_analytics_id' => $raw_ga,
+            'meta_pixel_id' => $raw_pixel,
 
             // 4. Social Media Channels
             'social_linkedin' => trim($_POST['social_linkedin'] ?? SOCIAL_LINKEDIN),
@@ -79,9 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // 5. Email & SMTP Delivery (TLS/SSL Zero-Spam Setup)
             'smtp_enabled' => isset($_POST['smtp_enabled']) ? '1' : '0',
-            'smtp_host' => trim($_POST['smtp_host'] ?? 'mail.ritiverse.in'),
-            'smtp_port' => trim($_POST['smtp_port'] ?? '587'),
-            'smtp_encryption' => trim($_POST['smtp_encryption'] ?? 'tls'),
+            'smtp_host' => trim($_POST['smtp_host'] ?? 'smtppro.zoho.in'),
+            'smtp_port' => trim($_POST['smtp_port'] ?? '465'),
+            'smtp_encryption' => trim($_POST['smtp_encryption'] ?? 'ssl'),
             'smtp_username' => trim($_POST['smtp_username'] ?? 'info@ritiverse.in'),
             'smtp_from_email' => trim($_POST['smtp_from_email'] ?? 'info@ritiverse.in'),
             'smtp_from_name' => trim($_POST['smtp_from_name'] ?? 'RiTiVerse Studio'),
@@ -103,6 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch (Exception $e) {
             $error = 'Failed to update settings: ' . $e->getMessage();
         }
+    } else {
+        $error = 'Database is not connected! Unable to save settings to MySQL database. Please verify DB credentials in includes/config.php.';
     }
 }
 

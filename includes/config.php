@@ -23,11 +23,12 @@ define('APP_LEGAL_NAME', 'RiTiVerse Studio');
 define('APP_TAGLINE', 'Elite Website & Software Development');
 define('APP_DESCRIPTION', 'Engineering studio delivering custom websites, mobile apps, CRM, ERP, and bespoke software with 100% client source code ownership.');
 
-// Database Credentials (Configure for local dev or cPanel phpMyAdmin)
+// Database Credentials (Auto-detects Local XAMPP vs Production cPanel)
+$isLocalHost = (!empty($_SERVER['HTTP_HOST']) && (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false));
 define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
-define('DB_NAME', getenv('DB_NAME') ?: 'ritivers_main');
-define('DB_USER', getenv('DB_USER') ?: 'ritivers_main');
-define('DB_PASS', getenv('DB_PASS') ?: 'ritivers_main');
+define('DB_NAME', getenv('DB_NAME') ?: ($isLocalHost ? 'ritiverse' : 'ritivers_main'));
+define('DB_USER', getenv('DB_USER') ?: ($isLocalHost ? 'root' : 'ritivers_main'));
+define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : ($isLocalHost ? '' : 'ritivers_main'));
 define('DB_CHARSET', 'utf8mb4');
 
 // High-Priority SEO Search Keywords (Rank #1 for Website Making, CRM, ERP, Software Dev)
@@ -65,7 +66,7 @@ define('SOCIAL_FACEBOOK', 'https://www.facebook.com/profile.php?id=6159511033002
 // Google & Bing Search Console Verification Tokens & Tracking
 define('GOOGLE_SITE_VERIFICATION', getenv('GOOGLE_SITE_VERIFICATION') ?: '');
 define('BING_SITE_VERIFICATION', getenv('BING_SITE_VERIFICATION') ?: '37D47CA67C44D215674E7B6D860E11FE');
-define('GOOGLE_ANALYTICS_ID', getenv('GOOGLE_ANALYTICS_ID') ?: '');
+define('GOOGLE_ANALYTICS_ID', getenv('GOOGLE_ANALYTICS_ID') ?: 'G-18XT3VN71N');
 define('META_PIXEL_ID', getenv('META_PIXEL_ID') ?: '');
 
 // Dynamic Base URL detection for cPanel
