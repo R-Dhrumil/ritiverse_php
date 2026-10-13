@@ -27,13 +27,15 @@ if (!check_rate_limit('contact_submission', 5, 600)) {
     exit;
 }
 
-// Sanitize inputs
-$name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
-$email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? '');
-$company = trim(filter_input(INPUT_POST, 'company', FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
-$project_type = trim(filter_input(INPUT_POST, 'scope', FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
-$timeline = trim(filter_input(INPUT_POST, 'timeline', FILTER_SANITIZE_SPECIAL_CHARS) ?? 'Not specified');
-$details = trim(filter_input(INPUT_POST, 'details', FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
+// Sanitize inputs cleanly without converting newlines into HTML entities (&#13;&#10;)
+$name = trim(strip_tags((string)($_POST['name'] ?? '')));
+$email = trim((string)filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+$company = trim(strip_tags((string)($_POST['company'] ?? '')));
+$project_type = trim(strip_tags((string)($_POST['scope'] ?? '')));
+$timeline = trim(strip_tags((string)($_POST['timeline'] ?? 'Not specified')));
+$details = trim(strip_tags((string)($_POST['details'] ?? '')));
+// Decode any existing numeric or HTML entities in case client submitted encoded CRLF
+$details = html_entity_decode($details, ENT_QUOTES | ENT_HTML5, 'UTF-8');
 $honeypot = trim($_POST['website_hp'] ?? ''); // Honeypot field for bot protection
 
 // Header injection prevention: strip carriage returns and newlines from single-line headers

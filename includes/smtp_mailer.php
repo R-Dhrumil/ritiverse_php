@@ -405,7 +405,8 @@ function build_inquiry_html_email($data) {
     $company = htmlspecialchars($data['company'] ?? '', ENT_QUOTES, 'UTF-8');
     $type = htmlspecialchars($data['scope'] ?? $data['type'] ?? 'General Inquiry', ENT_QUOTES, 'UTF-8');
     $timeline = htmlspecialchars($data['timeline'] ?? 'Not specified', ENT_QUOTES, 'UTF-8');
-    $details = nl2br(htmlspecialchars($data['details'] ?? '', ENT_QUOTES, 'UTF-8'));
+    $rawDetails = html_entity_decode((string)($data['details'] ?? ''), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    $details = nl2br(htmlspecialchars($rawDetails, ENT_QUOTES, 'UTF-8'));
     $ip = htmlspecialchars($data['ip'] ?? $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1', ENT_QUOTES, 'UTF-8');
     $time = date('D, d M Y — H:i:s T');
 

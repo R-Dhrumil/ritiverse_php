@@ -155,7 +155,7 @@ if (isset($_GET['view']) && $db) {
         Project Requirements &amp; Client Description:
       </h3>
       <div style="background: #FFFFFF; border: 1px solid var(--admin-border); padding: 18px; border-radius: 10px; font-size: 14.5px; line-height: 1.7; white-space: pre-wrap; color: #1E293B;">
-        <?= e($view_inquiry['details']) ?>
+        <?= e(html_entity_decode((string)$view_inquiry['details'], ENT_QUOTES | ENT_HTML5, 'UTF-8')) ?>
       </div>
     </div>
 
