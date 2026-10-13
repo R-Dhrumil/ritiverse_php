@@ -48,8 +48,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $error = "✕ TLS SMTP Test Failed: " . ($test_res['error'] ?? 'Connection error. Check log below.');
             }
         }
+    } elseif (isset($_POST['action']) && $_POST['action'] === 'submit_indexnow') {
+        // --- 2. Push all URLs to Microsoft Bing via IndexNow Protocol ---
+        $urlsToSubmit = [
+            'https://ritiverse.in/',
+            'https://ritiverse.in/services.php',
+            'https://ritiverse.in/website-development.php',
+            'https://ritiverse.in/mobile-app-development.php',
+            'https://ritiverse.in/custom-software-development.php',
+            'https://ritiverse.in/erp-development.php',
+            'https://ritiverse.in/crm-development.php',
+            'https://ritiverse.in/ecommerce-development.php',
+            'https://ritiverse.in/projects.php',
+            'https://ritiverse.in/about.php',
+            'https://ritiverse.in/contact.php'
+        ];
+        $indexData = [
+            'host' => 'ritiverse.in',
+            'key' => '37D47CA67C44D215674E7B6D860E11FE',
+            'keyLocation' => 'https://ritiverse.in/37D47CA67C44D215674E7B6D860E11FE.txt',
+            'urlList' => $urlsToSubmit
+        ];
+        $ch = curl_init('https://api.indexnow.org/indexnow');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json; charset=utf-8']);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($indexData));
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        $res = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if ($httpCode === 200 || $httpCode === 202) {
+            $message = '✓ Successfully dispatched ' . count($urlsToSubmit) . ' URLs directly to Microsoft Bing & IndexNow crawl queue (HTTP ' . $httpCode . ' Accepted)! Bingbot will prioritize indexing.';
+        } else {
+            $error = '✕ IndexNow Submission returned HTTP status ' . $httpCode . ': ' . ($res ?: curl_error($ch));
+        }
     } else {
-        // --- 2. Save All Site Settings & SMTP Config to MySQL Database ---
+        // --- 3. Save All Site Settings & SMTP Config to MySQL Database ---
         // Pre-extract clean tokens if user pasted full script tags or meta tags
         $raw_gsc = trim($_POST['google_site_verification'] ?? '');
         if (preg_match('/content=["\']([^"\']+)["\']/i', $raw_gsc, $m_gsc)) {
@@ -377,6 +412,32 @@ $has_smtp = !empty($current_settings['smtp_enabled']) && !empty($current_setting
             <span style="font-size: 11.5px; color: var(--admin-text-muted); display: block; margin-top: 5px;">
               Pre-filled from <code>BingSiteAuth.xml</code>. Renders <code>&lt;meta name="msvalidate.01" content="..."&gt;</code>.
             </span>
+          </div>
+        </div>
+
+        <!-- Microsoft Edge / Bing Indexing Accelerator Box -->
+        <div style="background: rgba(37, 99, 235, 0.05); border: 1px solid rgba(37, 99, 235, 0.2); border-radius: 10px; padding: 18px 20px; margin-bottom: 22px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 280px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span style="font-size: 16px;">🌐</span>
+                <strong style="color: #1E40AF; font-size: 14px;">Microsoft Edge &amp; Bing Search Instant Listing (IndexNow)</strong>
+                <span class="status-pill status-converted" style="font-size: 11px;">Key Active</span>
+              </div>
+              <p style="font-size: 12.5px; color: #1E3A8A; margin: 0 0 8px 0; line-height: 1.5;">
+                Microsoft Edge Bing search engine par chalta hai. Nayi website ko crawl hone me naturally 1-2 hafte lag sakte hain. Turant indexing ke liye:
+              </p>
+              <ul style="font-size: 12px; color: #1E40AF; margin: 0 0 0 18px; padding: 0; line-height: 1.6;">
+                <li><strong>Bing Webmaster Tools:</strong> <a href="https://www.bing.com/webmasters" target="_blank" style="text-decoration: underline; color: #2563EB; font-weight: 600;">bing.com/webmasters</a> me domain add karein aur <strong>Verify</strong> click karein (Token <code>37D47CA67C44D215674E7B6D860E11FE</code> live hai).</li>
+                <li><strong>Sitemap:</strong> Bing Webmaster &gt; Sitemaps me <code>https://ritiverse.in/sitemap.xml</code> submit karein.</li>
+                <li><strong>URL Inspection:</strong> Search bar me <code>https://ritiverse.in/</code> enter karke <strong>Request Indexing</strong> karein.</li>
+              </ul>
+            </div>
+            <div>
+              <button type="submit" name="action" value="submit_indexnow" class="admin-btn" style="background: #2563EB; color: #FFFFFF; font-weight: 600; font-size: 12.5px; white-space: nowrap; padding: 10px 18px; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; border-radius: 8px;">
+                ⚡ Push 11 URLs to Bing (IndexNow)
+              </button>
+            </div>
           </div>
         </div>
 
