@@ -80,16 +80,17 @@ require_once __DIR__ . '/includes/header.php';
                   </h3>
                   <p class="dribbble-item-desc">
                     Fast, clean, and mobile-friendly websites built with React and PHP. Designed to load in under 2 seconds and convert visitors into inquiries.
+                    <br><a href="website-development.php" class="dribbble-detail-link">Explore Dedicated Page ↗</a>
                   </p>
                 </div>
               </div>
-              <div class="dribbble-item-arrow" aria-hidden="true">
+              <a href="website-development.php" class="dribbble-item-arrow" aria-label="Explore Website Development" title="Explore Website Development">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
                   stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -104,16 +105,17 @@ require_once __DIR__ . '/includes/header.php';
                   </h3>
                   <p class="dribbble-item-desc">
                     High-performance Android and iOS apps with smooth animations, offline data access, and instant push notifications for your users.
+                    <br><a href="mobile-app-development.php" class="dribbble-detail-link">Explore Dedicated Page ↗</a>
                   </p>
                 </div>
               </div>
-              <div class="dribbble-item-arrow" aria-hidden="true">
+              <a href="mobile-app-development.php" class="dribbble-item-arrow" aria-label="Explore Mobile App Development" title="Explore Mobile App Development">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
                   stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -128,16 +130,17 @@ require_once __DIR__ . '/includes/header.php';
                   </h3>
                   <p class="dribbble-item-desc">
                     Tailored business software that fits your exact workflow. Automate daily manual tasks and connect third-party APIs easily.
+                    <br><a href="custom-software-development.php" class="dribbble-detail-link">Explore Dedicated Page ↗</a>
                   </p>
                 </div>
               </div>
-              <div class="dribbble-item-arrow" aria-hidden="true">
+              <a href="custom-software-development.php" class="dribbble-item-arrow" aria-label="Explore Custom Software Development" title="Explore Custom Software Development">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
                   stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -152,16 +155,17 @@ require_once __DIR__ . '/includes/header.php';
                   </h3>
                   <p class="dribbble-item-desc">
                     Complete management software for billing, stock inventory, purchasing, finances, and staff tracking—custom-built for your business.
+                    <br><a href="erp-development.php" class="dribbble-detail-link">Explore Dedicated Page ↗</a>
                   </p>
                 </div>
               </div>
-              <div class="dribbble-item-arrow" aria-hidden="true">
+              <a href="erp-development.php" class="dribbble-item-arrow" aria-label="Explore ERP Systems" title="Explore ERP Systems Details">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
                   stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -176,16 +180,17 @@ require_once __DIR__ . '/includes/header.php';
                   </h3>
                   <p class="dribbble-item-desc">
                     Manage customer inquiries, assign leads to sales reps, set WhatsApp/email reminders, and track conversion pipelines easily.
+                    <br><a href="crm-development.php" class="dribbble-detail-link">Explore Dedicated Page ↗</a>
                   </p>
                 </div>
               </div>
-              <div class="dribbble-item-arrow" aria-hidden="true">
+              <a href="crm-development.php" class="dribbble-item-arrow" aria-label="Explore CRM Platforms" title="Explore CRM Platforms Details">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
                   stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -200,16 +205,17 @@ require_once __DIR__ . '/includes/header.php';
                   </h3>
                   <p class="dribbble-item-desc">
                     Fast online shopping stores with one-click checkout, automated order management, and secure Razorpay, UPI, and card payments.
+                    <br><a href="ecommerce-development.php" class="dribbble-detail-link">Explore Dedicated Page ↗</a>
                   </p>
                 </div>
               </div>
-              <div class="dribbble-item-arrow" aria-hidden="true">
+              <a href="ecommerce-development.php" class="dribbble-item-arrow" aria-label="Explore E-Commerce Storefronts" title="Explore E-Commerce Storefronts Details">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
                   stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -275,6 +281,10 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
               </div>
             </div>
+            <a href="website-development.php" class="preview-open-link">
+              <span>Explore Dedicated Website Development Page</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
           </div>
 
           <!-- Preview Card 2: App Development -->
@@ -327,6 +337,10 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
               </div>
             </div>
+            <a href="mobile-app-development.php" class="preview-open-link">
+              <span>Explore Dedicated Mobile App Page</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
           </div>
 
           <!-- Preview Card 3: Custom Software Development -->
@@ -380,6 +394,10 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
               </div>
             </div>
+            <a href="custom-software-development.php" class="preview-open-link">
+              <span>Explore Dedicated Custom Software Page</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
           </div>
 
           <!-- Preview Card 4: ERP -->
@@ -435,6 +453,10 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
               </div>
             </div>
+            <a href="erp-development.php" class="preview-open-link">
+              <span>Explore Dedicated ERP Systems Page</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
           </div>
 
           <!-- Preview Card 5: CRM -->
@@ -489,6 +511,10 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
               </div>
             </div>
+            <a href="crm-development.php" class="preview-open-link">
+              <span>Explore Dedicated CRM Platforms Page</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
           </div>
 
           <!-- Preview Card 6: E-Commerce Development -->
@@ -542,6 +568,10 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
               </div>
             </div>
+            <a href="ecommerce-development.php" class="preview-open-link">
+              <span>Explore Dedicated E-Commerce Storefronts Page</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
           </div>
 
         </div>

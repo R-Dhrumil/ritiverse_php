@@ -10,13 +10,19 @@ $active_tab = $active_tab ?? 'dashboard';
 $admin_title = $admin_title ?? 'Dashboard';
 $admin_subtitle = $admin_subtitle ?? 'Overview of client inquiries and production architectures';
 
-// Count unread inquiries if DB connected
+// Count unread inquiries and total projects if DB connected
 $new_inquiries_count = 0;
+$total_projects_count = 0;
+$total_services_count = 0;
 $db = get_db();
 if ($db) {
     try {
         $stmt = $db->query("SELECT COUNT(*) FROM inquiries WHERE status = 'new'");
         $new_inquiries_count = (int)$stmt->fetchColumn();
+        $p_stmt = $db->query("SELECT COUNT(*) FROM projects");
+        $total_projects_count = (int)$p_stmt->fetchColumn();
+        $s_stmt = $db->query("SELECT COUNT(*) FROM services");
+        $total_services_count = (int)$s_stmt->fetchColumn();
     } catch (Exception $e) {}
 }
 ?>
@@ -74,6 +80,21 @@ if ($db) {
             <polyline points="2 12 12 17 22 12"></polyline>
           </svg>
           Projects &amp; Case Studies
+          <?php if ($total_projects_count > 0): ?>
+            <span class="admin-nav-pill"><?= $total_projects_count ?></span>
+          <?php endif; ?>
+        </a>
+
+        <a href="services.php" class="admin-nav-link <?= ($active_tab === 'services') ? 'active' : '' ?>">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          Services &amp; Pages
+          <?php if ($total_services_count > 0): ?>
+            <span class="admin-nav-pill"><?= $total_services_count ?></span>
+          <?php endif; ?>
         </a>
 
         <a href="settings.php" class="admin-nav-link <?= ($active_tab === 'settings') ? 'active' : '' ?>">
@@ -81,7 +102,7 @@ if ($db) {
             <circle cx="12" cy="12" r="3"></circle>
             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
           </svg>
-          Site Settings
+          SEO &amp; Settings
         </a>
 
         <a href="../index.php" target="_blank" class="admin-nav-link" style="margin-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 16px;">
@@ -129,7 +150,8 @@ if ($db) {
         <a href="index.php" class="admin-m-link <?= ($active_tab === 'dashboard') ? 'active' : '' ?>">Dashboard</a>
         <a href="inquiries.php" class="admin-m-link <?= ($active_tab === 'inquiries') ? 'active' : '' ?>">Leads <?= $new_inquiries_count > 0 ? "($new_inquiries_count)" : '' ?></a>
         <a href="projects.php" class="admin-m-link <?= ($active_tab === 'projects') ? 'active' : '' ?>">Projects</a>
-        <a href="settings.php" class="admin-m-link <?= ($active_tab === 'settings') ? 'active' : '' ?>">Settings</a>
+        <a href="services.php" class="admin-m-link <?= ($active_tab === 'services') ? 'active' : '' ?>">Services <?= $total_services_count > 0 ? "($total_services_count)" : '' ?></a>
+        <a href="settings.php" class="admin-m-link <?= ($active_tab === 'settings') ? 'active' : '' ?>">SEO &amp; Settings</a>
         <a href="../index.php" target="_blank" class="admin-m-link">Live ↗</a>
         <a href="logout.php" class="admin-m-link m-logout">Exit</a>
       </div>

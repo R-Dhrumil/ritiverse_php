@@ -81,14 +81,17 @@ if ($db) {
     <div class="admin-stat-foot">Signed projects &amp; active milestone deliveries</div>
   </div>
 
-  <div class="admin-stat-card">
+  <a href="projects.php" class="admin-stat-card" style="text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
     <div class="admin-stat-head">
       <span class="admin-stat-lbl">Live Flagships</span>
       <div class="admin-stat-icon icon-indigo">🚀</div>
     </div>
     <div class="admin-stat-val"><?= $total_projects ?></div>
-    <div class="admin-stat-foot">Reference architectures &amp; case studies active</div>
-  </div>
+    <div class="admin-stat-foot" style="display: flex; justify-content: space-between; align-items: center;">
+      <span>Case studies &amp; portfolio showcase</span>
+      <span style="color: var(--admin-accent); font-weight: 700; font-size: 11px;">Manage →</span>
+    </div>
+  </a>
 </div>
 
 <!-- Recent Inquiries Table Card -->

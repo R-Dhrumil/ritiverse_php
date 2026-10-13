@@ -94,13 +94,15 @@ function initDribbbleServices() {
       activateService(serviceKey);
     });
 
-    // Activate on click
-    item.addEventListener('click', () => {
+    // Activate on click (allow direct link clicks to navigate smoothly)
+    item.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
       activateService(serviceKey);
     });
 
     // Keyboard accessibility
     item.addEventListener('keydown', (e) => {
+      if (e.target.closest('a')) return;
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         activateService(serviceKey);

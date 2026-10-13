@@ -43,15 +43,18 @@ define('CONTACT_PHONE', '+91 94267 82646');
 define('CONTACT_PHONE_ALT', '+91 91042 53289');
 
 // Official Social Channels & Profiles
+define('SOCIAL_LINKEDIN', 'https://www.linkedin.com/company/ritiverse');
 define('SOCIAL_INSTAGRAM', 'https://www.instagram.com/ritiverse.in?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==');
 define('SOCIAL_GITHUB', 'https://github.com/RiTIVerse');
 define('SOCIAL_TWITTER', 'https://x.com/RiTiVerseIn');
 define('SOCIAL_X', 'https://x.com/RiTiVerseIn');
 define('SOCIAL_FACEBOOK', 'https://www.facebook.com/profile.php?id=61595110330028');
 
-// Google & Bing Search Console Verification Tokens
+// Google & Bing Search Console Verification Tokens & Tracking
 define('GOOGLE_SITE_VERIFICATION', getenv('GOOGLE_SITE_VERIFICATION') ?: '');
-define('BING_SITE_VERIFICATION', getenv('BING_SITE_VERIFICATION') ?: '');
+define('BING_SITE_VERIFICATION', getenv('BING_SITE_VERIFICATION') ?: '37D47CA67C44D215674E7B6D860E11FE');
+define('GOOGLE_ANALYTICS_ID', getenv('GOOGLE_ANALYTICS_ID') ?: '');
+define('META_PIXEL_ID', getenv('META_PIXEL_ID') ?: '');
 
 // Dynamic Base URL detection for cPanel
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? 'https://' : 'http://';

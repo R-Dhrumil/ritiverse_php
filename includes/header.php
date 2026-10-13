@@ -34,9 +34,20 @@ $extra_css = isset($extra_css) && is_array($extra_css) ? $extra_css : [];
   <meta name="msapplication-TileImage" content="<?= SITE_URL ?>/assets/logo.png">
 
 <?php
-// Canonical & Page Metadata
+// Dynamic Canonical, SEO & Connectivity Directives
 $canonical_url = SITE_URL . '/' . ($current_page === 'home' ? '' : ($current_page . '.php'));
-$seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'website making, CRM software, ERP development, software development company';
+$seo_keywords = get_setting('seo_primary_keywords', defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'website making, CRM software, ERP development, software development company');
+$google_verification = get_setting('google_site_verification', defined('GOOGLE_SITE_VERIFICATION') ? GOOGLE_SITE_VERIFICATION : '');
+$bing_verification = get_setting('bing_site_verification', defined('BING_SITE_VERIFICATION') ? BING_SITE_VERIFICATION : '37D47CA67C44D215674E7B6D860E11FE');
+$google_analytics_id = trim(get_setting('google_analytics_id', defined('GOOGLE_ANALYTICS_ID') ? GOOGLE_ANALYTICS_ID : ''));
+$meta_pixel_id = trim(get_setting('meta_pixel_id', defined('META_PIXEL_ID') ? META_PIXEL_ID : ''));
+
+// Dynamic Social Coordinates
+$social_linkedin = get_setting('social_linkedin', defined('SOCIAL_LINKEDIN') ? SOCIAL_LINKEDIN : 'https://www.linkedin.com/company/ritiverse');
+$social_instagram = get_setting('social_instagram', defined('SOCIAL_INSTAGRAM') ? SOCIAL_INSTAGRAM : '');
+$social_github = get_setting('social_github', defined('SOCIAL_GITHUB') ? SOCIAL_GITHUB : '');
+$social_x = get_setting('social_x', defined('SOCIAL_X') ? SOCIAL_X : '');
+$social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? SOCIAL_FACEBOOK : '');
 ?>
   <!-- High-Ranking SEO & Indexing Meta Tags -->
   <link rel="canonical" href="<?= e($canonical_url) ?>">
@@ -45,11 +56,42 @@ $seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'websit
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="geo.region" content="IN">
   <meta name="geo.placename" content="India">
-  <?php if (defined('GOOGLE_SITE_VERIFICATION') && GOOGLE_SITE_VERIFICATION !== ''): ?>
-  <meta name="google-site-verification" content="<?= e(GOOGLE_SITE_VERIFICATION) ?>">
+  <?php if (!empty($google_verification)): ?>
+  <meta name="google-site-verification" content="<?= e($google_verification) ?>">
   <?php endif; ?>
-  <?php if (defined('BING_SITE_VERIFICATION') && BING_SITE_VERIFICATION !== ''): ?>
-  <meta name="msvalidate.01" content="<?= e(BING_SITE_VERIFICATION) ?>">
+  <?php if (!empty($bing_verification)): ?>
+  <meta name="msvalidate.01" content="<?= e($bing_verification) ?>">
+  <?php endif; ?>
+
+  <?php if (!empty($google_analytics_id)): ?>
+  <!-- Google tag (gtag.js) Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<?= e($google_analytics_id) ?>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '<?= e($google_analytics_id) ?>');
+  </script>
+  <?php endif; ?>
+
+  <?php if (!empty($meta_pixel_id)): ?>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '<?= e($meta_pixel_id) ?>');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=<?= e($meta_pixel_id) ?>&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
   <?php endif; ?>
 
   <!-- Open Graph / Facebook / WhatsApp Rich Previews -->
@@ -97,10 +139,11 @@ $seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'websit
         "email": "info@ritiverse.in",
         "telephone": "+91-94267-82646",
         "sameAs": [
-          "<?= e(SOCIAL_INSTAGRAM) ?>",
-          "<?= e(SOCIAL_GITHUB) ?>",
-          "<?= e(SOCIAL_X) ?>",
-          "<?= e(SOCIAL_FACEBOOK) ?>"
+          "<?= e($social_linkedin) ?>",
+          "<?= e($social_instagram) ?>",
+          "<?= e($social_github) ?>",
+          "<?= e($social_x) ?>",
+          "<?= e($social_facebook) ?>"
         ],
         "priceRange": "$$",
         "address": {
@@ -365,10 +408,11 @@ $seo_keywords = defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'websit
           <div class="fs-meta-block">
             <span class="fs-meta-label">FOLLOW</span>
             <div class="fs-social-links">
-              <a href="<?= e(SOCIAL_INSTAGRAM) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">Instagram</a>
-              <a href="<?= e(SOCIAL_GITHUB) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">GitHub</a>
-              <a href="<?= e(SOCIAL_X) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">X (Twitter)</a>
-              <a href="<?= e(SOCIAL_FACEBOOK) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">Facebook</a>
+              <a href="<?= e($social_linkedin) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">LinkedIn</a>
+              <a href="<?= e($social_instagram) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">Instagram</a>
+              <a href="<?= e($social_github) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">GitHub</a>
+              <a href="<?= e($social_x) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">X (Twitter)</a>
+              <a href="<?= e($social_facebook) ?>" target="_blank" rel="noopener noreferrer" class="fs-social-link">Facebook</a>
             </div>
           </div>
 

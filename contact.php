@@ -43,6 +43,12 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Hidden bot protection honeypot field -->
             <input type="text" name="website_hp" style="display:none !important;" tabindex="-1" autocomplete="off">
 
+            <?php
+              $prefill_email = trim($_GET['email'] ?? '');
+              $prefill_scope = strtolower(trim($_GET['scope'] ?? ''));
+              $prefill_project = trim($_GET['project'] ?? '');
+              $prefill_details = $prefill_project ? "Hi RiTiVerse team, I am interested in building a project similar to '{$prefill_project}'. Here are our requirements:\n" : '';
+            ?>
             <div class="form-group-wrap">
               <div class="form-row-dual">
                 <div class="form-field">
@@ -53,7 +59,7 @@ require_once __DIR__ . '/includes/header.php';
                 <div class="form-field">
                   <label for="contact-email">Email Address *</label>
                   <input type="email" id="contact-email" name="email" class="form-input-control" placeholder="rahul@company.com"
-                    required autocomplete="email">
+                    value="<?= e($prefill_email) ?>" required autocomplete="email">
                 </div>
               </div>
 
@@ -66,13 +72,13 @@ require_once __DIR__ . '/includes/header.php';
                 <div class="form-field">
                   <label for="contact-scope">Project Type *</label>
                   <select id="contact-scope" name="scope" class="form-input-control" required style="cursor: pointer;">
-                    <option value="" disabled selected>Select Your Project Type...</option>
-                    <option value="website">Website Development</option>
-                    <option value="app">Mobile App (Android / iOS)</option>
-                    <option value="ecommerce">E-Commerce Storefront</option>
-                    <option value="crm">Custom CRM Platform</option>
-                    <option value="erp">ERP &amp; Billing System</option>
-                    <option value="custom">Custom Software Development</option>
+                    <option value="" disabled <?= empty($prefill_scope) ? 'selected' : '' ?>>Select Your Project Type...</option>
+                    <option value="website" <?= ($prefill_scope === 'web' || $prefill_scope === 'website') ? 'selected' : '' ?>>Website Development</option>
+                    <option value="app" <?= ($prefill_scope === 'app' || $prefill_scope === 'mobile') ? 'selected' : '' ?>>Mobile App (Android / iOS)</option>
+                    <option value="ecommerce" <?= ($prefill_scope === 'ecommerce') ? 'selected' : '' ?>>E-Commerce Storefront</option>
+                    <option value="crm" <?= ($prefill_scope === 'crm') ? 'selected' : '' ?>>Custom CRM Platform</option>
+                    <option value="erp" <?= ($prefill_scope === 'erp') ? 'selected' : '' ?>>ERP &amp; Billing System</option>
+                    <option value="custom" <?= ($prefill_scope === 'custom' || $prefill_scope === 'cloud' || $prefill_scope === 'ai') ? 'selected' : '' ?>>Custom Software Development</option>
                   </select>
                 </div>
               </div>
@@ -91,7 +97,7 @@ require_once __DIR__ . '/includes/header.php';
                 <label for="contact-details">Project Details &amp; Requirements *</label>
                 <textarea id="contact-details" name="details" class="form-input-control" rows="5"
                   placeholder="Tell us what you are looking to build, key features needed, or any specific requirements..."
-                  required></textarea>
+                  required><?= e($prefill_details) ?></textarea>
               </div>
 
               <button type="submit" id="contact-submit-btn" class="btn-primary"
