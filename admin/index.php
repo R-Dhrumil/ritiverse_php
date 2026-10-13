@@ -45,7 +45,10 @@ if ($db) {
           <strong>2. Default index.html:</strong> Agar hosting ki koi default <code>index.html</code> ya <code>default.html</code> file padi ho, to use delete karein taaki aapka <code>index.php</code> direct load ho sake.
         </p>
         <p style="margin-bottom: 0;">
-          <strong>3. MySQL Database:</strong> cPanel &gt; phpMyAdmin open karein, database select karein, aur root me di gayi <code>database.sql</code> file import karein. Uske baad <code>includes/config.php</code> me <code>DB_NAME</code>, <code>DB_USER</code>, aur <code>DB_PASS</code> match karein.
+          <strong>3. MySQL Database &amp; User Privileges:</strong> cPanel &gt; <strong>MySQL Databases</strong> me jaakar:
+          <br>• Database create karein (e.g. <code>ritivers_main</code>) aur User create karein.
+          <br>• <strong>Subse Zaroori Step:</strong> Neeche scroll karke <strong>"Add User To Database"</strong> section me User aur Database select karke <strong>Add</strong> karein, fir <strong>"ALL PRIVILEGES"</strong> check karke <strong>Make Changes</strong> karein.
+          <br>• phpMyAdmin open karke <code>database.sql</code> import karein, aur <code>includes/config.php</code> me <code>DB_NAME</code>, <code>DB_USER</code>, aur <code>DB_PASS</code> match karein.
         </p>
       </div>
     </div>

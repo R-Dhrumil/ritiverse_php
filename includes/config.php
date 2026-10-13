@@ -24,8 +24,13 @@ define('APP_TAGLINE', 'Elite Website & Software Development');
 define('APP_DESCRIPTION', 'Engineering studio delivering custom websites, mobile apps, CRM, ERP, and bespoke software with 100% client source code ownership.');
 
 // Database Credentials (Auto-detects Local XAMPP vs Production cPanel)
-$isLocalHost = (!empty($_SERVER['HTTP_HOST']) && (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false));
-define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+$isLocalHost = (
+    PHP_OS_FAMILY === 'Windows' ||
+    php_sapi_name() === 'cli' ||
+    (!empty($_SERVER['HTTP_HOST']) && (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false)) ||
+    (!empty($_SERVER['SERVER_NAME']) && (strpos($_SERVER['SERVER_NAME'], 'localhost') !== false || strpos($_SERVER['SERVER_NAME'], '127.0.0.1') !== false))
+);
+define('DB_HOST', getenv('DB_HOST') ?: ($isLocalHost ? '127.0.0.1' : 'localhost'));
 define('DB_NAME', getenv('DB_NAME') ?: ($isLocalHost ? 'ritiverse' : 'ritivers_main'));
 define('DB_USER', getenv('DB_USER') ?: ($isLocalHost ? 'root' : 'ritivers_main'));
 define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : ($isLocalHost ? '' : 'ritivers_main'));

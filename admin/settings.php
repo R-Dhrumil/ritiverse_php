@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $error = "✕ TLS SMTP Test Failed: " . ($test_res['error'] ?? 'Connection error. Check log below.');
             }
         }
-    } elseif ($db) {
-        // --- 2. Save All Site Settings & SMTP Config ---
+    } else {
+        // --- 2. Save All Site Settings & SMTP Config to MySQL Database ---
         // Pre-extract clean tokens if user pasted full script tags or meta tags
         $raw_gsc = trim($_POST['google_site_verification'] ?? '');
         if (preg_match('/content=["\']([^"\']+)["\']/i', $raw_gsc, $m_gsc)) {
@@ -110,17 +110,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $settings_to_update['smtp_password'] = trim($_POST['smtp_password']);
         }
 
-        try {
-            $stmt = $db->prepare("INSERT INTO site_settings (setting_key, setting_value, setting_group) VALUES (?, ?, 'general') ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value)");
-            foreach ($settings_to_update as $key => $val) {
-                $stmt->execute([$key, $val]);
+        $savedDbCount = 0;
+        foreach ($settings_to_update as $key => $val) {
+            if (save_setting($key, $val, 'general')) {
+                $savedDbCount++;
             }
-            $message = 'Settings, SEO & SMTP email parameters updated successfully in database.';
-        } catch (Exception $e) {
-            $error = 'Failed to update settings: ' . $e->getMessage();
         }
-    } else {
-        $error = 'Database is not connected! Unable to save settings to MySQL database. Please verify DB credentials in includes/config.php.';
+
+        if ($savedDbCount > 0) {
+            $message = '✓ Settings, SEO & SMTP parameters successfully updated and saved in MySQL database!';
+        } else {
+            $dbErr = Database::getError();
+            $hint = '';
+            if (strpos((string)$dbErr, '1044') !== false) {
+                $hint = ' — cPanel Fix: cPanel > "MySQL Databases" me scroll karein, "Add User To Database" section me User ko Database se link karein, "ALL PRIVILEGES" check karein aur "Make Changes" click karein.';
+            } elseif (strpos((string)$dbErr, '1045') !== false) {
+                $hint = ' — cPanel Fix: MySQL Password mismatch. cPanel me user password reset karein aur includes/config.php me DB_PASS match karein.';
+            } elseif (strpos((string)$dbErr, '1049') !== false) {
+                $hint = ' — cPanel Fix: Database nahi mila. cPanel me database create karein aur phpMyAdmin me database.sql import karein.';
+            }
+            $error = '✕ Database Save Error: ' . ($dbErr ?: 'Unable to write to MySQL site_settings table. Please verify database connection.') . $hint;
+        }
     }
 }
 

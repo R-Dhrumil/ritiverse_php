@@ -170,8 +170,8 @@ if ($db) {
             ● DB Connected
           </span>
         <?php else: ?>
-          <span class="status-pill status-new" title="Import database.sql to MySQL">
-            ⚠ DB Offline (Using Fallback)
+          <span class="status-pill status-new" title="<?= e(Database::getError() ?: 'MySQL is offline. Check connection credentials.') ?>">
+            ⚠ DB Offline
           </span>
         <?php endif; ?>
 
