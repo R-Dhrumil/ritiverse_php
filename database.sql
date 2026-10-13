@@ -125,7 +125,17 @@ INSERT INTO `site_settings` (`setting_key`, `setting_value`, `setting_group`) VA
 ('social_instagram', 'https://www.instagram.com/ritiverse.in?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==', 'social'),
 ('social_github', 'https://github.com/RiTIVerse', 'social'),
 ('social_x', 'https://x.com/RiTiVerseIn', 'social'),
-('social_facebook', 'https://www.facebook.com/profile.php?id=61595110330028', 'social')
+('social_facebook', 'https://www.facebook.com/profile.php?id=61595110330028', 'social'),
+('smtp_enabled', '1', 'smtp'),
+('smtp_host', 'smtppro.zoho.in', 'smtp'),
+('smtp_port', '465', 'smtp'),
+('smtp_encryption', 'ssl', 'smtp'),
+('smtp_username', 'info@ritiverse.in', 'smtp'),
+('smtp_password', '', 'smtp'),
+('smtp_from_email', 'info@ritiverse.in', 'smtp'),
+('smtp_from_name', 'RiTiVerse Studio', 'smtp'),
+('smtp_recipient_email', 'info@ritiverse.in', 'smtp'),
+('smtp_allow_self_signed', '1', 'smtp')
 ON DUPLICATE KEY UPDATE `setting_key` = `setting_key`;
 
 -- ------------------------------------------------------------------------------

@@ -42,6 +42,18 @@ define('SUPPORT_EMAIL', 'support@ritiverse.in');
 define('CONTACT_PHONE', '+91 94267 82646');
 define('CONTACT_PHONE_ALT', '+91 91042 53289');
 
+// SMTP & TLS Email Transport Coordinates (High-Deliverability Inbox Configuration)
+define('SMTP_ENABLED', getenv('SMTP_ENABLED') !== false ? (bool)getenv('SMTP_ENABLED') : true);
+define('SMTP_HOST', getenv('SMTP_HOST') ?: 'smtppro.zoho.in'); // Zoho Mail (India: smtppro.zoho.in, Global: smtppro.zoho.com)
+define('SMTP_PORT', (int)(getenv('SMTP_PORT') ?: 465));
+define('SMTP_ENCRYPTION', getenv('SMTP_ENCRYPTION') ?: 'ssl'); // 'ssl' (Port 465) or 'tls' (Port 587)
+define('SMTP_USER', getenv('SMTP_USER') ?: 'info@ritiverse.in');
+define('SMTP_PASS', getenv('SMTP_PASS') ?: '');
+define('SMTP_FROM_EMAIL', getenv('SMTP_FROM_EMAIL') ?: 'info@ritiverse.in');
+define('SMTP_FROM_NAME', getenv('SMTP_FROM_NAME') ?: 'RiTiVerse Studio');
+define('SMTP_RECIPIENT_EMAIL', getenv('SMTP_RECIPIENT_EMAIL') ?: 'info@ritiverse.in');
+define('SMTP_ALLOW_SELF_SIGNED', true);
+
 // Official Social Channels & Profiles
 define('SOCIAL_LINKEDIN', 'https://www.linkedin.com/company/ritiverse');
 define('SOCIAL_INSTAGRAM', 'https://www.instagram.com/ritiverse.in?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==');

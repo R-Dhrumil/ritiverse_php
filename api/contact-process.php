@@ -89,32 +89,37 @@ if (!empty($errors)) {
     exit;
 }
 
-// Recipient on cPanel
-$to = CONTACT_EMAIL;
+require_once __DIR__ . '/../includes/smtp_mailer.php';
+
+// Recipient on cPanel / Admin setting
+$to = get_setting('smtp_recipient_email', CONTACT_EMAIL);
 $subject = "New Project Inquiry from {$name} ({$company}) — " . APP_NAME;
 
-// Construct Email Body
-$messageBody = "====================================================\n";
-$messageBody .= " NEW PROJECT INQUIRY — " . APP_NAME . "\n";
-$messageBody .= "====================================================\n\n";
-$messageBody .= "Client Name:  " . $name . "\n";
-$messageBody .= "Email:        " . $email . "\n";
-$messageBody .= "Company:      " . $company . "\n";
-$messageBody .= "Project Type: " . $project_type . "\n";
-$messageBody .= "Timeline:     " . $timeline . "\n";
-$messageBody .= "Submitted:    " . date('Y-m-d H:i:s') . " (IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'Unknown') . ")\n\n";
-$messageBody .= "Project Details & Requirements:\n";
-$messageBody .= "----------------------------------------------------\n";
-$messageBody .= $details . "\n";
-$messageBody .= "====================================================\n";
+// Construct Plain Text Email Body
+$plainBody = "====================================================\n";
+$plainBody .= " NEW PROJECT INQUIRY — " . APP_NAME . "\n";
+$plainBody .= "====================================================\n\n";
+$plainBody .= "Client Name:  " . $name . "\n";
+$plainBody .= "Email:        " . $email . "\n";
+$plainBody .= "Company:      " . $company . "\n";
+$plainBody .= "Project Type: " . $project_type . "\n";
+$plainBody .= "Timeline:     " . $timeline . "\n";
+$plainBody .= "Submitted:    " . date('Y-m-d H:i:s') . " (IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'Unknown') . ")\n\n";
+$plainBody .= "Project Details & Requirements:\n";
+$plainBody .= "----------------------------------------------------\n";
+$plainBody .= $details . "\n";
+$plainBody .= "====================================================\n";
 
-// cPanel Mail Headers
-$headers = [];
-$headers[] = 'From: ' . APP_NAME . ' Web <noreply@' . ($_SERVER['HTTP_HOST'] ?? 'ritiverse.in') . '>';
-$headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';
-$headers[] = 'X-Mailer: PHP/' . phpversion();
-$headers[] = 'MIME-Version: 1.0';
-$headers[] = 'Content-Type: text/plain; charset=UTF-8';
+// Construct Branded HTML Email Body
+$htmlBody = build_inquiry_html_email([
+    'name' => $name,
+    'email' => $email,
+    'company' => $company,
+    'scope' => $project_type,
+    'timeline' => $timeline,
+    'details' => $details,
+    'ip' => $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1'
+]);
 
 // 1. Save directly into MySQL database if connected
 $db = get_db();
@@ -127,8 +132,9 @@ if ($db) {
     }
 }
 
-// 2. Attempt to dispatch mail using cPanel's local sendmail
-$mailSent = @mail($to, $subject, $messageBody, implode("\r\n", $headers));
+// 2. Dispatch mail using Authenticated SMTP over TLS (falls back safely to envelope-safe mail() if SMTP offline)
+$mailResult = ritiverse_send_mail($to, $subject, $htmlBody, $plainBody, $email, $name);
+$mailSent = !empty($mailResult['success']);
 
 // 3. Log submission locally on server as redundancy backup
 $logDir = __DIR__ . '/../logs';
@@ -141,7 +147,8 @@ $logEntry = "[" . date('Y-m-d H:i:s') . "] " . json_encode([
     'company' => $company,
     'type' => $project_type,
     'timeline' => $timeline,
-    'status' => $mailSent ? 'sent' : 'logged_only'
+    'status' => $mailSent ? 'sent' : 'logged_only',
+    'transport' => $mailResult['method'] ?? 'unknown'
 ]) . PHP_EOL;
 @file_put_contents($logDir . '/inquiries.log', $logEntry, FILE_APPEND);
 
