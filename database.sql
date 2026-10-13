@@ -55,11 +55,7 @@ CREATE TABLE IF NOT EXISTS `inquiries` (
   INDEX `idx_created_at` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Seed Inquiries for demo/testing
-INSERT INTO `inquiries` (`name`, `email`, `company`, `scope`, `timeline`, `details`, `status`, `created_at`) VALUES
-('Vikram Mehta', 'vikram@mehtalogistics.in', 'Mehta Logistics India', 'erp', '1-2 months', 'Looking for an enterprise ERP and warehouse tracking solution with zero monthly SaaS lock-in.', 'new', NOW() - INTERVAL 2 HOUR),
-('Pooja Patel', 'pooja@swadeshiayur.com', 'Swadeshi Wellness', 'ecommerce', 'immediate', 'Need high-converting e-commerce web platform for herbal product catalog with Razorpay & Shiprocket integration.', 'contacted', NOW() - INTERVAL 1 DAY),
-('Anand Verma', 'anand@fintechcore.io', 'FintechCore Solutions', 'custom', '2-4 months', 'Bespoke portfolio telemetry dashboard with high-frequency charting and sub-100ms API response time.', 'converted', NOW() - INTERVAL 3 DAY);
+-- (Inquiries table initialized empty — client consultation requests from contact form will appear here automatically)
 
 -- ------------------------------------------------------------------------------
 -- 3. Table: `projects`
