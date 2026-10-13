@@ -13,7 +13,7 @@ $db = get_db();
 $total_inquiries = 0;
 $new_inquiries = 0;
 $converted_inquiries = 0;
-$total_projects = 6;
+$total_projects = 0;
 $recent_inquiries = [];
 
 if ($db) {

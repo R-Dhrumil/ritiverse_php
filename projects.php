@@ -22,119 +22,8 @@ if ($db) {
     }
 }
 
-// Fallback high-fidelity projects if database is empty or offline
-if (empty($db_projects)) {
-    $db_projects = [
-        [
-            'id' => 1,
-            'title' => 'Aegis Financial Telemetry OS',
-            'client_name' => 'FinTech Global Corp',
-            'slug' => 'aegis-financial-telemetry',
-            'category' => 'custom web',
-            'tag_label' => 'FinTech Architecture',
-            'image_url' => 'assets/card_software_apis.jpg',
-            'live_url' => '',
-            'description' => 'High-frequency algorithmic portfolio monitoring reference platform streaming real-time market data across global exchanges with sub-50ms latency.',
-            'metric_1_val' => '0.12s',
-            'metric_1_lbl' => 'Global Latency',
-            'metric_2_val' => 'Real-Time',
-            'metric_2_lbl' => 'Data Streams',
-            'metric_3_val' => '100%',
-            'metric_3_lbl' => 'Source IP',
-            'tech_tags' => 'Go, Next.js 15, TimescaleDB, WebSockets, AWS EKS'
-        ],
-        [
-            'id' => 2,
-            'title' => 'Verve Global Logistics Engine',
-            'client_name' => 'Mehta Logistics India',
-            'slug' => 'verve-logistics-engine',
-            'category' => 'cloud custom erp',
-            'tag_label' => 'Supply Chain Architecture',
-            'image_url' => 'assets/card_cloud_devops.jpg',
-            'live_url' => '',
-            'description' => 'Self-healing containerized microservices architecture demonstrating automated route optimization, telemetry ingestion, and distributed cluster failover.',
-            'metric_1_val' => 'High-Avail',
-            'metric_1_lbl' => 'Architecture',
-            'metric_2_val' => 'Docker/K8s',
-            'metric_2_lbl' => 'Containers',
-            'metric_3_val' => 'Zero',
-            'metric_3_lbl' => 'Lock-In',
-            'tech_tags' => 'Express.js, Node.js, MySQL, REST APIs, Server Hosting'
-        ],
-        [
-            'id' => 3,
-            'title' => 'OmniSphere Private AI Workspace',
-            'client_name' => 'Enterprise Intelligence Corp',
-            'slug' => 'omnisphere-ai-workspace',
-            'category' => 'ai custom',
-            'tag_label' => 'Enterprise AI Architecture',
-            'image_url' => 'assets/card_ai_agents.jpg',
-            'live_url' => '',
-            'description' => 'Air-gapped enterprise intelligence prototype demonstrating proprietary document indexing with vector semantic search, hybrid retrieval, and multi-agent synthesis.',
-            'metric_1_val' => 'Sub-second',
-            'metric_1_lbl' => 'Vector Search',
-            'metric_2_val' => 'pgvector',
-            'metric_2_lbl' => 'Embeddings',
-            'metric_3_val' => 'Private',
-            'metric_3_lbl' => 'VPC Isolation',
-            'tech_tags' => 'Python, FastAPI, pgvector, Claude 3.7, TypeScript'
-        ],
-        [
-            'id' => 4,
-            'title' => 'Pulse Luxury Digital Flagship',
-            'client_name' => 'Pulse Retail Group',
-            'slug' => 'pulse-digital-flagship',
-            'category' => 'web ecommerce',
-            'tag_label' => 'Headless Web Platform',
-            'image_url' => 'assets/card_web_apps.jpg',
-            'live_url' => '',
-            'description' => 'Cinematic, 60fps editorial buying experience reference built with Next.js 15, edge rendering, and bespoke UI interactions with sub-second page transitions.',
-            'metric_1_val' => '100/100',
-            'metric_1_lbl' => 'Lighthouse Score',
-            'metric_2_val' => '60 FPS',
-            'metric_2_lbl' => 'Smooth Motion',
-            'metric_3_val' => '0.18s',
-            'metric_3_lbl' => 'Average TTFB',
-            'tech_tags' => 'Next.js 15, React 19, Cloudflare, GSAP, Tailored Tokens'
-        ],
-        [
-            'id' => 5,
-            'title' => 'Apex Cloud Observability Console',
-            'client_name' => 'Apex Cloud Systems',
-            'slug' => 'apex-cloud-observability',
-            'category' => 'cloud web',
-            'tag_label' => 'Observability Platform',
-            'image_url' => 'assets/card_cloud_ai.jpg',
-            'live_url' => '',
-            'description' => 'Real-time operational dashboard visualizing cluster metrics, multi-tenant container health, and automated anomaly detection alerts.',
-            'metric_1_val' => 'Real-Time',
-            'metric_1_lbl' => 'Telemetry',
-            'metric_2_val' => '45ms',
-            'metric_2_lbl' => 'Query Latency',
-            'metric_3_val' => '100%',
-            'metric_3_lbl' => 'Self-Hosted',
-            'tech_tags' => 'Go, ClickHouse, React, Grafana Engine, Docker'
-        ],
-        [
-            'id' => 6,
-            'title' => 'Strata Distributed API Gateway',
-            'client_name' => 'Strata Networks',
-            'slug' => 'strata-api-gateway',
-            'category' => 'custom cloud',
-            'tag_label' => 'Distributed Systems',
-            'image_url' => 'assets/card_software_apis.jpg',
-            'live_url' => '',
-            'description' => 'High-throughput gRPC and GraphQL routing fabric connecting distributed microservices with cryptographic token verification and zero-downtime blue/green rollouts.',
-            'metric_1_val' => 'Sub-millisecond',
-            'metric_1_lbl' => 'Proxy Routing',
-            'metric_2_val' => 'Zero Downtime',
-            'metric_2_lbl' => 'Blue / Green',
-            'metric_3_val' => '0 Lock-In',
-            'metric_3_lbl' => 'Standard gRPC',
-            'tech_tags' => 'Go, gRPC, Envoy, PostgreSQL, AWS'
-        ]
-    ];
-}
+// No dummy fallback — real projects are loaded from database or managed in admin
+$has_projects = !empty($db_projects);
 ?>
 
   <!-- Subpage Hero Section -->
@@ -153,6 +42,7 @@ if (empty($db_projects)) {
         RiTiVerse—delivered with 100% full source ownership and zero vendor lock-in.
       </p>
 
+      <?php if ($has_projects): ?>
       <!-- Search & Category Controls -->
       <div class="projects-controls-container">
         <!-- Live Search Bar -->
@@ -189,138 +79,201 @@ if (empty($db_projects)) {
           </button>
         </div>
       </div>
+      <?php endif; ?>
     </div>
   </main>
 
-  <!-- Projects Grid Section -->
+  <!-- Projects Grid / Curation Section -->
   <section class="subpage-section">
     <div class="subpage-container">
-      <div class="projects-grid" id="projectsGrid">
+      <?php if ($has_projects): ?>
+        <div class="projects-grid" id="projectsGrid">
 
-        <?php foreach ($db_projects as $proj): 
-          $category = strtolower($proj['category'] ?? 'web');
-          $cover_image = !empty($proj['image_url']) ? $proj['image_url'] : 'assets/card_web_apps.jpg';
-          $client_name = !empty($proj['client_name']) ? $proj['client_name'] : '';
-          $live_url = !empty($proj['live_url']) ? $proj['live_url'] : '';
-          $search_data = strtolower($proj['title'] . ' ' . $client_name . ' ' . $category . ' ' . $proj['tag_label'] . ' ' . $proj['tech_tags'] . ' ' . $proj['description']);
-        ?>
-          <article class="case-study-card" 
-            data-id="<?= $proj['id'] ?>"
-            data-category="<?= e($category) ?>"
-            data-title="<?= e($proj['title']) ?>"
-            data-client="<?= e($client_name) ?>"
-            data-tag="<?= e($proj['tag_label']) ?>"
-            data-image="<?= e($cover_image) ?>"
-            data-desc="<?= e($proj['description']) ?>"
-            data-live="<?= e($live_url) ?>"
-            data-m1-val="<?= e($proj['metric_1_val']) ?>"
-            data-m1-lbl="<?= e($proj['metric_1_lbl']) ?>"
-            data-m2-val="<?= e($proj['metric_2_val']) ?>"
-            data-m2-lbl="<?= e($proj['metric_2_lbl']) ?>"
-            data-m3-val="<?= e($proj['metric_3_val']) ?>"
-            data-m3-lbl="<?= e($proj['metric_3_lbl']) ?>"
-            data-tech="<?= e($proj['tech_tags']) ?>"
-            data-search="<?= e($search_data) ?>">
-            
-            <!-- Visual Hero Cover with Image & Badges -->
-            <div class="case-card-hero">
-              <span class="case-tag-pill"><?= e($proj['tag_label']) ?></span>
+          <?php foreach ($db_projects as $proj): 
+            $category = strtolower($proj['category'] ?? 'web');
+            $cover_image = !empty($proj['image_url']) ? $proj['image_url'] : 'assets/card_web_apps.jpg';
+            $client_name = !empty($proj['client_name']) ? $proj['client_name'] : '';
+            $live_url = !empty($proj['live_url']) ? $proj['live_url'] : '';
+            $search_data = strtolower($proj['title'] . ' ' . $client_name . ' ' . $category . ' ' . $proj['tag_label'] . ' ' . $proj['tech_tags'] . ' ' . $proj['description']);
+          ?>
+            <article class="case-study-card" 
+              data-id="<?= $proj['id'] ?>"
+              data-category="<?= e($category) ?>"
+              data-title="<?= e($proj['title']) ?>"
+              data-client="<?= e($client_name) ?>"
+              data-tag="<?= e($proj['tag_label']) ?>"
+              data-image="<?= e($cover_image) ?>"
+              data-desc="<?= e($proj['description']) ?>"
+              data-live="<?= e($live_url) ?>"
+              data-m1-val="<?= e($proj['metric_1_val']) ?>"
+              data-m1-lbl="<?= e($proj['metric_1_lbl']) ?>"
+              data-m2-val="<?= e($proj['metric_2_val']) ?>"
+              data-m2-lbl="<?= e($proj['metric_2_lbl']) ?>"
+              data-m3-val="<?= e($proj['metric_3_val']) ?>"
+              data-m3-lbl="<?= e($proj['metric_3_lbl']) ?>"
+              data-tech="<?= e($proj['tech_tags']) ?>"
+              data-search="<?= e($search_data) ?>">
               
-              <?php if (!empty($client_name)): ?>
-                <span class="case-client-badge">Client: <?= e($client_name) ?></span>
-              <?php endif; ?>
+              <!-- Visual Hero Cover with Image & Badges -->
+              <div class="case-card-hero">
+                <span class="case-tag-pill"><?= e($proj['tag_label']) ?></span>
+                
+                <?php if (!empty($client_name)): ?>
+                  <span class="case-client-badge">Client: <?= e($client_name) ?></span>
+                <?php endif; ?>
 
-              <img src="<?= e($cover_image) ?>" alt="<?= e($proj['title']) ?>" class="case-card-cover-img" loading="lazy" onerror="this.onerror=null; this.src='assets/card_web_apps.jpg';">
-              <div class="case-card-hero-overlay"></div>
-            </div>
-
-            <!-- Card Body -->
-            <div class="case-card-body">
-              <div>
-                <h2 class="case-card-title"><?= e($proj['title']) ?></h2>
-                <p class="case-card-desc"><?= e($proj['description']) ?></p>
+                <img src="<?= e($cover_image) ?>" alt="<?= e($proj['title']) ?>" class="case-card-cover-img" loading="lazy" onerror="this.onerror=null; this.src='assets/card_web_apps.jpg';">
+                <div class="case-card-hero-overlay"></div>
               </div>
 
-              <div>
-                <!-- Key Architecture Metrics -->
-                <div class="case-metrics-strip">
-                  <?php if (!empty($proj['metric_1_val'])): ?>
-                  <div class="case-metric-box">
-                    <span class="case-metric-val"><?= e($proj['metric_1_val']) ?></span>
-                    <span class="case-metric-lbl"><?= e($proj['metric_1_lbl']) ?></span>
-                  </div>
-                  <?php endif; ?>
-                  <?php if (!empty($proj['metric_2_val'])): ?>
-                  <div class="case-metric-box">
-                    <span class="case-metric-val"><?= e($proj['metric_2_val']) ?></span>
-                    <span class="case-metric-lbl"><?= e($proj['metric_2_lbl']) ?></span>
-                  </div>
-                  <?php endif; ?>
-                  <?php if (!empty($proj['metric_3_val'])): ?>
-                  <div class="case-metric-box">
-                    <span class="case-metric-val"><?= e($proj['metric_3_val']) ?></span>
-                    <span class="case-metric-lbl"><?= e($proj['metric_3_lbl']) ?></span>
-                  </div>
-                  <?php endif; ?>
+              <!-- Card Body -->
+              <div class="case-card-body">
+                <div>
+                  <h2 class="case-card-title"><?= e($proj['title']) ?></h2>
+                  <p class="case-card-desc"><?= e($proj['description']) ?></p>
                 </div>
 
-                <!-- Technology Pills -->
-                <div class="case-tech-tags">
-                  <?php foreach (explode(',', $proj['tech_tags']) as $tag): ?>
-                    <?php if (trim($tag)): ?>
-                      <span class="case-tech-pill"><?= e(trim($tag)) ?></span>
+                <div>
+                  <!-- Key Architecture Metrics -->
+                  <div class="case-metrics-strip">
+                    <?php if (!empty($proj['metric_1_val'])): ?>
+                    <div class="case-metric-box">
+                      <span class="case-metric-val"><?= e($proj['metric_1_val']) ?></span>
+                      <span class="case-metric-lbl"><?= e($proj['metric_1_lbl']) ?></span>
+                    </div>
                     <?php endif; ?>
-                  <?php endforeach; ?>
-                </div>
+                    <?php if (!empty($proj['metric_2_val'])): ?>
+                    <div class="case-metric-box">
+                      <span class="case-metric-val"><?= e($proj['metric_2_val']) ?></span>
+                      <span class="case-metric-lbl"><?= e($proj['metric_2_lbl']) ?></span>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($proj['metric_3_val'])): ?>
+                    <div class="case-metric-box">
+                      <span class="case-metric-val"><?= e($proj['metric_3_val']) ?></span>
+                      <span class="case-metric-lbl"><?= e($proj['metric_3_lbl']) ?></span>
+                    </div>
+                    <?php endif; ?>
+                  </div>
 
-                <!-- Action Strip: Quick View & Live Demo -->
-                <div class="case-card-actions">
-                  <button type="button" class="case-btn-secondary open-case-modal-btn">
-                    <span>Explore Architecture</span>
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M5 12h14"></path>
-                      <path d="M12 5l7 7-7 7"></path>
-                    </svg>
-                  </button>
+                  <!-- Technology Pills -->
+                  <div class="case-tech-tags">
+                    <?php foreach (explode(',', $proj['tech_tags']) as $tag): ?>
+                      <?php if (trim($tag)): ?>
+                        <span class="case-tech-pill"><?= e(trim($tag)) ?></span>
+                      <?php endif; ?>
+                    <?php endforeach; ?>
+                  </div>
 
-                  <?php if (!empty($live_url)): ?>
-                    <a href="<?= e($live_url) ?>" target="_blank" rel="noopener noreferrer" class="case-btn-primary">
-                      <span>Visit Live</span>
+                  <!-- Action Strip: Quick View & Live Demo -->
+                  <div class="case-card-actions">
+                    <button type="button" class="case-btn-secondary open-case-modal-btn">
+                      <span>Explore Architecture</span>
                       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                        <polyline points="15 3 21 3 21 9"></polyline>
-                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5l7 7-7 7"></path>
                       </svg>
-                    </a>
-                  <?php else: ?>
-                    <a href="contact.php?scope=<?= urlencode(explode(' ', $category)[0]) ?>&project=<?= urlencode($proj['title']) ?>" class="case-btn-primary">
-                      <span>Request Build</span>
-                      <span style="font-size: 14px;">↗</span>
-                    </a>
-                  <?php endif; ?>
+                    </button>
+
+                    <?php if (!empty($live_url)): ?>
+                      <a href="<?= e($live_url) ?>" target="_blank" rel="noopener noreferrer" class="case-btn-primary">
+                        <span>Visit Live</span>
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                      </a>
+                    <?php else: ?>
+                      <a href="contact.php?scope=<?= urlencode(explode(' ', $category)[0]) ?>&project=<?= urlencode($proj['title']) ?>" class="case-btn-primary">
+                        <span>Request Build</span>
+                        <span style="font-size: 14px;">↗</span>
+                      </a>
+                    <?php endif; ?>
+                  </div>
                 </div>
               </div>
-            </div>
 
-          </article>
-        <?php endforeach; ?>
+            </article>
+          <?php endforeach; ?>
 
-        <!-- Empty Filter State -->
-        <div class="projects-empty-state" id="projectsEmptyState">
-          <div class="projects-empty-icon">🔍</div>
-          <h3 class="projects-empty-title">No matching reference projects found</h3>
-          <p class="projects-empty-desc">
-            Try adjusting your search keywords or explore another engineering category above.
-          </p>
-          <button type="button" class="btn-primary" id="resetFiltersBtn" style="padding: 9px 22px; font-size: 13px;">
-            Reset All Filters
-          </button>
+          <!-- Empty Filter State -->
+          <div class="projects-empty-state" id="projectsEmptyState">
+            <div class="projects-empty-icon">🔍</div>
+            <h3 class="projects-empty-title">No matching reference projects found</h3>
+            <p class="projects-empty-desc">
+              Try adjusting your search keywords or explore another engineering category above.
+            </p>
+            <button type="button" class="btn-primary" id="resetFiltersBtn" style="padding: 9px 22px; font-size: 13px;">
+              Reset All Filters
+            </button>
+          </div>
+
         </div>
 
-      </div>
+      <?php else: ?>
+        <!-- Executive Portfolio Curation & NDA Notice State -->
+        <div class="projects-curation-state">
+          <div class="curation-badge">
+            <span class="curation-badge-dot"></span>
+            Proprietary Client Architecture &amp; NDAs
+          </div>
+
+          <h2 class="curation-title">Production Deliveries Under Client NDA</h2>
+          <p class="curation-desc">
+            At RiTiVerse, every web platform, custom CRM, and enterprise ERP is built with 100% intellectual property transfer and zero vendor lock-in. Because our clients own their complete source code, production repositories and architectures are held under strict non-disclosure agreements.
+          </p>
+
+          <div class="curation-grid">
+            <div class="curation-card">
+              <div class="curation-icon">🛡️</div>
+              <h3 class="curation-card-title">100% Client Code Ownership</h3>
+              <p class="curation-card-desc">
+                No monthly license hostage fees or encrypted files. You receive complete repositories, database schemas, and documentation.
+              </p>
+            </div>
+
+            <div class="curation-card">
+              <div class="curation-icon">⚡</div>
+              <h3 class="curation-card-title">Modern Production Stacks</h3>
+              <p class="curation-card-desc">
+                Enterprise systems engineered on PHP 8, React, Node.js, Next.js, MySQL, and scalable cloud container infrastructure.
+              </p>
+            </div>
+
+            <div class="curation-card">
+              <div class="curation-icon">🤝</div>
+              <h3 class="curation-card-title">Private Architecture Demos</h3>
+              <p class="curation-card-desc">
+                We provide private 1-on-1 walkthroughs and live architecture demonstrations during qualified client discovery calls.
+              </p>
+            </div>
+          </div>
+
+          <div class="curation-actions">
+            <a href="contact.php?scope=project-inquiry" class="btn-primary" style="padding: 13px 28px;">
+              <span>Schedule Architecture Consultation</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="services.php" class="btn-secondary" style="padding: 13px 24px;">
+              Explore Engineering Services
+            </a>
+            <?php if (isset($_SESSION['admin_logged_in'])): ?>
+              <a href="admin/projects.php" class="btn-secondary" style="border-color: var(--brand-orange); color: var(--brand-orange); padding: 13px 20px;">
+                ⚙️ Add Projects in Admin
+              </a>
+            <?php endif; ?>
+          </div>
+        </div>
+      <?php endif; ?>
+
     </div>
   </section>
 
+  <?php if ($has_projects): ?>
   <!-- Interactive Case Study Quick View Modal Dialog -->
   <div class="project-modal-backdrop" id="projectModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="project-modal-dialog">
@@ -379,7 +332,7 @@ if (empty($db_projects)) {
         </div>
       </div>
     </div>
-  </div>
+  <?php endif; ?>
 
   <!-- Bottom CTA Banner -->
   <section class="subpage-section" style="padding-top: 0;">

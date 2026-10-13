@@ -69,6 +69,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $db) {
             }
         }
 
+        // 2b. Purge All Projects (Remove dummy / all records)
+        elseif ($action === 'delete_all') {
+            try {
+                $db->exec("TRUNCATE TABLE projects");
+                $message = "All projects removed successfully. Showcase is now clean.";
+            } catch (Exception $e) {
+                $error = "Failed to clear projects: " . $e->getMessage();
+            }
+        }
+
         // 3. Create or Update Project
         elseif ($action === 'create' || $action === 'update') {
             $title = trim($_POST['title'] ?? '');
@@ -275,7 +285,7 @@ if ($db) {
         <div class="admin-grid-4">
           <div>
             <label class="admin-form-label">Project Title *</label>
-            <input type="text" name="title" class="admin-input" placeholder="e.g. Aegis Financial Telemetry OS" value="<?= e($edit_project['title'] ?? '') ?>" required>
+            <input type="text" name="title" class="admin-input" placeholder="e.g. Enterprise Logistics ERP / Modern E-Commerce Platform" value="<?= e($edit_project['title'] ?? '') ?>" required>
           </div>
 
           <div>
@@ -441,6 +451,15 @@ if ($db) {
       <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
         <h3 class="admin-card-title">All Showcase Projects (<?= count($projects_list) ?>)</h3>
         <input type="text" id="projectSearchInput" placeholder="Filter projects by title, category, or tech..." class="admin-input" style="width: 320px; padding: 6px 14px; font-size: 13px;">
+        <?php if (!empty($projects_list)): ?>
+          <form method="POST" action="projects.php" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete ALL showcase projects? This cannot be undone.');">
+            <?= csrf_field() ?>
+            <input type="hidden" name="action" value="delete_all">
+            <button type="submit" class="admin-btn admin-btn-danger admin-btn-sm" style="font-size: 11.5px; padding: 6px 12px;">
+              ✕ Delete All Projects
+            </button>
+          </form>
+        <?php endif; ?>
       </div>
 
       <span style="font-size: 12px; color: var(--admin-text-muted);">

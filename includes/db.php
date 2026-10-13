@@ -101,16 +101,18 @@ function is_db_connected() {
 /**
  * Procedural Helper: Fetch setting from database or fall back to default
  */
-function get_setting($key, $default = '') {
-    $db = get_db();
-    if (!$db) return $default;
+if (!function_exists('get_setting')) {
+    function get_setting($key, $default = '') {
+        $db = get_db();
+        if (!$db) return $default;
 
-    try {
-        $stmt = $db->prepare("SELECT setting_value FROM site_settings WHERE setting_key = ? LIMIT 1");
-        $stmt->execute([$key]);
-        $val = $stmt->fetchColumn();
-        return ($val !== false && $val !== null) ? $val : $default;
-    } catch (Exception $e) {
-        return $default;
+        try {
+            $stmt = $db->prepare("SELECT setting_value FROM site_settings WHERE setting_key = ? LIMIT 1");
+            $stmt->execute([$key]);
+            $val = $stmt->fetchColumn();
+            return ($val !== false && $val !== null) ? $val : $default;
+        } catch (Exception $e) {
+            return $default;
+        }
     }
 }

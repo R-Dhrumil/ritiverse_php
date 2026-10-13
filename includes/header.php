@@ -4,6 +4,7 @@
  * Included across all PHP templates for unified, DRY maintenance
  */
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/db.php';
 
 // Safe Defaults
 $page_title = isset($page_title) ? $page_title : (APP_NAME . ' — ' . APP_TAGLINE);

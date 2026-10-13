@@ -159,3 +159,26 @@ function check_rate_limit($action, $max_attempts = 5, $decay_seconds = 300) {
     $_SESSION[$key] = $data;
     return true;
 }
+
+/**
+ * Universal Global Setting Accessor (Safe Fallback)
+ */
+if (!function_exists('get_setting')) {
+    function get_setting($key, $default = '') {
+        if (function_exists('get_db')) {
+            $db = get_db();
+            if ($db) {
+                try {
+                    $stmt = $db->prepare("SELECT setting_value FROM site_settings WHERE setting_key = ? LIMIT 1");
+                    $stmt->execute([$key]);
+                    $val = $stmt->fetchColumn();
+                    return ($val !== false && $val !== null) ? $val : $default;
+                } catch (Exception $e) {
+                    return $default;
+                }
+            }
+        }
+        return $default;
+    }
+}
+

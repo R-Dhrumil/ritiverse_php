@@ -4,6 +4,7 @@
  * Included across all PHP templates for unified, DRY maintenance
  */
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/db.php';
 
 $show_footer_cta = isset($show_footer_cta) ? $show_footer_cta : false;
 $include_gsap = isset($include_gsap) ? $include_gsap : true;
