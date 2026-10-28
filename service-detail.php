@@ -15,10 +15,13 @@ if (!$service) {
     $service = get_service_by_slug_or_id('website-development');
 }
 
-// Meta & Page Settings
-$page_title = e($service['title']) . ' Services — 100% Code Ownership | ' . APP_NAME;
-$page_description = e($service['tagline'] ? $service['tagline'] . '. ' . $service['short_desc'] : $service['short_desc']);
-$current_page = 'services';
+// Meta & Page Settings (High-Intent SEO & Multi-Region Directives)
+$page_title = !empty($service['seo_title']) ? $service['seo_title'] : (e($service['title']) . ' Services — 100% Code Ownership | ' . APP_NAME);
+$page_description = !empty($service['seo_description']) ? $service['seo_description'] : e($service['tagline'] ? $service['tagline'] . '. ' . $service['short_desc'] : $service['short_desc']);
+$seo_keywords = !empty($service['seo_keywords']) ? $service['seo_keywords'] : null;
+$current_page = $service['slug'];
+$canonical_url = SITE_URL . '/' . $service['slug'] . '.php';
+$custom_canonical_url = $canonical_url;
 $extra_css = ['css/service-detail.css'];
 
 // Parse deliverables into clean bullet array
@@ -301,6 +304,58 @@ require_once __DIR__ . '/includes/header.php';
           <span class="process-num">MILESTONE 04</span>
           <h4>Launch &amp; Code Handover</h4>
           <p>Production server deployment, domain DNS setup, complete GitHub repository transfer, and 30-day post-launch warranty.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       GLOBAL & OFFSHORE CLIENT COLLABORATION MODEL (US, UK, UAE, GLOBAL)
+       ========================================================================= -->
+  <section class="service-global-delivery-section">
+    <div class="service-deliverables-container">
+      <div class="section-head-center">
+        <span class="section-head-eyebrow">
+          <span class="service-badge-dot"></span>
+          Offshore &amp; International Delivery
+        </span>
+        <h2 class="section-head-title">Built for Global Clients Across Timezones</h2>
+        <p class="section-head-subtitle">
+          Whether you are based in the United States, United Kingdom, Europe, UAE / Middle East, Australia, or India, we provide frictionless remote development with 100% source code ownership.
+        </p>
+      </div>
+
+      <div class="service-global-grid">
+        <div class="global-card">
+          <div class="global-card-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h4>Timezone-Matched Sprints</h4>
+          <p>Dedicated daily standups and sprint reviews with 4+ hours of active overlap with US (EST/PST), UK (GMT), UAE (GST), and Australia (AEST).</p>
+        </div>
+
+        <div class="global-card">
+          <div class="global-card-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </div>
+          <h4>100% Direct IP &amp; GitHub Handover</h4>
+          <p>Zero vendor hostage. Your code is pushed directly to your organization's private GitHub or GitLab repository from milestone one.</p>
+        </div>
+
+        <div class="global-card">
+          <div class="global-card-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h4>Multi-Currency &amp; Milestone Billing</h4>
+          <p>Transparent milestone-based invoices in USD ($), GBP (£), EUR (€), AED, or INR (₹) via Stripe, Wise, SWIFT, and Wire Transfer with zero hidden costs.</p>
+        </div>
+
+        <div class="global-card">
+          <div class="global-card-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h4>Enterprise NDA &amp; Security Standards</h4>
+          <p>Rigorous bilateral NDAs, strict data segregation, encrypted communications, and GDPR / SOC2-conscious software architecture.</p>
         </div>
       </div>
     </div>

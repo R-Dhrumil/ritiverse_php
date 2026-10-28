@@ -16,6 +16,9 @@ function get_default_services_data() {
             'title' => 'Website Development',
             'slug' => 'website-development',
             'icon' => 'web',
+            'seo_title' => 'Custom Web Development Company | Elite Websites & Web Apps | RiTiVerse',
+            'seo_description' => 'Looking to build a high-performance business website or web app? RiTiVerse is a custom web development company delivering ultra-fast React & PHP web applications with 100% source code ownership. Serving India, USA, UK & worldwide.',
+            'seo_keywords' => 'custom web development company, hire web developers, website development services, responsive website design, React PHP web development, offshore web development agency, build custom website, web development company India USA UK',
             'tagline' => 'High-Converting, Ultra-Fast Business Websites with 100% Code Ownership',
             'short_desc' => 'Fast, clean, and mobile-friendly websites built with React and PHP. Designed to load in under 2 seconds and convert visitors into inquiries.',
             'full_desc' => "We architect modern, lightning-fast business websites engineered to rank on Google and convert visitors into paying clients. Unlike conventional digital agencies that deliver rigid WordPress templates burdened with 30+ bloated plugins, every RiTiVerse website is custom-coded using clean HTML5, modern React, and performant PHP. You receive 100% source code ownership pushed directly to your company's GitHub repository from Day 1 with zero ongoing platform lock-in fees.",
@@ -39,7 +42,8 @@ function get_default_services_data() {
                 ['q' => 'How long does it take to design and launch our website?', 'a' => 'Most business websites take between 1 to 2 weeks from kickoff to live deployment. We work in rapid milestone sprints and provide weekly live staging links so you test real progress.'],
                 ['q' => 'Do we get 100% full source code ownership?', 'a' => 'Yes, unconditionally. All source code, design assets, and database schemas are transferred to your GitHub account upon milestone completion. You are never locked into our agency.'],
                 ['q' => 'Will our website be mobile-friendly and fast on 4G/5G?', 'a' => 'Absolutely. We test across actual iPhone and Android devices to guarantee responsive rendering and sub-2-second loading, ensuring maximum lead conversion.'],
-                ['q' => 'Do you help with domain, hosting, and business emails?', 'a' => 'Yes! We configure your domain DNS, set up SSL security certificates, and configure hosting in your own Hostinger, AWS, or cPanel account at zero markup.']
+                ['q' => 'Do you work with international clients across US, UK, and Europe?', 'a' => 'Yes. Over 50% of our software and website development projects are for international clients across the US, UK, UAE, Europe, and Australia. We provide overlapping work hours (EST, PST, GMT, GST), weekly video sprint reviews, direct Slack/WhatsApp communication, and transparent milestone invoicing.'],
+                ['q' => 'How do you ensure search engines rank our new website?', 'a' => 'We build every site with clean semantic HTML5 architecture, sub-2-second Core Web Vitals speed, automated XML sitemaps, OpenGraph metadata, and Google JSON-LD Schema.org rich snippets out of the box.']
             ]
         ],
 
@@ -48,6 +52,9 @@ function get_default_services_data() {
             'title' => 'Mobile App Development',
             'slug' => 'mobile-app-development',
             'icon' => 'mobile',
+            'seo_title' => 'Mobile App Development Company | Native iOS & Android Apps | RiTiVerse',
+            'seo_description' => 'Top mobile app development company engineering high-performance Android & iOS mobile applications with 60fps animations, offline sync, and 100% client code ownership.',
+            'seo_keywords' => 'mobile app development company, hire mobile app developers, react native app development, flutter app development company, ios android app development, cross platform app agency',
             'tagline' => 'Native-Performance Android & iOS Apps Engineered for Scale',
             'short_desc' => 'High-performance Android and iOS apps with smooth animations, offline data access, and instant push notifications for your users.',
             'full_desc' => "From initial interactive wireframing to Google Play Store and Apple App Store publishing, RiTiVerse builds fluid, reliable mobile applications. We leverage modern cross-platform frameworks (React Native, Flutter) and native toolchains to deliver 60fps animations, rock-solid offline caching, real-time push notifications, and biometric security—all backed by clean microservices.",
@@ -79,6 +86,9 @@ function get_default_services_data() {
             'title' => 'Custom Software & APIs',
             'slug' => 'custom-software-development',
             'icon' => 'software',
+            'seo_title' => 'Custom Software Development Company | Bespoke APIs & Portals | RiTiVerse',
+            'seo_description' => 'Bespoke software development company building scalable backend engines, web portals, microservices, and secure APIs with 100% source code ownership. Serving US, UK, UAE & global clients.',
+            'seo_keywords' => 'custom software development company, bespoke software development, hire dedicated developers, enterprise software solutions, offshore software engineering, API development services, custom software agency India',
             'tagline' => 'Bespoke Backend Engines, Microservices & High-Throughput APIs',
             'short_desc' => 'Tailored business software that fits your exact workflow. Automate daily manual tasks and connect third-party APIs easily.',
             'full_desc' => "When commercial off-the-shelf software falls short of your operational workflow, RiTiVerse builds bespoke software engines and microservices from scratch. We architect scalable relational schemas, asynchronous job queues, high-throughput REST and GraphQL APIs, and custom operational portals that eliminate manual spreadsheets and repetitive human data entry.",
@@ -100,7 +110,8 @@ function get_default_services_data() {
             ],
             'faqs' => [
                 ['q' => 'Why invest in custom software instead of buying an existing tool?', 'a' => 'Existing tools charge per-user monthly subscriptions and force your team into rigid workflows. Custom software is built exactly for your business logic, gives you 100% intellectual property ownership, and scales forever with zero extra license costs.'],
-                ['q' => 'Can this software integrate with our existing accounting or logistics systems?', 'a' => 'Yes. We specialize in building secure API bridges that sync bidirectional data with Tally, WhatsApp Business, payment processors, GPS trackers, and shipping partners.']
+                ['q' => 'Can this software integrate with our existing accounting or logistics systems?', 'a' => 'Yes. We specialize in building secure API bridges that sync bidirectional data with Tally, QuickBooks, WhatsApp Business, payment processors, GPS trackers, and shipping partners.'],
+                ['q' => 'Do you provide full API documentation and post-deployment support?', 'a' => 'Yes. Every backend engine and API microservice comes with comprehensive Postman / Swagger documentation, automated database seeders, Docker container manifests, and a 30-day post-launch warranty with team training.']
             ]
         ],
 
@@ -109,10 +120,13 @@ function get_default_services_data() {
             'title' => 'Custom ERP Systems',
             'slug' => 'erp-development',
             'icon' => 'erp',
+            'seo_title' => 'Custom ERP Software Development Company | Enterprise ERP Systems | RiTiVerse',
+            'seo_description' => 'End-to-end custom ERP software development company. Build tailored inventory, billing, multi-warehouse, supply chain, and accounting ERP systems with zero recurring monthly subscription fees and 100% source code ownership.',
+            'seo_keywords' => 'custom erp development company, enterprise erp software development, cloud erp developers, custom erp software solutions, inventory billing erp, bespoke erp system development, offshore erp development, erp development India USA UK',
             'tagline' => 'All-in-One Enterprise Resource Planning with Zero Monthly Subscription Fees',
             'short_desc' => 'Complete management software for billing, stock inventory, purchasing, finances, and staff tracking—custom-built for your business.',
             'full_desc' => "Eliminate expensive per-user SaaS bills. RiTiVerse designs custom Enterprise Resource Planning (ERP) systems tailored to manufacturing, distribution, retail, and service businesses. Centralize your GST billing, multi-warehouse inventory, procurement cycles, staff attendance, and financial ledgers into one blazing-fast, secure dashboard that your entire organization can use without paying monthly user licenses.",
-            'deliverables' => "GST-compliant automated invoicing, credit notes & payment receipt generation\nMulti-location warehouse stock tracking with low-inventory automated alerts\nVendor procurement, purchase orders & supplier payment lifecycle management\nStaff biometric attendance tracking, shift scheduling & payroll computation\nInteractive financial analytics: gross margin, daily P&L, balance sheets & Excel export\nGranular department roles (Accounts, Warehouse, Sales, Management)\n100% Self-hosted server deployment with encrypted nightly database backups",
+            'deliverables' => "GST/VAT-compliant automated invoicing, credit notes & payment receipt generation\nMulti-location warehouse stock tracking with low-inventory automated alerts\nVendor procurement, purchase orders & supplier payment lifecycle management\nStaff biometric attendance tracking, shift scheduling & payroll computation\nInteractive financial analytics: gross margin, daily P&L, balance sheets & Excel export\nGranular department roles (Accounts, Warehouse, Sales, Management)\n100% Self-hosted server deployment with encrypted nightly database backups",
             'tech_stack' => 'PHP 8.3, Laravel, MySQL, React, Redis, Chart.js, PDF Engine',
             'timeline' => '4 – 8 Weeks',
             'starting_price' => 'Fixed Milestone Scope',
@@ -122,16 +136,17 @@ function get_default_services_data() {
             'comparison' => [
                 'competitor_label' => 'Rigid ERP Subscriptions (SAP / Odoo Cloud)',
                 'items' => [
-                    ['feature' => 'License Pricing Model', 'ritiverse' => 'One-time milestone investment. Zero per-user monthly fees.', 'competitor' => '₹2,000 – ₹8,000+ per user per month forever.'],
+                    ['feature' => 'License Pricing Model', 'ritiverse' => 'One-time milestone investment. Zero ($0 / ₹0) per-user monthly fees.', 'competitor' => '$50 – $150+ (₹2,000 – ₹10,000+) per user per month forever.'],
                     ['feature' => 'Customization Flexibility', 'ritiverse' => 'Tailored to your specific manufacturing/trade formula.', 'competitor' => 'Extremely rigid; custom modules cost tens of thousands.'],
                     ['feature' => 'Database Speed & Control', 'ritiverse' => 'Sub-second queries optimized specifically for your volume.', 'competitor' => 'Slow multi-tenant databases with slow export options.'],
                     ['feature' => 'Source Code Ownership', 'ritiverse' => '100% Source code delivered to your private repository.', 'competitor' => 'Zero ownership. Cancel subscription and you lose access.']
                 ]
             ],
             'faqs' => [
-                ['q' => 'Can our ERP generate GST compliant invoices and E-Way bills?', 'a' => 'Yes. We build automated GST invoice numbering, tax calculation (CGST, SGST, IGST), and integration for automated E-Way bill and E-Invoice generation.'],
-                ['q' => 'How many staff members can access the ERP?', 'a' => 'Unlimited. Because you own the software, there are no per-user license fees. You can add 10, 100, or 1,000 employees with custom access roles without paying a single rupee more.'],
-                ['q' => 'Can we access the ERP from home or mobile phones?', 'a' => 'Yes. The system is built with responsive web architecture, allowing managers and sales reps to access dashboards securely from laptops, tablets, and smartphones.']
+                ['q' => 'Why choose custom ERP development over SAP or Odoo subscriptions?', 'a' => 'Traditional ERP subscriptions charge recurring monthly fees per employee that balloon as your company grows, and force your business into rigid predefined workflows. RiTiVerse engineers a custom ERP tailored 100% to your proprietary processes, with zero ongoing per-user license fees and complete source code ownership.'],
+                ['q' => 'Can our ERP handle multi-currency, multi-warehouse inventory, and global taxation?', 'a' => 'Yes. We build automated multi-warehouse tracking, cross-location stock transfers, and automated multi-currency support (USD, GBP, EUR, AED, INR) with compliance for GST, VAT, and local tax schedules.'],
+                ['q' => 'How many staff members can access the ERP?', 'a' => 'Unlimited. Because you own the software, there are no per-user license fees. You can add 10, 100, or 1,000 employees with custom access roles without paying a single dollar or rupee more.'],
+                ['q' => 'Can we access the ERP securely from mobile phones and tablets?', 'a' => 'Yes. The system is built with responsive web architecture and role-based permissions, allowing managers and executives to review reports, approve purchase orders, and monitor stock levels securely from anywhere in the world.']
             ]
         ],
 
@@ -140,9 +155,12 @@ function get_default_services_data() {
             'title' => 'Custom CRM Platforms',
             'slug' => 'crm-development',
             'icon' => 'crm',
-            'tagline' => 'Automated Sales Pipelines, Lead Management & Multi-Channel Customer Telemetry',
-            'short_desc' => 'Manage customer inquiries, assign leads to sales reps, set WhatsApp/email reminders, and track conversion pipelines easily.',
-            'full_desc' => "Stop letting valuable prospective customers slip through the cracks. RiTiVerse creates custom Customer Relationship Management (CRM) platforms that automatically aggregate inbound inquiries from your website forms, WhatsApp, Google Ads, Facebook, and direct calls into a unified visual deal pipeline. Empower your sales reps with automated follow-ups, call logging, and conversion analytics.",
+            'seo_title' => 'Custom CRM Development Company | Bespoke CRM Software Solutions | RiTiVerse',
+            'seo_description' => 'Build a custom CRM platform tailored to your exact sales pipeline. RiTiVerse engineers bespoke CRM software with WhatsApp automation, lead management, and zero monthly SaaS fees with 100% source code ownership for global clients.',
+            'seo_keywords' => 'custom crm development company, custom crm software development, build custom crm, bespoke crm developers, sales pipeline automation software, hire crm developers, crm software development agency, offshore crm development, crm development India USA UK',
+            'tagline' => 'Automated Sales Pipelines, Lead Management & Zero Monthly SaaS Fees',
+            'short_desc' => 'Manage customer inquiries, assign leads to sales reps, set WhatsApp/email reminders, and track conversion pipelines easily with zero monthly user fees.',
+            'full_desc' => "Stop letting valuable prospective customers slip through the cracks. RiTiVerse creates custom Customer Relationship Management (CRM) platforms that automatically aggregate inbound inquiries from your website forms, WhatsApp, Google Ads, Facebook, and direct calls into a unified visual deal pipeline. Empower your sales reps with automated follow-ups, call logging, and conversion analytics without recurring per-seat subscriptions.",
             'deliverables' => "Visual Kanban drag-and-drop lead pipeline with custom deal stages\nAutomated lead capture from Website forms, WhatsApp Business, Meta Ads & Google\nIntelligent round-robin lead distribution among sales representatives\nAutomated WhatsApp and Email follow-up triggers and reminder task queues\nDetailed client interaction timelines, meeting notes, call logs & document attachments\nExecutive conversion analytics: rep performance, close rates & revenue forecasting\n100% Source code ownership and self-hosted database privacy",
             'tech_stack' => 'React, Node.js, PHP, MySQL, WhatsApp Business API, WebSockets',
             'timeline' => '3 – 5 Weeks',
@@ -153,13 +171,15 @@ function get_default_services_data() {
             'comparison' => [
                 'competitor_label' => 'SaaS CRMs (Salesforce / HubSpot / Zoho)',
                 'items' => [
-                    ['feature' => 'Per-Seat User Pricing', 'ritiverse' => '₹0 per-user fees. Add your entire team with no extra costs.', 'competitor' => '₹3,000 – ₹12,000 per user per month.'],
+                    ['feature' => 'Per-Seat User Pricing', 'ritiverse' => 'Zero ($0 / ₹0) per-user fees. Add your entire team with no extra costs.', 'competitor' => '$40 – $150+ (₹3,000 – ₹12,000) per user per month.'],
                     ['feature' => 'Direct WhatsApp Integration', 'ritiverse' => 'Deep native WhatsApp Business Cloud API automation.', 'competitor' => 'Third-party plugins with costly message markups.'],
                     ['feature' => 'Lead Privacy & Security', 'ritiverse' => 'Stored in your isolated private database. No shared data.', 'competitor' => 'Hosted on public multi-tenant clouds.'],
                     ['feature' => 'Custom Fields & Pipelines', 'ritiverse' => 'Unlimited custom fields, deal stages and automation rules.', 'competitor' => 'Locked behind high-end Enterprise plans.']
                 ]
             ],
             'faqs' => [
+                ['q' => 'How much does custom CRM development cost compared to Salesforce or Zoho?', 'a' => 'Off-the-shelf SaaS CRMs charge $25 to $150+ per user every month. For a 20-person team, that is $6,000 to $36,000+ per year forever. RiTiVerse builds a custom CRM tailored 100% to your workflows for a fixed one-time milestone fee with 100% source code ownership and zero per-user monthly bills.'],
+                ['q' => 'Can RiTiVerse act as an offshore CRM development partner for US, UK, or global businesses?', 'a' => 'Yes. We offer offshore custom CRM engineering with dedicated developer teams, complete IP and GitHub repository transfer, bilateral NDA security, and seamless multi-currency payment processing (USD, GBP, EUR, AED) via Stripe or wire transfer.'],
                 ['q' => 'Can leads from our website and WhatsApp automatically appear in the CRM?', 'a' => 'Yes! The moment a prospect fills out a website form or sends a WhatsApp inquiry, the CRM automatically creates a lead card and alerts the assigned sales representative instantly.'],
                 ['q' => 'Can we restrict what each sales executive can see?', 'a' => 'Yes. Role-based permissions ensure sales reps only view their assigned leads, while managers and business owners have complete visibility into all leads, revenues, and conversion stats.']
             ]
@@ -170,6 +190,9 @@ function get_default_services_data() {
             'title' => 'E-Commerce Storefronts',
             'slug' => 'ecommerce-development',
             'icon' => 'ecommerce',
+            'seo_title' => 'Custom E-Commerce Development Company | Fast Online Stores | RiTiVerse',
+            'seo_description' => 'Custom e-commerce web application development with sub-2-second catalog loading, 1-click checkout, 0% sales commission, and global multi-currency payment integration.',
+            'seo_keywords' => 'custom ecommerce development company, ecommerce website development, build online store, stripe razorpay ecommerce development, bespoke ecommerce solutions',
             'tagline' => 'High-Converting, 60fps Online Stores with 1-Click Checkout & Zero Monthly Cut',
             'short_desc' => 'Fast online shopping stores with one-click checkout, automated order management, and secure Razorpay, UPI, and card payments.',
             'full_desc' => "Avoid surrendering 2% to 5% of your gross sales in platform fees to hosted e-commerce builders. RiTiVerse engineers high-speed, custom e-commerce web applications with sub-2-second product catalog loading, instant faceted filtering, automated stock synchronization, and lightning-fast UPI / Razorpay payment flows that maximize checkout conversion.",
@@ -190,7 +213,7 @@ function get_default_services_data() {
                 ]
             ],
             'faqs' => [
-                ['q' => 'Which payment gateways can we connect to our store?', 'a' => 'We integrate all major payment gateways including Razorpay, PhonePe, Cashfree, PayU, Stripe, and Cash on Delivery (COD) with automated OTP verification.'],
+                ['q' => 'Which payment gateways can we connect to our store?', 'a' => 'We integrate all major payment gateways including Razorpay, Stripe, PhonePe, Cashfree, PayU, and Cash on Delivery (COD) with automated OTP verification.'],
                 ['q' => 'Can orders be automatically sent to shipping couriers?', 'a' => 'Yes. We integrate courier APIs like Shiprocket and Delhivery so tracking numbers and shipping labels generate automatically when an order is packed.'],
                 ['q' => 'Do you take any percentage of our sales?', 'a' => 'Never. Unlike Shopify, RiTiVerse takes 0% commission on your sales. 100% of your earnings go straight to your bank account.']
             ]
@@ -331,13 +354,22 @@ function get_service_by_slug_or_id($slug_or_id) {
             }
             $row = $stmt->fetch();
             if ($row) {
-                // Enrich with comparison & FAQs from defaults if matching slug
+                // Enrich with comparison, FAQs & SEO metadata from defaults if matching slug
                 if (isset($defaults[$row['slug']])) {
                     if (empty($row['comparison'])) {
                         $row['comparison'] = $defaults[$row['slug']]['comparison'] ?? null;
                     }
                     if (empty($row['faqs'])) {
                         $row['faqs'] = $defaults[$row['slug']]['faqs'] ?? null;
+                    }
+                    if (empty($row['seo_title'])) {
+                        $row['seo_title'] = $defaults[$row['slug']]['seo_title'] ?? null;
+                    }
+                    if (empty($row['seo_description'])) {
+                        $row['seo_description'] = $defaults[$row['slug']]['seo_description'] ?? null;
+                    }
+                    if (empty($row['seo_keywords'])) {
+                        $row['seo_keywords'] = $defaults[$row['slug']]['seo_keywords'] ?? null;
                     }
                 }
                 return $row;

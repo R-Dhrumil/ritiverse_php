@@ -525,6 +525,61 @@
   margin: 0;
 }
 
+/* Global / International Client Delivery Section */
+.service-global-delivery-section {
+  padding: 90px 24px;
+  background: #FAF7EE;
+  border-bottom: 1px solid var(--svc-card-border);
+}
+
+.service-global-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 50px;
+}
+
+.global-card {
+  background: #FFFFFF;
+  border: 1px solid var(--svc-card-border);
+  border-radius: 14px;
+  padding: 28px 22px;
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.global-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--svc-accent);
+  box-shadow: 0 12px 28px -8px rgba(248, 104, 0, 0.12);
+}
+
+.global-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--svc-accent-subtle);
+  color: var(--svc-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.global-card h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--svc-text-main);
+  margin: 0 0 10px 0;
+}
+
+.global-card p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--svc-text-muted);
+  margin: 0;
+}
+
 /* Service FAQs */
 .service-faq-section {
   padding: 90px 24px;
@@ -595,6 +650,10 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .service-global-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .service-tech-container {
     flex-direction: column;
     align-items: flex-start;
@@ -611,6 +670,10 @@
   }
 
   .service-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-global-grid {
     grid-template-columns: 1fr;
   }
 

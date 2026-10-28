@@ -37,7 +37,7 @@ define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : ($isLocalHos
 define('DB_CHARSET', 'utf8mb4');
 
 // High-Priority SEO Search Keywords (Rank #1 for Website Making, CRM, ERP, Software Dev)
-define('SEO_PRIMARY_KEYWORDS', 'website making, website development company India, custom CRM development, ERP software development, ERP billing software, custom software development, mobile app development, e-commerce website design, React PHP development agency, zero vendor lock-in software');
+define('SEO_PRIMARY_KEYWORDS', 'custom CRM development company, custom ERP software development, website development company, offshore software development India, custom software engineering, hire CRM developers, enterprise ERP systems, bespoke web applications, zero lock-in software');
 define('SEO_AUTHOR', 'RiTiVerse Engineering Studio');
 define('SEO_GEO_REGION', 'IN');
 define('SEO_GEO_PLACENAME', 'India');

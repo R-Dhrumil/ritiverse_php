@@ -52,8 +52,16 @@ if (preg_match('/(G-[A-Z0-9]+|GTM-[A-Z0-9]+|UA-[0-9]+-[0-9]+)/i', $google_analyt
 
 <?php
 // Dynamic Canonical, SEO & Connectivity Directives
-$canonical_url = SITE_URL . '/' . ($current_page === 'home' ? '' : ($current_page . '.php'));
-$seo_keywords = get_setting('seo_primary_keywords', defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'website making, CRM software, ERP development, software development company');
+if (!isset($canonical_url) || empty($canonical_url)) {
+    if (isset($custom_canonical_url) && !empty($custom_canonical_url)) {
+        $canonical_url = $custom_canonical_url;
+    } else {
+        $canonical_url = SITE_URL . '/' . ($current_page === 'home' ? '' : ($current_page . '.php'));
+    }
+}
+if (!isset($seo_keywords) || empty($seo_keywords)) {
+    $seo_keywords = get_setting('seo_primary_keywords', defined('SEO_PRIMARY_KEYWORDS') ? SEO_PRIMARY_KEYWORDS : 'custom CRM development company, custom ERP software development, website development company, offshore software development India, custom software engineering, hire CRM developers, enterprise ERP systems, bespoke web applications, zero lock-in software');
+}
 $google_verification = trim(get_setting('google_site_verification', defined('GOOGLE_SITE_VERIFICATION') ? GOOGLE_SITE_VERIFICATION : ''));
 if (preg_match('/content=["\']([^"\']+)["\']/i', $google_verification, $m_gsc)) {
     $google_verification = $m_gsc[1];
@@ -83,11 +91,22 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
 ?>
   <!-- High-Ranking SEO & Indexing Meta Tags -->
   <link rel="canonical" href="<?= e($canonical_url) ?>">
+
+  <!-- International Multi-Region Hreflang Targeting Directives -->
+  <link rel="alternate" hreflang="x-default" href="<?= e($canonical_url) ?>">
+  <link rel="alternate" hreflang="en" href="<?= e($canonical_url) ?>">
+  <link rel="alternate" hreflang="en-US" href="<?= e($canonical_url) ?>">
+  <link rel="alternate" hreflang="en-GB" href="<?= e($canonical_url) ?>">
+  <link rel="alternate" hreflang="en-CA" href="<?= e($canonical_url) ?>">
+  <link rel="alternate" hreflang="en-AU" href="<?= e($canonical_url) ?>">
+  <link rel="alternate" hreflang="en-AE" href="<?= e($canonical_url) ?>">
+  <link rel="alternate" hreflang="en-IN" href="<?= e($canonical_url) ?>">
+
   <meta name="keywords" content="<?= e($seo_keywords) ?>">
   <meta name="author" content="RiTiVerse Studio">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="geo.region" content="IN">
-  <meta name="geo.placename" content="India">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="general">
   <?php if (!empty($google_verification)): ?>
   <meta name="google-site-verification" content="<?= e($google_verification) ?>">
   <?php endif; ?>
@@ -124,7 +143,12 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
   <meta property="og:description" content="<?= e($page_description) ?>">
   <meta property="og:image" content="<?= SITE_URL ?>/assets/logo.png">
   <meta property="og:site_name" content="<?= e(APP_NAME) ?>">
-  <meta property="og:locale" content="en_IN">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:locale:alternate" content="en_IN">
+  <meta property="og:locale:alternate" content="en_AE">
+  <meta property="og:locale:alternate" content="en_CA">
+  <meta property="og:locale:alternate" content="en_AU">
 
   <!-- Twitter Card Data -->
   <meta name="twitter:card" content="summary_large_image">
@@ -173,7 +197,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
           "@type": "PostalAddress",
           "addressCountry": "IN"
         },
-        "areaServed": ["IN", "US", "GB", "AE", "CA", "AU"],
+        "areaServed": ["Worldwide", "US", "GB", "AE", "CA", "AU", "IN", "DE", "SG"],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Software Engineering Services",
@@ -242,18 +266,84 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
             "name": "Home",
             "item": "<?= SITE_URL ?>/"
           }
-          <?php if ($current_page !== 'home'): ?>
+          <?php if ($current_page === 'services'): ?>
           ,
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "<?= ucfirst($current_page) ?>",
+            "name": "Services",
+            "item": "<?= SITE_URL ?>/services.php"
+          }
+          <?php elseif (isset($service) && !empty($service)): ?>
+          ,
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "<?= SITE_URL ?>/services.php"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "<?= e($service['title']) ?>",
+            "item": "<?= e($canonical_url) ?>"
+          }
+          <?php elseif ($current_page !== 'home'): ?>
+          ,
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "<?= ucfirst(str_replace('-', ' ', $current_page)) ?>",
             "item": "<?= e($canonical_url) ?>"
           }
           <?php endif; ?>
         ]
       }
-      <?php if ($current_page === 'home' || $current_page === 'services'): ?>
+      <?php if (!empty($service)): ?>
+      ,
+      {
+        "@type": "Service",
+        "@id": "<?= e($canonical_url) ?>/#service",
+        "name": "<?= e($service['title']) ?>",
+        "serviceType": "<?= e($service['title']) ?>",
+        "description": "<?= e($page_description) ?>",
+        "provider": {
+          "@id": "<?= SITE_URL ?>/#organization"
+        },
+        "areaServed": ["Worldwide", "US", "GB", "AE", "CA", "AU", "IN", "DE", "SG"],
+        "termsOfService": "<?= SITE_URL ?>/",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "description": "Fixed scope milestone sprints with 100% source code ownership and zero vendor lock-in"
+        }
+      }
+      <?php endif; ?>
+      <?php if (!empty($service['faqs'])): ?>
+      ,
+      {
+        "@type": "FAQPage",
+        "@id": "<?= e($canonical_url) ?>/#faq",
+        "mainEntity": [
+          <?php 
+            $faq_schemas = [];
+            foreach ($service['faqs'] as $faq_item) {
+                $faq_schemas[] = json_encode([
+                    '@type' => 'Question',
+                    'name' => $faq_item['q'],
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => $faq_item['a']
+                    ]
+                ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+            }
+            echo implode(",\n          ", $faq_schemas);
+          ?>
+        ]
+      }
+      <?php elseif ($current_page === 'home' || $current_page === 'services'): ?>
       ,
       {
         "@type": "FAQPage",
