@@ -2,3 +2,5 @@ node_modules/
 .agents/
 .claude/
 logs/
+
+dpdp_compliance_audit_report.md
