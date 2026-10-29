@@ -11,10 +11,11 @@ START TRANSACTION;
 -- 1. Update Global SEO & International Search Settings in `site_settings`
 -- ------------------------------------------------------------------------------
 INSERT INTO `site_settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
-('seo_primary_keywords', 'custom CRM development company, custom ERP software development, website development company, offshore software development India, custom software engineering, hire CRM developers, enterprise ERP systems, bespoke web applications, zero lock-in software', 'seo'),
-('seo_meta_title', 'Custom Web, CRM & ERP Software Development Company | RiTiVerse', 'seo'),
-('seo_meta_description', 'Custom software development company delivering bespoke websites, custom CRM platforms, enterprise ERP systems, and mobile apps with 100% source code ownership. Serving India, USA, UK, UAE & global clients.', 'seo'),
-('seo_target_regions', 'Worldwide, US, UK, UAE, CA, AU, IN, DE, SG', 'seo')
+('seo_primary_keywords', 'web development company in vadodara, website developers vadodara, best web design company vadodara, custom CRM development vadodara, custom ERP software development, software development company in vadodara gujarat, offshore software development India, custom software engineering, hire CRM developers, enterprise ERP systems, zero lock-in software', 'seo'),
+('seo_meta_title', 'Web Development Company in Vadodara | Custom CRM & ERP Software | RiTiVerse', 'seo'),
+('seo_meta_description', 'RiTiVerse is a leading web development company in Vadodara, Gujarat. We engineer custom websites, CRM platforms & ERP software with 100% code ownership. Serving Vadodara & worldwide.', 'seo'),
+('seo_target_regions', 'Vadodara, Gujarat, India, Worldwide, US, UK, UAE, CA, AU, DE, SG', 'seo'),
+('office_location', 'Vadodara, Gujarat, India • Global Client Delivery', 'contact')
 ON DUPLICATE KEY UPDATE 
   `setting_value` = VALUES(`setting_value`),
   `setting_group` = VALUES(`setting_group`);
@@ -36,12 +37,12 @@ UPDATE `services` SET
   `title` = 'Website Development',
   `tagline` = 'High-Converting, Ultra-Fast Business Websites with 100% Code Ownership',
   `short_desc` = 'Fast, clean, and mobile-friendly websites built with React and PHP. Designed to load in under 2 seconds and convert visitors into inquiries.',
-  `full_desc` = 'We architect modern, lightning-fast business websites engineered to rank on Google and convert visitors into paying clients. Unlike conventional digital agencies that deliver rigid WordPress templates burdened with 30+ bloated plugins, every RiTiVerse website is custom-coded using clean HTML5, modern React, and performant PHP. You receive 100% source code ownership pushed directly to your company\'s GitHub repository from Day 1 with zero ongoing platform lock-in fees.',
+  `full_desc` = 'We architect modern, lightning-fast business websites engineered to rank on Google and convert visitors into paying clients. Based in Vadodara, Gujarat, we deliver custom websites for local leaders and international enterprises. Unlike conventional digital agencies that deliver rigid WordPress templates burdened with 30+ bloated plugins, every RiTiVerse website is custom-coded using clean HTML5, modern React, and performant PHP. You receive 100% source code ownership pushed directly to your company\'s GitHub repository from Day 1 with zero ongoing platform lock-in fees.',
   `deliverables` = 'Sub-2-second page load speeds on mobile & desktop networks\nBespoke UI/UX design calibrated to your brand identity & typography\nTechnical SEO structure, OpenGraph cards & Schema.org rich snippets\nIntegrated inquiry capture forms with instant WhatsApp & email alerts\nFull responsive optimization across iOS, Android, tablets & ultra-wide screens\n100% Source code ownership with GitHub / GitLab repository handover\nFree 30-day post-launch warranty, speed audits & technical training',
   `tech_stack` = 'React 19, PHP 8.3, HTML5, CSS Tokens, Vite, Tailwind, MySQL',
-  `seo_title` = 'Custom Web Development Company | Elite Websites & Web Apps | RiTiVerse',
-  `seo_description` = 'Looking to build a high-performance business website or web app? RiTiVerse is a custom web development company delivering ultra-fast React & PHP web applications with 100% source code ownership. Serving India, USA, UK & worldwide.',
-  `seo_keywords` = 'custom web development company, hire web developers, website development services, responsive website design, React PHP web development, offshore web development agency, build custom website, web development company India USA UK'
+  `seo_title` = 'Web Development Company in Vadodara | Custom Websites | RiTiVerse',
+  `seo_description` = 'Top web development company in Vadodara, Gujarat. We engineer custom business websites, portals & web apps with sub-2s load time and 100% source code ownership.',
+  `seo_keywords` = 'web development company in vadodara, website developers vadodara, web design company in vadodara, custom web development vadodara, best website development company in vadodara, hire web developers in vadodara, IT company in vadodara gujarat, offshore web development India'
 WHERE `slug` = 'website-development';
 
 -- Service 2: Custom CRM Platforms
@@ -52,9 +53,9 @@ UPDATE `services` SET
   `full_desc` = 'Stop letting valuable prospective customers slip through the cracks. RiTiVerse creates custom Customer Relationship Management (CRM) platforms that automatically aggregate inbound inquiries from your website forms, WhatsApp, Google Ads, Facebook, and direct calls into a unified visual deal pipeline. Empower your sales reps with automated follow-ups, call logging, and conversion analytics without recurring per-seat subscriptions.',
   `deliverables` = 'Visual Kanban drag-and-drop lead pipeline with custom deal stages\nAutomated lead capture from Website forms, WhatsApp Business, Meta Ads & Google\nIntelligent round-robin lead distribution among sales representatives\nAutomated WhatsApp and Email follow-up triggers and reminder task queues\nDetailed client interaction timelines, meeting notes, call logs & document attachments\nExecutive conversion analytics: rep performance, close rates & revenue forecasting\n100% Source code ownership and self-hosted database privacy',
   `tech_stack` = 'React, Node.js, PHP, MySQL, WhatsApp Business API, WebSockets',
-  `seo_title` = 'Custom CRM Development Company | Bespoke CRM Software Solutions | RiTiVerse',
-  `seo_description` = 'Build a custom CRM platform tailored to your exact sales pipeline. RiTiVerse engineers bespoke CRM software with WhatsApp automation, lead management, and zero monthly SaaS fees with 100% source code ownership for global clients.',
-  `seo_keywords` = 'custom crm development company, custom crm software development, build custom crm, bespoke crm developers, sales pipeline automation software, hire crm developers, crm software development agency, offshore crm development, crm development India USA UK'
+  `seo_title` = 'Custom CRM Software Development Company in Vadodara | RiTiVerse',
+  `seo_description` = 'Leading custom CRM development company in Vadodara. Automated WhatsApp follow-ups, sales pipelines & lead management with zero monthly SaaS subscription fees.',
+  `seo_keywords` = 'crm development company in vadodara, custom crm software vadodara, crm developers vadodara gujarat, lead management crm vadodara, bespoke crm software development, offshore crm development India'
 WHERE `slug` = 'crm-development';
 
 -- Service 3: Custom ERP Systems
@@ -65,9 +66,9 @@ UPDATE `services` SET
   `full_desc` = 'Eliminate expensive per-user SaaS bills. RiTiVerse designs custom Enterprise Resource Planning (ERP) systems tailored to manufacturing, distribution, retail, and service businesses. Centralize your GST billing, multi-warehouse inventory, procurement cycles, staff attendance, and financial ledgers into one blazing-fast, secure dashboard that your entire organization can use without paying monthly user licenses.',
   `deliverables` = 'GST/VAT-compliant automated invoicing, credit notes & payment receipt generation\nMulti-location warehouse stock tracking with low-inventory automated alerts\nVendor procurement, purchase orders & supplier payment lifecycle management\nStaff biometric attendance tracking, shift scheduling & payroll computation\nInteractive financial analytics: gross margin, daily P&L, balance sheets & Excel export\nGranular department roles (Accounts, Warehouse, Sales, Management)\n100% Self-hosted server deployment with encrypted nightly database backups',
   `tech_stack` = 'PHP 8.3, Laravel, MySQL, React, Redis, Chart.js, PDF Engine',
-  `seo_title` = 'Custom ERP Software Development Company | Enterprise ERP Systems | RiTiVerse',
-  `seo_description` = 'End-to-end custom ERP software development company. Build tailored inventory, billing, multi-warehouse, supply chain, and accounting ERP systems with zero recurring monthly subscription fees and 100% source code ownership.',
-  `seo_keywords` = 'custom erp development company, enterprise erp software development, cloud erp developers, custom erp software solutions, inventory billing erp, bespoke erp system development, offshore erp development, erp development India USA UK'
+  `seo_title` = 'Custom ERP & Billing Software Development in Vadodara | RiTiVerse',
+  `seo_description` = 'Custom ERP and GST billing software company in Vadodara, Gujarat. Tailored inventory, dispatch & accounting ERP platforms with zero monthly per-user fees.',
+  `seo_keywords` = 'erp software company in vadodara, custom erp development vadodara, billing software vadodara gujarat, inventory management software vadodara, enterprise erp systems vadodara, offshore erp development India'
 WHERE `slug` = 'erp-development';
 
 -- Service 4: Custom Software & APIs

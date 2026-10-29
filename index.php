@@ -2,9 +2,9 @@
 /**
  * RiTiVerse — RItiverse — Elite Website & Software Development
  */
-$page_title = 'Custom Web, CRM & ERP Software Development Company | RiTiVerse';
-$page_description = 'RiTiVerse builds custom websites, CRM platforms, ERP software, and mobile apps with 100% source code ownership. Serving India, USA, UK, UAE & worldwide.';
-$seo_keywords = 'custom web development company, custom CRM development, custom ERP software development, hire software developers, bespoke software development company, offshore web development, enterprise software development, RiTiVerse';
+$page_title = 'Web Development Company in Vadodara | Custom CRM & ERP Software | RiTiVerse';
+$page_description = 'RiTiVerse is a leading web development company in Vadodara, Gujarat. We engineer custom websites, CRM platforms & ERP software with 100% code ownership.';
+$seo_keywords = 'web development company in vadodara, website developers vadodara, web design company in vadodara, custom CRM development vadodara, ERP software company vadodara, software development company in vadodara gujarat, RiTiVerse';
 $current_page = 'home';
 $extra_css = ['css/index.css'];
 
@@ -23,7 +23,7 @@ require_once __DIR__ . '/includes/header.php';
     <div class="hero-header">
       <div class="subpage-badge" style="margin-bottom: 16px;">
         <span class="subpage-badge-dot"></span>
-        RiTiVerse Official Studio
+        Web &amp; Software Studio • Vadodara, Gujarat
       </div>
       <h1 class="hero-title">
         <span class="hero-title-main">You Own It.</span>

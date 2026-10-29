@@ -46,6 +46,7 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
             <span><strong>Inquiries:</strong> <a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a></span>
             <span><strong>Support:</strong> <a href="mailto:<?= e(SUPPORT_EMAIL) ?>"><?= e(SUPPORT_EMAIL) ?></a></span>
             <span><strong>Phone:</strong> <a href="tel:+919426782646">+91 94267 82646</a> , <a href="tel:+919104253289">+91 91042 53289</a></span>
+            <span><strong>Studio:</strong> Vadodara, Gujarat, India (Serving Locally &amp; Worldwide)</span>
           </div>
           <style>
             .footer-contact-mini a,
@@ -169,7 +170,7 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
       <!-- Bottom Row -->
       <div class="footer-bottom-row">
         <div class="footer-brand">
-          <span class="footer-copy">© <?= date('Y') ?> <?= e(APP_NAME) ?>. All rights reserved. 100% Client Source Code Ownership Guaranteed. <a href="privacy-policy.php" style="color: inherit; text-decoration: underline; margin-left: 8px;">DPDP Act 2023 Compliant</a></span>
+          <span class="footer-copy">© <?= date('Y') ?> <?= e(APP_NAME) ?>. Web Development Company in Vadodara, Gujarat. All rights reserved. 100% Client Code Ownership Guaranteed. <a href="privacy-policy.php" style="color: inherit; text-decoration: underline; margin-left: 8px;">DPDP Act 2023 Compliant</a></span>
         </div>
         <div class="footer-status-pill">
           <span class="footer-status-dot"></span>

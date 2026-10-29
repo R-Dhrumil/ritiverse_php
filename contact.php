@@ -2,8 +2,9 @@
 /**
  * RiTiVerse — Contact & Project Consultation Page
  */
-$page_title = 'Contact RiTiVerse — Get a Free Software & Web Project Quote';
-$page_description = 'Talk directly with senior developers for a free project estimate on website making, custom CRM, ERP software, or mobile apps. 24-hour response guarantee.';
+$page_title = 'Contact Web Development Company in Vadodara | RiTiVerse';
+$page_description = 'Contact RiTiVerse, premier web development company in Vadodara, Gujarat. Get a free quote for custom websites, CRM, ERP & apps with 100% code ownership.';
+$seo_keywords = 'contact web development company vadodara, web developers vadodara gujarat, hire website developers vadodara, software company contact vadodara, RiTiVerse office vadodara';
 $current_page = 'contact';
 $extra_css = ['css/contact.css'];
 
@@ -170,6 +171,21 @@ require_once __DIR__ . '/includes/header.php';
               <a href="tel:+919426782646">+91 94267 82646</a>
               <a href="tel:+919104253289" style="display:block; margin-top: 4px;">+91 91042 53289</a>
               <p style="font-size: 11px; color: var(--text-secondary-dark); margin-top: 2px;">Mon – Sat, 10 AM – 7 PM IST</p>
+            </div>
+          </div>
+
+          <!-- Studio Location Item -->
+          <div class="direct-contact-item">
+            <div class="contact-icon-bubble">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Engineering Studio</h4>
+              <p style="font-weight: 600; color: var(--text-primary-dark); margin: 2px 0;">Vadodara, Gujarat, India</p>
+              <p style="font-size: 11px; color: var(--text-secondary-dark); margin-top: 2px;">Serving Vadodara, Gujarat &amp; Global Clients (USA, UK, UAE)</p>
             </div>
           </div>
 
