@@ -193,9 +193,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </svg>
       </button>
 
-      <div class="creds-hint">
-        Default: <strong>admin</strong> • Pass: <strong>Admin@123</strong>
-      </div>
     </form>
   </div>
 
