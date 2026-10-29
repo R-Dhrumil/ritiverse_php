@@ -278,4 +278,91 @@ function anonymize_inquiry($inquiry_id) {
     }
 }
 
+/**
+ * Self-Healing Schema Helper: Ensure DPDP Act database tables and columns exist automatically
+ * Prevents "1146 Table doesn't exist" errors on fresh cPanel deployments without requiring manual phpMyAdmin import.
+ */
+function ensure_dpdp_tables($db = null) {
+    if (!$db && function_exists('get_db')) {
+        $db = get_db();
+    }
+    if (!$db) return false;
+
+    static $checked = false;
+    if ($checked) return true;
+
+    try {
+        // 1. Create dpdp_requests table if not exists
+        $db->exec("CREATE TABLE IF NOT EXISTS `dpdp_requests` (
+          `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+          `ticket_id` VARCHAR(32) NOT NULL UNIQUE,
+          `name` VARCHAR(100) NOT NULL,
+          `email` VARCHAR(120) NOT NULL,
+          `phone` VARCHAR(30) NULL,
+          `request_type` ENUM('access', 'correction', 'erasure', 'withdraw_consent', 'grievance') NOT NULL,
+          `details` TEXT NOT NULL,
+          `status` ENUM('pending', 'in_review', 'fulfilled', 'rejected') NOT NULL DEFAULT 'pending',
+          `admin_notes` TEXT NULL,
+          `ip_address` VARCHAR(45) NULL,
+          `resolved_at` DATETIME NULL,
+          `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          `updated_at` DATETIME NULL ON UPDATE CURRENT_TIMESTAMP,
+          PRIMARY KEY (`id`),
+          INDEX `idx_req_type` (`request_type`),
+          INDEX `idx_req_status` (`status`),
+          INDEX `idx_req_email` (`email`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+
+        // 2. Ensure columns exist on inquiries table
+        try {
+            $colsStmt = $db->query("SHOW COLUMNS FROM `inquiries`");
+            $existingCols = $colsStmt ? $colsStmt->fetchAll(PDO::FETCH_COLUMN) : [];
+            
+            if (!in_array('consent_given', $existingCols)) {
+                $db->exec("ALTER TABLE `inquiries` ADD COLUMN `consent_given` TINYINT(1) NOT NULL DEFAULT 0 AFTER `status`");
+            }
+            if (!in_array('consent_timestamp', $existingCols)) {
+                $db->exec("ALTER TABLE `inquiries` ADD COLUMN `consent_timestamp` DATETIME NULL AFTER `consent_given`");
+            }
+            if (!in_array('consent_ip', $existingCols)) {
+                $db->exec("ALTER TABLE `inquiries` ADD COLUMN `consent_ip` VARCHAR(45) NULL AFTER `consent_timestamp`");
+            }
+            if (!in_array('consent_version', $existingCols)) {
+                $db->exec("ALTER TABLE `inquiries` ADD COLUMN `consent_version` VARCHAR(20) NOT NULL DEFAULT 'v1.0' AFTER `consent_ip`");
+            }
+            if (!in_array('is_anonymized', $existingCols)) {
+                $db->exec("ALTER TABLE `inquiries` ADD COLUMN `is_anonymized` TINYINT(1) NOT NULL DEFAULT 0 AFTER `consent_version`");
+            }
+            if (!in_array('anonymized_at', $existingCols)) {
+                $db->exec("ALTER TABLE `inquiries` ADD COLUMN `anonymized_at` DATETIME NULL AFTER `is_anonymized`");
+            }
+        } catch (Exception $colEx) {
+            error_log("Inquiries column check notice: " . $colEx->getMessage());
+        }
+
+        // 3. Seed site_settings if needed
+        try {
+            $checkSetting = $db->prepare("SELECT COUNT(*) FROM `site_settings` WHERE `setting_key` = 'dpdp_dpo_email'");
+            $checkSetting->execute();
+            if ((int)$checkSetting->fetchColumn() === 0) {
+                $db->exec("INSERT INTO `site_settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
+                    ('dpdp_dpo_name', 'Grievance Redressal Officer', 'dpdp'),
+                    ('dpdp_dpo_email', 'privacy@ritiverse.in', 'dpdp'),
+                    ('dpdp_dpo_designation', 'Data Protection & Grievance Officer', 'dpdp'),
+                    ('dpdp_retention_days', '365', 'dpdp'),
+                    ('dpdp_cookie_consent_active', '1', 'dpdp')
+                ON DUPLICATE KEY UPDATE `setting_key` = `setting_key`");
+            }
+        } catch (Exception $settEx) {
+            error_log("DPDP settings seed notice: " . $settEx->getMessage());
+        }
+
+        $checked = true;
+        return true;
+    } catch (Exception $e) {
+        error_log("ensure_dpdp_tables error: " . $e->getMessage());
+        return false;
+    }
+}
+
 

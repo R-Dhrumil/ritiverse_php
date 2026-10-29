@@ -13,6 +13,11 @@ $db = get_db();
 $message = '';
 $error = '';
 
+// Self-healing schema auto-sync (prevents 1146 table doesn't exist error)
+if ($db) {
+    ensure_dpdp_tables($db);
+}
+
 // Handle Data Export (Right to Access - Section 11)
 if (isset($_GET['export_email']) && $db) {
     if (!verify_csrf_token($_GET['csrf'] ?? '')) {
@@ -165,7 +170,19 @@ if ($db) {
         $stmt->execute($params);
         $dpdp_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
-        $error = "Could not fetch DPDP requests: " . $e->getMessage();
+        // Attempt self-healing schema creation and retry once
+        if (ensure_dpdp_tables($db)) {
+            try {
+                $stmt = $db->prepare($sql);
+                $stmt->execute($params);
+                $dpdp_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $error = '';
+            } catch (Exception $e2) {
+                $error = "Could not fetch DPDP requests: " . $e2->getMessage();
+            }
+        } else {
+            $error = "Could not fetch DPDP requests: " . $e->getMessage();
+        }
     }
 }
 

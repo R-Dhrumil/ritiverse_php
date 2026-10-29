@@ -112,6 +112,7 @@ $db = get_db();
 $inserted = false;
 
 if ($db) {
+    ensure_dpdp_tables($db);
     try {
         $stmt = $db->prepare("INSERT INTO dpdp_requests (ticket_id, name, email, phone, request_type, details, status, ip_address, created_at) VALUES (?, ?, ?, ?, ?, ?, 'pending', ?, NOW())");
         $stmt->execute([$ticket_id, $name, $email, $phone, $request_type, $details, $client_ip]);
