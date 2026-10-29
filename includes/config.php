@@ -36,11 +36,16 @@ define('DB_USER', getenv('DB_USER') ?: ($isLocalHost ? 'root' : 'ritivers_main')
 define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : ($isLocalHost ? '' : 'ritivers_main'));
 define('DB_CHARSET', 'utf8mb4');
 
-// High-Priority SEO Search Keywords (Rank #1 for Website Making, CRM, ERP, Software Dev)
-define('SEO_PRIMARY_KEYWORDS', 'custom CRM development company, custom ERP software development, website development company, offshore software development India, custom software engineering, hire CRM developers, enterprise ERP systems, bespoke web applications, zero lock-in software');
+// High-Priority SEO Search Keywords (Rank #1 for Web Development in Vadodara, CRM, ERP, Software Dev)
+define('SEO_PRIMARY_KEYWORDS', 'web development company in vadodara, website developers vadodara, best web design company vadodara, custom CRM development vadodara, custom ERP software development, software development company in vadodara gujarat, offshore software development India, custom software engineering, hire CRM developers, enterprise ERP systems, zero lock-in software');
 define('SEO_AUTHOR', 'RiTiVerse Engineering Studio');
-define('SEO_GEO_REGION', 'IN');
-define('SEO_GEO_PLACENAME', 'India');
+define('SEO_GEO_REGION', 'IN-GJ');
+define('SEO_GEO_PLACENAME', 'Vadodara, Gujarat, India');
+define('SEO_GEO_LATITUDE', '22.307159');
+define('SEO_GEO_LONGITUDE', '73.181219');
+define('OFFICE_CITY', 'Vadodara');
+define('OFFICE_STATE', 'Gujarat');
+define('OFFICE_COUNTRY', 'India');
 
 // Contact & Support Coordinates
 define('CONTACT_EMAIL', 'info@ritiverse.in');

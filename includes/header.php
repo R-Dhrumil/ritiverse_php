@@ -115,6 +115,10 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="distribution" content="global">
   <meta name="rating" content="general">
+  <meta name="geo.region" content="IN-GJ">
+  <meta name="geo.placename" content="Vadodara, Gujarat, India">
+  <meta name="geo.position" content="22.307159;73.181219">
+  <meta name="ICBM" content="22.307159, 73.181219">
   <?php if (!empty($google_verification)): ?>
   <meta name="google-site-verification" content="<?= e($google_verification) ?>">
   <?php endif; ?>
@@ -184,7 +188,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["ProfessionalService", "Organization"],
+        "@type": ["ProfessionalService", "Organization", "LocalBusiness"],
         "@id": "<?= SITE_URL ?>/#organization",
         "name": "RiTiVerse",
         "alternateName": ["RiTiVerse Official", "RiTiVerse Studio", "RiTiVerse Software Studio", "ritiverse.in"],
@@ -197,7 +201,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
           "name": "RiTiVerse",
           "url": "<?= SITE_URL ?>"
         },
-        "description": "Official website of RiTiVerse — Top-rated Website Making, Custom CRM, ERP Software Development, and Mobile Application Engineering Company with 100% Client Code Ownership.",
+        "description": "Premier Web Development Company in Vadodara, Gujarat — Custom Website Making, Custom CRM, ERP Software Development, and Mobile Application Engineering with 100% Client Code Ownership.",
         "email": "info@ritiverse.in",
         "telephone": "+91-94267-82646",
         "sameAs": [
@@ -210,35 +214,56 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
         "priceRange": "$$",
         "address": {
           "@type": "PostalAddress",
+          "addressLocality": "Vadodara",
+          "addressRegion": "Gujarat",
           "addressCountry": "IN"
         },
-        "areaServed": ["Worldwide", "US", "GB", "AE", "CA", "AU", "IN", "DE", "SG"],
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "22.307159",
+          "longitude": "73.181219"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Vadodara"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Gujarat"
+          },
+          {
+            "@type": "Country",
+            "name": "India"
+          },
+          "Worldwide", "US", "GB", "AE", "CA", "AU", "DE", "SG"
+        ],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
-          "name": "Software Engineering Services",
+          "name": "Software Engineering Services in Vadodara & Worldwide",
           "itemListElement": [
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Website Making & Web Development",
-                "description": "High-converting, ultra-fast custom business websites built with React and modern PHP."
+                "name": "Web Development Company in Vadodara",
+                "description": "High-converting, ultra-fast custom business websites and web portals engineered in Vadodara with React and modern PHP."
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Custom CRM Software Development",
-                "description": "Tailored CRM platforms for sales pipelines, automated client follow-ups, and lead tracking."
+                "name": "Custom CRM Software Development in Vadodara",
+                "description": "Tailored CRM platforms for sales pipelines, automated client follow-ups, and WhatsApp lead tracking for Vadodara and global enterprises."
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Enterprise ERP & Billing Software",
-                "description": "Custom ERP systems, inventory management, and automated GST billing software with zero monthly lock-in."
+                "name": "Enterprise ERP & Billing Software in Vadodara",
+                "description": "Custom ERP systems, inventory management, and automated GST billing software with zero monthly license fees."
               }
             },
             {
@@ -555,7 +580,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
             <div class="fs-contact-info">
               <a href="mailto:<?= e(CONTACT_EMAIL) ?>" class="fs-contact-email"><?= e(CONTACT_EMAIL) ?></a>
               <a href="mailto:<?= e(SUPPORT_EMAIL) ?>" class="fs-contact-email" style="margin-top: 4px;"><?= e(SUPPORT_EMAIL) ?></a>
-              <span class="fs-contact-address">Modern Engineering Studio • 100% Client Ownership</span>
+              <span class="fs-contact-address">Vadodara, Gujarat, India • Global Client Delivery (100% Client Ownership)</span>
             </div>
           </div>
         </div>
