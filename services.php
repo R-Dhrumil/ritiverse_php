@@ -3,7 +3,7 @@
  * RiTiVerse — Our Services — RiTiVerse
  */
 $page_title = 'Custom Web, CRM & ERP Software Development Services | RiTiVerse';
-$page_description = 'Explore our custom engineering services: bespoke website development, custom CRM platforms, enterprise ERP software, mobile apps, and e-commerce stores with 100% source code ownership. Serving global clients.';
+$page_description = 'Custom web development, CRM platforms, ERP software, mobile apps & e-commerce stores with 100% source code ownership. Built for global businesses.';
 $seo_keywords = 'custom web development services, custom CRM development company, enterprise ERP software development, bespoke software development, hire web developers, offshore software engineering';
 $current_page = 'services';
 $extra_css = ['css/services.css'];

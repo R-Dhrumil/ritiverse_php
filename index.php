@@ -3,7 +3,7 @@
  * RiTiVerse — RItiverse — Elite Website & Software Development
  */
 $page_title = 'Custom Web, CRM & ERP Software Development Company | RiTiVerse';
-$page_description = 'RiTiVerse is a custom software development company building high-performance websites, custom CRM platforms, enterprise ERP systems, and mobile apps with 100% source code ownership. Serving clients in India, USA, UK, UAE & worldwide.';
+$page_description = 'RiTiVerse builds custom websites, CRM platforms, ERP software, and mobile apps with 100% source code ownership. Serving India, USA, UK, UAE & worldwide.';
 $seo_keywords = 'custom web development company, custom CRM development, custom ERP software development, hire software developers, bespoke software development company, offshore web development, enterprise software development, RiTiVerse';
 $current_page = 'home';
 $extra_css = ['css/index.css'];

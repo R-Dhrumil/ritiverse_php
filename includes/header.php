@@ -21,6 +21,8 @@ if (preg_match('/(G-[A-Z0-9]+|GTM-[A-Z0-9]+|UA-[0-9]+-[0-9]+)/i', $google_analyt
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google tag (gtag.js) with DPDP Act 2023 Google Consent Mode v2 -->
   <?php if (!empty($google_analytics_id)): ?>
   <script>
@@ -40,8 +42,6 @@ if (preg_match('/(G-[A-Z0-9]+|GTM-[A-Z0-9]+|UA-[0-9]+-[0-9]+)/i', $google_analyt
     gtag('config', '<?= e($google_analytics_id) ?>');
   </script>
   <?php endif; ?>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= e($page_title) ?></title>
   <meta name="description" content="<?= e($page_description) ?>">
   <!-- High-Resolution Favicons & Google Search Brand Icons -->
@@ -270,10 +270,12 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
         "publisher": {
           "@id": "<?= SITE_URL ?>/#organization"
         }
-      },
+      }
+      <?php if ($current_page !== 'home'): ?>
+      ,
       {
         "@type": "BreadcrumbList",
-        "@id": "<?= e($canonical_url) ?>/#breadcrumb",
+        "@id": "<?= rtrim(e($canonical_url), '/') ?>/#breadcrumb",
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -303,7 +305,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
             "name": "<?= e($service['title']) ?>",
             "item": "<?= e($canonical_url) ?>"
           }
-          <?php elseif ($current_page !== 'home'): ?>
+          <?php else: ?>
           ,
           {
             "@type": "ListItem",
@@ -314,11 +316,12 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
           <?php endif; ?>
         ]
       }
+      <?php endif; ?>
       <?php if (!empty($service)): ?>
       ,
       {
         "@type": "Service",
-        "@id": "<?= e($canonical_url) ?>/#service",
+        "@id": "<?= rtrim(e($canonical_url), '/') ?>/#service",
         "name": "<?= e($service['title']) ?>",
         "serviceType": "<?= e($service['title']) ?>",
         "description": "<?= e($page_description) ?>",
@@ -340,7 +343,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
       ,
       {
         "@type": "FAQPage",
-        "@id": "<?= e($canonical_url) ?>/#faq",
+        "@id": "<?= rtrim(e($canonical_url), '/') ?>/#faq",
         "mainEntity": [
           <?php 
             $faq_schemas = [];
@@ -362,7 +365,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
       ,
       {
         "@type": "FAQPage",
-        "@id": "<?= e($canonical_url) ?>/#faq",
+        "@id": "<?= rtrim(e($canonical_url), '/') ?>/#faq",
         "mainEntity": [
           {
             "@type": "Question",
