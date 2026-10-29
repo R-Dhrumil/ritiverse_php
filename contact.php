@@ -40,8 +40,9 @@ require_once __DIR__ . '/includes/header.php';
           </div>
 
           <form id="contact-inquiry-form" method="POST" action="api/contact-process.php" onsubmit="event.preventDefault(); handleContactSubmit();">
-            <!-- Hidden bot protection honeypot field -->
+            <!-- Hidden bot protection honeypot & CSRF fields -->
             <input type="text" name="website_hp" style="display:none !important;" tabindex="-1" autocomplete="off">
+            <?= csrf_field() ?>
 
             <?php
               $prefill_email = trim($_GET['email'] ?? '');
@@ -98,6 +99,16 @@ require_once __DIR__ . '/includes/header.php';
                 <textarea id="contact-details" name="details" class="form-input-control" rows="5"
                   placeholder="Tell us what you are looking to build, key features needed, or any specific requirements..."
                   required><?= e($prefill_details) ?></textarea>
+              </div>
+
+              <!-- DPDP Act 2023 Statutory Affirmative Consent Checkbox (Section 9 Child Data Protection Compliant) -->
+              <div class="dpdp-consent-group">
+                <label class="dpdp-checkbox-label" for="dpdp_consent">
+                  <input type="checkbox" name="dpdp_consent" id="dpdp_consent" value="1" required>
+                  <span>
+                    I confirm I am 18 years of age or older, and consent to RiTiVerse processing my name, email, and project requirements to evaluate my inquiry and communicate technical proposals in accordance with India's <a href="privacy-policy.php" target="_blank">DPDP Act 2023 Privacy Notice</a>. I understand I may access or withdraw my consent at any time.
+                  </span>
+                </label>
               </div>
 
               <button type="submit" id="contact-submit-btn" class="btn-primary"

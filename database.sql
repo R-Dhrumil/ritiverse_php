@@ -46,6 +46,12 @@ CREATE TABLE IF NOT EXISTS `inquiries` (
   `timeline` VARCHAR(60) NOT NULL DEFAULT '1 – 2 months',
   `details` TEXT NOT NULL,
   `status` ENUM('new', 'contacted', 'in_progress', 'converted', 'archived') NOT NULL DEFAULT 'new',
+  `consent_given` TINYINT(1) NOT NULL DEFAULT 0,
+  `consent_timestamp` DATETIME NULL,
+  `consent_ip` VARCHAR(45) NULL,
+  `consent_version` VARCHAR(20) NOT NULL DEFAULT 'v1.0',
+  `is_anonymized` TINYINT(1) NOT NULL DEFAULT 0,
+  `anonymized_at` DATETIME NULL,
   `admin_notes` TEXT NULL,
   `ip_address` VARCHAR(45) NULL,
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -55,7 +61,32 @@ CREATE TABLE IF NOT EXISTS `inquiries` (
   INDEX `idx_created_at` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- (Inquiries table initialized empty — client consultation requests from contact form will appear here automatically)
+-- ------------------------------------------------------------------------------
+-- 2.1 Table: `dpdp_requests`
+-- Stores Data Principal statutory requests (Access, Correction, Erasure, Grievance)
+-- under Digital Personal Data Protection Act, 2023 (DPDP Act 2023)
+-- ------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `dpdp_requests` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ticket_id` VARCHAR(32) NOT NULL UNIQUE,
+  `name` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(120) NOT NULL,
+  `phone` VARCHAR(30) NULL,
+  `request_type` ENUM('access', 'correction', 'erasure', 'withdraw_consent', 'grievance') NOT NULL,
+  `details` TEXT NOT NULL,
+  `status` ENUM('pending', 'in_review', 'fulfilled', 'rejected') NOT NULL DEFAULT 'pending',
+  `admin_notes` TEXT NULL,
+  `ip_address` VARCHAR(45) NULL,
+  `resolved_at` DATETIME NULL,
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  INDEX `idx_req_type` (`request_type`),
+  INDEX `idx_req_status` (`status`),
+  INDEX `idx_req_email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- (Inquiries & DPDP tables initialized empty)
 
 -- ------------------------------------------------------------------------------
 -- 3. Table: `projects`
@@ -184,6 +215,17 @@ ON DUPLICATE KEY UPDATE
   `full_desc` = VALUES(`full_desc`),
   `deliverables` = VALUES(`deliverables`),
   `tech_stack` = VALUES(`tech_stack`);
+
+-- ------------------------------------------------------------------------------
+-- Seed DPDP Compliance & Grievance Redressal Officer Settings
+-- ------------------------------------------------------------------------------
+INSERT INTO `site_settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
+('dpdp_dpo_name', 'Grievance Redressal Officer', 'dpdp'),
+('dpdp_dpo_email', 'privacy@ritiverse.in', 'dpdp'),
+('dpdp_dpo_designation', 'Data Protection & Grievance Officer', 'dpdp'),
+('dpdp_retention_days', '365', 'dpdp'),
+('dpdp_cookie_consent_active', '1', 'dpdp')
+ON DUPLICATE KEY UPDATE `setting_key` = `setting_key`;
 
 COMMIT;
 SET FOREIGN_KEY_CHECKS = 1;

@@ -137,7 +137,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'smtp_from_email' => trim($_POST['smtp_from_email'] ?? 'info@ritiverse.in'),
             'smtp_from_name' => trim($_POST['smtp_from_name'] ?? 'RiTiVerse Studio'),
             'smtp_recipient_email' => trim($_POST['smtp_recipient_email'] ?? 'info@ritiverse.in'),
-            'smtp_allow_self_signed' => isset($_POST['smtp_allow_self_signed']) ? '1' : '0'
+            'smtp_allow_self_signed' => isset($_POST['smtp_allow_self_signed']) ? '1' : '0',
+
+            // 6. DPDP Act 2023 Statutory Governance
+            'dpdp_dpo_name' => trim($_POST['dpdp_dpo_name'] ?? 'Grievance Redressal Officer'),
+            'dpdp_dpo_email' => trim($_POST['dpdp_dpo_email'] ?? 'privacy@ritiverse.in'),
+            'dpdp_dpo_designation' => trim($_POST['dpdp_dpo_designation'] ?? 'Data Protection & Grievance Officer'),
+            'dpdp_retention_days' => (string)max(30, (int)($_POST['dpdp_retention_days'] ?? 365)),
+            'dpdp_cookie_consent_active' => isset($_POST['dpdp_cookie_consent_active']) ? '1' : '0'
         ];
 
         // Only update password if a new one was provided
@@ -207,7 +214,14 @@ $current_settings = [
     'smtp_from_email' => get_setting('smtp_from_email', defined('SMTP_FROM_EMAIL') ? SMTP_FROM_EMAIL : 'info@ritiverse.in'),
     'smtp_from_name' => get_setting('smtp_from_name', defined('SMTP_FROM_NAME') ? SMTP_FROM_NAME : 'RiTiVerse Studio'),
     'smtp_recipient_email' => get_setting('smtp_recipient_email', defined('SMTP_RECIPIENT_EMAIL') ? SMTP_RECIPIENT_EMAIL : 'info@ritiverse.in'),
-    'smtp_allow_self_signed' => get_setting('smtp_allow_self_signed', '1')
+    'smtp_allow_self_signed' => get_setting('smtp_allow_self_signed', '1'),
+
+    // DPDP Act 2023 Settings
+    'dpdp_dpo_name' => get_setting('dpdp_dpo_name', 'Grievance Redressal Officer'),
+    'dpdp_dpo_email' => get_setting('dpdp_dpo_email', 'privacy@ritiverse.in'),
+    'dpdp_dpo_designation' => get_setting('dpdp_dpo_designation', 'Data Protection & Grievance Officer'),
+    'dpdp_retention_days' => get_setting('dpdp_retention_days', '365'),
+    'dpdp_cookie_consent_active' => get_setting('dpdp_cookie_consent_active', '1')
 ];
 
 // Connectivity statuses
@@ -717,6 +731,63 @@ $has_smtp = !empty($current_settings['smtp_enabled']) && !empty($current_setting
             <button type="button" onclick="runSMTPTest()" class="admin-btn admin-btn-outline" style="border-color: var(--admin-accent); color: var(--admin-accent); padding: 10px 18px; font-size: 13px; white-space: nowrap;">
               Send TLS Test Email →
             </button>
+          </div>
+        </div>
+    <!-- Section 6: DPDP Act 2023 & Data Privacy Governance -->
+    <div class="admin-table-card" style="margin-bottom: 30px;" id="dpdp-settings-card">
+      <div class="admin-card-header" style="justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 20px;">⚖</span>
+          <div>
+            <h3 class="admin-card-title">Digital Personal Data Protection Act, 2023 (DPDP Act) Governance</h3>
+            <p style="font-size: 12px; color: var(--admin-text-muted); margin: 0;">Statutory compliance settings: Grievance Redressal Officer coordinates, retention limits &amp; cookie consent gate</p>
+          </div>
+        </div>
+        <div>
+          <a href="dpdp.php" class="admin-btn admin-btn-outline admin-btn-sm" style="font-size: 12px; text-decoration: none;">
+            Open DPO Desk →
+          </a>
+        </div>
+      </div>
+
+      <div style="padding: 26px;">
+        <div style="background: rgba(248,104,0,0.06); border: 1px solid rgba(248,104,0,0.25); border-radius: 10px; padding: 14px 18px; margin-bottom: 22px; font-size: 13px; line-height: 1.5; color: #475569;">
+          <strong style="color: var(--admin-accent);">Statutory Officer Notice (Section 8 &amp; 13):</strong>
+          Under the DPDP Act 2023, Data Fiduciaries must publish the coordinates of a designated Grievance Redressal Officer. These coordinates are dynamically presented in the public <a href="../privacy-policy.php" target="_blank" style="color: #F86800; font-weight: 600;">Privacy Notice</a> and <a href="../privacy-request.php" target="_blank" style="color: #F86800; font-weight: 600;">Data Rights Portal</a>.
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+          <div class="admin-form-group">
+            <label class="admin-form-label">Grievance Redressal Officer Name *</label>
+            <input type="text" name="dpdp_dpo_name" class="admin-input" value="<?= e($current_settings['dpdp_dpo_name']) ?>" required>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-form-label">Statutory Desk Email *</label>
+            <input type="email" name="dpdp_dpo_email" class="admin-input" value="<?= e($current_settings['dpdp_dpo_email']) ?>" required>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-form-label">Officer Designation</label>
+            <input type="text" name="dpdp_dpo_designation" class="admin-input" value="<?= e($current_settings['dpdp_dpo_designation']) ?>">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="admin-form-group">
+            <label class="admin-form-label">Data Retention Limit (in Days) *</label>
+            <input type="number" name="dpdp_retention_days" class="admin-input" min="30" max="1825" value="<?= e($current_settings['dpdp_retention_days']) ?>" required>
+            <span style="font-size: 11px; color: var(--admin-text-muted);">Inquiries older than this window are flagged for automated Section 8(7) storage scrubbing (standard: 365 days).</span>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-form-label">DPDP Cookie &amp; Telemetry Gatekeeper</label>
+            <div style="padding: 10px 14px; background: #FAF7EE; border-radius: 8px; border: 1px solid var(--admin-border); margin-top: 4px;">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--admin-text-main);">
+                <input type="checkbox" name="dpdp_cookie_consent_active" value="1" <?= !empty($current_settings['dpdp_cookie_consent_active']) ? 'checked' : '' ?> style="width: 18px; height: 18px; accent-color: var(--admin-accent);">
+                <span>Display DPDP Cookie Banner &amp; Enforce Google Consent Mode v2</span>
+              </label>
+            </div>
           </div>
         </div>
       </div>

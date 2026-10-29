@@ -54,6 +54,19 @@ function handleContactSubmit() {
   const status = document.getElementById('contact-form-status');
   if (!form) return;
 
+  const consentBox = document.getElementById('dpdp_consent');
+  if (consentBox && !consentBox.checked) {
+    if (status) {
+      status.style.display = 'block';
+      status.style.background = 'rgba(239, 68, 68, 0.1)';
+      status.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+      status.style.color = '#EF4444';
+      status.textContent = 'Please accept the DPDP Act 2023 Privacy Notice consent checkbox to proceed.';
+    }
+    consentBox.focus();
+    return;
+  }
+
   const formData = new FormData(form);
 
   if (btn) {

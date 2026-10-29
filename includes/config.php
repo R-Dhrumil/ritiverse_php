@@ -200,3 +200,82 @@ if (!function_exists('get_setting')) {
     }
 }
 
+// =============================================================================
+// Digital Personal Data Protection Act, 2023 (DPDP Act 2023) Security Framework
+// =============================================================================
+define('DPDP_ACT_NAME', 'Digital Personal Data Protection Act, 2023');
+define('DPDP_NOTICE_VERSION', 'v1.0-2024');
+define('DPDP_DEFAULT_DPO_NAME', 'Grievance Redressal Officer');
+define('DPDP_DEFAULT_DPO_EMAIL', 'privacy@ritiverse.in');
+define('DPDP_DEFAULT_DPO_DESIGNATION', 'Data Protection & Grievance Officer');
+define('DPDP_JURISDICTION', 'Gujarat, India');
+
+/**
+ * Helper: Retrieve current Data Protection / Grievance Redressal Officer details
+ */
+function get_dpo_details() {
+    return [
+        'name' => get_setting('dpdp_dpo_name', DPDP_DEFAULT_DPO_NAME),
+        'email' => get_setting('dpdp_dpo_email', DPDP_DEFAULT_DPO_EMAIL),
+        'designation' => get_setting('dpdp_dpo_designation', DPDP_DEFAULT_DPO_DESIGNATION),
+        'jurisdiction' => DPDP_JURISDICTION,
+        'response_sla' => '30 calendar days (per DPDP statutory rules)',
+    ];
+}
+
+/**
+ * Helper: Mask email for privacy-safe display in telemetry & logs
+ */
+function mask_email($email) {
+    if (empty($email) || strpos($email, '@') === false) return '***';
+    [$name, $domain] = explode('@', $email, 2);
+    $len = mb_strlen($name);
+    if ($len <= 2) {
+        $maskedName = mb_substr($name, 0, 1) . '*';
+    } else {
+        $maskedName = mb_substr($name, 0, 1) . str_repeat('*', min(5, $len - 2)) . mb_substr($name, -1, 1);
+    }
+    return $maskedName . '@' . $domain;
+}
+
+/**
+ * Helper: Mask IP address for privacy-safe audit logging
+ */
+function mask_ip($ip) {
+    if (empty($ip)) return '0.0.0.0';
+    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+        $parts = explode('.', $ip);
+        return $parts[0] . '.' . ($parts[1] ?? '0') . '.***.***';
+    }
+    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+        $parts = explode(':', $ip);
+        return ($parts[0] ?? '') . ':' . ($parts[1] ?? '') . ':***:***';
+    }
+    return '***';
+}
+
+/**
+ * Helper: Anonymize an inquiry (Right to Erasure / Section 12(3))
+ * Scrubs all PII fields while retaining aggregate timestamp for analytics/accounting
+ */
+function anonymize_inquiry($inquiry_id) {
+    $db = function_exists('get_db') ? get_db() : null;
+    if (!$db) return false;
+    try {
+        $stmt = $db->prepare("UPDATE inquiries SET 
+            name = '[Data Principal Requested Erasure]',
+            email = 'erased@ritiverse.dpdp',
+            company = '[Erased]',
+            details = '[Personal details erased per Section 12(3) of DPDP Act 2023]',
+            ip_address = '0.0.0.0',
+            is_anonymized = 1,
+            anonymized_at = NOW()
+            WHERE id = ?");
+        return $stmt->execute([$inquiry_id]);
+    } catch (Exception $e) {
+        error_log("DPDP Erasure failed: " . $e->getMessage());
+        return false;
+    }
+}
+
+

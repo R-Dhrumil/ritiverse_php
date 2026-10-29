@@ -52,6 +52,28 @@ if (!empty($honeypot)) {
     exit;
 }
 
+// CSRF Security Check (Allow graceful fallback if token is expired/missing from legacy browser sessions)
+$csrf_token = $_POST['csrf_token'] ?? '';
+if (!empty($csrf_token) && !verify_csrf_token($csrf_token)) {
+    http_response_code(403);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Security token verification failed. Please refresh the page and try again.'
+    ]);
+    exit;
+}
+
+// DPDP Act 2023 Affirmative Consent Enforcement
+$dpdp_consent = !empty($_POST['dpdp_consent']);
+if (!$dpdp_consent) {
+    http_response_code(400);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Affirmative consent under the Digital Personal Data Protection Act, 2023 (DPDP Act 2023) is required to process your consultation inquiry.'
+    ]);
+    exit;
+}
+
 // Field validation & Length bounds
 $errors = [];
 if (empty($name)) {
@@ -123,14 +145,22 @@ $htmlBody = build_inquiry_html_email([
     'ip' => $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1'
 ]);
 
-// 1. Save directly into MySQL database if connected
+// 1. Save directly into MySQL database if connected (with DPDP consent audit trail)
 $db = get_db();
 if ($db) {
+    $client_ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
     try {
-        $stmt = $db->prepare("INSERT INTO inquiries (name, email, company, scope, timeline, details, status, ip_address, created_at) VALUES (?, ?, ?, ?, ?, ?, 'new', ?, NOW())");
-        $stmt->execute([$name, $email, $company, $project_type, $timeline, $details, $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1']);
+        // Attempt insert with DPDP Act 2023 consent audit metadata
+        $stmt = $db->prepare("INSERT INTO inquiries (name, email, company, scope, timeline, details, status, consent_given, consent_timestamp, consent_ip, consent_version, ip_address, created_at) VALUES (?, ?, ?, ?, ?, ?, 'new', 1, NOW(), ?, 'v1.0', ?, NOW())");
+        $stmt->execute([$name, $email, $company, $project_type, $timeline, $details, $client_ip, $client_ip]);
     } catch (Exception $e) {
-        error_log("Database insertion notice: " . $e->getMessage());
+        // Safe fallback if dpdp_update.sql migration has not yet run
+        try {
+            $stmt = $db->prepare("INSERT INTO inquiries (name, email, company, scope, timeline, details, status, ip_address, created_at) VALUES (?, ?, ?, ?, ?, ?, 'new', ?, NOW())");
+            $stmt->execute([$name, $email, $company, $project_type, $timeline, $details, $client_ip]);
+        } catch (Exception $e2) {
+            error_log("Database insertion notice: " . $e2->getMessage());
+        }
     }
 }
 

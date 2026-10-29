@@ -21,14 +21,22 @@ if (preg_match('/(G-[A-Z0-9]+|GTM-[A-Z0-9]+|UA-[0-9]+-[0-9]+)/i', $google_analyt
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) with DPDP Act 2023 Google Consent Mode v2 -->
   <?php if (!empty($google_analytics_id)): ?>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=<?= e($google_analytics_id) ?>"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    // Default tracking to 'denied' under DPDP Act 2023 until affirmative consent
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<?= e($google_analytics_id) ?>"></script>
+  <script>
     gtag('js', new Date());
-
     gtag('config', '<?= e($google_analytics_id) ?>');
   </script>
   <?php endif; ?>
@@ -117,22 +125,29 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
 
 
   <?php if (!empty($meta_pixel_id)): ?>
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code with DPDP Consent Gating -->
   <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '<?= e($meta_pixel_id) ?>');
-    fbq('track', 'PageView');
+    window._loadMetaPixel = function() {
+      if (window._metaPixelLoaded) return;
+      window._metaPixelLoaded = true;
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '<?= e($meta_pixel_id) ?>');
+      fbq('track', 'PageView');
+    };
+    // Listen for DPDP affirmative marketing consent
+    window.addEventListener('dpdpConsentChanged', function(e) {
+      if (e.detail && e.detail.marketing) {
+        window._loadMetaPixel();
+      }
+    });
   </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=<?= e($meta_pixel_id) ?>&ev=PageView&noscript=1"
-  /></noscript>
   <!-- End Meta Pixel Code -->
   <?php endif; ?>
 
@@ -397,8 +412,11 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
   <?php 
     $base_css_file = __DIR__ . '/../css/base.css';
     $base_css_ver = file_exists($base_css_file) ? filemtime($base_css_file) : '2.3';
+    $dpdp_css_file = __DIR__ . '/../css/dpdp.css';
+    $dpdp_css_ver = file_exists($dpdp_css_file) ? filemtime($dpdp_css_file) : '1.0';
   ?>
   <link rel="stylesheet" href="css/base.css?v=<?= $base_css_ver ?>">
+  <link rel="stylesheet" href="css/dpdp.css?v=<?= $dpdp_css_ver ?>">
 
   <!-- Page-Specific Modular Stylesheets -->
   <?php foreach ($extra_css as $css_path): 

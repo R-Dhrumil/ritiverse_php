@@ -149,7 +149,7 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
           </ul>
         </div>
 
-        <!-- Col 3: Studio & Direct Navigation -->
+        <!-- Col 3: Studio & Trust -->
         <div class="footer-sitemap-col">
           <h3 class="footer-col-title">Studio &amp; Trust</h3>
           <ul class="footer-links-list">
@@ -157,8 +157,11 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
             <li><a href="services.php">All Services</a></li>
             <li><a href="projects.php">Featured Projects</a></li>
             <li><a href="about.php">Philosophy &amp; Standards</a></li>
-            <li><a href="index.php#faq">Frequently Asked Questions</a></li>
             <li><a href="contact.php">Start a Consultation</a></li>
+            <li><a href="privacy-policy.php" style="color: var(--brand-orange, #f86800); font-weight: 600;">Privacy Notice (DPDP 2023)</a></li>
+            <li><a href="terms.php">Terms of Service</a></li>
+            <li><a href="privacy-request.php">Exercise Data Rights</a></li>
+            <li><button type="button" class="dpdp-cookie-trigger-btn" onclick="openCookieSettings()">Cookie Preferences</button></li>
           </ul>
         </div>
       </div>
@@ -166,16 +169,115 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
       <!-- Bottom Row -->
       <div class="footer-bottom-row">
         <div class="footer-brand">
-          <span class="footer-copy">© <?= date('Y') ?> <?= e(APP_NAME) ?>. All rights reserved. 100% Client Source Code Ownership Guaranteed.</span>
+          <span class="footer-copy">© <?= date('Y') ?> <?= e(APP_NAME) ?>. All rights reserved. 100% Client Source Code Ownership Guaranteed. <a href="privacy-policy.php" style="color: inherit; text-decoration: underline; margin-left: 8px;">DPDP Act 2023 Compliant</a></span>
         </div>
         <div class="footer-status-pill">
           <span class="footer-status-dot"></span>
-          Zero Vendor Lock-In • 100% Code Ownership
+          DPDP Act 2023 Verified • 100% Code Ownership
         </div>
       </div>
 
     </div>
   </footer>
+
+  <!-- DPDP Act 2023 Floating Consent Banner -->
+  <div class="dpdp-banner-backdrop" id="dpdp-consent-banner" role="dialog" aria-modal="true" aria-label="Privacy & Cookie Preferences">
+    <div class="dpdp-banner-card">
+      <div class="dpdp-banner-header">
+        <svg class="dpdp-shield-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <path d="M9 12l2 2 4-4"></path>
+        </svg>
+        <h4 class="dpdp-banner-title">Data Privacy &amp; Consent</h4>
+        <span class="dpdp-pill-badge">DPDP Act 2023</span>
+      </div>
+      <p class="dpdp-banner-text">
+        We respect your personal data rights under India's <strong>Digital Personal Data Protection Act, 2023</strong>. We only use essential cookies by default. May we process anonymized telemetry and analytics to enhance your experience? Read our <a href="privacy-policy.php" target="_blank">Privacy Notice</a>.
+      </p>
+      <div class="dpdp-banner-actions">
+        <button type="button" class="dpdp-btn dpdp-btn-accept" onclick="dpdpAcceptAll()">Accept All</button>
+        <button type="button" class="dpdp-btn dpdp-btn-reject" onclick="dpdpRejectNonEssential()">Reject Non-Essential</button>
+        <button type="button" class="dpdp-btn dpdp-btn-manage" onclick="openCookieSettings()">Customize</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DPDP Cookie & Telemetry Preferences Modal -->
+  <div class="dpdp-modal-overlay" id="dpdp-preference-modal" role="dialog" aria-modal="true" aria-labelledby="dpdp-modal-title">
+    <div class="dpdp-modal-container">
+      <div class="dpdp-modal-header">
+        <h3 id="dpdp-modal-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#F86800" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          Privacy &amp; Cookie Preferences
+        </h3>
+        <button type="button" class="dpdp-modal-close-btn" onclick="closeCookieSettings()" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="dpdp-modal-body">
+        <p class="dpdp-modal-intro">
+          Under Section 6 of the <strong>Digital Personal Data Protection Act, 2023 (DPDP Act 2023)</strong>, you have full authority to grant or withdraw consent for data processing. You may modify your preferences at any time.
+        </p>
+
+        <!-- Category 1: Strictly Necessary (Always Active) -->
+        <div class="dpdp-category-card is-locked">
+          <div class="dpdp-category-top">
+            <span class="dpdp-category-title">
+              1. Strictly Necessary Data &amp; Cookies
+            </span>
+            <span class="dpdp-status-tag">Always Active</span>
+          </div>
+          <p class="dpdp-category-desc">
+            Essential for cryptographic CSRF defense, secure session tokens, and core navigation. These cannot be disabled under lawful operation grounds.
+          </p>
+        </div>
+
+        <!-- Category 2: Performance & Analytics -->
+        <div class="dpdp-category-card">
+          <div class="dpdp-category-top">
+            <span class="dpdp-category-title">
+              2. Performance &amp; Analytics
+            </span>
+            <label class="dpdp-switch" aria-label="Toggle Analytics">
+              <input type="checkbox" id="dpdp-toggle-analytics">
+              <span class="dpdp-slider"></span>
+            </label>
+          </div>
+          <p class="dpdp-category-desc">
+            Anonymized Google Analytics telemetry (gtag.js) that helps us optimize page speeds, monitor mobile responsiveness, and measure traffic volume without tracking personal identity.
+          </p>
+        </div>
+
+        <!-- Category 3: Marketing & Attribution -->
+        <div class="dpdp-category-card">
+          <div class="dpdp-category-top">
+            <span class="dpdp-category-title">
+              3. Marketing &amp; Attribution
+            </span>
+            <label class="dpdp-switch" aria-label="Toggle Marketing">
+              <input type="checkbox" id="dpdp-toggle-marketing">
+              <span class="dpdp-slider"></span>
+            </label>
+          </div>
+          <p class="dpdp-category-desc">
+            Allows measurement of consultation campaign conversions from professional social platforms (Meta Pixel / LinkedIn).
+          </p>
+        </div>
+      </div>
+      <div class="dpdp-modal-footer">
+        <a href="privacy-policy.php" target="_blank" class="dpdp-footer-link">Read Full Privacy Notice ↗</a>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="dpdp-btn dpdp-btn-reject" onclick="closeCookieSettings()">Cancel</button>
+          <button type="button" class="dpdp-btn dpdp-btn-accept" onclick="dpdpSavePreferences()">Save My Preferences</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <?php if ($include_gsap): ?>
     <!-- GSAP & ScrollTrigger Libraries -->
@@ -187,8 +289,11 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
   <?php 
     $nav_js_file = __DIR__ . '/../js/nav.js';
     $nav_js_ver = file_exists($nav_js_file) ? filemtime($nav_js_file) : '2.3';
+    $dpdp_js_file = __DIR__ . '/../js/dpdp-consent.js';
+    $dpdp_js_ver = file_exists($dpdp_js_file) ? filemtime($dpdp_js_file) : '1.0';
   ?>
   <script src="js/nav.js?v=<?= $nav_js_ver ?>"></script>
+  <script src="js/dpdp-consent.js?v=<?= $dpdp_js_ver ?>"></script>
 
   <!-- Page-Specific Modular Scripts -->
   <?php foreach ($extra_js as $js_path): 

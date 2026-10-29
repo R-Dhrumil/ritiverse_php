@@ -1,0 +1,442 @@
+/* ==========================================================================
+   RITIVERSE — DPDP ACT 2023 SECURITY & CONSENT ARCHITECTURE STYLES
+   Compliant with Digital Personal Data Protection Act, 2023 (India)
+   ========================================================================== */
+
+/* 1. DPDP Floating Cookie Banner */
+.dpdp-banner-backdrop {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  max-width: 480px;
+  width: calc(100vw - 32px);
+  z-index: 99999;
+  transform: translateY(120%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.dpdp-banner-backdrop.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dpdp-banner-card {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(248, 104, 0, 0.25);
+  border-radius: 16px;
+  padding: 22px 24px;
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  font-family: inherit;
+  color: #0F172A;
+  position: relative;
+  overflow: hidden;
+}
+
+.dpdp-banner-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #F86800 0%, #F59E0B 50%, #008CD8 100%);
+}
+
+.dpdp-banner-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.dpdp-shield-icon {
+  width: 22px;
+  height: 22px;
+  color: #F86800;
+  flex-shrink: 0;
+}
+
+.dpdp-banner-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.dpdp-pill-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 99px;
+  background: rgba(248, 104, 0, 0.1);
+  color: #F86800;
+  border: 1px solid rgba(248, 104, 0, 0.25);
+}
+
+.dpdp-banner-text {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #475569;
+  margin: 0 0 16px 0;
+}
+
+.dpdp-banner-text a {
+  color: #F86800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.dpdp-banner-text a:hover {
+  color: #E05A00;
+}
+
+.dpdp-banner-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dpdp-btn {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.dpdp-btn-accept {
+  background: #F86800;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(248, 104, 0, 0.3);
+  flex: 1 1 auto;
+}
+
+.dpdp-btn-accept:hover {
+  background: #E05A00;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(248, 104, 0, 0.35);
+}
+
+.dpdp-btn-reject {
+  background: #F1F5F9;
+  color: #334155 !important;
+  border: 1px solid #CBD5E1;
+}
+
+.dpdp-btn-reject:hover {
+  background: #E2E8F0;
+  color: #0F172A !important;
+}
+
+.dpdp-btn-manage {
+  background: transparent;
+  color: #64748B !important;
+  border: 1px dashed #CBD5E1;
+}
+
+.dpdp-btn-manage:hover {
+  color: #0F172A !important;
+  border-color: #94A3B8;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* 2. DPDP Preferences Modal */
+.dpdp-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.dpdp-modal-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dpdp-modal-container {
+  background: #FFFFFF;
+  border-radius: 20px;
+  max-width: 580px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  transform: scale(0.96) translateY(10px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.dpdp-modal-overlay.is-active .dpdp-modal-container {
+  transform: scale(1) translateY(0);
+}
+
+.dpdp-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FAFAFA;
+}
+
+.dpdp-modal-header h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dpdp-modal-close-btn {
+  background: transparent;
+  border: none;
+  color: #64748B;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dpdp-modal-close-btn:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+.dpdp-modal-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  flex: 1 1 auto;
+}
+
+.dpdp-modal-intro {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 18px;
+}
+
+.dpdp-category-card {
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: #FFFFFF;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dpdp-category-card:hover {
+  border-color: #CBD5E1;
+}
+
+.dpdp-category-card.is-locked {
+  background: #F8FAFC;
+  border-color: #E2E8F0;
+}
+
+.dpdp-category-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.dpdp-category-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dpdp-status-tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+.dpdp-category-desc {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #64748B;
+  margin: 0;
+}
+
+/* Modern iOS-Style Toggle Switch */
+.dpdp-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.dpdp-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.dpdp-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #CBD5E1;
+  transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 24px;
+}
+
+.dpdp-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.dpdp-switch input:checked + .dpdp-slider {
+  background-color: #F86800;
+}
+
+.dpdp-switch input:checked + .dpdp-slider:before {
+  transform: translateX(20px);
+}
+
+.dpdp-switch input:disabled + .dpdp-slider {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #10B981;
+}
+
+.dpdp-modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #FAFAFA;
+}
+
+.dpdp-footer-link {
+  font-size: 12px;
+  color: #64748B;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.dpdp-footer-link:hover {
+  color: #F86800;
+}
+
+/* 3. Form Affirmative DPDP Consent Checkbox */
+.dpdp-consent-group {
+  margin-top: 16px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  background: rgba(248, 104, 0, 0.05);
+  border: 1px solid rgba(248, 104, 0, 0.2);
+  border-radius: 10px;
+}
+
+.dpdp-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #334155;
+  user-select: none;
+}
+
+.dpdp-checkbox-label input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  accent-color: #F86800;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.dpdp-checkbox-label a {
+  color: #F86800;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* 4. Persistent Cookie Settings Footer Trigger */
+.dpdp-cookie-trigger-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.dpdp-cookie-trigger-btn:hover {
+  color: #F86800;
+}
+
+/* Responsive adjustment */
+@media (max-width: 640px) {
+  .dpdp-banner-backdrop {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+  }
+  .dpdp-banner-actions {
+    flex-direction: column;
+  }
+  .dpdp-banner-actions .dpdp-btn {
+    width: 100%;
+  }
+}

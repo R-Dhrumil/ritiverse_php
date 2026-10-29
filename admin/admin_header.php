@@ -14,6 +14,7 @@ $admin_subtitle = $admin_subtitle ?? 'Overview of client inquiries and productio
 $new_inquiries_count = 0;
 $total_projects_count = 0;
 $total_services_count = 0;
+$pending_dpdp_count = 0;
 $db = get_db();
 if ($db) {
     try {
@@ -23,6 +24,8 @@ if ($db) {
         $total_projects_count = (int)$p_stmt->fetchColumn();
         $s_stmt = $db->query("SELECT COUNT(*) FROM services");
         $total_services_count = (int)$s_stmt->fetchColumn();
+        $dp_stmt = $db->query("SELECT COUNT(*) FROM dpdp_requests WHERE status = 'pending'");
+        $pending_dpdp_count = (int)$dp_stmt->fetchColumn();
     } catch (Exception $e) {}
 }
 ?>
@@ -94,6 +97,17 @@ if ($db) {
           Services &amp; Pages
           <?php if ($total_services_count > 0): ?>
             <span class="admin-nav-pill"><?= $total_services_count ?></span>
+          <?php endif; ?>
+        </a>
+
+        <a href="dpdp.php" class="admin-nav-link <?= ($active_tab === 'dpdp') ? 'active' : '' ?>">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M9 12l2 2 4-4"></path>
+          </svg>
+          DPDP &amp; Privacy Desk
+          <?php if ($pending_dpdp_count > 0): ?>
+            <span class="admin-nav-pill" style="background: #F86800; color: #FFFFFF;"><?= $pending_dpdp_count ?></span>
           <?php endif; ?>
         </a>
 

@@ -397,29 +397,19 @@ function initEmailCapture() {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px; height:14px; stroke:#FFFFFF;">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
-        Consultation Booked
+        Redirecting...
       `;
       btn.style.background = 'linear-gradient(135deg, #10B981 0%, #059669 100%)';
 
       if (msg) {
-        msg.textContent = 'Thank you! Our team has received your email and will get back to you within 24 hours.';
+        msg.textContent = 'Redirecting you to our secure project consultation desk...';
         msg.classList.add('visible');
       }
 
       setTimeout(() => {
-        input.value = '';
-        btn.disabled = false;
-        btn.style.backgroundColor = '';
-        btn.innerHTML = `
-          Start a project
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        `;
-        if (msg) msg.classList.remove('visible');
-      }, 4000);
-    }, 1000);
+        window.location.href = 'contact.php?email=' + encodeURIComponent(val);
+      }, 700);
+    }, 600);
   });
 }
 
