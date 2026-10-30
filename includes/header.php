@@ -454,21 +454,10 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
     $dpdp_css_file = __DIR__ . '/../css/dpdp.css';
     $dpdp_css_ver = file_exists($dpdp_css_file) ? filemtime($dpdp_css_file) : '1.0';
   ?>
-  <!-- Critical inline CSS — above fold renders instantly before external CSS loads -->
+  <!-- Critical inline styles for smooth FCP -->
   <style>
-    :root{--bg-page:#FAF7EE;--brand-orange:#F86800;--color-text-primary:#1a1209;--color-text-secondary:#5a5347;}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-    body{background:#FAF7EE;color:#1a1209;font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;overflow-x:hidden;}
-    .synex-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:rgba(250,247,238,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
-    .synex-brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;}
-    .synex-brand-logo{height:32px;width:auto;}
-    .synex-brand-name{font-weight:700;font-size:1.1rem;letter-spacing:-0.02em;}
-    .synex-menu-trigger{background:none;border:1px solid rgba(26,18,9,0.15);border-radius:8px;cursor:pointer;padding:8px;display:flex;align-items:center;justify-content:center;}
-    .hamburger-box{display:flex;flex-direction:column;gap:5px;width:20px;}
-    .hamburger-line{display:block;height:1.5px;width:100%;background:#1a1209;border-radius:2px;transition:transform 0.3s;}
-    .synex-fs-menu{display:none;position:fixed;inset:0;z-index:999;background:#FAF7EE;}
-    h1,h2,h3{font-family:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:700;line-height:1.15;letter-spacing:-0.03em;}
+    :root{--bg-page:#FAF7EE;--brand-orange:#F86800;--color-text-primary:#1a1209;}
+    body{background:#FAF7EE;color:#1a1209;margin:0;}
   </style>
   <link rel="stylesheet" href="css/base.css?v=<?= $base_css_ver ?>">
   <link rel="stylesheet" href="css/dpdp.css?v=<?= $dpdp_css_ver ?>">
