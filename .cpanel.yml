@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/ritivers/public_html
+    - export DEPLOYPATH=/home/ritivers/public_html/
     - /bin/cp -R * $DEPLOYPATH
     - /bin/cp -a .htaccess $DEPLOYPATH 2>/dev/null || true
