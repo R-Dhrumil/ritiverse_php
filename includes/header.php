@@ -176,11 +176,9 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
   <meta name="twitter:description" content="<?= e($page_description) ?>">
   <meta name="twitter:image" content="<?= SITE_URL ?>/assets/logo.png">
 
-  <!-- Performance: DNS Prefetch & Font Preconnect -->
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- DNS prefetch for third-party scripts -->
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
   <!-- Google Structured Data (JSON-LD) for #1 Rankings on Website Making, CRM, ERP & Software Dev -->
   <script type="application/ld+json">
@@ -439,10 +437,15 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
   }
   </script>
 
-  <!-- Google Fonts: Outfit, Plus Jakarta Sans & JetBrains Mono -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+  <!-- Google Fonts: Preconnect + Non-blocking load (prevents render-blocking) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preload critical font subset for LCP speed -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"></noscript>
+  <!-- JetBrains Mono loaded async (only used in code blocks, non-critical) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 
   <!-- Core Base Stylesheet (Design System & Tokens) -->
   <?php 
@@ -451,6 +454,22 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
     $dpdp_css_file = __DIR__ . '/../css/dpdp.css';
     $dpdp_css_ver = file_exists($dpdp_css_file) ? filemtime($dpdp_css_file) : '1.0';
   ?>
+  <!-- Critical inline CSS — above fold renders instantly before external CSS loads -->
+  <style>
+    :root{--bg-page:#FAF7EE;--brand-orange:#F86800;--color-text-primary:#1a1209;--color-text-secondary:#5a5347;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+    body{background:#FAF7EE;color:#1a1209;font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;overflow-x:hidden;}
+    .synex-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:rgba(250,247,238,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
+    .synex-brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;}
+    .synex-brand-logo{height:32px;width:auto;}
+    .synex-brand-name{font-weight:700;font-size:1.1rem;letter-spacing:-0.02em;}
+    .synex-menu-trigger{background:none;border:1px solid rgba(26,18,9,0.15);border-radius:8px;cursor:pointer;padding:8px;display:flex;align-items:center;justify-content:center;}
+    .hamburger-box{display:flex;flex-direction:column;gap:5px;width:20px;}
+    .hamburger-line{display:block;height:1.5px;width:100%;background:#1a1209;border-radius:2px;transition:transform 0.3s;}
+    .synex-fs-menu{display:none;position:fixed;inset:0;z-index:999;background:#FAF7EE;}
+    h1,h2,h3{font-family:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:700;line-height:1.15;letter-spacing:-0.03em;}
+  </style>
   <link rel="stylesheet" href="css/base.css?v=<?= $base_css_ver ?>">
   <link rel="stylesheet" href="css/dpdp.css?v=<?= $dpdp_css_ver ?>">
 
@@ -470,7 +489,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
     <div class="synex-nav-left">
       <!-- Modern & Minimal Floating Brand Wordmark with Logo -->
       <a href="index.php" class="synex-brand" aria-label="RiTiVerse Home">
-        <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
+        <img src="assets/logo-nav.webp" alt="RiTiVerse Logo" class="synex-brand-logo" fetchpriority="high" width="32" height="32" />
         <span class="synex-brand-name"><?= e(APP_NAME) ?></span>
       </a>
     </div>
@@ -508,7 +527,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
     <div class="fs-menu-header">
       <div class="synex-nav-left">
         <a href="index.php" class="synex-brand" aria-label="RiTiVerse Home">
-          <img src="assets/logo.png" alt="RiTiVerse Logo" class="synex-brand-logo" />
+          <img src="assets/logo-nav.webp" alt="RiTiVerse Logo" class="synex-brand-logo" width="32" height="32" loading="lazy" />
           <span class="synex-brand-name"><?= e(APP_NAME) ?></span>
         </a>
       </div>

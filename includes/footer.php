@@ -36,7 +36,7 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
         <!-- Col 1: Brand Wordmark & Direct Contacts -->
         <div class="footer-brand-col">
           <div class="footer-brand" style="gap: 10px;">
-            <img src="assets/logo.png" alt="RiTiVerse Logo" style="height: 28px; width: auto;" />
+            <img src="assets/logo-nav.webp" alt="RiTiVerse Logo" style="height: 28px; width: auto;" loading="lazy" width="28" height="28" />
             <span class="footer-logo"><?= e(APP_NAME) ?></span>
           </div>
           <p class="footer-col-desc">
@@ -281,9 +281,9 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
   </div>
 
   <?php if ($include_gsap): ?>
-    <!-- GSAP & ScrollTrigger Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- GSAP & ScrollTrigger — deferred to not block rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <?php endif; ?>
 
   <!-- Core Interactive Navigation Logic -->
@@ -293,15 +293,15 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
     $dpdp_js_file = __DIR__ . '/../js/dpdp-consent.js';
     $dpdp_js_ver = file_exists($dpdp_js_file) ? filemtime($dpdp_js_file) : '1.0';
   ?>
-  <script src="js/nav.js?v=<?= $nav_js_ver ?>"></script>
-  <script src="js/dpdp-consent.js?v=<?= $dpdp_js_ver ?>"></script>
+  <script src="js/nav.js?v=<?= $nav_js_ver ?>" defer></script>
+  <script src="js/dpdp-consent.js?v=<?= $dpdp_js_ver ?>" defer></script>
 
   <!-- Page-Specific Modular Scripts -->
   <?php foreach ($extra_js as $js_path): 
     $full_js = __DIR__ . '/../' . ltrim($js_path, '/');
     $jver = file_exists($full_js) ? filemtime($full_js) : '2.3';
   ?>
-    <script src="<?= e($js_path) ?>?v=<?= $jver ?>"></script>
+    <script src="<?= e($js_path) ?>?v=<?= $jver ?>" defer></script>
   <?php endforeach; ?>
 </body>
 

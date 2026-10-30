@@ -12,12 +12,29 @@ document.addEventListener('DOMContentLoaded', () => {
   initEmailCapture();
   initSidebarNav();
   initHeroRotator();
-  initMotionWave();
+  // Delay heavy canvas animation until after LCP — does not affect UX
+  if (window.requestIdleCallback) {
+    requestIdleCallback(() => initMotionWave(), { timeout: 2000 });
+  } else {
+    setTimeout(initMotionWave, 500);
+  }
   initCapabilitiesAccordion();
   initShowcaseSearch();
   initFaqAccordion();
   initProcessLaser();
-  initFlagships3DOrbit();
+  // Delay 3D orbit (below fold) — init on scroll into view
+  const orbitSection = document.querySelector('.flagship-orbit-section, .orbit-section, [class*="orbit"]');
+  if (orbitSection) {
+    const orbitObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        initFlagships3DOrbit();
+        orbitObserver.disconnect();
+      }
+    }, { rootMargin: '200px' });
+    orbitObserver.observe(orbitSection);
+  } else {
+    initFlagships3DOrbit();
+  }
   initAdminControl();
 });
 
@@ -498,8 +515,8 @@ function initMotionWave() {
     }
   });
 
-  // Generate Ribbon Particle Dust
-  const PARTICLE_COUNT = window.innerWidth < 768 ? 2500 : 9000;
+  // Generate Ribbon Particle Dust (Optimized count for 60fps & 95+ PageSpeed)
+  const PARTICLE_COUNT = window.innerWidth < 768 ? 450 : 1400;
   const particles = new Float32Array(PARTICLE_COUNT * 6); // [u, v, jitterX, jitterY, jitterZ, size]
 
   for (let i = 0; i < PARTICLE_COUNT; i++) {
@@ -521,8 +538,8 @@ function initMotionWave() {
     particles[idx + 5] = size;
   }
 
-  // Ambient Floating Dust Particles
-  const STAR_COUNT = 220;
+  // Ambient Floating Dust Particles (Optimized)
+  const STAR_COUNT = window.innerWidth < 768 ? 40 : 90;
   const stars = [];
   for (let s = 0; s < STAR_COUNT; s++) {
     stars.push({
@@ -626,10 +643,27 @@ function initMotionWave() {
     }
 
     ctx.restore();
-    requestAnimationFrame(render);
+    if (isHeroVisible) {
+      animFrameId = requestAnimationFrame(render);
+    } else {
+      animFrameId = null;
+    }
   }
 
-  requestAnimationFrame(render);
+  let isHeroVisible = true;
+  let animFrameId = null;
+
+  if ('IntersectionObserver' in window) {
+    const heroObserver = new IntersectionObserver((entries) => {
+      isHeroVisible = entries[0].isIntersecting;
+      if (isHeroVisible && !animFrameId) {
+        animFrameId = requestAnimationFrame(render);
+      }
+    }, { threshold: 0.05 });
+    heroObserver.observe(heroSection);
+  }
+
+  animFrameId = requestAnimationFrame(render);
 }
 
 /* ==========================================================================

@@ -39,37 +39,70 @@ DirectoryIndex index.php index.html index.htm default.html default.htm
 # Custom Error Handling
 ErrorDocument 404 /404.php
 
-# Gzip / Brotli Compression for High Speed (PageSpeed 95+)
+# ==============================================================================
+# GZIP + BROTLI COMPRESSION — PageSpeed Core Web Vitals
+# ==============================================================================
+
+# Brotli compression (LiteSpeed / Apache mod_brotli)
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json application/xml
+  AddOutputFilterByType BROTLI_COMPRESS image/svg+xml font/woff2 font/woff
+</IfModule>
+
+# Gzip fallback
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
   AddOutputFilterByType DEFLATE application/javascript application/json application/xml image/svg+xml
+  AddOutputFilterByType DEFLATE font/woff2 font/woff
 </IfModule>
 
-# Browser Caching Headers for Core Web Vitals
+# ==============================================================================
+# BROWSER CACHING — 1 Year for static assets
+# ==============================================================================
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType image/jpg "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/gif "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
-  ExpiresByType text/javascript "access plus 1 month"
-  ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType font/woff "access plus 1 year"
-  ExpiresDefault "access plus 2 days"
+  ExpiresByType image/jpg          "access plus 1 year"
+  ExpiresByType image/jpeg         "access plus 1 year"
+  ExpiresByType image/png          "access plus 1 year"
+  ExpiresByType image/gif          "access plus 1 year"
+  ExpiresByType image/webp         "access plus 1 year"
+  ExpiresByType image/avif         "access plus 1 year"
+  ExpiresByType image/svg+xml      "access plus 1 year"
+  ExpiresByType text/css           "access plus 6 months"
+  ExpiresByType application/javascript "access plus 6 months"
+  ExpiresByType text/javascript    "access plus 6 months"
+  ExpiresByType font/woff2         "access plus 1 year"
+  ExpiresByType font/woff          "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresDefault                   "access plus 7 days"
 </IfModule>
 
-# Enterprise Security Headers
+# Cache-Control headers (for Cloudflare / CDN compatibility)
+<IfModule mod_headers.c>
+  # Static assets — long cache
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|ico|svg|woff|woff2|ttf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # CSS and JS — versioned via ?v= query, safe to cache long
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=15552000"
+  </FilesMatch>
+  # HTML — short cache so SEO updates propagate fast
+  <FilesMatch "\.(php|html)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ==============================================================================
+# SECURITY HEADERS
+# ==============================================================================
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set X-XSS-Protection "1; mode=block"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-  # Strict-Transport-Security on HTTPS
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
 </IfModule>
 

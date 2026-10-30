@@ -699,7 +699,7 @@ require_once __DIR__ . '/includes/header.php';
             <div class="accordion-card is-active" data-index="0" tabindex="0" role="button" aria-expanded="true"
               aria-label="Website Development">
               <div class="card-media-wrap">
-                <img src="assets/card_web_apps.jpg" alt="Website Development" class="card-media-img" />
+                <img src="assets/card_.webp" alt="Website Development" class="card-media-img" loading="lazy" decoding="async" />
                 <div class="card-gradient-overlay"></div>
               </div>
 
@@ -732,7 +732,7 @@ require_once __DIR__ . '/includes/header.php';
             <div class="accordion-card" data-index="1" tabindex="0" role="button" aria-expanded="false"
               aria-label="Application Development">
               <div class="card-media-wrap">
-                <img src="assets/card_cloud_ai.jpg" alt="Application Development" class="card-media-img" />
+                <img src="assets/card_.webp" alt="Application Development" class="card-media-img" loading="lazy" decoding="async" />
                 <div class="card-gradient-overlay"></div>
               </div>
 
@@ -765,7 +765,7 @@ require_once __DIR__ . '/includes/header.php';
             <div class="accordion-card" data-index="2" tabindex="0" role="button" aria-expanded="false"
               aria-label="E-Commerce Development">
               <div class="card-media-wrap">
-                <img src="assets/featured-work.jpg" alt="E-Commerce Development" class="card-media-img" />
+                <img src="assets/featured-work.webp" alt="E-Commerce Development" class="card-media-img" loading="lazy" decoding="async" />
                 <div class="card-gradient-overlay"></div>
               </div>
 
@@ -798,7 +798,7 @@ require_once __DIR__ . '/includes/header.php';
             <div class="accordion-card" data-index="3" tabindex="0" role="button" aria-expanded="false"
               aria-label="CRM Platforms">
               <div class="card-media-wrap">
-                <img src="assets/card_cloud_devops.jpg" alt="CRM Platforms" class="card-media-img" />
+                <img src="assets/card_.webp" alt="CRM Platforms" class="card-media-img" loading="lazy" decoding="async" />
                 <div class="card-gradient-overlay"></div>
               </div>
 
@@ -831,7 +831,7 @@ require_once __DIR__ . '/includes/header.php';
             <div class="accordion-card" data-index="4" tabindex="0" role="button" aria-expanded="false"
               aria-label="ERP Systems">
               <div class="card-media-wrap">
-                <img src="assets/card_ai_agents.jpg" alt="ERP Systems" class="card-media-img" />
+                <img src="assets/card_.webp" alt="ERP Systems" class="card-media-img" loading="lazy" decoding="async" />
                 <div class="card-gradient-overlay"></div>
               </div>
 
@@ -864,7 +864,7 @@ require_once __DIR__ . '/includes/header.php';
             <div class="accordion-card" data-index="5" tabindex="0" role="button" aria-expanded="false"
               aria-label="Custom Software Development">
               <div class="card-media-wrap">
-                <img src="assets/card_software_apis.jpg" alt="Custom Software Development" class="card-media-img" />
+                <img src="assets/card_.webp" alt="Custom Software Development" class="card-media-img" loading="lazy" decoding="async" />
                 <div class="card-gradient-overlay"></div>
               </div>
 
@@ -1361,7 +1361,7 @@ require_once __DIR__ . '/includes/header.php';
             <article class="orbit-card-item is-active" data-index="0" tabindex="0" role="button" aria-label="Aegis Financial Telemetry OS">
               <div class="orbit-card-inner">
                 <div class="orbit-card-media">
-                  <img src="assets/card_software_apis.jpg" alt="Aegis Financial Telemetry OS" class="orbit-card-img" />
+                  <img src="assets/card_.webp" alt="Aegis Financial Telemetry OS" class="orbit-card-img" loading="lazy" decoding="async" />
                   <div class="orbit-card-gradient"></div>
                   <span class="orbit-card-badge"><span class="orbit-badge-dot"></span>FinTech &amp; Telemetry</span>
                   <span class="orbit-card-client">Aegis Capital</span>
@@ -1390,7 +1390,7 @@ require_once __DIR__ . '/includes/header.php';
             <article class="orbit-card-item" data-index="1" tabindex="0" role="button" aria-label="Verve Global Logistics Engine">
               <div class="orbit-card-inner">
                 <div class="orbit-card-media">
-                  <img src="assets/card_cloud_devops.jpg" alt="Verve Global Logistics Engine" class="orbit-card-img" />
+                  <img src="assets/card_.webp" alt="Verve Global Logistics Engine" class="orbit-card-img" loading="lazy" decoding="async" />
                   <div class="orbit-card-gradient"></div>
                   <span class="orbit-card-badge"><span class="orbit-badge-dot"></span>Supply Chain Cloud</span>
                   <span class="orbit-card-client">Verve Systems</span>
@@ -1419,7 +1419,7 @@ require_once __DIR__ . '/includes/header.php';
             <article class="orbit-card-item" data-index="2" tabindex="0" role="button" aria-label="PulseHealth Diagnostics Portal">
               <div class="orbit-card-inner">
                 <div class="orbit-card-media">
-                  <img src="assets/card_ai_agents.jpg" alt="PulseHealth Clinical AI" class="orbit-card-img" />
+                  <img src="assets/card_.webp" alt="PulseHealth Clinical AI" class="orbit-card-img" loading="lazy" decoding="async" />
                   <div class="orbit-card-gradient"></div>
                   <span class="orbit-card-badge"><span class="orbit-badge-dot"></span>HealthTech Portal</span>
                   <span class="orbit-card-client">PulseHealth</span>
@@ -1448,7 +1448,7 @@ require_once __DIR__ . '/includes/header.php';
             <article class="orbit-card-item" data-index="3" tabindex="0" role="button" aria-label="OmniSphere Private AI Workspace">
               <div class="orbit-card-inner">
                 <div class="orbit-card-media">
-                  <img src="assets/card_cloud_ai.jpg" alt="OmniSphere AI Workspace" class="orbit-card-img" />
+                  <img src="assets/card_.webp" alt="OmniSphere AI Workspace" class="orbit-card-img" loading="lazy" decoding="async" />
                   <div class="orbit-card-gradient"></div>
                   <span class="orbit-card-badge"><span class="orbit-badge-dot"></span>Enterprise AI &amp; RAG</span>
                   <span class="orbit-card-client">OmniSphere Labs</span>
@@ -1477,7 +1477,7 @@ require_once __DIR__ . '/includes/header.php';
             <article class="orbit-card-item" data-index="4" tabindex="0" role="button" aria-label="Pulse Luxury Digital Flagship">
               <div class="orbit-card-inner">
                 <div class="orbit-card-media">
-                  <img src="assets/card_web_apps.jpg" alt="Pulse Luxury Digital Flagship" class="orbit-card-img" />
+                  <img src="assets/card_.webp" alt="Pulse Luxury Digital Flagship" class="orbit-card-img" loading="lazy" decoding="async" />
                   <div class="orbit-card-gradient"></div>
                   <span class="orbit-card-badge"><span class="orbit-badge-dot"></span>Headless Web Platform</span>
                   <span class="orbit-card-client">Pulse Global</span>
