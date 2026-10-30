@@ -294,6 +294,14 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
         "description": "Official Website of RiTiVerse — Custom Website Making, CRM & ERP Software Development",
         "publisher": {
           "@id": "<?= SITE_URL ?>/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "<?= SITE_URL ?>/?s={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
         }
       }
       <?php if ($current_page !== 'home'): ?>

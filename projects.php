@@ -3,10 +3,11 @@
  * RiTiVerse — Projects & Client Reference Architectures
  * Showcase of production software engines, custom websites, CRM, ERP, and mobile systems
  */
-$page_title = 'Client Projects & Case Studies — RiTiVerse Studio';
-$page_description = 'Explore production software engines, custom CRM, ERP platforms, and business websites built by RiTiVerse with 100% full source ownership.';
+$page_title = 'Projects & Case Studies — Web, CRM & ERP Software Built in Vadodara | RiTiVerse';
+$page_description = 'See real-world websites, CRM platforms, ERP systems, and mobile apps built by RiTiVerse in Vadodara with 100% source code ownership. No vendor lock-in.';
 $current_page = 'projects';
 $extra_css = ['css/projects.css'];
+$seo_keywords = 'software development projects Vadodara, CRM ERP development case studies India, website development portfolio Vadodara Gujarat, RiTiVerse projects';
 
 require_once __DIR__ . '/includes/header.php';
 

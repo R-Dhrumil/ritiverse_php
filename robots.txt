@@ -1,10 +1,12 @@
 User-agent: *
 Allow: /
+Allow: /llms.txt
 Disallow: /admin/
 Disallow: /api/
 Disallow: /includes/
 Disallow: /logs/
 
+# Google crawlers
 User-agent: Googlebot
 Allow: /
 Disallow: /admin/
@@ -12,6 +14,7 @@ Disallow: /api/
 Disallow: /includes/
 Disallow: /logs/
 
+# Bing / Microsoft crawlers
 User-agent: Bingbot
 Allow: /
 Disallow: /admin/
@@ -19,11 +22,74 @@ Disallow: /api/
 Disallow: /includes/
 Disallow: /logs/
 
+# Brave Search
 User-agent: Bravebot
 Allow: /
 Disallow: /admin/
 Disallow: /api/
 Disallow: /includes/
 Disallow: /logs/
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+Disallow: /includes/
+Disallow: /logs/
+
+# OpenAI ChatGPT browse
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+
+# Google Gemini / Bard AI
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+Disallow: /includes/
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+Disallow: /api/
+Disallow: /includes/
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Disallow: /admin/
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+Disallow: /admin/
+
+# Apple
+User-agent: Applebot
+Allow: /
+Disallow: /admin/
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /admin/
+
+# Common Link Crawl Protocol for LLM training
+User-agent: CCBot
+Allow: /
+Allow: /llms.txt
 
 Sitemap: https://ritiverse.in/sitemap.xml
