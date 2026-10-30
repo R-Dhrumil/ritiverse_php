@@ -29,7 +29,7 @@ $raw_deliverables = array_filter(array_map('trim', explode("\n", $service['deliv
 $tech_tags = array_filter(array_map('trim', explode(',', $service['tech_stack'] ?? '')));
 
 // Cover Image URL resolution
-$cover_img = !empty($service['image_url']) ? $service['image_url'] : 'assets/card_.webp';
+$cover_img = !empty($service['image_url']) ? $service['image_url'] : 'assets/card_software_apis.webp';
 
 // Other services for bottom switcher
 $all_services = get_all_services(false);
@@ -122,7 +122,7 @@ require_once __DIR__ . '/includes/header.php';
             </div>
 
             <div class="service-visual-media">
-              <img src="<?= e($cover_img) ?>" alt="<?= e($service['title']) ?> Architecture" onerror="this.src='assets/card_.webp'">
+              <img src="<?= e($cover_img) ?>" alt="<?= e($service['title']) ?> Architecture" onerror="this.src='assets/card_software_apis.webp'">
               <div class="service-visual-overlay-badge">
                 <span class="service-visual-badge-text"><?= e($service['title']) ?> Stack</span>
                 <span class="service-visual-badge-pill"><?= e($service['starting_price'] ?: 'Milestone Scope') ?></span>
