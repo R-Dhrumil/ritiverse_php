@@ -333,6 +333,7 @@ $has_projects = !empty($db_projects);
         </div>
       </div>
     </div>
+  </div>
   <?php endif; ?>
 
   <!-- Bottom CTA Banner -->
