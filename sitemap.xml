@@ -87,6 +87,11 @@
     <lastmod>2026-10-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ritiverse.in/assets/card_web_apps.webp</image:loc>
+      <image:title>RiTiVerse Production Software Case Studies &amp; Reference Architectures</image:title>
+      <image:caption>Real-world client software architectures, custom websites, CRM platforms, and ERP systems engineered in Vadodara with 100% source code ownership.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://ritiverse.in/about.php</loc>

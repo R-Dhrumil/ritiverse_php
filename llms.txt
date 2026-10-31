@@ -21,6 +21,14 @@ RiTiVerse provides modern software engineering without recurring agency hostage 
 - [About Us & Standards](https://ritiverse.in/about.php): Core principles, development standards, 100% code ownership guarantee, and company background.
 - [Contact Development Team](https://ritiverse.in/contact.php): Schedule a free architectural consultation, direct engineer access, and project estimation.
 
+## Project Case Studies & Delivery Standards
+
+- [RiTiVerse Production Case Studies](https://ritiverse.in/projects.php): Real-world client software architectures spanning bespoke web applications, enterprise ERP platforms, CRM systems, and mobile apps.
+- **100% Source Code Transfer:** Full repository rights are transferred to client GitHub/GitLab organizations with complete database migration scripts and deployment keys.
+- **Zero Lock-in Guarantee:** No proprietary frameworks, monthly hostage fees, or encrypted vendor libraries.
+- **Core Web Vitals Optimized:** Sub-2-second response times, automated WebP image delivery, Brotli compression, and semantic HTML5 markup.
+
+
 ## Company Details
 
 - **Location:** Vadodara, Gujarat, India

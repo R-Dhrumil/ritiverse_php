@@ -123,7 +123,7 @@ $has_projects = !empty($db_projects);
                   <span class="case-client-badge">Client: <?= e($client_name) ?></span>
                 <?php endif; ?>
 
-                <img src="<?= e($cover_image) ?>" alt="<?= e($proj['title']) ?>" class="case-card-cover-img" loading="lazy" onerror="this.onerror=null; this.src='assets/card_web_apps.jpg';">
+                <img src="<?= e($cover_image) ?>" alt="<?= e($proj['title']) ?> Case Study — Engineered by RiTiVerse" class="case-card-cover-img" loading="lazy" onerror="this.onerror=null; this.src='assets/card_web_apps.webp';">
                 <div class="case-card-hero-overlay"></div>
               </div>
 
@@ -288,7 +288,7 @@ $has_projects = !empty($db_projects);
 
       <!-- Modal Hero Image -->
       <div class="project-modal-hero">
-        <img id="modalImg" src="assets/card_web_apps.jpg" alt="Case Study Cover" class="project-modal-img">
+        <img id="modalImg" src="assets/card_web_apps.webp" alt="RiTiVerse Case Study Architecture Cover" class="project-modal-img">
         <div class="project-modal-hero-overlay"></div>
       </div>
 
@@ -335,6 +335,137 @@ $has_projects = !empty($db_projects);
     </div>
   </div>
   <?php endif; ?>
+
+<?php
+// Dynamic ItemList Schema for Projects (SEO & AI Parsing)
+$project_items_schema = [];
+if (!empty($db_projects)) {
+    foreach ($db_projects as $idx => $p) {
+        $p_url = !empty($p['live_url']) ? $p['live_url'] : (SITE_URL . '/projects.php#project-' . $p['id']);
+        $p_img = !empty($p['image_url']) ? (strpos($p['image_url'], 'http') === 0 ? $p['image_url'] : SITE_URL . '/' . ltrim($p['image_url'], '/')) : (SITE_URL . '/assets/card_web_apps.webp');
+        $project_items_schema[] = [
+            '@type' => 'ListItem',
+            'position' => $idx + 1,
+            'item' => [
+                '@type' => 'SoftwareApplication',
+                'name' => $p['title'],
+                'description' => $p['description'],
+                'applicationCategory' => ucfirst($p['category'] ?? 'BusinessApplication'),
+                'operatingSystem' => 'Web, Cloud, iOS, Android',
+                'image' => $p_img,
+                'creator' => [
+                    '@type' => 'Organization',
+                    'name' => 'RiTiVerse',
+                    'url' => 'https://ritiverse.in'
+                ],
+                'keywords' => $p['tech_tags'] ?? '',
+                'url' => $p_url
+            ]
+        ];
+    }
+}
+
+$projects_ld_json = [
+    '@context' => 'https://schema.org',
+    '@type' => 'ItemList',
+    'name' => 'RiTiVerse Production Software Case Studies & Projects',
+    'description' => 'Real-world client software architectures, custom websites, CRM platforms, and ERP systems engineered by RiTiVerse with 100% code ownership.',
+    'itemListElement' => $project_items_schema
+];
+
+// AEO FAQPage Schema for Projects
+$projects_faq_schema = [
+    '@context' => 'https://schema.org',
+    '@type' => 'FAQPage',
+    'mainEntity' => [
+        [
+            '@type' => 'Question',
+            'name' => 'How does RiTiVerse deliver completed software projects?',
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'All source code, database migrations, and CI/CD deployment scripts are transferred directly to your organization\'s GitHub or GitLab repository with 100% legal ownership and zero monthly platform fees.'
+            ]
+        ],
+        [
+            '@type' => 'Question',
+            'name' => 'Can I test live staging demos before final production launch?',
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'Yes. We share password-protected staging environments and host weekly live demos throughout the development cycle so you can test real functionality, review milestones, and approve each sprint.'
+            ]
+        ],
+        [
+            '@type' => 'Question',
+            'name' => 'What technologies does RiTiVerse use in client projects?',
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'RiTiVerse builds exclusively on proven, open industry standards: PHP 8.3, Laravel, React.js, Node.js, Express, React Native, Flutter, MySQL, PostgreSQL, and AWS/DigitalOcean cloud infrastructure.'
+            ]
+        ],
+        [
+            '@type' => 'Question',
+            'name' => 'How does RiTiVerse ensure high performance and fast load speeds for client software?',
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'Every web platform and software system undergoes rigorous Core Web Vitals optimization, asset compression (WebP), Brotli server compression, semantic HTML5, and indexed database queries to ensure sub-2-second response times.'
+            ]
+        ],
+        [
+            '@type' => 'Question',
+            'name' => 'Does RiTiVerse provide post-launch support and warranty?',
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => 'Yes. Every project includes a 30-day post-launch warranty covering technical support, speed verification, bug fixes, and hands-on team onboarding with zero mandatory recurring retainers.'
+            ]
+        ]
+    ]
+];
+?>
+<script type="application/ld+json"><?= json_encode($projects_ld_json, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?></script>
+<script type="application/ld+json"><?= json_encode($projects_faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?></script>
+
+  <!-- Project Engineering FAQ Section for AEO -->
+  <section class="subpage-section" style="background: rgba(250, 247, 238, 0.9); backdrop-filter: blur(20px); border-top: 1px solid rgba(226, 218, 204, 0.85); border-bottom: 1px solid rgba(226, 218, 204, 0.85); margin-bottom: 40px;">
+    <div class="subpage-container">
+      <div class="section-badge-header">
+        <span class="section-eyebrow">
+          <span class="section-eyebrow-dot"></span>
+          Engineering FAQ
+        </span>
+        <h2 class="section-title">Case Studies &amp; Project Delivery</h2>
+        <p class="section-subtitle">Common questions about our development standards, source code delivery, and milestones.</p>
+      </div>
+
+      <div class="faq-list" style="max-width: 820px; margin: 0 auto;">
+
+        <div class="faq-item" style="border-bottom: 1px solid rgba(226,218,204,0.85); padding: 1.5rem 0;">
+          <h3 style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">How does RiTiVerse deliver completed software projects?</h3>
+          <p style="color: var(--color-text-secondary, #5a5347); line-height: 1.7; margin: 0;">All source code, database schemas, and deployment pipelines are transferred directly to your organization's private GitHub or GitLab repository. You receive <strong>100% legal and technical ownership</strong> from Day 1 with zero ongoing agency retainers.</p>
+        </div>
+
+        <div class="faq-item" style="border-bottom: 1px solid rgba(226,218,204,0.85); padding: 1.5rem 0;">
+          <h3 style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">Can I test live staging demos before final production launch?</h3>
+          <p style="color: var(--color-text-secondary, #5a5347); line-height: 1.7; margin: 0;">Yes. We provide password-protected live staging environments and host weekly sprint demos. You can test features in real-time, approve milestones, and ensure the product meets your business requirements before going live.</p>
+        </div>
+
+        <div class="faq-item" style="border-bottom: 1px solid rgba(226,218,204,0.85); padding: 1.5rem 0;">
+          <h3 style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">What technologies does RiTiVerse use in client projects?</h3>
+          <p style="color: var(--color-text-secondary, #5a5347); line-height: 1.7; margin: 0;">We build on open industry standards: <strong>React, PHP 8.3, Laravel, Node.js, Express, React Native, Flutter, MySQL, PostgreSQL</strong>, and cloud infrastructure (AWS, DigitalOcean, Hostinger). We never lock you into closed CMS plugins or proprietary templates.</p>
+        </div>
+
+        <div class="faq-item" style="border-bottom: 1px solid rgba(226,218,204,0.85); padding: 1.5rem 0;">
+          <h3 style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">How does RiTiVerse ensure high performance and fast load speeds?</h3>
+          <p style="color: var(--color-text-secondary, #5a5347); line-height: 1.7; margin: 0;">Every platform is engineered for <strong>Core Web Vitals</strong> optimization: next-generation WebP media, Brotli server compression, semantic HTML5, zero unnecessary JS libraries, and clean database indexes ensuring sub-2-second page loads.</p>
+        </div>
+
+        <div class="faq-item" style="padding: 1.5rem 0;">
+          <h3 style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem;">Does RiTiVerse provide post-launch support and warranty?</h3>
+          <p style="color: var(--color-text-secondary, #5a5347); line-height: 1.7; margin: 0;">Yes. Every completed project includes a <strong>30-day post-launch warranty</strong> covering bug fixes, speed checks, and technical onboarding for your internal team with zero forced monthly retainers.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- Bottom CTA Banner -->
   <section class="subpage-section" style="padding-top: 0;">

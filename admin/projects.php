@@ -281,6 +281,14 @@ if ($db) {
           <input type="hidden" name="image_url_existing" value="<?= e($edit_project['image_url'] ?? '') ?>">
         <?php endif; ?>
 
+        <!-- SEO, AEO & GEO Automated Badge -->
+        <div style="background: linear-gradient(135deg, rgba(248,104,0,0.06) 0%, rgba(16,185,129,0.06) 100%); border: 1px solid rgba(248,104,0,0.2); border-radius: 10px; padding: 12px 16px; margin-bottom: 22px; display: flex; align-items: flex-start; gap: 12px;">
+          <div style="font-size: 18px; line-height: 1;">⚡</div>
+          <div style="font-size: 12px; line-height: 1.5; color: var(--admin-text-main);">
+            <strong style="color: #F86800;">Automated SEO, AEO &amp; GEO Active:</strong> Every project added here automatically generates Schema.org <code>SoftwareApplication</code> JSON-LD markup, Google Image Alt tags with brand attribution, and AI-readable portfolio schema for answer engines (Perplexity, SGE, ChatGPT).
+          </div>
+        </div>
+
         <!-- Row 1: Title, Client Name, Category, Eyebrow Tag -->
         <div class="admin-grid-4">
           <div>
@@ -358,12 +366,12 @@ if ($db) {
             <div>
               <span style="font-size: 12px; font-weight: 600; color: var(--admin-text-main); display: block; margin-bottom: 6px;">Option B: Select from Studio Assets or Custom Path</span>
               <select name="preset_asset" class="admin-input" style="background: #FFFFFF; margin-bottom: 8px;">
-                <option value="">-- Choose from existing studio assets --</option>
-                <option value="assets/card_web_apps.jpg" <?= (($edit_project['image_url'] ?? '') === 'assets/card_web_apps.jpg') ? 'selected' : '' ?>>Web Apps Mockup (card_web_apps.jpg)</option>
-                <option value="assets/card_software_apis.jpg" <?= (($edit_project['image_url'] ?? '') === 'assets/card_software_apis.jpg') ? 'selected' : '' ?>>Software APIs (card_software_apis.jpg)</option>
-                <option value="assets/card_cloud_devops.jpg" <?= (($edit_project['image_url'] ?? '') === 'assets/card_cloud_devops.jpg') ? 'selected' : '' ?>>Cloud &amp; DevOps (card_cloud_devops.jpg)</option>
-                <option value="assets/card_ai_agents.jpg" <?= (($edit_project['image_url'] ?? '') === 'assets/card_ai_agents.jpg') ? 'selected' : '' ?>>AI Workspace (card_ai_agents.jpg)</option>
-                <option value="assets/card_cloud_ai.jpg" <?= (($edit_project['image_url'] ?? '') === 'assets/card_cloud_ai.jpg') ? 'selected' : '' ?>>Cloud AI (card_cloud_ai.jpg)</option>
+                <option value="">-- Choose from existing studio assets (WebP Optimized) --</option>
+                <option value="assets/card_web_apps.webp" <?= (in_array($edit_project['image_url'] ?? '', ['assets/card_web_apps.webp', 'assets/card_web_apps.jpg'])) ? 'selected' : '' ?>>Web Apps Mockup (card_web_apps.webp)</option>
+                <option value="assets/card_software_apis.webp" <?= (in_array($edit_project['image_url'] ?? '', ['assets/card_software_apis.webp', 'assets/card_software_apis.jpg'])) ? 'selected' : '' ?>>Software APIs (card_software_apis.webp)</option>
+                <option value="assets/card_cloud_devops.webp" <?= (in_array($edit_project['image_url'] ?? '', ['assets/card_cloud_devops.webp', 'assets/card_cloud_devops.jpg'])) ? 'selected' : '' ?>>Cloud &amp; DevOps (card_cloud_devops.webp)</option>
+                <option value="assets/card_ai_agents.webp" <?= (in_array($edit_project['image_url'] ?? '', ['assets/card_ai_agents.webp', 'assets/card_ai_agents.jpg'])) ? 'selected' : '' ?>>AI Workspace (card_ai_agents.webp)</option>
+                <option value="assets/card_cloud_ai.webp" <?= (in_array($edit_project['image_url'] ?? '', ['assets/card_cloud_ai.webp', 'assets/card_cloud_ai.jpg'])) ? 'selected' : '' ?>>Cloud AI (card_cloud_ai.webp)</option>
                 <option value="assets/featured-work.jpg" <?= (($edit_project['image_url'] ?? '') === 'assets/featured-work.jpg') ? 'selected' : '' ?>>Featured Work (featured-work.jpg)</option>
               </select>
 
