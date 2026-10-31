@@ -154,7 +154,7 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
         <div class="footer-sitemap-col">
           <h3 class="footer-col-title">Studio &amp; Trust</h3>
           <ul class="footer-links-list">
-            <li><a href="index.php">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="services.php">All Services</a></li>
             <li><a href="projects.php">Featured Projects</a></li>
             <li><a href="about.php">Philosophy &amp; Standards</a></li>
@@ -170,7 +170,12 @@ $extra_js = isset($extra_js) && is_array($extra_js) ? $extra_js : [];
       <!-- Bottom Row -->
       <div class="footer-bottom-row">
         <div class="footer-brand">
-          <span class="footer-copy">© <?= date('Y') ?> <?= e(APP_NAME) ?>. Web Development Company in Vadodara, Gujarat. All rights reserved. 100% Client Code Ownership Guaranteed. <a href="privacy-policy.php" style="color: inherit; text-decoration: underline; margin-left: 8px;">DPDP Act 2023 Compliant</a></span>
+          <span class="footer-copy">© <?= date('Y') ?> <?= e(APP_NAME) ?>. IT Services &amp; Web Development Company in Vadodara, Gujarat. All rights reserved. 100% Client Code Ownership Guaranteed. <a href="privacy-policy.php" style="color: inherit; text-decoration: underline; margin-left: 8px;">DPDP Act 2023 Compliant</a></span>
+          <?php if (!empty($is_client_demo) || (defined('IS_PRIMARY_DOMAIN') && !IS_PRIMARY_DOMAIN)): ?>
+            <div class="footer-demo-attribution" style="margin-top: 6px; font-size: 12px; color: #64748B;">
+              Client Project Demo • Engineered by <a href="https://ritiverse.in/" target="_blank" rel="noopener" style="color: var(--brand-orange, #F86800); font-weight: 600; text-decoration: underline;">RiTiVerse IT Services</a>
+            </div>
+          <?php endif; ?>
         </div>
         <div class="footer-status-pill">
           <span class="footer-status-dot"></span>

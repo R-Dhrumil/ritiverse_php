@@ -11,9 +11,9 @@ START TRANSACTION;
 -- 1. Update Global SEO & International Search Settings in `site_settings`
 -- ------------------------------------------------------------------------------
 INSERT INTO `site_settings` (`setting_key`, `setting_value`, `setting_group`) VALUES
-('seo_primary_keywords', 'web development company in vadodara, website developers vadodara, best web design company vadodara, custom CRM development vadodara, custom ERP software development, software development company in vadodara gujarat, offshore software development India, custom software engineering, hire CRM developers, enterprise ERP systems, zero lock-in software', 'seo'),
-('seo_meta_title', 'Web Development Company in Vadodara | Custom CRM & ERP Software | RiTiVerse', 'seo'),
-('seo_meta_description', 'RiTiVerse is a leading web development company in Vadodara, Gujarat. We engineer custom websites, CRM platforms & ERP software with 100% code ownership. Serving Vadodara & worldwide.', 'seo'),
+('seo_primary_keywords', 'RiTiVerse, RiTiVerse IT Services, RiTiVerse software company, web development company in vadodara, website developers vadodara, best web design company vadodara, custom CRM development vadodara, custom ERP software development, software development company in vadodara gujarat, offshore software development India, custom software engineering, hire CRM developers, enterprise ERP systems, zero lock-in software', 'seo'),
+('seo_meta_title', 'RiTiVerse — IT Services, Custom Web, CRM & ERP Software Development Company', 'seo'),
+('seo_meta_description', 'RiTiVerse is an official IT services & custom software development company in Vadodara, Gujarat. We build websites, CRM, ERP & apps with 100% code ownership.', 'seo'),
 ('seo_target_regions', 'Vadodara, Gujarat, India, Worldwide, US, UK, UAE, CA, AU, DE, SG', 'seo'),
 ('office_location', 'Vadodara, Gujarat, India • Global Client Delivery', 'contact')
 ON DUPLICATE KEY UPDATE 

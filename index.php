@@ -1,10 +1,10 @@
 <?php
 /**
- * RiTiVerse — RItiverse — Elite Website & Software Development
+ * RiTiVerse — Official IT Services, Custom Web, CRM & ERP Software Development
  */
-$page_title = 'Web Development Company in Vadodara | Custom CRM & ERP Software | RiTiVerse';
-$page_description = 'RiTiVerse is a leading web development company in Vadodara, Gujarat. We engineer custom websites, CRM platforms & ERP software with 100% code ownership.';
-$seo_keywords = 'web development company in vadodara, website developers vadodara, web design company in vadodara, custom CRM development vadodara, ERP software company vadodara, software development company in vadodara gujarat, RiTiVerse';
+$page_title = 'RiTiVerse — IT Services, Custom Web, CRM & ERP Software Development Company';
+$page_description = 'RiTiVerse is an official IT services & custom software development company in Vadodara, Gujarat. We build websites, CRM, ERP & apps with 100% code ownership.';
+$seo_keywords = 'RiTiVerse, RiTiVerse IT Services, RiTiVerse Vadodara, RiTiVerse software company, web development company in vadodara, website developers vadodara, custom CRM development vadodara, custom ERP software development, offshore software development India';
 $current_page = 'home';
 $extra_css = ['css/index.css'];
 
@@ -23,7 +23,7 @@ require_once __DIR__ . '/includes/header.php';
     <div class="hero-header">
       <div class="subpage-badge" style="margin-bottom: 16px;">
         <span class="subpage-badge-dot"></span>
-        Web &amp; Software Studio • Vadodara, Gujarat
+        RiTiVerse IT Services • Vadodara, Gujarat
       </div>
       <h1 class="hero-title">
         <span class="hero-title-main">You Own It.</span>
@@ -37,7 +37,7 @@ require_once __DIR__ . '/includes/header.php';
         </span>
       </h1>
       <p class="hero-description">
-        Custom-built websites and software with full source ownership, so your technology never depends on us
+        RiTiVerse engineers custom websites, CRM platforms, ERP systems and IT services with 100% full source ownership—your technology never depends on us.
       </p>
 
       <!-- Interactive Email Capture Capsule -->

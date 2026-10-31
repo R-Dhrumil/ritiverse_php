@@ -147,7 +147,7 @@ INSERT INTO `site_settings` (`setting_key`, `setting_value`, `setting_group`) VA
 ('google_site_verification', '', 'seo'),
 ('google_analytics_id', 'G-18XT3VN71N', 'seo'),
 ('meta_pixel_id', '', 'seo'),
-('seo_primary_keywords', 'web development company in vadodara, website developers vadodara, best web design company vadodara, custom CRM development vadodara, custom ERP software development, software development company in vadodara gujarat, offshore software development India, custom software engineering, hire CRM developers, enterprise ERP systems, zero lock-in software', 'seo'),
+('seo_primary_keywords', 'RiTiVerse, RiTiVerse IT Services, RiTiVerse software company, web development company in vadodara, website developers vadodara, best web design company vadodara, custom CRM development vadodara, custom ERP software development, software development company in vadodara gujarat, offshore software development India, custom software engineering, hire CRM developers, enterprise ERP systems, zero lock-in software', 'seo'),
 ('social_linkedin', 'https://www.linkedin.com/company/ritiverse', 'social'),
 ('social_instagram', 'https://www.instagram.com/ritiverse.in?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==', 'social'),
 ('social_github', 'https://github.com/RiTIVerse', 'social'),

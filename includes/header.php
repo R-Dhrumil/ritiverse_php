@@ -64,7 +64,8 @@ if (!isset($canonical_url) || empty($canonical_url)) {
     if (isset($custom_canonical_url) && !empty($custom_canonical_url)) {
         $canonical_url = $custom_canonical_url;
     } else {
-        $canonical_url = SITE_URL . '/' . ($current_page === 'home' ? '' : ($current_page . '.php'));
+        $canonical_base = (defined('IS_PRIMARY_DOMAIN') && IS_PRIMARY_DOMAIN) ? PRIMARY_CANONICAL_URL : SITE_URL;
+        $canonical_url = $canonical_base . '/' . ($current_page === 'home' ? '' : ($current_page . '.php'));
     }
 }
 if (!isset($seo_keywords) || empty($seo_keywords)) {
@@ -186,22 +187,31 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["ProfessionalService", "Organization", "LocalBusiness"],
-        "@id": "<?= SITE_URL ?>/#organization",
+        "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
+        "@id": "https://ritiverse.in/#organization",
         "name": "RiTiVerse",
-        "alternateName": ["RiTiVerse Official", "RiTiVerse Studio", "RiTiVerse Software Studio", "ritiverse.in"],
+        "alternateName": ["RiTiVerse IT Services", "RiTiVerse Official", "RiTiVerse Studio", "RiTiVerse Software Studio", "ritiverse.in"],
         "legalName": "RiTiVerse Studio",
-        "url": "<?= SITE_URL ?>",
-        "logo": "<?= SITE_URL ?>/assets/logo.png",
-        "image": "<?= SITE_URL ?>/assets/logo.png",
+        "url": "https://ritiverse.in",
+        "logo": "https://ritiverse.in/assets/logo.png",
+        "image": "https://ritiverse.in/assets/logo.png",
         "brand": {
           "@type": "Brand",
           "name": "RiTiVerse",
-          "url": "<?= SITE_URL ?>"
+          "url": "https://ritiverse.in"
         },
-        "description": "Premier Web Development Company in Vadodara, Gujarat — Custom Website Making, Custom CRM, ERP Software Development, and Mobile Application Engineering with 100% Client Code Ownership.",
+        "description": "RiTiVerse is an official IT services and custom software development company in Vadodara, Gujarat. We build high-performance websites, custom CRM platforms, enterprise ERP systems, and mobile applications with 100% source code ownership.",
         "email": "info@ritiverse.in",
         "telephone": "+91-94267-82646",
+        "knowsAbout": [
+          "IT Services",
+          "Custom Software Development",
+          "Web Development",
+          "CRM Software Development",
+          "ERP Software Development",
+          "Mobile Application Development",
+          "E-Commerce Development"
+        ],
         "sameAs": [
           "<?= e($social_linkedin) ?>",
           "<?= e($social_instagram) ?>",
@@ -285,19 +295,19 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
       },
       {
         "@type": "WebSite",
-        "@id": "<?= SITE_URL ?>/#website",
-        "url": "<?= SITE_URL ?>",
+        "@id": "https://ritiverse.in/#website",
+        "url": "https://ritiverse.in",
         "name": "RiTiVerse",
-        "alternateName": ["RiTiVerse Official Website", "ritiverse.in", "RiTiVerse Studio"],
-        "description": "Official Website of RiTiVerse — Custom Website Making, CRM & ERP Software Development",
+        "alternateName": ["RiTiVerse IT Services", "RiTiVerse Official Website", "ritiverse.in", "RiTiVerse Studio"],
+        "description": "Official Website of RiTiVerse — IT Services, Custom Website Making, CRM & ERP Software Development",
         "publisher": {
-          "@id": "<?= SITE_URL ?>/#organization"
+          "@id": "https://ritiverse.in/#organization"
         },
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
             "@type": "EntryPoint",
-            "urlTemplate": "<?= SITE_URL ?>/?s={search_term_string}"
+            "urlTemplate": "https://ritiverse.in/?s={search_term_string}"
           },
           "query-input": "required name=search_term_string"
         }
@@ -477,7 +487,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
   <header class="synex-nav" id="synex-nav">
     <div class="synex-nav-left">
       <!-- Modern & Minimal Floating Brand Wordmark with Logo -->
-      <a href="index.php" class="synex-brand" aria-label="RiTiVerse Home">
+      <a href="/" class="synex-brand" aria-label="RiTiVerse Home">
         <img src="assets/logo-nav.webp" alt="RiTiVerse Logo" class="synex-brand-logo" fetchpriority="high" width="32" height="32" />
         <span class="synex-brand-name"><?= e(APP_NAME) ?></span>
       </a>
@@ -515,7 +525,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
     <!-- Fullscreen Menu Top Navigation Bar -->
     <div class="fs-menu-header">
       <div class="synex-nav-left">
-        <a href="index.php" class="synex-brand" aria-label="RiTiVerse Home">
+        <a href="/" class="synex-brand" aria-label="RiTiVerse Home">
           <img src="assets/logo-nav.webp" alt="RiTiVerse Logo" class="synex-brand-logo" width="32" height="32" loading="lazy" />
           <span class="synex-brand-name"><?= e(APP_NAME) ?></span>
         </a>
@@ -539,7 +549,7 @@ $social_facebook = get_setting('social_facebook', defined('SOCIAL_FACEBOOK') ? S
           <div class="fs-links-group">
             <ul class="fs-nav-list">
               <li class="fs-nav-item">
-                <a href="index.php" class="fs-nav-link <?= is_active('home', $current_page) ?>">
+                <a href="/" class="fs-nav-link <?= is_active('home', $current_page) ?>">
                   <span class="nav-text">Home</span>
                   <span class="nav-arrow">↗</span>
                 </a>

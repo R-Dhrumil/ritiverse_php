@@ -36,8 +36,8 @@ define('DB_USER', getenv('DB_USER') ?: ($isLocalHost ? 'root' : 'ritivers_main')
 define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : ($isLocalHost ? '' : 'ritivers_main'));
 define('DB_CHARSET', 'utf8mb4');
 
-// High-Priority SEO Search Keywords (Rank #1 for Web Development in Vadodara, CRM, ERP, Software Dev)
-define('SEO_PRIMARY_KEYWORDS', 'web development company in vadodara, website developers vadodara, best web design company vadodara, custom CRM development vadodara, custom ERP software development, software development company in vadodara gujarat, offshore software development India, custom software engineering, hire CRM developers, enterprise ERP systems, zero lock-in software');
+// High-Priority SEO Search Keywords (Rank #1 for RiTiVerse Brand, IT Services & Vadodara Local Search)
+define('SEO_PRIMARY_KEYWORDS', 'RiTiVerse, RiTiVerse IT Services, RiTiVerse software company, web development company in vadodara, website developers vadodara, best web design company vadodara, custom CRM development vadodara, custom ERP software development, software development company in vadodara gujarat, offshore software development India, custom software engineering, hire CRM developers, enterprise ERP systems, zero lock-in software');
 define('SEO_AUTHOR', 'RiTiVerse Engineering Studio');
 define('SEO_GEO_REGION', 'IN-GJ');
 define('SEO_GEO_PLACENAME', 'Vadodara, Gujarat, India');
@@ -79,10 +79,18 @@ define('BING_SITE_VERIFICATION', getenv('BING_SITE_VERIFICATION') ?: '37D47CA67C
 define('GOOGLE_ANALYTICS_ID', getenv('GOOGLE_ANALYTICS_ID') ?: 'G-18XT3VN71N');
 define('META_PIXEL_ID', getenv('META_PIXEL_ID') ?: '');
 
-// Dynamic Base URL detection for cPanel
+// Canonical Primary Domain Architecture (Dominance for RiTiVerse Brand & IT Services)
+define('PRIMARY_HOST', 'ritiverse.in');
+define('PRIMARY_CANONICAL_URL', 'https://ritiverse.in');
+
+// Dynamic Base URL detection for cPanel & Subdomain Support
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? 'https://' : 'http://';
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8000';
 define('SITE_URL', $protocol . $host);
+
+// Check if running on primary apex domain vs subdomains / client demo sites
+$is_primary_domain = ($host === 'ritiverse.in' || $host === 'www.ritiverse.in' || $host === 'localhost' || strpos($host, 'localhost:') === 0);
+define('IS_PRIMARY_DOMAIN', $is_primary_domain);
 
 /**
  * Helper: Generate clean link (works with or without mod_rewrite)
