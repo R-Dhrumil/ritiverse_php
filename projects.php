@@ -10,21 +10,39 @@ $extra_css = ['css/projects.css'];
 $seo_keywords = 'software development projects Vadodara, CRM ERP development case studies India, website development portfolio Vadodara Gujarat, RiTiVerse projects';
 
 require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/projects_helper.php';
 
 $db = get_db();
 $db_projects = [];
 
 if ($db) {
     try {
+        ensure_projects_table_schema($db);
         $stmt = $db->query("SELECT * FROM projects WHERE is_featured = 1 ORDER BY display_order ASC, id ASC");
-        $db_projects = $stmt->fetchAll();
+        $db_projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
         $db_projects = [];
     }
 }
 
-// No dummy fallback — real projects are loaded from database or managed in admin
+// Check if projects exist
 $has_projects = !empty($db_projects);
+
+// Extract top unique technologies for multi-tech filtering chips
+$available_tech = [];
+if ($has_projects) {
+    foreach ($db_projects as $p) {
+        if (!empty($p['tech_tags'])) {
+            foreach (explode(',', $p['tech_tags']) as $t) {
+                $trimmed = trim($t);
+                if ($trimmed && !in_array($trimmed, $available_tech)) {
+                    $available_tech[] = $trimmed;
+                }
+            }
+        }
+    }
+    $available_tech = array_slice($available_tech, 0, 10);
+}
 ?>
 
   <!-- Subpage Hero Section -->
@@ -44,18 +62,38 @@ $has_projects = !empty($db_projects);
       </p>
 
       <?php if ($has_projects): ?>
-      <!-- Search & Category Controls -->
+      <!-- Search, Filters & View Controls -->
       <div class="projects-controls-container">
-        <!-- Live Search Bar -->
-        <div class="projects-search-bar">
-          <span class="projects-search-icon">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </span>
-          <input type="text" id="projectSearch" class="projects-search-input" placeholder="Search projects by title, industry, or tech (React, PHP, Node)..." aria-label="Search projects">
-          <button id="projectSearchClear" class="projects-search-clear" aria-label="Clear search">✕</button>
+        
+        <!-- Controls Top Row: Live Search & View Switcher -->
+        <div class="projects-controls-top">
+          <!-- Live Search Bar -->
+          <div class="projects-search-bar">
+            <span class="projects-search-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input type="text" id="projectSearch" class="projects-search-input" placeholder="Search projects by title, industry, or tech (React, PHP, Node)..." aria-label="Search projects">
+            <button id="projectSearchClear" class="projects-search-clear" aria-label="Clear search">✕</button>
+          </div>
+
+          <!-- Interactive View Switcher: Grid vs List -->
+          <div class="projects-view-toggle" role="group" aria-label="Portfolio View Toggle">
+            <button type="button" class="view-toggle-btn active" id="viewGridBtn" data-view="grid" title="Visual Cards View" aria-pressed="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zm-9 9h7v7H4v-7zm9 0h7v7h-7v-7z"/>
+              </svg>
+              <span>Grid View</span>
+            </button>
+            <button type="button" class="view-toggle-btn" id="viewListBtn" data-view="list" title="Architectural Table View" aria-pressed="false">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"/>
+              </svg>
+              <span>List View</span>
+            </button>
+          </div>
         </div>
 
         <!-- Category Filter Pills -->
@@ -79,6 +117,18 @@ $has_projects = !empty($db_projects);
             AI Automation <span class="filter-count">0</span>
           </button>
         </div>
+
+        <?php if (!empty($available_tech)): ?>
+        <!-- Secondary Multi-Technology Filter Chips -->
+        <div class="projects-tech-filter-bar">
+          <span class="tech-filter-label">Filter Tech:</span>
+          <button class="tech-filter-chip active" data-tech="all">All</button>
+          <?php foreach ($available_tech as $tech): ?>
+            <button class="tech-filter-chip" data-tech="<?= strtolower(e($tech)) ?>"><?= e($tech) ?></button>
+          <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+
       </div>
       <?php endif; ?>
     </div>
@@ -88,20 +138,28 @@ $has_projects = !empty($db_projects);
   <section class="subpage-section">
     <div class="subpage-container">
       <?php if ($has_projects): ?>
+        
+        <!-- View 1: Visual Cards Grid -->
         <div class="projects-grid" id="projectsGrid">
 
           <?php foreach ($db_projects as $proj): 
             $category = strtolower($proj['category'] ?? 'web');
-            $cover_image = !empty($proj['image_url']) ? $proj['image_url'] : 'assets/card_web_apps.jpg';
+            $cover_image = !empty($proj['image_url']) ? $proj['image_url'] : 'assets/card_web_apps.webp';
             $client_name = !empty($proj['client_name']) ? $proj['client_name'] : '';
+            $client_ind = !empty($proj['client_industry']) ? $proj['client_industry'] : '';
             $live_url = !empty($proj['live_url']) ? $proj['live_url'] : '';
-            $search_data = strtolower($proj['title'] . ' ' . $client_name . ' ' . $category . ' ' . $proj['tag_label'] . ' ' . $proj['tech_tags'] . ' ' . $proj['description']);
+            $project_slug = !empty($proj['slug']) ? $proj['slug'] : (string)$proj['id'];
+            $case_url = SITE_URL . '/project/' . urlencode($project_slug);
+            $search_data = strtolower($proj['title'] . ' ' . $client_name . ' ' . $client_ind . ' ' . $category . ' ' . $proj['tag_label'] . ' ' . $proj['tech_tags'] . ' ' . $proj['description']);
           ?>
             <article class="case-study-card" 
               data-id="<?= $proj['id'] ?>"
+              data-slug="<?= e($project_slug) ?>"
+              data-case-url="<?= e($case_url) ?>"
               data-category="<?= e($category) ?>"
               data-title="<?= e($proj['title']) ?>"
               data-client="<?= e($client_name) ?>"
+              data-industry="<?= e($client_ind) ?>"
               data-tag="<?= e($proj['tag_label']) ?>"
               data-image="<?= e($cover_image) ?>"
               data-desc="<?= e($proj['description']) ?>"
@@ -116,21 +174,23 @@ $has_projects = !empty($db_projects);
               data-search="<?= e($search_data) ?>">
               
               <!-- Visual Hero Cover with Image & Badges -->
-              <div class="case-card-hero">
+              <a href="<?= e($case_url) ?>" class="case-card-hero" aria-label="Read <?= e($proj['title']) ?> Case Study">
                 <span class="case-tag-pill"><?= e($proj['tag_label']) ?></span>
                 
                 <?php if (!empty($client_name)): ?>
-                  <span class="case-client-badge">Client: <?= e($client_name) ?></span>
+                  <span class="case-client-badge">Client: <?= e($client_name) ?><?= $client_ind ? ' (' . e($client_ind) . ')' : '' ?></span>
                 <?php endif; ?>
 
                 <img src="<?= e($cover_image) ?>" alt="<?= e($proj['title']) ?> Case Study — Engineered by RiTiVerse" class="case-card-cover-img" loading="lazy" onerror="this.onerror=null; this.src='assets/card_web_apps.webp';">
                 <div class="case-card-hero-overlay"></div>
-              </div>
+              </a>
 
               <!-- Card Body -->
               <div class="case-card-body">
                 <div>
-                  <h2 class="case-card-title"><?= e($proj['title']) ?></h2>
+                  <h2 class="case-card-title">
+                    <a href="<?= e($case_url) ?>" style="color: inherit; text-decoration: none;"><?= e($proj['title']) ?></a>
+                  </h2>
                   <p class="case-card-desc"><?= e($proj['description']) ?></p>
                 </div>
 
@@ -166,29 +226,29 @@ $has_projects = !empty($db_projects);
                     <?php endforeach; ?>
                   </div>
 
-                  <!-- Action Strip: Quick View & Live Demo -->
+                  <!-- Action Strip: Dedicated Case Study + Quick Peek Modal + Live Demo -->
                   <div class="case-card-actions">
-                    <button type="button" class="case-btn-secondary open-case-modal-btn">
-                      <span>Explore Architecture</span>
+                    <a href="<?= e($case_url) ?>" class="case-btn-primary">
+                      <span>Read Case Study</span>
                       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14"></path>
-                        <path d="M12 5l7 7-7 7"></path>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
                       </svg>
+                    </a>
+
+                    <button type="button" class="case-btn-secondary open-case-modal-btn" title="Instant Quick Peek Modal">
+                      <span>Quick Peek</span>
+                      <span style="font-size: 13px;">👁</span>
                     </button>
 
                     <?php if (!empty($live_url)): ?>
-                      <a href="<?= e($live_url) ?>" target="_blank" rel="noopener noreferrer" class="case-btn-primary">
-                        <span>Visit Live</span>
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <a href="<?= e($live_url) ?>" target="_blank" rel="noopener noreferrer" class="case-btn-live" title="Visit Live Platform ↗">
+                        <span>Live</span>
+                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
                           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                           <polyline points="15 3 21 3 21 9"></polyline>
                           <line x1="10" y1="14" x2="21" y2="3"></line>
                         </svg>
-                      </a>
-                    <?php else: ?>
-                      <a href="contact.php?scope=<?= urlencode(explode(' ', $category)[0]) ?>&project=<?= urlencode($proj['title']) ?>" class="case-btn-primary">
-                        <span>Request Build</span>
-                        <span style="font-size: 14px;">↗</span>
                       </a>
                     <?php endif; ?>
                   </div>
@@ -198,18 +258,124 @@ $has_projects = !empty($db_projects);
             </article>
           <?php endforeach; ?>
 
-          <!-- Empty Filter State -->
-          <div class="projects-empty-state" id="projectsEmptyState">
-            <div class="projects-empty-icon">🔍</div>
-            <h3 class="projects-empty-title">No matching reference projects found</h3>
-            <p class="projects-empty-desc">
-              Try adjusting your search keywords or explore another engineering category above.
-            </p>
-            <button type="button" class="btn-primary" id="resetFiltersBtn" style="padding: 9px 22px; font-size: 13px;">
-              Reset All Filters
-            </button>
-          </div>
+        </div>
 
+        <!-- View 2: Architectural List / Comparison Table View -->
+        <div class="projects-list-table-wrap" id="projectsListView" style="display: none;">
+          <div class="projects-table-container">
+            <table class="projects-arch-table">
+              <thead>
+                <tr>
+                  <th style="min-width: 260px;">System &amp; Client</th>
+                  <th>Category</th>
+                  <th>Key Telemetry &amp; Metrics</th>
+                  <th>Tech Stack</th>
+                  <th style="text-align: right; min-width: 170px;">Case Study &amp; Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($db_projects as $proj): 
+                  $category = strtolower($proj['category'] ?? 'web');
+                  $cover_image = !empty($proj['image_url']) ? $proj['image_url'] : 'assets/card_web_apps.webp';
+                  $client_name = !empty($proj['client_name']) ? $proj['client_name'] : 'NDA Protected';
+                  $client_ind = !empty($proj['client_industry']) ? $proj['client_industry'] : '';
+                  $live_url = !empty($proj['live_url']) ? $proj['live_url'] : '';
+                  $project_slug = !empty($proj['slug']) ? $proj['slug'] : (string)$proj['id'];
+                  $case_url = SITE_URL . '/project/' . urlencode($project_slug);
+                  $search_data = strtolower($proj['title'] . ' ' . $client_name . ' ' . $client_ind . ' ' . $category . ' ' . $proj['tag_label'] . ' ' . $proj['tech_tags'] . ' ' . $proj['description']);
+                ?>
+                  <tr class="project-list-row"
+                    data-id="<?= $proj['id'] ?>"
+                    data-slug="<?= e($project_slug) ?>"
+                    data-case-url="<?= e($case_url) ?>"
+                    data-category="<?= e($category) ?>"
+                    data-title="<?= e($proj['title']) ?>"
+                    data-client="<?= e($client_name) ?>"
+                    data-industry="<?= e($client_ind) ?>"
+                    data-tag="<?= e($proj['tag_label']) ?>"
+                    data-image="<?= e($cover_image) ?>"
+                    data-desc="<?= e($proj['description']) ?>"
+                    data-live="<?= e($live_url) ?>"
+                    data-m1-val="<?= e($proj['metric_1_val']) ?>"
+                    data-m1-lbl="<?= e($proj['metric_1_lbl']) ?>"
+                    data-m2-val="<?= e($proj['metric_2_val']) ?>"
+                    data-m2-lbl="<?= e($proj['metric_2_lbl']) ?>"
+                    data-m3-val="<?= e($proj['metric_3_val']) ?>"
+                    data-m3-lbl="<?= e($proj['metric_3_lbl']) ?>"
+                    data-tech="<?= e($proj['tech_tags']) ?>"
+                    data-search="<?= e($search_data) ?>">
+                    
+                    <td>
+                      <div class="list-proj-identity">
+                        <a href="<?= e($case_url) ?>" class="list-proj-thumb-link">
+                          <img src="<?= e($cover_image) ?>" alt="Thumb" class="list-proj-thumb" onerror="this.src='assets/card_web_apps.webp';">
+                        </a>
+                        <div>
+                          <span class="status-pill status-contacted list-eyebrow"><?= e($proj['tag_label']) ?></span>
+                          <a href="<?= e($case_url) ?>" class="list-proj-title"><?= e($proj['title']) ?></a>
+                          <span class="list-proj-client">Client: <?= e($client_name) ?><?= $client_ind ? ' • ' . e($client_ind) : '' ?></span>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <span class="status-pill status-in_progress"><?= strtoupper(e($category)) ?></span>
+                    </td>
+
+                    <td>
+                      <div class="list-metrics-inline">
+                        <?php if (!empty($proj['metric_1_val'])): ?>
+                          <span class="list-metric-item"><strong><?= e($proj['metric_1_val']) ?></strong> <?= e($proj['metric_1_lbl']) ?></span>
+                        <?php endif; ?>
+                        <?php if (!empty($proj['metric_2_val'])): ?>
+                          <span class="list-metric-item"><strong><?= e($proj['metric_2_val']) ?></strong> <?= e($proj['metric_2_lbl']) ?></span>
+                        <?php endif; ?>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="list-tech-wrap">
+                        <?php foreach (array_slice(explode(',', $proj['tech_tags']), 0, 4) as $tag): ?>
+                          <?php if (trim($tag)): ?>
+                            <span class="case-tech-pill"><?= e(trim($tag)) ?></span>
+                          <?php endif; ?>
+                        <?php endforeach; ?>
+                      </div>
+                    </td>
+
+                    <td style="text-align: right;">
+                      <div class="list-actions-wrap">
+                        <a href="<?= e($case_url) ?>" class="case-btn-primary" style="padding: 7px 14px; font-size: 12.5px;">
+                          <span>Deep Dive</span> ↗
+                        </a>
+                        <button type="button" class="case-btn-secondary open-case-modal-btn" style="padding: 7px 11px; font-size: 12.5px;" title="Quick Peek">
+                          👁
+                        </button>
+                        <?php if (!empty($live_url)): ?>
+                          <a href="<?= e($live_url) ?>" target="_blank" rel="noopener noreferrer" class="case-btn-live" style="padding: 7px 10px; font-size: 12.5px;" title="Visit Live Platform">
+                            ↗
+                          </a>
+                        <?php endif; ?>
+                      </div>
+                    </td>
+
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Empty Filter State -->
+        <div class="projects-empty-state" id="projectsEmptyState">
+          <div class="projects-empty-icon">🔍</div>
+          <h3 class="projects-empty-title">No matching reference projects found</h3>
+          <p class="projects-empty-desc">
+            Try adjusting your search keywords or explore another engineering category above.
+          </p>
+          <button type="button" class="btn-primary" id="resetFiltersBtn" style="padding: 9px 22px; font-size: 13px;">
+            Reset All Filters
+          </button>
         </div>
 
       <?php else: ?>
@@ -320,15 +486,15 @@ $has_projects = !empty($db_projects);
 
         <!-- Modal Actions Footer -->
         <div class="project-modal-actions">
+          <a href="#" class="case-btn-primary" id="modalCaseStudyBtn">
+            <span>Read Full Case Study Deep-Dive</span>
+            <span style="font-size: 14px;">↗</span>
+          </a>
           <a href="#" target="_blank" rel="noopener noreferrer" class="case-btn-secondary" id="modalLiveBtn" style="display: none;">
             <span>Visit Live Platform ↗</span>
           </a>
-          <a href="contact.php" class="case-btn-primary" id="modalConsultBtn">
-            <span>Talk to Engineers About This Stack</span>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+          <a href="contact.php" class="case-btn-secondary" id="modalConsultBtn">
+            <span>Talk to Engineers</span>
           </a>
         </div>
       </div>
@@ -341,7 +507,8 @@ $has_projects = !empty($db_projects);
 $project_items_schema = [];
 if (!empty($db_projects)) {
     foreach ($db_projects as $idx => $p) {
-        $p_url = !empty($p['live_url']) ? $p['live_url'] : (SITE_URL . '/projects.php#project-' . $p['id']);
+        $p_slug = !empty($p['slug']) ? $p['slug'] : (string)$p['id'];
+        $p_url = SITE_URL . '/project/' . urlencode($p_slug);
         $p_img = !empty($p['image_url']) ? (strpos($p['image_url'], 'http') === 0 ? $p['image_url'] : SITE_URL . '/' . ltrim($p['image_url'], '/')) : (SITE_URL . '/assets/card_web_apps.webp');
         $project_items_schema[] = [
             '@type' => 'ListItem',

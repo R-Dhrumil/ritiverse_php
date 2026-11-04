@@ -40,6 +40,8 @@ DirectoryIndex index.php index.html index.htm default.html default.htm
   # 7. Route root favicon requests directly to assets/logo.png
   RewriteRule ^favicon\.(ico|png)$ assets/logo.png [L]
 
+  # 7b. Clean Project Case Study URLs: /project/{slug} -> project-detail.php?slug=$1 [L,QSA]
+
   # 8. Clean URLs: Serve .php file without requiring extension in the URL
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}.php -f

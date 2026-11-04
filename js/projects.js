@@ -1,15 +1,23 @@
 /**
  * RITIVERSE — PROJECTS PAGE DEDICATED LOGIC
- * High-performance portfolio filtering, real-time search & interactive case study modal
+ * High-performance portfolio filtering, real-time search, interactive view switcher & case study modal
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const filterBtns = document.querySelectorAll('.project-filter-btn');
-  const cards = document.querySelectorAll('.case-study-card');
+  const techChips = document.querySelectorAll('.tech-filter-chip');
+  const gridCards = document.querySelectorAll('.case-study-card');
+  const listRows = document.querySelectorAll('.project-list-row');
   const searchInput = document.getElementById('projectSearch');
   const searchClearBtn = document.getElementById('projectSearchClear');
   const emptyState = document.getElementById('projectsEmptyState');
   const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+
+  // View toggle buttons & views
+  const viewGridBtn = document.getElementById('viewGridBtn');
+  const viewListBtn = document.getElementById('viewListBtn');
+  const projectsGrid = document.getElementById('projectsGrid');
+  const projectsListView = document.getElementById('projectsListView');
 
   // Modal elements
   const modalBackdrop = document.getElementById('projectModalBackdrop');
@@ -24,16 +32,59 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTechList = document.getElementById('modalTechList');
   const modalLiveBtn = document.getElementById('modalLiveBtn');
   const modalConsultBtn = document.getElementById('modalConsultBtn');
+  const modalCaseStudyBtn = document.getElementById('modalCaseStudyBtn');
 
-  if (!cards.length) return;
+  if (!gridCards.length && !listRows.length) return;
 
-  // 1. Calculate and update badge counts on category buttons
+  // 1. View Switcher Logic (Grid View vs List View)
+  let currentView = localStorage.getItem('ritiverse_projects_view') || 'grid';
+
+  function setViewMode(mode) {
+    currentView = mode;
+    localStorage.setItem('ritiverse_projects_view', mode);
+
+    if (mode === 'list') {
+      if (projectsGrid) projectsGrid.style.display = 'none';
+      if (projectsListView) projectsListView.style.display = 'block';
+      if (viewGridBtn) {
+        viewGridBtn.classList.remove('active');
+        viewGridBtn.setAttribute('aria-pressed', 'false');
+      }
+      if (viewListBtn) {
+        viewListBtn.classList.add('active');
+        viewListBtn.setAttribute('aria-pressed', 'true');
+      }
+    } else {
+      if (projectsGrid) projectsGrid.style.display = 'grid';
+      if (projectsListView) projectsListView.style.display = 'none';
+      if (viewGridBtn) {
+        viewGridBtn.classList.add('active');
+        viewGridBtn.setAttribute('aria-pressed', 'true');
+      }
+      if (viewListBtn) {
+        viewListBtn.classList.remove('active');
+        viewListBtn.setAttribute('aria-pressed', 'false');
+      }
+    }
+  }
+
+  if (viewGridBtn) {
+    viewGridBtn.addEventListener('click', () => setViewMode('grid'));
+  }
+  if (viewListBtn) {
+    viewListBtn.addEventListener('click', () => setViewMode('list'));
+  }
+
+  // Initialize view mode
+  setViewMode(currentView);
+
+  // 2. Calculate and update badge counts on category buttons
   function updateCategoryCounts() {
     filterBtns.forEach(btn => {
       const filter = btn.dataset.filter || 'all';
       let count = 0;
 
-      cards.forEach(card => {
+      gridCards.forEach(card => {
         const categories = (card.dataset.category || '').toLowerCase();
         if (filter === 'all') {
           count++;
@@ -52,31 +103,46 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   updateCategoryCounts();
 
-  // 2. Main Filtering Engine (Combines Category Filter + Search Query)
-  let activeFilter = 'all';
+  // 3. Multi-Dimensional Filtering Engine (Category + Tech Chip + Live Search)
+  let activeCategory = 'all';
+  let activeTech = 'all';
   let searchQuery = '';
+
+  function matchesItem(element) {
+    const categories = (element.dataset.category || '').toLowerCase();
+    const techTags = (element.dataset.tech || '').toLowerCase();
+    const searchableText = (element.dataset.search || '').toLowerCase();
+
+    // Category match
+    let matchesCategory = false;
+    if (activeCategory === 'all') {
+      matchesCategory = true;
+    } else if (activeCategory === 'crm-erp') {
+      matchesCategory = categories.includes('crm') || categories.includes('erp');
+    } else {
+      matchesCategory = categories.includes(activeCategory);
+    }
+
+    // Tech match
+    let matchesTech = false;
+    if (activeTech === 'all') {
+      matchesTech = true;
+    } else {
+      matchesTech = techTags.includes(activeTech);
+    }
+
+    // Search match
+    const matchesSearch = !searchQuery || searchableText.includes(searchQuery);
+
+    return matchesCategory && matchesTech && matchesSearch;
+  }
 
   function applyFilters() {
     let visibleCount = 0;
 
-    cards.forEach(card => {
-      const categories = (card.dataset.category || '').toLowerCase();
-      const searchableText = (card.dataset.search || '').toLowerCase();
-
-      // Category match
-      let matchesCategory = false;
-      if (activeFilter === 'all') {
-        matchesCategory = true;
-      } else if (activeFilter === 'crm-erp') {
-        matchesCategory = categories.includes('crm') || categories.includes('erp');
-      } else {
-        matchesCategory = categories.includes(activeFilter);
-      }
-
-      // Search match
-      const matchesSearch = !searchQuery || searchableText.includes(searchQuery);
-
-      if (matchesCategory && matchesSearch) {
+    // Filter Grid Cards
+    gridCards.forEach(card => {
+      if (matchesItem(card)) {
         card.style.display = 'flex';
         visibleCount++;
       } else {
@@ -84,27 +150,50 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Filter List Rows
+    listRows.forEach(row => {
+      if (matchesItem(row)) {
+        row.style.display = 'table-row';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+
     // Handle Empty State
     if (emptyState) {
       if (visibleCount === 0) {
         emptyState.style.display = 'block';
+        if (projectsListView) projectsListView.style.display = 'none';
       } else {
         emptyState.style.display = 'none';
+        if (currentView === 'list' && projectsListView) {
+          projectsListView.style.display = 'block';
+        }
       }
     }
   }
 
-  // 3. Category Filter Click Handlers
+  // 4. Category Filter Buttons
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      activeFilter = btn.dataset.filter || 'all';
+      activeCategory = btn.dataset.filter || 'all';
       applyFilters();
     });
   });
 
-  // 4. Search Input Handler
+  // 5. Tech Filter Chips
+  techChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      techChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeTech = (chip.dataset.tech || 'all').toLowerCase();
+      applyFilters();
+    });
+  });
+
+  // 6. Search Input Handler
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
@@ -125,10 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 5. Reset Filters Button
+  // 7. Reset Filters Button
   if (resetFiltersBtn) {
     resetFiltersBtn.addEventListener('click', () => {
-      activeFilter = 'all';
+      activeCategory = 'all';
+      activeTech = 'all';
       searchQuery = '';
       if (searchInput) {
         searchInput.value = '';
@@ -138,41 +228,48 @@ document.addEventListener('DOMContentLoaded', () => {
         if (b.dataset.filter === 'all') b.classList.add('active');
         else b.classList.remove('active');
       });
+      techChips.forEach(c => {
+        if (c.dataset.tech === 'all') c.classList.add('active');
+        else c.classList.remove('active');
+      });
       applyFilters();
     });
   }
 
-  // 6. Interactive Quick View Modal
-  function openProjectModal(card) {
+  // 8. Interactive Quick View Modal
+  function openProjectModal(item) {
     if (!modalBackdrop) return;
 
-    const title = card.dataset.title || '';
-    const client = card.dataset.client || '';
-    const tag = card.dataset.tag || 'Production Architecture';
-    const category = card.dataset.category || '';
-    const imgUrl = card.dataset.image || '';
-    const desc = card.dataset.desc || '';
-    const liveUrl = card.dataset.live || '';
-    const m1Val = card.dataset.m1Val || '';
-    const m1Lbl = card.dataset.m1Lbl || '';
-    const m2Val = card.dataset.m2Val || '';
-    const m2Lbl = card.dataset.m2Lbl || '';
-    const m3Val = card.dataset.m3Val || '';
-    const m3Lbl = card.dataset.m3Lbl || '';
-    const techTags = (card.dataset.tech || '').split(',').map(t => t.trim()).filter(Boolean);
+    const title = item.dataset.title || '';
+    const client = item.dataset.client || '';
+    const industry = item.dataset.industry || '';
+    const tag = item.dataset.tag || 'Production Architecture';
+    const category = item.dataset.category || '';
+    const imgUrl = item.dataset.image || '';
+    const desc = item.dataset.desc || '';
+    const liveUrl = item.dataset.live || '';
+    const caseUrl = item.dataset.caseUrl || '#';
+    const m1Val = item.dataset.m1Val || '';
+    const m1Lbl = item.dataset.m1Lbl || '';
+    const m2Val = item.dataset.m2Val || '';
+    const m2Lbl = item.dataset.m2Lbl || '';
+    const m3Val = item.dataset.m3Val || '';
+    const m3Lbl = item.dataset.m3Lbl || '';
+    const techTags = (item.dataset.tech || '').split(',').map(t => t.trim()).filter(Boolean);
 
     // Populate Fields
     if (modalTitle) modalTitle.textContent = title;
     if (modalClient) {
-      modalClient.textContent = client ? `Client: ${client}` : '';
-      modalClient.style.display = client ? 'block' : 'none';
+      const clientText = client ? `Client: ${client}${industry ? ' (' + industry + ')' : ''}` : '';
+      modalClient.textContent = clientText;
+      modalClient.style.display = clientText ? 'block' : 'none';
     }
     if (modalTag) modalTag.textContent = tag;
     if (modalCategory) modalCategory.textContent = category.toUpperCase();
     if (modalDesc) modalDesc.textContent = desc;
 
     if (modalImg) {
-      modalImg.src = imgUrl || 'assets/card_web_apps.jpg';
+      modalImg.src = imgUrl || 'assets/card_web_apps.webp';
       modalImg.alt = title;
     }
 
@@ -195,6 +292,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Populate Tech Stack
     if (modalTechList) {
       modalTechList.innerHTML = techTags.map(t => `<span class="case-tech-pill">${escapeHtml(t)}</span>`).join('');
+    }
+
+    // Dedicated Case Study Deep-Dive Button in Modal
+    if (modalCaseStudyBtn) {
+      modalCaseStudyBtn.href = caseUrl;
     }
 
     // Live URL Button
@@ -223,12 +325,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  // Attach modal trigger to buttons inside cards
+  // Attach modal trigger to buttons in cards or table rows
   document.querySelectorAll('.open-case-modal-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const card = btn.closest('.case-study-card');
-      if (card) openProjectModal(card);
+      e.preventDefault();
+      const parentItem = btn.closest('.case-study-card') || btn.closest('.project-list-row');
+      if (parentItem) {
+        openProjectModal(parentItem);
+      } else {
+        const modalId = btn.dataset.modalId;
+        if (modalId) {
+          const card = document.querySelector(`.case-study-card[data-id="${modalId}"]`);
+          if (card) openProjectModal(card);
+        }
+      }
     });
   });
 

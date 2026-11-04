@@ -8,6 +8,7 @@ $admin_title = 'Projects & Reference Architectures';
 $admin_subtitle = 'Manage client showcase case studies, screenshots, live links and technical telemetry';
 
 require_once __DIR__ . '/admin_header.php';
+require_once dirname(__DIR__) . '/includes/projects_helper.php';
 
 $db = get_db();
 $message = '';
@@ -51,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $db) {
             try {
                 $stmt = $db->prepare("UPDATE projects SET is_featured = ? WHERE id = ?");
                 $stmt->execute([$new_val, $proj_id]);
-                $message = "Project #{$proj_id} visibility updated.";
+                $message = "Project #{$proj_id} visibility updated."; sync_projects_seo($db);
             } catch (Exception $e) {
                 $error = "Failed to update project visibility: " . $e->getMessage();
             }
@@ -63,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $db) {
             try {
                 $stmt = $db->prepare("DELETE FROM projects WHERE id = ?");
                 $stmt->execute([$del_id]);
-                $message = "Project #{$del_id} deleted successfully.";
+                $message = "Project #{$del_id} deleted successfully."; sync_projects_seo($db);
             } catch (Exception $e) {
                 $error = "Delete failed: " . $e->getMessage();
             }
@@ -73,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $db) {
         elseif ($action === 'delete_all') {
             try {
                 $db->exec("TRUNCATE TABLE projects");
-                $message = "All projects removed successfully. Showcase is now clean.";
+                $message = "All projects removed successfully. Showcase is now clean."; sync_projects_seo($db);
             } catch (Exception $e) {
                 $error = "Failed to clear projects: " . $e->getMessage();
             }
@@ -420,6 +421,74 @@ if ($db) {
                 <input type="text" name="metric_3_lbl" class="admin-input" placeholder="e.g. Code Owned" value="<?= e($edit_project['metric_3_lbl'] ?? '') ?>" style="background: #FFFFFF;">
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Row 4b: Case Study Deep Dive (/project/{slug}) -->
+        <div style="background: #FFFFFF; border: 1px solid var(--admin-border); border-radius: 12px; padding: 22px; margin-bottom: 22px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 1px solid var(--admin-border); padding-bottom: 12px;">
+            <div>
+              <h4 style="margin: 0 0 4px 0; font-size: 15px; font-weight: 700; color: var(--admin-text-main); display: flex; align-items: center; gap: 8px;">
+                <span>📖</span> Dedicated Case Study Deep-Dive (/project/<?= !empty($edit_project['slug']) ? e($edit_project['slug']) : 'slug' ?>)
+              </h4>
+              <p style="margin: 0; font-size: 12px; color: var(--admin-text-muted);">
+                Populate rich problem-solution narratives, module features, and gallery screenshots for the dedicated standalone case study page.
+              </p>
+            </div>
+            <span class="status-pill status-contacted" style="font-size: 11px;">Standalone Case Study</span>
+          </div>
+
+          <!-- Slug, Industry & Duration -->
+          <div class="admin-grid-3" style="margin-bottom: 16px;">
+            <div>
+              <label class="admin-form-label">URL Slug (e.g. cloud-pos-erp)</label>
+              <input type="text" name="slug" class="admin-input" placeholder="auto-generated-from-title" value="<?= e($edit_project['slug'] ?? '') ?>">
+              <span style="font-size: 11px; color: var(--admin-text-muted); display: block; margin-top: 3px;">Direct URL: <code>/project/<?= !empty($edit_project['slug']) ? e($edit_project['slug']) : '...' ?></code></span>
+            </div>
+
+            <div>
+              <label class="admin-form-label">Client Industry / Domain</label>
+              <input type="text" name="client_industry" class="admin-input" placeholder="e.g. Logistics & Supply Chain, FinTech" value="<?= e($edit_project['client_industry'] ?? '') ?>">
+            </div>
+
+            <div>
+              <label class="admin-form-label">Project Timeline / Duration</label>
+              <input type="text" name="project_duration" class="admin-input" placeholder="e.g. 6 Weeks / 3 Months" value="<?= e($edit_project['project_duration'] ?? '') ?>">
+            </div>
+          </div>
+
+          <!-- Challenge & Solution -->
+          <div class="admin-grid-2" style="margin-bottom: 16px;">
+            <div>
+              <label class="admin-form-label">The Challenge / Client Bottleneck</label>
+              <textarea name="challenge" class="admin-input" rows="4" placeholder="Detail the business bottleneck, legacy debt, high server costs, or operational issues the client faced before partnering with RiTiVerse..."><?= e($edit_project['challenge'] ?? '') ?></textarea>
+            </div>
+
+            <div>
+              <label class="admin-form-label">The Architecture &amp; Solution</label>
+              <textarea name="solution" class="admin-input" rows="4" placeholder="Detail the engineering approach: stack selection, microservices/modular monolith, database indexing, caching layer, security, and cloud deployment..."><?= e($edit_project['solution'] ?? '') ?></textarea>
+            </div>
+          </div>
+
+          <!-- Key Features & Impact -->
+          <div class="admin-grid-2" style="margin-bottom: 16px;">
+            <div>
+              <label class="admin-form-label">Key Modules &amp; Features (1 item per line)</label>
+              <textarea name="key_features" class="admin-input" rows="4" placeholder="Automated multi-warehouse inventory tracking&#10;Sub-second barcode scanning &amp; invoicing&#10;Role-based access control with audit trails&#10;Automated WhatsApp dispatch notifications"><?= e($edit_project['key_features'] ?? '') ?></textarea>
+              <span style="font-size: 11px; color: var(--admin-text-muted); display: block; margin-top: 4px;">Each new line renders as an architectural feature card with an icon.</span>
+            </div>
+
+            <div>
+              <label class="admin-form-label">Measurable Impact &amp; Business Results</label>
+              <textarea name="impact_summary" class="admin-input" rows="4" placeholder="Summarize outcomes: e.g. 74% reduction in order dispatch latency, zero database downtime across 100,000+ monthly orders, complete source ownership transferred..."><?= e($edit_project['impact_summary'] ?? '') ?></textarea>
+            </div>
+          </div>
+
+          <!-- Gallery Images -->
+          <div>
+            <label class="admin-form-label">Additional Screenshots / Architecture Diagrams (Optional)</label>
+            <textarea name="gallery_images" class="admin-input" rows="2" placeholder="Comma- or newline-separated image paths: assets/card_software_apis.webp, assets/card_cloud_devops.webp, uploads/projects/diagram.png"><?= e($edit_project['gallery_images'] ?? '') ?></textarea>
+            <span style="font-size: 11px; color: var(--admin-text-muted); display: block; margin-top: 4px;">Rendered as a screenshot gallery/carousel on the case study page.</span>
           </div>
         </div>
 
