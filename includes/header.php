@@ -44,19 +44,20 @@ if (preg_match('/(G-[A-Z0-9]+|GTM-[A-Z0-9]+|UA-[0-9]+-[0-9]+)/i', $google_analyt
   <?php endif; ?>
   <title><?= e($page_title) ?></title>
   <meta name="description" content="<?= e($page_description) ?>">
-  <!-- High-Resolution Favicons & Google Search Brand Icons -->
-  <link rel="icon" type="image/png" sizes="192x192" href="<?= SITE_URL ?>/assets/logo.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="<?= SITE_URL ?>/assets/logo.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="<?= SITE_URL ?>/assets/logo.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="<?= SITE_URL ?>/assets/logo.png">
-  <link rel="shortcut icon" href="<?= SITE_URL ?>/assets/logo.png" type="image/png">
-  <link rel="apple-touch-icon" href="<?= SITE_URL ?>/assets/logo.png">
+  <!-- High-Resolution Favicons & Google Search Brand Icons (1:1 Square per Google Search Central Guidelines) -->
+  <link rel="icon" type="image/png" sizes="48x48" href="<?= SITE_URL ?>/assets/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="<?= SITE_URL ?>/assets/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="<?= SITE_URL ?>/assets/favicon-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="<?= SITE_URL ?>/assets/favicon-512x512.png">
+  <link rel="icon" href="<?= SITE_URL ?>/favicon.ico" sizes="48x48 32x32 16x16">
+  <link rel="shortcut icon" href="<?= SITE_URL ?>/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="<?= SITE_URL ?>/assets/apple-touch-icon.png">
 
   <!-- Universal Progressive Web App Manifest & Browser Theme Colors -->
   <link rel="manifest" href="<?= SITE_URL ?>/site.webmanifest">
   <meta name="theme-color" content="#FAF7EE">
   <meta name="msapplication-TileColor" content="#F86800">
-  <meta name="msapplication-TileImage" content="<?= SITE_URL ?>/assets/logo.png">
+  <meta name="msapplication-TileImage" content="<?= SITE_URL ?>/assets/favicon-192x192.png">
 
 <?php
 // Dynamic Canonical, SEO & Connectivity Directives

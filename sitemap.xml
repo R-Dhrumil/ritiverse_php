@@ -3,9 +3,14 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://ritiverse.in/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ritiverse.in/assets/favicon-512x512.png</image:loc>
+      <image:title>RiTiVerse Brand Emblem — Official Favicon &amp; Logo</image:title>
+      <image:caption>Official square brand emblem and favicon of RiTiVerse IT Services in Vadodara, Gujarat.</image:caption>
+    </image:image>
     <image:image>
       <image:loc>https://ritiverse.in/assets/logo.png</image:loc>
       <image:title>RiTiVerse — IT Services, Custom Web, CRM &amp; ERP Software Development Company</image:title>

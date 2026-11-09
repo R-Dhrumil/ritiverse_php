@@ -14,6 +14,16 @@ Disallow: /api/
 Disallow: /includes/
 Disallow: /logs/
 
+User-agent: Googlebot-Image
+Allow: /
+Allow: /assets/
+Allow: /favicon.ico
+
+User-agent: Google Favicon
+Allow: /
+Allow: /assets/
+Allow: /favicon.ico
+
 # Bing / Microsoft crawlers
 User-agent: Bingbot
 Allow: /
