@@ -94,8 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Portal Login — RiTiVerse</title>
-  <link rel="icon" type="image/png" sizes="48x48" href="../assets/favicon-48x48.png">
-  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/favicon-48x48.png?v=2">
+  <link rel="shortcut icon" href="../favicon.ico?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
